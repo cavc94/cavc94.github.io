@@ -18,17 +18,20 @@
     </canvas>
     <script>
       var Canvas1 = document.getElementById("Canvas1");
-      var Canvas2 = document.getElementById("Canvas2");
-      var Canvas3 = document.getElementById("Canvas3");
       var contexto1 = Canvas1.getContext("2d");
-      var contexto2 = Canvas2.getContext("2d");
-      var contexto3 = Canvas3.getContext("2d");
       contexto1.fillStyle = "red";
-      contexto2.fillStyle = "blue"
-      contexto3.fillStyle = "green";
       contexto1.fillRect(30, 30, 50, 50);
+      
+      var Canvas2 = document.getElementById("Canvas2");
+      var contexto2 = Canvas2.getContext("2d");
+      contexto2.fillStyle = "blue";
       contexto2.fillRect(60, 60, 100, 25);
+      
+      var Canvas3 = document.getElementById("Canvas3");
+      var contexto3 = Canvas3.getContext("2d");
+      contexto3.fillStyle = "green";
       contexto3.fillRect(120, 120, 50, 75);
+      
     </script>
   </body>
 </html>
