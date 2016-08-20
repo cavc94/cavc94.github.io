@@ -10,7 +10,7 @@ var cubo = new THREE.Mesh( forma, material );
 cubo.rotateX(-Math.PI/4);
 cubo.rotateY(Math.PI/4);
 escena.add( cubo );
-var forma1 = new THREE.CylinderGeometry( 5, 5, 20, 32 );
+var forma1 = new THREE.CylinderGeometry( 0.5, 0.5, 5, 32 );
 var cilindro = new THREE.Mesh( forma1, material );
 escena.add( cilindro );
 renderizador.render( escena, camara );
