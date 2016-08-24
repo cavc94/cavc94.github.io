@@ -9,7 +9,7 @@ var material = new THREE.MeshNormalMaterial();
 var esfera = new THREE.Mesh( forma, material );
 esfera.rotateX(-Math.PI/4);
 esfera.rotateY(Math.PI/4);
-var forma1 = new THREE.CylinderGeometry( 0.5, 0.5, 5, 32 );
+var forma1 = new THREE.CylinderGeometry( 0.5, 0.5, 3, 32 );
 var cilindro = new THREE.Mesh( forma1, material );
 escena.add( cilindro, esfera );
 renderizador.render( escena, camara );
