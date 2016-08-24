@@ -11,6 +11,6 @@ cubo.rotateX(-Math.PI/4);
 cubo.rotateY(Math.PI/4);
 var forma1 = new THREE.CylinderGeometry( 0.5, 0.5, 5, 32 );
 var cilindro = new THREE.Mesh( forma1, material );
-cilindro.setposition ( 0, 1, 0 );
+cilindro.setPosition ( 0, 1, 0 );
 escena.add( cubo, cilindro );
 renderizador.render( escena, camara );
