@@ -11,7 +11,7 @@ var material = new THREE.MeshNormalMaterial();
 var cono = new THREE.Mesh( forma, material );
 //esfera.rotateX(-Math.PI/4);
 //esfera.rotateX(Math.PI/4);
-//esfera.position.set( 0, -0.05, 0 );
+cono.position.set( 0, 1, 0 );
 var forma1 = new THREE.CylinderGeometry( 0.5, 0.5, 2, 32 );
 var cilindro = new THREE.Mesh( forma1, material );
 //cilindro.rotateX(-Math.PI/4);
