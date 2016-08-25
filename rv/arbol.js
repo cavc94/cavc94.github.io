@@ -5,7 +5,7 @@ var renderizador = new THREE.WebGLRenderer();
 renderizador.setSize(window.innerHeight*.95, window.innerHeight*.95);
 document.body.appendChild( renderizador.domElement );
 //var forma = new THREE.SphereGeometry( 1, 32, 32 );
-var forma = new THREE.ConeGeometry( 1, 2, 32 );
+var forma = new THREE.ConeGeometry( 1.5, 2, 32 );
 var material = new THREE.MeshNormalMaterial();
 //var esfera = new THREE.Mesh( forma, material );
 var cono = new THREE.Mesh( forma, material );
