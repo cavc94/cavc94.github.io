@@ -4,7 +4,7 @@ camara.position.z = 5;
 var renderizador = new THREE.WebGLRenderer();
 renderizador.setSize(window.innerHeight*.95, window.innerHeight*.95);
 document.body.appendChild( renderizador.domElement );
-var forma = new THREE.SphereGeometry( 0.5, 32, 32 );
+var forma = new THREE.SphereGeometry( 2, 32, 32 );
 var material = new THREE.MeshNormalMaterial();
 var esfera = new THREE.Mesh( forma, material );
 esfera.rotateX(-Math.PI/4);
