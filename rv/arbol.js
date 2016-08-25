@@ -10,7 +10,7 @@ var material = new THREE.MeshBasicMaterial( {color: 0x00ff00} );
 //var esfera = new THREE.Mesh( forma, material );
 var cono = new THREE.Mesh( forma, material );
 cono.rotateX(-Math.PI/4);
-cono.rotateX(Math.PI/4);
+cono.rotateY(Math.PI/4);
 cono.position.set( 0, 1, 0 );
 var forma1 = new THREE.CylinderGeometry( 0.5, 0.5, 2, 32 );
 var material1 = new THREE.MeshBasicMaterial( {color: 0xAA6946} );
