@@ -13,6 +13,6 @@ var forma1 = new THREE.CylinderGeometry( 0.5, 0.5, 1, 32 );
 var cilindro = new THREE.Mesh( forma1, material );
 cilindro.rotateX(-Math.PI/4);
 cilindro.rotateY(Math.PI/4);
-cilindro.position.set( 0, 10, 0 );
+cilindro.position.set( 0, 5, 0 );
 escena.add( cilindro, esfera );
 renderizador.render( escena, camara );
