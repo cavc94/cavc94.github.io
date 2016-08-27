@@ -7,7 +7,7 @@ figura.lineTo(17.63, -24.27);
 figura.lineTo(0, -15);
 figura.lineTo(-17.63, -24.27);
 figura.lineTo(-14.27, -4.64);
-figura.lineTo(-8.53, 9.27);
+figura.lineTo(-28.53, 9.27);
 figura.lineTo(-8.82, 12.14);
 figura.lineTo(0, 30);
 
