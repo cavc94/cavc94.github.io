@@ -1,6 +1,6 @@
 var troncoForma = new THREE.CylinderGeometry(0.25, 0.5, 1);
 var baseForma = new THREE.CylinderGeometry(0.5, 1, 0.5);
-troncoForma.translate(0,1,0);
+troncoForma.translate(0,0.5,0);
 
 var troncoMalla = new THREE.Mesh(troncoForma);
 var baseMalla = new THREE.Mesh(baseForma);
