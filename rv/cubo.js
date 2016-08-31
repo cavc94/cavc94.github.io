@@ -10,11 +10,12 @@ forma.vertices.push( new THREE.Vector3( 1, 1, 0 ) );
 forma.vertices.push( new THREE.Vector3( 1, 1, 1 ) );
 
 forma.faces.push( new THREE.Face3( 1, 3, 7) );
-forma.faces.push( new THREE.Face3( 7, 5, 1) );
-forma.faces.push( new THREE.Face3( 1, 3, 4) );
-forma.faces.push( new THREE.Face3( 4, 2, 1) );
-forma.faces.push( new THREE.Face3( 1, 4, 6) );
-forma.faces.push( new THREE.Face3( 6, 5, 1) );
+forma.faces.push( new THREE.Face3( 7, 1, 0) );
+forma.faces.push( new THREE.Face3( 1, 5, 7) );
+forma.faces.push( new THREE.Face3( 1, 2, 4) );
+forma.faces.push( new THREE.Face3( 4, 3, 2 ) );
+forma.faces.push( new THREE.Face3( 2, 6, 5 ) );
+forma.faces.push( new THREE.Face3( 5, 2, 0 ) );
 
 forma.computeBoundingSphere();
 forma.computeFaceNormals();
