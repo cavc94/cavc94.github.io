@@ -1,23 +1,23 @@
 var forma = new THREE.Geometry();
 
-forma.vertices.push( new THREE.Vector3( 0, 0, 0 ) );
-forma.vertices.push( new THREE.Vector3( 0, 0, 1 ) );
-forma.vertices.push( new THREE.Vector3( 0, 1, 0 ) );
-forma.vertices.push( new THREE.Vector3( 0, 1, 1 ) );
-forma.vertices.push( new THREE.Vector3( 1, 0, 0 ) );
-forma.vertices.push( new THREE.Vector3( 1, 0, 1 ) );
-forma.vertices.push( new THREE.Vector3( 1, 1, 0 ) );
-forma.vertices.push( new THREE.Vector3( 1, 1, 1 ) );
+forma.vertices.push( new THREE.Vector3( 0, 0, 0 ), 
+                    new THREE.Vector3( 0, 0, 1 ),
+                    new THREE.Vector3( 0, 1, 0 ),
+                    new THREE.Vector3( 0, 1, 1 ),
+                    new THREE.Vector3( 1, 0, 0 ),
+                    new THREE.Vector3( 1, 0, 1 ),
+                    new THREE.Vector3( 1, 1, 0 ),
+                    new THREE.Vector3( 1, 1, 1 ) );
 
-forma.faces.push( new THREE.Face3( 0, 2, 6) );
-forma.faces.push( new THREE.Face3( 0, 6, 4) );
-forma.faces.push( new THREE.Face3( 4, 0, 1) );
-forma.faces.push( new THREE.Face3( 1, 3, 2 ) );
-forma.faces.push( new THREE.Face3( 2, 1, 5 ) );
-forma.faces.push( new THREE.Face3( 5, 4, 1 ) );
-forma.faces.push( new THREE.Face3( 5, 7, 6 ) );
-forma.faces.push( new THREE.Face3( 5, 6, 3 ) );
-forma.faces.push( new THREE.Face3( 7, 3, 5 ) );
+forma.faces.push( new THREE.Face3( 0, 2, 6),
+                  new THREE.Face3( 0, 6, 4),
+                  new THREE.Face3( 4, 0, 1),
+                  new THREE.Face3( 1, 3, 2 ),
+                  new THREE.Face3( 2, 1, 5 ),
+                  new THREE.Face3( 5, 4, 1 ),
+                  new THREE.Face3( 5, 7, 6 ),
+                  new THREE.Face3( 5, 6, 3 ),
+                  new THREE.Face3( 7, 3, 5 ) );
 //forma.faces.push( new THREE.Face3( 4, 6, 7 ) );
 //forma.faces.push( new THREE.Face3( 7, 2, 0 ) );
 //forma.faces.push( new THREE.Face3( 4, 6, 7 ) );
