@@ -25,7 +25,7 @@ forma.faces.push( new THREE.Face3( 0, 2, 6 ),
                   new THREE.Face3( 6, 5, 4 ),
                   new THREE.Face3( 3, 7, 5 ),
                   new THREE.Face3( 3, 1, 5 ),
-                  new THREE.Face3( 1, 7, 5 ) );
+                  new THREE.Face3( 3, 5, 7 ) );
 
 forma.computeBoundingSphere();
 forma.computeFaceNormals();
