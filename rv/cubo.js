@@ -13,7 +13,7 @@ forma.vertices.push( new THREE.Vector3( 1, 1, 1 ) );
 //forma.faces.push( new THREE.Face3( 6, 4, 0) );
 //forma.faces.push( new THREE.Face3( 0, 1, 3) );
 //forma.faces.push( new THREE.Face3( 0, 2, 3 ) );
-forma.faces.push( new THREE.Face3( 0, 4, 5 ) );
+//forma.faces.push( new THREE.Face3( 0, 4, 5 ) );
 forma.faces.push( new THREE.Face3( 0, 1, 5 ) );
 
 
