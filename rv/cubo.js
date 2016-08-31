@@ -14,7 +14,9 @@ forma.faces.push( new THREE.Face3( 0, 2, 6),
                   new THREE.Face3( 0, 6, 2),
                   new THREE.Face3( 0, 2, 3 ),
                   new THREE.Face3( 0, 1, 3 ),
-                  new THREE.Face3( 0, 3, 1 ) );
+                  new THREE.Face3( 0, 3, 1 ),
+                  new THREE.Face3( 2, 6, 7 ),
+                  new THREE.Face3( 2, 3, 7 ) );
                   //new THREE.Face3( 0, 5, 1 ),
                   //new THREE.Face3( 1, 7, 5 ) );
 
