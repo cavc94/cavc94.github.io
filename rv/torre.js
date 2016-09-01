@@ -1,11 +1,13 @@
 var troncoForma = new THREE.CylinderGeometry(0.3, 0.5, 1);
 var alamborForma = new THREE.CylinderGeometry(0.5, 0.75, 0.2);
 var baseForma = new THREE.CylinderGeometry(0.4, 0.4, 0.1);
-var almenaForma = new THREE.BoxGeometry(0.3, 0.1, 0.1);
+//var almenaForma = new THREE.BoxGeometry(0.3, 0.1, 0.1);
+var almenaForma = new THREE.CylinderGeometry(0.4, 0.4, 0.1,8,1,1,0,Math.PI/4);
 
 troncoForma.translate(0,0.6,0);
 baseForma.translate(0,1.15,0);
-almenaForma.translate(0,1.25,0.2);
+//almenaForma.translate(0,1.25,0.2);
+almenaForma.translate(0,1.25,0);
 
 var troncoMalla = new THREE.Mesh(troncoForma);
 var alamborMalla = new THREE.Mesh(alamborForma);
