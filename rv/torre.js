@@ -2,7 +2,16 @@ var troncoForma = new THREE.CylinderGeometry(0.3, 0.5, 1);
 var alamborForma = new THREE.CylinderGeometry(0.5, 0.75, 0.2);
 var baseForma = new THREE.CylinderGeometry(0.4, 0.4, 0.1);
 //var almenaForma = new THREE.BoxGeometry(0.3, 0.1, 0.1);
-var almenaForma = new THREE.CylinderGeometry(0.4, 0.4, 0.1,8,1,1,0,Math.PI/4);
+var almena1 = new THREE.CylinderGeometry(0.4, 0.4, 0.1,8,1,1,0,Math.PI/4);
+var almena2 = new THREE.CylinderGeometry(0.4, 0.4, 0.1,8,1,1,Math.PI/2,Math.PI/4);
+var almena3 = new THREE.CylinderGeometry(0.4, 0.4, 0.1,8,1,1,3*Math.PI/4,Math.PI/4);
+var almena4 = new THREE.CylinderGeometry(0.4, 0.4, 0.1,8,1,1,Math.PI,Math.PI/4);
+
+var almenaForma = new THREE.Geometry();
+almenaForma.merge(almena1.geometry, almena1.matrix);
+almenaForma.merge(almena2.geometry, almena2.matrix);
+almenaForma.merge(almena3.geometry, almena3.matrix);
+almenaForma.merge(almena4.geometry, almena4.matrix);
 
 troncoForma.translate(0,0.6,0);
 baseForma.translate(0,1.15,0);
