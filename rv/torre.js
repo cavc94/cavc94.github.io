@@ -10,10 +10,10 @@ var almenaF4 = new THREE.CylinderGeometry(0.4, 0.4, 0.1, 8, 1, true, 3*Math.PI/2
 troncoForma.translate(0,0.6,0);
 baseForma.translate(0,1.15,0);
 //almenaForma.translate(0,1.25,0.2);
-almenaF1.translate(0,1.25,0);
-almenaF2.translate(0,1.25,0);
-almenaF3.translate(0,1.25,0);
-almenaF4.translate(0,1.25,0);
+almenaF1.translate(0,1.2,0);
+almenaF2.translate(0,1.2,0);
+almenaF3.translate(0,1.2,0);
+almenaF4.translate(0,1.2,0);
 
 var troncoMalla = new THREE.Mesh(troncoForma);
 var alamborMalla = new THREE.Mesh(alamborForma);
@@ -39,7 +39,7 @@ torreForma.merge(almenaM4.geometry, almenaM4.matrix);
 var material = new THREE.MeshNormalMaterial();
 var torreMalla = new THREE.Mesh(torreForma, material);
 
-//torreMalla.rotateX(Math.PI/2); 
+torreMalla.rotateY(Math.PI/4); 
 
 var escena = new THREE.Scene();
 escena.add( torreMalla );
