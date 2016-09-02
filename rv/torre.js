@@ -23,7 +23,7 @@ var baseMalla = new THREE.Mesh(baseForma);
 var almenaM1 = new THREE.Mesh(almenaF1);
 var almenaM2 = new THREE.Mesh(almenaF2);
 var almenaM3 = new THREE.Mesh(almenaF3);
-var almenaM5 = new THREE.Mesh(almenaF4);
+var almenaM4 = new THREE.Mesh(almenaF4);
 
 var torreForma = new THREE.Geometry();
 
