@@ -16,10 +16,10 @@ adornoForma.translate(0,1.1,0);
 torusForma.rotateX(Math.PI/2);
 torusForma.translate(0,0.11,0);
 //almenaForma.translate(0,1.25,0.2);
-almenaF1.translate(0,1.3,0);
-almenaF2.translate(0,1.3,0);
-almenaF3.translate(0,1.3,0);
-almenaF4.translate(0,1.3,0);
+almenaF1.translate(0,1.2,0);
+almenaF2.translate(0,1.2,0);
+almenaF3.translate(0,1.2,0);
+almenaF4.translate(0,1.2,0);
 
 var troncoMalla = new THREE.Mesh(troncoForma);
 var alamborMalla = new THREE.Mesh(alamborForma);
