@@ -11,7 +11,7 @@ var almenaF4 = new THREE.CylinderGeometry(0.4, 0.4, 0.1, 8, 1, true, 3*Math.PI/2
 troncoForma.translate(0,0.6,0);
 baseForma.translate(0,1.15,0);
 torusForma.rotateX(Math.PI/2);
-torusForma.translate(0,0.35,0);
+torusForma.translate(0,0.2,0);
 //almenaForma.translate(0,1.25,0.2);
 almenaF1.translate(0,1.2,0);
 almenaF2.translate(0,1.2,0);
