@@ -1,6 +1,7 @@
 var troncoForma = new THREE.CylinderGeometry(0.3, 0.5, 1);
 var alamborForma = new THREE.CylinderGeometry(0.5, 0.75, 0.2);
 var baseForma = new THREE.CylinderGeometry(0.4, 0.4, 0.1);
+var torusForma = new THREE.TorusGeometry(0.5, 0.5);
 //var almenaForma = new THREE.BoxGeometry(0.3, 0.1, 0.1);
 var almenaF1 = new THREE.CylinderGeometry(0.4, 0.4, 0.1, 8, 1, true, 0, Math.PI/4);
 var almenaF2 = new THREE.CylinderGeometry(0.4, 0.4, 0.1, 8, 1, true, Math.PI/2, Math.PI/4);
@@ -9,6 +10,7 @@ var almenaF4 = new THREE.CylinderGeometry(0.4, 0.4, 0.1, 8, 1, true, 3*Math.PI/2
 
 troncoForma.translate(0,0.6,0);
 baseForma.translate(0,1.15,0);
+torusForma.translate(0,0.35,0);
 //almenaForma.translate(0,1.25,0.2);
 almenaF1.translate(0,1.2,0);
 almenaF2.translate(0,1.2,0);
@@ -17,6 +19,7 @@ almenaF4.translate(0,1.2,0);
 
 var troncoMalla = new THREE.Mesh(troncoForma);
 var alamborMalla = new THREE.Mesh(alamborForma);
+var torusMalla = new THREE.Mesh(torusForma);
 //var almenaMalla = new THREE.Mesh(almenaForma);
 var baseMalla = new THREE.Mesh(baseForma);
 
@@ -29,6 +32,7 @@ var torreForma = new THREE.Geometry();
 
 torreForma.merge(troncoMalla.geometry, troncoMalla.matrix);
 torreForma.merge(alamborMalla.geometry, alamborMalla.matrix);
+torreForma.merge(torusMalla.geometry, torusMalla.matrix);
 //torreForma.merge(almenaMalla.geometry, almenaMalla.matrix);
 torreForma.merge(baseMalla.geometry, baseMalla.matrix);
 torreForma.merge(almenaM1.geometry, almenaM1.matrix);
