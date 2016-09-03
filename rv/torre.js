@@ -1,7 +1,7 @@
 var troncoForma = new THREE.CylinderGeometry(0.3, 0.5, 1);
 var alamborForma = new THREE.CylinderGeometry(0.5, 0.75, 0.2);
 var baseForma = new THREE.CylinderGeometry(0.4, 0.4, 0.1);
-var torusForma = new THREE.TorusGeometry(0.5, 0.1, 16, 100);
+var torusForma = new THREE.TorusGeometry(0.5, 0.05, 16, 100);
 //var almenaForma = new THREE.BoxGeometry(0.3, 0.1, 0.1);
 var almenaF1 = new THREE.CylinderGeometry(0.4, 0.4, 0.1, 8, 1, true, 0, Math.PI/4);
 var almenaF2 = new THREE.CylinderGeometry(0.4, 0.4, 0.1, 8, 1, true, Math.PI/2, Math.PI/4);
