@@ -19,6 +19,11 @@ var esfera2 = new THREE.Mesh( new THREE.SphereGeometry( 15 ), new THREE.MeshNorm
 esfera2.position.x = -50;
 esfera2.postion.z = -100;
 
+var escena = new THREE.Scene();
+escena.add( esfera1 );
+escena.add( esfera2 );
+escena.add( cubo );
+
 var renderizador = new THREE.WebGLRenderer();
 renderizador.setSize( window.innerWidth,  window.innerHeight );
 document.body.appendChild( renderizador.domElement );
