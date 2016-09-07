@@ -11,7 +11,7 @@ camara.position.z = 15;
 //}
 
 var Blanco = new THREE.MeshBasicMaterial( { color: 0x000000 } );
-var Negro = new THREE.MeshBasicMaterial( { color: 0xffffff } );
+var Negro = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
 
 var casillaN = new THREE.Mesh( new THREE.BoxGeometry(2, 1, 2), Negro  );
 casillaN.rotateX( -Math.PI/4 );
