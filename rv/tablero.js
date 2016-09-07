@@ -7,7 +7,7 @@ var camara = new THREE.PerspectiveCamera( campoVision, relacionAspecto, planoCer
 camara.position.z = 15;
 
 var casillaN = new THREE.Mesh( new THREE.BoxGeometry(2, 1, 2), new THREE.MeshNormalMaterial() );
-//casillaN.rotateY( Math.PI/4 );
+casillaN.rotateX( -Math.PI/4 );
 
 //var tablero = new Geometry();
 //tablero.merge(casillaN.geometry, casillaN.matrix);
