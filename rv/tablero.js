@@ -18,7 +18,7 @@ casillaN.rotateX( -Math.PI/4 );
 
 var casillaB = new THREE.Mesh( new THREE.BoxGeometry(2, 1, 2), Blanco );
 casillaB.rotateX( -Math.PI/4 );
-casillaB.translate(0,2,0);
+casillaB.translate(1,0,0);
 
 //var tablero = new Geometry();
 //tablero.merge(casillaN.geometry, casillaN.matrix);
