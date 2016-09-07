@@ -6,8 +6,8 @@ var planoLejano = 1000;
 var camara = new THREE.PerspectiveCamera( campoVision, relacionAspecto, planoCercano, planoLejano );
 camara.position.z = 15;
 
-var casillaN = new THREE.Mesh( new THREE.BoxGeometry(2, 2, 2), new THREE.MeshNormalMaterial() );
-casillaN.rotateY( Math.PI/4 );
+var casillaN = new THREE.Mesh( new THREE.BoxGeometry(2, 1, 2), new THREE.MeshNormalMaterial() );
+//casillaN.rotateY( Math.PI/4 );
 
 //var tablero = new Geometry();
 //tablero.merge(casillaN.geometry, casillaN.matrix);
