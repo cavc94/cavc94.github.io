@@ -16,7 +16,7 @@ var Negro = new THREE.MeshBasicMaterial( { color: 0xffffff } );
 var casillaN = new THREE.Mesh( new THREE.BoxGeometry(2, 1, 2), Negro  );
 casillaN.rotateX( -Math.PI/4 );
 
-var casillaB = new THREE.Mesh( new THREE.BoxGeometry(2, 1, 2), new Blanco );
+var casillaB = new THREE.Mesh( new THREE.BoxGeometry(2, 1, 2), Blanco );
 casillaB.rotateX( -Math.PI/4 );
 casillaB.translate(0,1,0);
 
