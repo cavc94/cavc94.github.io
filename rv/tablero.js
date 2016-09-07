@@ -9,11 +9,17 @@ camara.position.z = 15;
 var casillaN = new THREE.Mesh( new THREE.BoxGeometry(2, 1, 2), new THREE.MeshNormalMaterial() );
 casillaN.rotateX( -Math.PI/4 );
 
+var casillaB = new THREE.Mesh( new THREE.BoxGeometry(2, 1, 2), new THREE.MeshNormalMaterial() );
+casillaB.rotateX( -Math.PI/4 );
+casillaB.translate(0,1,0);
+
+var casillas = [casillaN, casillaB];
+
 //var tablero = new Geometry();
 //tablero.merge(casillaN.geometry, casillaN.matrix);
 
 var escena = new THREE.Scene();
-escena.add( casillaN );
+escena.add( casillas );
 
 var renderizador = new THREE.WebGLRenderer();
 renderizador.setSize( window.innerWidth, window.innerHeight );
