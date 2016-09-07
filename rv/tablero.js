@@ -10,8 +10,8 @@ camara.position.z = 15;
 //	points.push( new THREE.Vector2( Math.sin( i * 0.2 ) * 10 + 5, ( i - 5 ) * 2 ) );
 //}
 
-var Blanco = new THREE.MeshBasicMaterial( { color: 0x000000 } );
-var Negro = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
+var Blanco = new THREE.MeshBasicMaterial( { color: 0xffffff } );
+var Negro = new THREE.MeshBasicMaterial( { color: 0x0000ff } );
 
 var casillaN = new THREE.Mesh( new THREE.BoxGeometry(2, 1, 2), Negro  );
 casillaN.rotateX( -Math.PI/4 );
