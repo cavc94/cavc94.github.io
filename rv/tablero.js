@@ -8,7 +8,7 @@ casillaN.rotateX( -Math.PI/4 );
 
 var casillaB = new THREE.Mesh( casilla, Blanco );
 casillaB.rotateX( -Math.PI/4 );
-casillaB.translate(5,0,0);
+casillaB.translate(10,0,0);
 
 //var tablero = new Geometry();
 //tablero.merge(casillaN.geometry, casillaN.matrix);
@@ -18,7 +18,7 @@ escena.add( casillaN );
 escena.add( casillaB );
 
 var camara = new THREE.PerspectiveCamera();
-camara.position.z = 500;
+camara.position.z = 50;
 
 var renderizador = new THREE.WebGLRenderer();
 renderizador.setSize( window.innerHeight*.95, window.innerHeight*.95 );
