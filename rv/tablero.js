@@ -14,7 +14,8 @@ casillaB.translate(5,0,0);
 //tablero.merge(casillaN.geometry, casillaN.matrix);
 
 var escena = new THREE.Scene();
-escena.add( casillaN, casillaB );
+escena.add( casillaN ); 
+escena.add( casillaB );
 
 var renderizador = new THREE.WebGLRenderer();
 renderizador.setSize( window.innerWidth, window.innerHeight );
