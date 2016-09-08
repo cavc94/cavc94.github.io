@@ -22,10 +22,10 @@ for ( var i = 0; i < 9; i ++ ) {
 	//for ( var j = 0; j < 9; j ++ ) {
 		if ( i%2 = 0 ) {
 			casillasN[n].position.set( i*10, 0, 0 );
-			n ++;
+			n++;
 		} else {
 			casillasB[b].positon.set( i*10, 0, 0 );
-			b ++;
+			b++;
 		}
 }
 
@@ -48,7 +48,7 @@ for ( var i = 0; i < 4; i ++ ) {
 //escena.add( casillasB[0] );
 
 var camara = new THREE.PerspectiveCamera();
-camara.position.z = 50;
+camara.position.z = 500;
 
 var renderizador = new THREE.WebGLRenderer();
 renderizador.setSize( window.innerWidth*.95, window.innerHeight*.95 );
