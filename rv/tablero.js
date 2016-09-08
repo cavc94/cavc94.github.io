@@ -7,8 +7,8 @@ var Negro = new THREE.MeshBasicMaterial( { color: 0x0000ff } );
 //casillaN.rotateX( -Math.PI/4 );
 
 var casillaB = new THREE.Mesh( casilla, Blanco );
-casillaB.translate( 0, 5, 0 );
 casillaB.rotateX( -Math.PI/4 );
+casillaB.position.set( 10, 0, 0 );
 
 //var tablero = new Geometry();
 //tablero.merge(casillaN.geometry, casillaN.matrix);
