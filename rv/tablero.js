@@ -17,7 +17,7 @@ var b = 0;
 
 for ( var i = 0; i < 9; i ++ ) {
 	//for ( var j = 0; j < 9; j ++ ) {
-		if ( i%2 = 0 ) {
+		if ( i%2 == 0 ) {
 			casillasN[n].position.set( i*10, 0, 0 );
 			n++;
 		} else {
