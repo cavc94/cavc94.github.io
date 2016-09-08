@@ -1,6 +1,6 @@
 var casilla = new THREE.BoxGeometry(10, 5, 10);
 
-var Blanco = new THREE.MeshBasicMaterial( { color: 0x000000 } );
+var Blanco = new THREE.MeshBasicMaterial( { color: 0xffffff } );
 var Negro = new THREE.MeshBasicMaterial( { color: 0x0000ff } );
 
 //var casillaN = new THREE.Mesh( casilla , Negro  );
@@ -8,7 +8,7 @@ var Negro = new THREE.MeshBasicMaterial( { color: 0x0000ff } );
 
 var casillaB = new THREE.Mesh( casilla, Blanco );
 casillaB.rotateX( -Math.PI/4 );
-casillaB.translate(10,0,0);
+//casillaB.translate(10,0,0);
 
 //var tablero = new Geometry();
 //tablero.merge(casillaN.geometry, casillaN.matrix);
