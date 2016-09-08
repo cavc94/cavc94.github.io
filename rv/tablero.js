@@ -17,7 +17,15 @@ var escena = new THREE.Scene();
 escena.add( casillaN ); 
 escena.add( casillaB );
 
+var camara = new THREE.PerspectiveCamera();
+camara.position.z = 5;
+
 var renderizador = new THREE.WebGLRenderer();
 renderizador.setSize( window.innerWidth, window.innerHeight );
 document.body.appendChild( renderizador.domElement );
 renderizador.render( escena, camara );
+
+
+//for ( var i = 0; i < 3; i ++ ) {
+//	points.push( new THREE.Vector2( Math.sin( i * 0.2 ) * 10 + 5, ( i - 5 ) * 2 ) );
+//}
