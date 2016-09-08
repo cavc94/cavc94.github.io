@@ -8,11 +8,8 @@ var casillasB = new Array();
 //var casillas = new Array();
 
 for ( var i = 0; i < 32; i ++ ) {
-	casillasN[i] = new THREE.Mesh( casilla , Negro  );
-}
-
-for ( var i = 0; i < 32; i ++ ) {
-	casillasB[i] = new THREE.Mesh( casilla , Blanco  );
+	casillasN[i] = new THREE.Mesh( casilla , Negro );
+	casillasB[i] = new THREE.Mesh( casilla , Blanco );
 }
 
 var n = 0;
