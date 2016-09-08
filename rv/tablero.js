@@ -1,14 +1,12 @@
+var casilla = new THREE.BoxGeometry(10, 5, 10);
+
 var Blanco = new THREE.MeshBasicMaterial( { color: 0xffffff } );
 var Negro = new THREE.MeshBasicMaterial( { color: 0x0000ff } );
 
-for ( var i = 0; i < 3; i ++ ) {
-	points.push( new THREE.Vector2( Math.sin( i * 0.2 ) * 10 + 5, ( i - 5 ) * 2 ) );
-}
-
-var casillaN = new THREE.Mesh( new THREE.BoxGeometry(10, 5, 10), Negro  );
+var casillaN = new THREE.Mesh( casilla , Negro  );
 casillaN.rotateX( -Math.PI/4 );
 
-var casillaB = new THREE.Mesh( new THREE.BoxGeometry(10, 5, 10), Blanco );
+var casillaB = new THREE.Mesh( casilla, Blanco );
 casillaB.rotateX( -Math.PI/4 );
 casillaB.translate(5,0,0);
 
