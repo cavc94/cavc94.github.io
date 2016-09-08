@@ -3,8 +3,8 @@ var casilla = new THREE.BoxGeometry(10, 5, 10);
 var Blanco = new THREE.MeshBasicMaterial( { color: 0xffffff } );
 var Negro = new THREE.MeshBasicMaterial( { color: 0x0000ff } );
 
-var casillaN = new THREE.Mesh( casilla , Negro  );
-casillaN.rotateX( -Math.PI/4 );
+//var casillaN = new THREE.Mesh( casilla , Negro  );
+//casillaN.rotateX( -Math.PI/4 );
 
 var casillaB = new THREE.Mesh( casilla, Blanco );
 casillaB.rotateX( -Math.PI/4 );
@@ -14,7 +14,7 @@ casillaB.translate(10,0,0);
 //tablero.merge(casillaN.geometry, casillaN.matrix);
 
 var escena = new THREE.Scene();
-escena.add( casillaN ); 
+//escena.add( casillaN ); 
 escena.add( casillaB );
 
 var camara = new THREE.PerspectiveCamera();
