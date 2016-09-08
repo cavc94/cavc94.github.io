@@ -1,7 +1,7 @@
 var casilla = new THREE.BoxGeometry(10, 5, 10);
 
-var Blanco = new THREE.MeshBasicMaterial( { color: 0x555555 } );
-var Negro = new THREE.MeshBasicMaterial( { color: 0x0000ff } );
+var Blanco = new THREE.MeshBasicMaterial( { color: 0xffffff } );
+var Negro = new THREE.MeshBasicMaterial( { color: 0x555555 } );
 
 var casillaN = new THREE.Mesh( casilla , Negro  );
 casillaN.rotateX( -Math.PI/4 );
