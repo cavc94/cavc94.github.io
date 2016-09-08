@@ -1,6 +1,6 @@
 var casilla = new THREE.BoxGeometry(10, 5, 10);
 
-var Blanco = new THREE.MeshBasicMaterial( { color: 0xffffff } );
+var Blanco = new THREE.MeshBasicMaterial( { color: 0x000000 } );
 var Negro = new THREE.MeshBasicMaterial( { color: 0x0000ff } );
 
 //var casillaN = new THREE.Mesh( casilla , Negro  );
