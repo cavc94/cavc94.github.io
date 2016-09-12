@@ -19,18 +19,18 @@ for ( var i = 0; i < 9; i ++ ) {
 	for ( var j = 0; j < 9; j ++ ) {
 		if ( i%2 == 0 ) {
 			if ( j%2 == 0 ) {
-				casillasN[n].position.set( i*10, 0, 0 );
+				casillasN[n].position.set( i*10, j*10, 0 );
 				n++;
 			} else {
-				casillasB[b].position.set( i*10, 0, 0 );
+				casillasB[b].position.set( i*10, j*10, 0 );
 				b++;
 			}				
 		} else {
 			if ( j%2 == 0 ) {
-				casillasB[b].position.set( i*10, 0, 0 );
+				casillasB[b].position.set( i*10, j*10, 0 );
 				b++;
 			} else {
-				casillasN[n].position.set( i*10, 0, 0 );
+				casillasN[n].position.set( i*10, j*10, 0 );
 				n++;
 			}
 		}
