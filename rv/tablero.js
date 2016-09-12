@@ -48,8 +48,8 @@ for ( var i = 0; i < 9; i ++ ) {
 var escena = new THREE.Scene();
 
 for ( var i = 0; i < 64; i ++ ) {
-	casillasN[i].rotateX( -Math.PI/4 );
-	casillasB[i].rotateX( -Math.PI/4 );
+	//casillasN[i].rotateX( -Math.PI/4 );
+	//casillasB[i].rotateX( -Math.PI/4 );
 	escena.add( casillasN[i] );
 	escena.add( casillasB[i] );
 }
@@ -57,7 +57,7 @@ for ( var i = 0; i < 64; i ++ ) {
 //escena.add( casillasB[0] );
 
 var camara = new THREE.PerspectiveCamera();
-camara.position.z = 300;
+camara.position.y = 300;
 
 var renderizador = new THREE.WebGLRenderer();
 renderizador.setSize( window.innerWidth*.95, window.innerHeight*.95 );
