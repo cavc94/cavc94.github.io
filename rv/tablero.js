@@ -7,7 +7,7 @@ var casillasN = new Array();
 var casillasB = new Array();
 //var casillas = new Array();
 
-for ( var i = 0; i < 64; i ++ ) {
+for ( var i = 0; i < 32; i ++ ) {
 	casillasN[i] = new THREE.Mesh( casilla, Negro );
 	casillasB[i] = new THREE.Mesh( casilla, Blanco );
 }
