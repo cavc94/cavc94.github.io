@@ -57,7 +57,7 @@ for ( var i = 0; i < 64; i ++ ) {
 //escena.add( casillasB[0] );
 
 var camara = new THREE.PerspectiveCamera();
-camara.position.z = 500;
+camara.position.z = 50;
 
 var renderizador = new THREE.WebGLRenderer();
 renderizador.setSize( window.innerWidth*.95, window.innerHeight*.95 );
