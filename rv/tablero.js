@@ -7,7 +7,7 @@ var casillasN = new Array();
 var casillasB = new Array();
 //var casillas = new Array();
 
-for ( var i = 0; i < 33; i ++ ) {
+for ( var i = 0; i < 64; i ++ ) {
 	casillasN[i] = new THREE.Mesh( casilla, Negro );
 	casillasB[i] = new THREE.Mesh( casilla, Blanco );
 }
@@ -30,7 +30,7 @@ for ( var i = 0; i < 9; i ++ ) {
 				casillasB[b].position.set( i*10, j*10, 0 );
 				b++;
 			} else {
-				//casillasN[n].position.set( i*10, j*10, 0 );
+				casillasN[n].position.set( i*10, j*10, 0 );
 				n++;
 			}
 		}
