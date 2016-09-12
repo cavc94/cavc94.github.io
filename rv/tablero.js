@@ -15,8 +15,8 @@ for ( var i = 0; i < 64; i ++ ) {
 var n = 0;
 var b = 0;
 
-for ( var i = 0; i < 7; i ++ ) {
-	for ( var j = 0; j < 7; j ++ ) {
+for ( var i = 0; i < 8; i ++ ) {
+	for ( var j = 0; j < 8; j ++ ) {
 		if ( i%2 == 0 ) {
 			if ( j%2 == 0 ) {
 				casillasN[n].position.set( i*10, j*10, 0 );
