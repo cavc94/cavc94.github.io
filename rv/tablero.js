@@ -19,10 +19,10 @@ for ( var i = 0; i < 9; i ++ ) {
 	//for ( var j = 0; j < 9; j ++ ) {
 		if ( i%2 == 0 ) {
 			casillasN[n].position.set( i*10, 0, 0 );
-			n=n+1;
+			n++;
 		} else {
-			casillasB[b].positon.set( i*10, 0, 0 );
-			b=b+1;
+			casillasB[b].position.set( i*10, 0, 0 );
+			b++;
 		}
 }
 
@@ -37,10 +37,10 @@ for ( var i = 0; i < 9; i ++ ) {
 
 var escena = new THREE.Scene();
 
-//for ( var i = 0; i < 4; i ++ ) {
+for ( var i = 0; i < 4; i ++ ) {
 	escena.add( casillasN[i] );
 	escena.add( casillasB[i] );
-//}
+}
 //escena.add( casillasN[0] ); 
 //escena.add( casillasB[0] );
 
