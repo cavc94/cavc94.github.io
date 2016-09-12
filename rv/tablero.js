@@ -16,16 +16,26 @@ var n = 0;
 var b = 0;
 
 for ( var i = 0; i < 9; i ++ ) {
-	//for ( var j = 0; j < 9; j ++ ) {
+	for ( var j = 0; j < 9; j ++ ) {
 		if ( i%2 == 0 ) {
-			casillasN[n].position.set( i*10, 0, 0 );
-			n++;
+			if ( j%2 == 0 ) {
+				casillasN[n].position.set( i*10, 0, 0 );
+				n++;
+			} else {
+				casillasB[b].position.set( i*10, 0, 0 );
+				b++;
+			}				
 		} else {
-			casillasB[b].position.set( i*10, 0, 0 );
-			b++;
+			if ( j%2 == 0 ) {
+				casillasB[b].position.set( i*10, 0, 0 );
+				b++;
+			} else {
+				casillasN[n].position.set( i*10, 0, 0 );
+				n++;
+			}
 		}
+	}
 }
-
 //casillasN[0].rotateX( -Math.PI/4 );
 
 //casillasB[0].rotateX( -Math.PI/4 );
@@ -37,7 +47,7 @@ for ( var i = 0; i < 9; i ++ ) {
 
 var escena = new THREE.Scene();
 
-for ( var i = 0; i < 4; i ++ ) {
+for ( var i = 0; i < 32; i ++ ) {
 	escena.add( casillasN[i] );
 	escena.add( casillasB[i] );
 }
