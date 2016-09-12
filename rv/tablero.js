@@ -37,10 +37,10 @@ for ( var i = 0; i < 9; i ++ ) {
 
 var escena = new THREE.Scene();
 
-for ( var i = 0; i < 4; i ++ ) {
+//for ( var i = 0; i < 4; i ++ ) {
 	escena.add( casillasN[i] );
 	escena.add( casillasB[i] );
-}
+//}
 //escena.add( casillasN[0] ); 
 //escena.add( casillasB[0] );
 
