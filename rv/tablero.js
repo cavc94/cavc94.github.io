@@ -8,8 +8,8 @@ var casillasB = new Array();
 //var casillas = new Array();
 
 for ( var i = 0; i < 32; i ++ ) {
-	casillasN[i] = new THREE.Mesh( casilla , Negro );
-	casillasB[i] = new THREE.Mesh( casilla , Blanco );
+	casillasN[i] = new THREE.Mesh( casilla, Negro );
+	casillasB[i] = new THREE.Mesh( casilla, Blanco );
 }
 
 var n = 0;
@@ -19,10 +19,10 @@ for ( var i = 0; i < 9; i ++ ) {
 	//for ( var j = 0; j < 9; j ++ ) {
 		if ( i%2 == 0 ) {
 			casillasN[n].position.set( i*10, 0, 0 );
-			n++;
+			n=n+1;
 		} else {
 			casillasB[b].positon.set( i*10, 0, 0 );
-			b++;
+			b=b+1;
 		}
 }
 
