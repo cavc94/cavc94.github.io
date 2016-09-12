@@ -19,18 +19,18 @@ for ( var i = 0; i < 9; i ++ ) {
 	for ( var j = 0; j < 9; j ++ ) {
 		if ( i%2 == 0 ) {
 			if ( j%2 == 0 ) {
-				casillasN[n].position.set( i*10, 0, j*10 );
+				casillasN[n].position.set( i*10, j*10, 0 );
 				n++;
 			} else {
-				casillasB[b].position.set( i*10, 0, j*10 );
+				casillasB[b].position.set( i*10, j*10, 0 );
 				b++;
 			}				
 		} else {
 			if ( j%2 == 0 ) {
-				casillasB[b].position.set( i*10, 0, j*10 );
+				casillasB[b].position.set( i*10, j*10, 0 );
 				b++;
 			} else {
-				casillasN[n].position.set( i*10, 0, j*10 );
+				casillasN[n].position.set( i*10, j*10, 0 );
 				n++;
 			}
 		}
@@ -48,8 +48,8 @@ for ( var i = 0; i < 9; i ++ ) {
 var escena = new THREE.Scene();
 
 for ( var i = 0; i < 64; i ++ ) {
-	casillasN[i].rotateX( -Math.PI/2 );
-	casillasB[i].rotateX( -Math.PI/2 );
+	//casillasN[i].rotateX( -Math.PI/2 );
+	//casillasB[i].rotateX( -Math.PI/2 );
 	escena.add( casillasN[i] );
 	escena.add( casillasB[i] );
 }
