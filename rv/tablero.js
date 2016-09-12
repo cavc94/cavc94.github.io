@@ -30,7 +30,7 @@ for ( var i = 0; i < 9; i ++ ) {
 				casillasB[b].position.set( i*10, j*10, 0 );
 				b++;
 			} else {
-				casillasN[n].position.set( i*10, j*10, 0 );
+				//casillasN[n].position.set( i*10, j*10, 0 );
 				n++;
 			}
 		}
