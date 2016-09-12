@@ -47,7 +47,7 @@ for ( var i = 0; i < 8; i ++ ) {
 
 var escena = new THREE.Scene();
 
-for ( var i = 0; i < 64; i ++ ) {
+for ( var i = 0; i < 32; i ++ ) {
 	//casillasN[i].rotateX( -Math.PI/2 );
 	//casillasB[i].rotateX( -Math.PI/2 );
 	escena.add( casillasN[i] );
