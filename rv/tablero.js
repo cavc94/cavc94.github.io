@@ -7,8 +7,6 @@ var Negro = new THREE.MeshBasicMaterial( { color: 0x555555 } );
 var casillasN = new Array();
 var casillasB = new Array();
 //var casillas = new Array();
-var contorno = new THREE.Mesh( contornoForma, Negro );
-contorno.position.set( 35, 35, 0 );
 
 for ( var i = 0; i < 32; i ++ ) {
 	casillasN[i] = new THREE.Mesh( casilla, Negro );
@@ -40,6 +38,8 @@ for ( var i = 0; i < 8; i ++ ) {
 	}
 }
 
+var contorno = new THREE.Mesh( contornoForma, Negro );
+contorno.position.set( 35, 35, 0 );
 //rotateZ
 
 //casillasN[0].rotateX( -Math.PI/4 );
@@ -57,7 +57,6 @@ for ( var i = 0; i < 32; i ++ ) {
 	escena.add( casillasN[i] );
 	escena.add( casillasB[i] );
 }
-
 
 var camara = new THREE.PerspectiveCamera();
 camara.position.z = 300;
