@@ -36,11 +36,19 @@ for ( var i = 0; i < 8; i ++ ) {
 		}
 	}
 }
+
+var contorno = new THREE.BoxGeometry(100, 10, 10);
+var Gris = new THREE.MeshBasicMaterial( { color: 0x333333 } );
+
+for ( var i = 0; i < 4; i ++ ) {
+	contornos[i] = new THREE.Mesh( contorno, Gris );
+}
+
+contornos[1].position.set( 40, -10, 0 );
+//rotateZ
+
 //casillasN[0].rotateX( -Math.PI/4 );
-
 //casillasB[0].rotateX( -Math.PI/4 );
-//casillasB[0].position.set( 10, 0, 0 );
-
 //var tablero = new Geometry();
 //tablero.merge(casillaN.geometry, casillaN.matrix);
 //tablero.merge(casillaB.geometry, casillaN.matrix);
@@ -53,8 +61,7 @@ for ( var i = 0; i < 32; i ++ ) {
 	escena.add( casillasN[i] );
 	escena.add( casillasB[i] );
 }
-//escena.add( casillasN[0] ); 
-//escena.add( casillasB[0] );
+escena.add( contornos[1] );
 
 var camara = new THREE.PerspectiveCamera();
 camara.position.z = 300;
