@@ -18,4 +18,4 @@ var lienzo = document.getElementById( "luzPuntual" );
 var renderizador = new THREE.WebGLRenderer( {canvas: lienzo, antialias: true} );
 
 renderizador.setSize( 600, 600 );
-renderizador.setSize( escena, camara );
+renderizador.render( escena, camara );
