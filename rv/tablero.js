@@ -1,4 +1,5 @@
 var casilla = new THREE.BoxGeometry(10, 10, 10);
+var contornoForma = new THREE.BoxGeometry(100, 10, 10);
 
 var Blanco = new THREE.MeshBasicMaterial( { color: 0xffffff } );
 var Negro = new THREE.MeshBasicMaterial( { color: 0x555555 } );
@@ -6,6 +7,8 @@ var Negro = new THREE.MeshBasicMaterial( { color: 0x555555 } );
 var casillasN = new Array();
 var casillasB = new Array();
 //var casillas = new Array();
+var contorno = new THREE.Mesh( contornoForma, Negro );
+contorno.position.set( 35, 35, 0 );
 
 for ( var i = 0; i < 32; i ++ ) {
 	casillasN[i] = new THREE.Mesh( casilla, Negro );
@@ -37,15 +40,6 @@ for ( var i = 0; i < 8; i ++ ) {
 	}
 }
 
-var contorno = new THREE.BoxGeometry(100, 10, 10);
-var Gris = new THREE.MeshBasicMaterial( { color: 0x333333 } );
-var contornos = new Array();
-
-for ( var i = 0; i < 4; i ++ ) {
-	contornos[i] = new THREE.Mesh( contorno, Gris );
-}
-
-contornos[1].position.set( 40, -10, 0 );
 //rotateZ
 
 //casillasN[0].rotateX( -Math.PI/4 );
@@ -62,12 +56,12 @@ for ( var i = 0; i < 32; i ++ ) {
 	escena.add( casillasN[i] );
 	escena.add( casillasB[i] );
 }
-escena.add( contornos[1] );
+escena.add( contorno );
 
 var camara = new THREE.PerspectiveCamera();
 camara.position.z = 300;
 
 var renderizador = new THREE.WebGLRenderer();
-renderizador.setSize( window.innerWidth*.95, window.innerHeight*.95 );
+renderizador.setSize( window.innerHeight*.95, window.innerHeight*.95 );
 document.body.appendChild( renderizador.domElement );
 renderizador.render( escena, camara );
