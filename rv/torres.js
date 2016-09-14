@@ -65,9 +65,9 @@ torreMalla[2].position.set( 0, 70, 0 );
 torreMalla[3].position.set( 70, 70, 0 );
 
 var escena = new THREE.Scene();
-//for (var i = 0; i < 4; i ++ ){
-  escena.add( torreMalla[1] );
-//}
+for (var i = 0; i < 4; i ++ ){
+  escena.add( torreMalla[i] );
+}
 
 var camara = new THREE.PerspectiveCamera();
 camara.position.z = 50;
