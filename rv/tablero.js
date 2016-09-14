@@ -1,3 +1,11 @@
+var campoVision = 45; //grados
+var relacionAspecto = window.innerWidth / window.innerHeight;
+var planoCercano = 1;
+var planoLejano = 1000;
+
+var camara = new THREE.PerspectiveCamera( campoVision, relacionAspecto, planoCercano, planoLejano );
+camara.position.z = 300;
+
 var casilla = new THREE.BoxGeometry(10, 10, 10);
 
 var Blanco = new THREE.MeshBasicMaterial( { color: 0xffffff } );
@@ -62,29 +70,23 @@ for ( var i = 0; i < 32; i ++ ) {
 	if ( i < 4 ) {
 		tablero.merge( contornos[i].geometry, contornos[i].matrix );}
 }
-//casillasN[0].rotateX( -Math.PI/4 );
-//casillasB[0].rotateX( -Math.PI/4 );
-//var tablero = new Geometry();
-//tablero.merge(casillaN.geometry, casillaN.matrix);
-//tablero.merge(casillaB.geometry, casillaN.matrix);
-
-var material = new THREE.MeshNormalMaterial();
+/*var material = new THREE.MeshNormalMaterial();
 var Tablero = new THREE.Mesh( tablero, material );
-var escena = new THREE.Scene();
-/*for ( var i = 0; i < 32; i ++ ) {
+var escena = new THREE.Scene();*/
+for ( var i = 0; i < 32; i ++ ) {
 	//casillasN[i].rotateX( -Math.PI/2 );
 	//casillasB[i].rotateX( -Math.PI/2 );
 	escena.add( casillasN[i] );
 	escena.add( casillasB[i] );
 	if ( i < 4 ) {
 		escena.add( contornos[i] );}
-}*/
-escena.add( Tablero );
+}
+//escena.add( Tablero );
 
-var camara = new THREE.PerspectiveCamera();
-camara.position.z = 300;
+/*var camara = new THREE.PerspectiveCamera();
+camara.position.z = 300;*/
 
 var renderizador = new THREE.WebGLRenderer();
-renderizador.setSize( window.innerHeight*.95, window.innerHeight*.95 );
+renderizador.setSize( window.innerWidth, window.innerHeight );
 document.body.appendChild( renderizador.domElement );
 renderizador.render( escena, camara );
