@@ -59,10 +59,10 @@ for ( var i = 0; i < 4; i ++ ) {
   torreMalla[i].rotateX(Math.PI/2);
 }
 
-torreMalla[0].set.position(0,0);
-torreMalla[1].set.position(70,0);
-torreMalla[2].set.position(0,70);
-torreMalla[3].set.position(70,70);
+torreMalla[0].set.position(0,0,0);
+torreMalla[1].set.position(70,0,0);
+torreMalla[2].set.position(0,70,0);
+torreMalla[3].set.position(70,70,0);
 
 var escena = new THREE.Scene();
 for (var i = 0; i < 4; i ++ ){
