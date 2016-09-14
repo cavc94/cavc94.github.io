@@ -47,12 +47,12 @@ for ( var i = 0; i < 4; i ++ ) {
 	contornos[i] = new THREE.Mesh( contorno, Gris );
 }
 
-contornos[1].position.set( 35, -10, 0 );
-contornos[2].position.set( 35, 80, 0 );
+contornos[0].position.set( 35, -10, 0 );
+contornos[1].position.set( 35, 80, 0 );
+contornos[2].rotateZ( Math.PI/2 );
 contornos[3].rotateZ( Math.PI/2 );
-contornos[4].rotateZ( Math.PI/2 );
-contornos[3].position.set( -10, 35, 0 );
-contornos[4].position.set( 80, 35, 0 );
+contornos[2].position.set( -10, 35, 0 );
+contornos[3].position.set( 80, 35, 0 );
 
 //casillasN[0].rotateX( -Math.PI/4 );
 //casillasB[0].rotateX( -Math.PI/4 );
