@@ -45,10 +45,14 @@ torreForma.merge(almenaM2.geometry, almenaM2.matrix);
 torreForma.merge(almenaM3.geometry, almenaM3.matrix);
 torreForma.merge(almenaM4.geometry, almenaM4.matrix);
 
+torreForma.scale( 10, 10, 10);
+
 var material = new THREE.MeshNormalMaterial();
 var torreMalla = new THREE.Mesh(torreForma, material);
 
-torreMalla.rotateY(Math.PI/3); 
+//torreMalla.rotateY(Math.PI/3); 
+torreMalla.rotateX(Math.PI/2);
+torreMalla.position.set(0,0,0);
 
 var escena = new THREE.Scene();
 escena.add( torreMalla );
