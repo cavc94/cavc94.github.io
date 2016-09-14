@@ -49,12 +49,12 @@ for ( var i = 0; i < 4; i ++ ) {
   torreForma[i].merge(almenaM3.geometry, almenaM3.matrix);
   torreForma[i].merge(almenaM4.geometry, almenaM4.matrix);
   
-  torreForma[i].scale( 10, 10, 10);
+  torreForma[i].scale( 10, 10, 10 );
   
   if ( i < 2 ){ 
-    torreMalla[i] = new THREE.Mesh(torreForma, blanco);
+    torreMalla[i] = new THREE.Mesh(torreForma[i], blanco);
     } else {
-      torreMalla[i] = new THREE.Mesh(torreForma, negro); }
+      torreMalla[i] = new THREE.Mesh(torreForma[i], negro); }
   
   torreMalla[i].rotateX(Math.PI/2);
 }
