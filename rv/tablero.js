@@ -71,8 +71,9 @@ for ( var i = 0; i < 32; i ++ ) {
 		tablero.merge( contornos[i].geometry, contornos[i].matrix );}
 }
 /*var material = new THREE.MeshNormalMaterial();
-var Tablero = new THREE.Mesh( tablero, material );
-var escena = new THREE.Scene();*/
+var Tablero = new THREE.Mesh( tablero, material );*/
+
+var escena = new THREE.Scene();
 for ( var i = 0; i < 32; i ++ ) {
 	//casillasN[i].rotateX( -Math.PI/2 );
 	//casillasB[i].rotateX( -Math.PI/2 );
