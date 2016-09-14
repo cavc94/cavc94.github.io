@@ -1,4 +1,4 @@
-var campoVision = 0; //grados
+var campoVision = 15; //grados
 var relacionAspecto = window.innerWidth / window.innerHeight;
 var planoCercano = 1;
 var planoLejano = 1000;
