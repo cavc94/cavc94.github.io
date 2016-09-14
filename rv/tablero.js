@@ -40,11 +40,11 @@ for ( var i = 0; i < 8; i ++ ) {
 //CONTORNO
 
 var contorno = new THREE.BoxGeometry(100, 10, 10);
-var Gris = new THREE.MeshBasicMaterial( { color: 0x333333 } );
+//var Gris = new THREE.MeshBasicMaterial( { color: 0x333333 } );
 var contornos = new Array();
 
 for ( var i = 0; i < 4; i ++ ) {
-	contornos[i] = new THREE.Mesh( contorno, Gris );
+	contornos[i] = new THREE.Mesh( contorno, Negro );
 }
 
 contornos[0].position.set( 35, -10, 0 );
