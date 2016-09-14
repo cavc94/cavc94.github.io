@@ -1,11 +1,7 @@
+var casilla = new THREE.BoxGeometry(10, 10, 10);
+
 var Blanco = new THREE.MeshBasicMaterial( { color: 0xffffff } );
 var Negro = new THREE.MeshBasicMaterial( { color: 0x555555 } );
-
-var contornoForma = new THREE.BoxGeometry(100, 100, 10);
-var contorno = new THREE.Mesh( contornoForma, Negro );
-contorno.position.set( 35, 35, 0 );
-
-var casilla = new THREE.BoxGeometry(10, 10, 10);
 
 var casillasN = new Array();
 var casillasB = new Array();
@@ -40,7 +36,23 @@ for ( var i = 0; i < 8; i ++ ) {
 		}
 	}
 }
-//rotateZ
+
+//CONTORNO
+
+var contorno = new THREE.BoxGeometry(100, 10, 10);
+var Gris = new THREE.MeshBasicMaterial( { color: 0x333333 } );
+var contornos = new Array();
+
+for ( var i = 0; i < 4; i ++ ) {
+	contornos[i] = new THREE.Mesh( contorno, Gris );
+}
+
+contornos[1].position.set( 35, -10, 0 );
+contornos[2].position.set( 35, 80, 0 );
+contornos[3].rotateZ( Math.PI/2 );
+contornos[4].rotateZ( Math.PI/2 );
+contornos[3].position.set( -10, 35, 0 );
+contornos[4].position.set( 80, 35, 0 );
 
 //casillasN[0].rotateX( -Math.PI/4 );
 //casillasB[0].rotateX( -Math.PI/4 );
@@ -49,12 +61,13 @@ for ( var i = 0; i < 8; i ++ ) {
 //tablero.merge(casillaB.geometry, casillaN.matrix);
 
 var escena = new THREE.Scene();
-escena.add( contorno );
 for ( var i = 0; i < 32; i ++ ) {
 	//casillasN[i].rotateX( -Math.PI/2 );
 	//casillasB[i].rotateX( -Math.PI/2 );
 	escena.add( casillasN[i] );
 	escena.add( casillasB[i] );
+	if ( i < 4 ) {
+		escena.add( contornos[i] );}
 }
 
 var camara = new THREE.PerspectiveCamera();
