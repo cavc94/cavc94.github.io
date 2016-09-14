@@ -50,9 +50,9 @@ torreForma.scale( 10, 10, 10);
 var material = new THREE.MeshNormalMaterial();
 var torreMalla = new THREE.Mesh(torreForma, material);
 
-//torreMalla.rotateY(Math.PI/3); 
-torreMalla.rotateX(Math.PI/2);
-torreMalla.position.set(0,0,0);
+torreMalla.rotateY(Math.PI/3); 
+//torreMalla.rotateX(Math.PI/2);
+//torreMalla.position.set(0,0,0);
 
 var escena = new THREE.Scene();
 escena.add( torreMalla );
