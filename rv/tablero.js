@@ -68,6 +68,8 @@ for ( var i = 0; i < 32; i ++ ) {
 //tablero.merge(casillaN.geometry, casillaN.matrix);
 //tablero.merge(casillaB.geometry, casillaN.matrix);
 
+var material = new THREE.MeshBasicMaterial();
+var Tablero = new THREE.Mesh( tablero, material );
 var escena = new THREE.Scene();
 /*for ( var i = 0; i < 32; i ++ ) {
 	//casillasN[i].rotateX( -Math.PI/2 );
@@ -77,7 +79,7 @@ var escena = new THREE.Scene();
 	if ( i < 4 ) {
 		escena.add( contornos[i] );}
 }*/
-escena.add( tablero );
+escena.add( Tablero );
 
 var camara = new THREE.PerspectiveCamera();
 camara.position.z = 300;
