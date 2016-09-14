@@ -68,7 +68,7 @@ for ( var i = 0; i < 32; i ++ ) {
 //tablero.merge(casillaN.geometry, casillaN.matrix);
 //tablero.merge(casillaB.geometry, casillaN.matrix);
 
-var material = new THREE.MeshBasicMaterial();
+var material = new THREE.MeshNormalMaterial();
 var Tablero = new THREE.Mesh( tablero, material );
 var escena = new THREE.Scene();
 /*for ( var i = 0; i < 32; i ++ ) {
