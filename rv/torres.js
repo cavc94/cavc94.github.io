@@ -69,10 +69,10 @@ for (var i = 0; i < 4; i ++ ){
   escena.add( torreMalla[i] );
 }
 
-/*var camara = new THREE.PerspectiveCamera();
+var camara = new THREE.PerspectiveCamera();
 camara.position.z = 5;
 
 var renderizador = new THREE.WebGLRenderer();
 renderizador.setSize( window.innerHeight*.95, window.innerHeight*.95 );
 document.body.appendChild( renderizador.domElement );
-renderizador.render( escena, camara );*/
+renderizador.render( escena, camara );
