@@ -159,7 +159,7 @@ for ( var i = 0; i < 32; i ++ ) {
 		escena.add( torreMalla[i] );
 	}
 }
-//escena.add( Tablero );
+escena.add( iluminacion );
 
 /*Renderizador*/
 var renderizador = new THREE.WebGLRenderer();
