@@ -139,7 +139,7 @@ for ( var i = 0; i < 4; i ++ ) {
     } else {
       torreMalla[i] = new THREE.Mesh(torreForma, Gris); }
   torreMalla[i].castShadow = true;
-  torreMalla[i].rotateX(Math.PI/2);
+  torreMalla[i].rotateX(Math.PI/4);
 }
 
 torreMalla[0].position.set( 0, 0, 5 );
@@ -150,8 +150,8 @@ torreMalla[3].position.set( 70, 70, 5 );
 /*Añadir a Escena*/
 var escena = new THREE.Scene();
 for ( var i = 0; i < 32; i ++ ) {
-	//casillasN[i].rotateX( -Math.PI/2 );
-	//casillasB[i].rotateX( -Math.PI/2 );
+	casillasN[i].rotateX( Math.PI/4 );
+	casillasB[i].rotateX( Math.PI/4 );
 	escena.add( casillasN[i] );
 	escena.add( casillasB[i] );
 	if ( i < 4 ) {
