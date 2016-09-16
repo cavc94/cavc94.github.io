@@ -6,6 +6,7 @@ var planoLejano = 1000;
 
 var camara = new THREE.PerspectiveCamera( campoVision, relacionAspecto, planoCercano, planoLejano );
 camara.position.z = 300;
+camara.position.y = 100;
 
 /*Creación del Tablero*/
 var casilla = new THREE.BoxGeometry(10, 10, 5);
@@ -106,8 +107,6 @@ var almenaM4 = new THREE.Mesh(almenaF4);
 
 var torreForma = new Array();
 var torreMalla = new Array();
-var blanco = new THREE.MeshNormalMaterial( {color: 0xffffff} );
-var negro = new THREE.MeshNormalMaterial( {color: 0x333333} );
 
 for ( var i = 0; i < 4; i ++ ) {
   torreForma[i] = new THREE.Geometry();
@@ -123,12 +122,12 @@ for ( var i = 0; i < 4; i ++ ) {
   torreForma[i].merge(almenaM3.geometry, almenaM3.matrix);
   torreForma[i].merge(almenaM4.geometry, almenaM4.matrix);
   
-  torreForma[i].scale( 9, 9, 9 );
+  torreForma[i].scale( 7, 7, 7 );
   
   if ( i < 2 ){ 
-    torreMalla[i] = new THREE.Mesh(torreForma[i], blanco);
+    torreMalla[i] = new THREE.Mesh(torreForma[i], Blanco);
     } else {
-      torreMalla[i] = new THREE.Mesh(torreForma[i], negro); }
+      torreMalla[i] = new THREE.Mesh(torreForma[i], Gris); }
   
   torreMalla[i].rotateX(Math.PI/2);
 }
