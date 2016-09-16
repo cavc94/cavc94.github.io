@@ -6,7 +6,7 @@ var planoLejano = 1000;
 var camara = new THREE.PerspectiveCamera( campoVision, relacionAspecto, planoCercano, planoLejano );
 camara.position.z = 300;
 
-var casilla = new THREE.BoxGeometry(10, 10, 10);
+var casilla = new THREE.BoxGeometry(10, 10, 5);
 
 var Blanco = new THREE.MeshBasicMaterial( { color: 0xffffff } );
 var Negro = new THREE.MeshBasicMaterial( { color: 0x555555 } );
