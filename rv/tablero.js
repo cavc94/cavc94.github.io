@@ -9,10 +9,15 @@ camara.position.z = 300;
 camara.position.y = 10;
 camara.lookAt(new THREE.Vector3(35,35,0));
 
+/*Iluminación*/
+var iluminacion = new THREE.PointLight( 0xffffff );
+iluminacion.position.y = 20;
+iluminacion.castShadow = true;
+
 /*Creación del Tablero*/
 var casilla = new THREE.BoxGeometry(10, 10, 5);
-var Blanco = new THREE.MeshBasicMaterial( { color: 0xffffff } );
-var Negro = new THREE.MeshBasicMaterial( { color: 0x555555 } );
+var Blanco = new THREE.MeshLambertMaterial( { color: 0xffffff } );
+var Negro = new THREE.MeshLambertMaterial( { color: 0x555555 } );
 
 var casillasN = new Array();
 var casillasB = new Array();
@@ -20,6 +25,8 @@ var casillasB = new Array();
 for ( var i = 0; i < 32; i ++ ) {
 	casillasN[i] = new THREE.Mesh( casilla, Negro );
 	casillasB[i] = new THREE.Mesh( casilla, Blanco );
+	casillasN[i].receiveShadow = true;
+	casillasB[i].receiveShadow = true;
 }
 
 var n = 0;
@@ -48,11 +55,12 @@ for ( var i = 0; i < 8; i ++ ) {
 }
 
 var contorno = new THREE.BoxGeometry(100, 10, 10);
-var Gris = new THREE.MeshBasicMaterial( { color: 0x333333 } );
+var Gris = new THREE.MeshLambertMaterial( { color: 0x333333 } );
 var contornos = new Array();
 
 for ( var i = 0; i < 4; i ++ ) {
 	contornos[i] = new THREE.Mesh( contorno, Gris );
+	contornos[i].receiveShadow = true;
 }
 
 contornos[0].position.set( 35, -10, 0 );
@@ -124,6 +132,7 @@ for ( var i = 0; i < 4; i ++ ) {
   torreForma[i].merge(almenaM4.geometry, almenaM4.matrix);
   
   torreForma[i].scale( 7, 7, 7 );
+  torreForma[i].castShadow = true;
   
   if ( i < 2 ){ 
     torreMalla[i] = new THREE.Mesh(torreForma[i], Blanco);
