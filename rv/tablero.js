@@ -1,12 +1,12 @@
 /*Cámara perspectiva*/
 var campoVision = 45; //grados
 var relacionAspecto = window.innerWidth / window.innerHeight;
-var planoCercano = 10;
+var planoCercano = 100;
 var planoLejano = 1000;
 
 var camara = new THREE.PerspectiveCamera( campoVision, relacionAspecto, planoCercano, planoLejano );
 camara.position.z = 300;
-camara.position.y = 100;
+camara.position.y = -100;
 
 /*Creación del Tablero*/
 var casilla = new THREE.BoxGeometry(10, 10, 5);
