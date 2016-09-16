@@ -5,15 +5,15 @@ var planoCercano = 100;
 var planoLejano = 1000;
 
 var camara = new THREE.PerspectiveCamera( campoVision, relacionAspecto, planoCercano, planoLejano );
-camara.position.z = 300;
+camara.position.z = 150;
 camara.position.y = -100;
 camara.lookAt(new THREE.Vector3(35,35,0));
 
 /*Iluminación*/
 var iluminacion = new THREE.PointLight( 0xffffff );
-iluminacion.position.x = 100;
-iluminacion.position.y = 100;
-iluminacion.position.z = 100;
+iluminacion.position.x = 150;
+iluminacion.position.y = -150;
+iluminacion.position.z = 150;
 iluminacion.castShadow = true;
 
 /*Creación del Tablero*/
@@ -139,7 +139,7 @@ for ( var i = 0; i < 4; i ++ ) {
     } else {
       torreMalla[i] = new THREE.Mesh(torreForma, Gris); }
   torreMalla[i].castShadow = true;
-  torreMalla[i].rotateX(Math.PI/4);
+  torreMalla[i].rotateX(Math.PI/2);
 }
 
 torreMalla[0].position.set( 0, 0, 5 );
@@ -150,8 +150,8 @@ torreMalla[3].position.set( 70, 70, 5 );
 /*Añadir a Escena*/
 var escena = new THREE.Scene();
 for ( var i = 0; i < 32; i ++ ) {
-	casillasN[i].rotateX( Math.PI/4 );
-	casillasB[i].rotateX( Math.PI/4 );
+	/*casillasN[i].rotateX( Math.PI/4 );
+	casillasB[i].rotateX( Math.PI/4 );*/
 	escena.add( casillasN[i] );
 	escena.add( casillasB[i] );
 	if ( i < 4 ) {
