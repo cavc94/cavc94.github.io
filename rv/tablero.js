@@ -11,7 +11,9 @@ camara.lookAt(new THREE.Vector3(35,35,0));
 
 /*Iluminación*/
 var iluminacion = new THREE.PointLight( 0xffffff );
-iluminacion.position.y = 20;
+iluminacion.position.x = 100;
+iluminacion.position.y = 100;
+iluminacion.position.z = 100;
 iluminacion.castShadow = true;
 
 /*Creación del Tablero*/
@@ -72,13 +74,13 @@ contornos[3].position.set( 80, 35, 0 );
 
 var tablero = new THREE.Geometry();
 
-for ( var i = 0; i < 32; i ++ ) {
+/*for ( var i = 0; i < 32; i ++ ) {
 	tablero.merge( casillasN[i].geometry, casillasN[i].matrix );
 	tablero.merge( casillasB[i].geometry, casillasB[i].matrix );
 	if ( i < 4 ) {
 		tablero.merge( contornos[i].geometry, contornos[i].matrix );}
 }
-/*var material = new THREE.MeshNormalMaterial();
+var material = new THREE.MeshNormalMaterial();
 var Tablero = new THREE.Mesh( tablero, material );*/
 
 /*Creación de las Torres*/
@@ -114,31 +116,29 @@ var almenaM2 = new THREE.Mesh(almenaF2);
 var almenaM3 = new THREE.Mesh(almenaF3);
 var almenaM4 = new THREE.Mesh(almenaF4);
 
-var torreForma = new Array();
+var torreForma = new THREE.Geometry();
+  
+torreForma.merge(troncoMalla.geometry, troncoMalla.matrix);
+torreForma.merge(alamborMalla.geometry, alamborMalla.matrix);
+torreForma.merge(torusMalla.geometry, torusMalla.matrix);
+torreForma.merge(adornoMalla.geometry, adornoMalla.matrix);
+torreForma.merge(baseMalla.geometry, baseMalla.matrix);
+  
+torreForma.merge(almenaM1.geometry, almenaM1.matrix);
+torreForma.merge(almenaM2.geometry, almenaM2.matrix);
+torreForma.merge(almenaM3.geometry, almenaM3.matrix);
+torreForma.merge(almenaM4.geometry, almenaM4.matrix);
+
+torreForma.scale( 7, 7, 7 );
+
 var torreMalla = new Array();
 
-for ( var i = 0; i < 4; i ++ ) {
-  torreForma[i] = new THREE.Geometry();
-  
-  torreForma[i].merge(troncoMalla.geometry, troncoMalla.matrix);
-  torreForma[i].merge(alamborMalla.geometry, alamborMalla.matrix);
-  torreForma[i].merge(torusMalla.geometry, torusMalla.matrix);
-  torreForma[i].merge(adornoMalla.geometry, adornoMalla.matrix);
-  torreForma[i].merge(baseMalla.geometry, baseMalla.matrix);
-  
-  torreForma[i].merge(almenaM1.geometry, almenaM1.matrix);
-  torreForma[i].merge(almenaM2.geometry, almenaM2.matrix);
-  torreForma[i].merge(almenaM3.geometry, almenaM3.matrix);
-  torreForma[i].merge(almenaM4.geometry, almenaM4.matrix);
-  
-  torreForma[i].scale( 7, 7, 7 );
-  torreForma[i].castShadow = true;
-  
+for ( var i = 0; i < 4; i ++ ) {  
   if ( i < 2 ){ 
-    torreMalla[i] = new THREE.Mesh(torreForma[i], Blanco);
+    torreMalla[i] = new THREE.Mesh(torreForma, Blanco);
     } else {
-      torreMalla[i] = new THREE.Mesh(torreForma[i], Gris); }
-  
+      torreMalla[i] = new THREE.Mesh(torreForma, Gris); }
+  torreMalla[i].castShadow = true;
   torreMalla[i].rotateX(Math.PI/2);
 }
 
