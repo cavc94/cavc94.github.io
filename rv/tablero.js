@@ -10,17 +10,17 @@ camara.position.y = -100;
 camara.lookAt(new THREE.Vector3(35,35,0));
 
 /*Iluminación*/
-var luzP1 = new THREE.PointLight( 0xffffff );
+var luzP1 = new THREE.PointLight( 0x00ffff );
 luzP1.position.x = 150;
 luzP1.position.y = -75;
 luzP1.position.z = 150;
 luzP1.castShadow = true;
-var luzP2 = new THREE.PointLight( 0xffffff );
+var luzP2 = new THREE.PointLight( 0xff00ff );
 luzP2.position.x = -150;
 luzP2.position.y = 75;
 luzP2.position.z = 150;
 luzP2.castShadow = true;
-var luzP3 = new THREE.PointLight( 0xffffff );
+var luzP3 = new THREE.PointLight( 0xffff00 );
 luzP3.position.x = 75;
 luzP3.position.y = 150;
 luzP3.position.z = 150;
@@ -142,12 +142,17 @@ torreForma.merge(almenaM4.geometry, almenaM4.matrix);
 torreForma.scale( 7, 7, 7 );
 
 var torreMalla = new Array();
-
+var white = new THREE.MeshLambertMaterial( { color: 0xffffff } );
+var black = new THREE.MeshLambertMaterial( { color: 0x333333 } );
+white.transparent = true;
+black.transparent = true;
 for ( var i = 0; i < 4; i ++ ) {  
-  if ( i < 2 ){ 
-    torreMalla[i] = new THREE.Mesh(torreForma, Blanco);
+  if ( i < 2 ){
+  	white.opacity = 1-i*0.25;
+  	torreMalla[i] = new THREE.Mesh(torreForma, white);
     } else {
-      torreMalla[i] = new THREE.Mesh(torreForma, Gris); }
+      black.opacity = 1-i*0.25;
+      torreMalla[i] = new THREE.Mesh(torreForma, black); }
   torreMalla[i].castShadow = true;
   torreMalla[i].rotateX(Math.PI/2);
 }
