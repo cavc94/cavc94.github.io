@@ -10,11 +10,21 @@ camara.position.y = -100;
 camara.lookAt(new THREE.Vector3(35,35,0));
 
 /*Iluminación*/
-var iluminacion = new THREE.PointLight( 0xffffff );
-iluminacion.position.x = 150;
-iluminacion.position.y = -75;
-iluminacion.position.z = 150;
-iluminacion.castShadow = true;
+var luzP1 = new THREE.PointLight( 0xffffff );
+luzP1.position.x = 150;
+luzP1.position.y = -75;
+luzP1.position.z = 150;
+luzP1.castShadow = true;
+var luzP2 = new THREE.PointLight( 0xffffff );
+luzP2.position.x = -150;
+luzP2.position.y = 75;
+luzP2.position.z = 150;
+luzP2.castShadow = true;
+var luzP3 = new THREE.PointLight( 0xffffff );
+luzP3.position.x = 75;
+luzP3.position.y = 150;
+luzP3.position.z = 150;
+luzP3.castShadow = true;
 
 /*Creación del Tablero*/
 var casilla = new THREE.BoxGeometry(10, 10, 5);
@@ -159,7 +169,9 @@ for ( var i = 0; i < 32; i ++ ) {
 		escena.add( torreMalla[i] );
 	}
 }
-escena.add( iluminacion );
+escena.add( luzP1 );
+escena.add( luzP2 );
+escena.add( luzP3 );
 
 /*Renderizador*/
 var renderizador = new THREE.WebGLRenderer();
