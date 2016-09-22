@@ -13,7 +13,7 @@ var loop = function() {
   requestAnimationFrame( loop );
   renderizador.render( escena, camara );
   malla.rotateY( 0.01 );
-  malla.translate.x( 0.01 );
+  camara.position.x( 0.01 );
   }
 
 var escena, camara, renderizador, malla;
