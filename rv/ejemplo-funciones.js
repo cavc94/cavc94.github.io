@@ -15,5 +15,5 @@ var main = function( p ) {
   }
 
 var escena, camara, renderizador;
-init(1);
+//init(1);
 main(2);
