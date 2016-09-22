@@ -10,6 +10,7 @@ function init( p ) {
   }
   
 var main = function( p ) {
+  p(1);
   renderizador.render( escena, camara );
   }
 
