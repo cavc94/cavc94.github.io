@@ -7,7 +7,7 @@ VENTANA.listener = function() {
 }
  
 VENTANA.setup = function() {
-  var tipo evento = 'resize';
+  var tipo_evento = 'resize';
   var capturap = false;
   window.addEventListener( tipo_evento, VENTANA.listener, capturap )
   VENTANA.escena = new THREE.Scene();
