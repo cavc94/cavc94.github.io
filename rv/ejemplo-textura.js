@@ -11,7 +11,7 @@ TEXTURA.setup = function() {
   TEXTURA.escena = new THREE.Scene();
   
   var cargador = new THREE.TextureLoader();
-  cargador.load( "earth_atmos_2048.jpg", TEXTURA.retrollamada );
+  cargador.load( "cavc94.github.io/rv/earth_atmos_2048.jpg", TEXTURA.retrollamada );
   
   TEXTURA.camara = new THREE.PerspectiveCamera( 75, window.innerWidth / innerHeight, 0.1, 1000 );
   TEXTURA.camara.position.z = 5;
