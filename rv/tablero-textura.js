@@ -53,7 +53,7 @@ var TEXTURA = new Object();
 
 TEXTURA.retrollamada = function( textura ){
   var material = new THREE.MeshBasicMaterial( {map: textura} );
-  TEXTURA.malla = new THREE.Mesh( new THREE.SphereGeometry( 1, 32, 32 ), material );
+  TEXTURA.malla = new THREE.Mesh( torreForma, material );
   /*var material = new THREE.MeshBasicMaterial( {map: textura} );
   TEXTURA.torreMalla = new Array();
   for ( var i = 0; i < 4; i ++ ) {  
