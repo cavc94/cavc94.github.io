@@ -59,8 +59,8 @@ TEXTURA.retrollamada = function( textura ){
     /*if ( i < 2 ){ 
       TEXTURA.torreMalla[i] = new THREE.Mesh(torreForma, material);
       } else {*/
-        TEXTURA.torreMalla[i].position.set( i*10, 0, 0 );
-        TEXTURA.torreMalla[i] = new THREE.Mesh(torreForma, material); /*}
+        TEXTURA.torreMalla[i] = new THREE.Mesh(torreForma, material);
+        TEXTURA.torreMalla[i].position.set( i*10, 0, 0 );/*}
         torreMalla[i].castShadow = true;
         TEXTURA.torreMalla[i].rotateX(Math.PI/2);
       }
