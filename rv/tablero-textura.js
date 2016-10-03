@@ -70,7 +70,7 @@ TEXTURA.retrollamada = function( textura ){
   torreMalla[2].position.set( 0, 70, 5 );
   torreMalla[3].position.set( 70, 70, 5 );*/
   
-  TEXTURA.escena.add( TEXTURA.torremalla[i] );
+  TEXTURA.escena.add( TEXTURA.torremalla[i] );}
  }
  
 TEXTURA.setup = function() {
