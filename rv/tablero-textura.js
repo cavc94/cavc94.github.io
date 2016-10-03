@@ -53,15 +53,15 @@ var TEXTURA = new Object();
 
 TEXTURA.retrollamada = function( textura ){
   var material = new THREE.MeshBasicMaterial( {map: textura} );
-  TEXTURA.malla = new THREE.Mesh( torreForma, material );
-  /*var material = new THREE.MeshBasicMaterial( {map: textura} );
+  //TEXTURA.malla = new THREE.Mesh( torreForma, material );
   TEXTURA.torreMalla = new Array();
   for ( var i = 0; i < 4; i ++ ) {  
-    if ( i < 2 ){ 
+    /*if ( i < 2 ){ 
       TEXTURA.torreMalla[i] = new THREE.Mesh(torreForma, material);
-      } else {
-        TEXTURA.torreMalla[i] = new THREE.Mesh(torreForma, material); }
-        //torreMalla[i].castShadow = true;
+      } else {*/
+        TEXTURA.torreMalla[i].position.set( i*10, 0, 0 );
+        TEXTURA.torreMalla[i] = new THREE.Mesh(torreForma, material); /*}
+        torreMalla[i].castShadow = true;
         TEXTURA.torreMalla[i].rotateX(Math.PI/2);
       }
   
@@ -70,7 +70,7 @@ TEXTURA.retrollamada = function( textura ){
   torreMalla[2].position.set( 0, 70, 5 );
   torreMalla[3].position.set( 70, 70, 5 );*/
   
-  TEXTURA.escena.add( TEXTURA.malla );
+  TEXTURA.escena.add( TEXTURA.torremalla[i] );
  }
  
 TEXTURA.setup = function() {
