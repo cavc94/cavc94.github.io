@@ -45,6 +45,7 @@ torreForma.merge(almenaM3.geometry, almenaM3.matrix);
 torreForma.merge(almenaM4.geometry, almenaM4.matrix);
 
 torreForma.scale( 10, 10, 10);
+torreForma.rotateX( Math.PI/2 );
 
 //torreMalla.rotateY(Math.PI/3); 
 
@@ -56,12 +57,13 @@ TEXTURA.retrollamada = function( textura ){
   //TEXTURA.malla = new THREE.Mesh( torreForma, material );
   TEXTURA.torreMalla = new Array();
   for ( var i = 0; i < 4; i ++ ) {  
-    /*if ( i < 2 ){ 
+    if ( i < 2 ){ 
       TEXTURA.torreMalla[i] = new THREE.Mesh(torreForma, material);
-      } else {*/
+      TEXTURA.torreMalla[i].position.set( (i%2)*70, 0, 5 );
+      } else {
         TEXTURA.torreMalla[i] = new THREE.Mesh(torreForma, material);
-        TEXTURA.torreMalla[i].position.set( i*10, 0, 0 );/*}
-        torreMalla[i].castShadow = true;
+        TEXTURA.torreMalla[i].position.set( (i%2)*70, 70, 5 );}
+        /*torreMalla[i].castShadow = true;
         TEXTURA.torreMalla[i].rotateX(Math.PI/2);
       }
   
