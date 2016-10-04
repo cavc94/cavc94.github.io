@@ -46,41 +46,76 @@ torreForma.merge(almenaM4.geometry, almenaM4.matrix);
 
 torreForma.scale( 10, 10, 10);
 torreForma.rotateX( Math.PI/2 );
-
 //torreMalla.rotateY(Math.PI/3); 
+
+var casilla = new THREE.BoxGeometry(10, 10, 5);
 
 /*TEXTURA*/
 var TEXTURA = new Object();
 
-TEXTURA.negro = function( textura ){
-  var material = new THREE.MeshBasicMaterial( {map: textura} );
-  //TEXTURA.malla = new THREE.Mesh( torreForma, material );
-  TEXTURA.torreMalla = new Array();
-  for ( var i = 0; i < 2; i ++ ) {  
-    //if ( i < 2 ){ 
-      TEXTURA.torreMalla[i] = new THREE.Mesh(torreForma, material);
-      TEXTURA.torreMalla[i].position.set( (i%2)*70, 0, 5 );
-      /*} else {
-        TEXTURA.torreMalla[i] = new THREE.Mesh(torreForma, material);
-        TEXTURA.torreMalla[i].position.set( (i%2)*70, 70, 5 );
-        /*torreMalla[i].castShadow = true;
-        TEXTURA.torreMalla[i].rotateX(Math.PI/2);
-       }*/
-    TEXTURA.escena.add( TEXTURA.torreMalla[i] );
-  }
- }
-
 TEXTURA.blanco = function( textura ){
   var material = new THREE.MeshBasicMaterial( {map: textura} );
+  //TEXTURA.malla = new THREE.Mesh( torreForma, material );
+  TEXTURA.casillasB = new Array();
   TEXTURA.torreMalla = new Array();
-  for ( var i = 0; i < 2; i ++ ) {  
-    TEXTURA.torreMalla[i] = new THREE.Mesh(torreForma, material);
-    TEXTURA.torreMalla[i].position.set( (i%2)*70, 70, 5 );
-    /*torreMalla[i].castShadow = true;
-    TEXTURA.torreMalla[i].rotateX(Math.PI/2);*/
-    TEXTURA.escena.add( TEXTURA.torreMalla[i] );
+  for ( var i = 0; i < 16; i ++ ) {  
+    if ( i < 2 ){ 
+      TEXTURA.torreMalla[i] = new THREE.Mesh( torreForma, material );
+      TEXTURA.torreMalla[i].position.set( (i%2)*70, 0, 5 );
+      TEXTURA.escena.add( TEXTURA.torreMalla[i] );
+    }
+    TEXTURA.casillasB[i] = new THREE.Mesh( casilla, material );
+    TEXTURA.escena.add( TEXTURA.casillasB[i] );
   }
- }
+  var b = 0;
+  for ( var i = 0; i < 8; i ++ ) {
+	  for ( var j = 0; j < 8; j ++ ) {
+		  if ( i%2 == 0 ) {
+			  if ( j%2 != 0 ) {
+				  casillasB[b].position.set( i*10, j*10, 0 );
+				  b++;
+			}				
+		} else {
+			if ( j%2 == 0 ) {
+				casillasB[b].position.set( i*10, j*10, 0 );
+				b++;
+			}
+		}
+		}
+	}
+}
+
+TEXTURA.negro = function( textura ){
+  var material = new THREE.MeshBasicMaterial( {map: textura} );
+  TEXTURA.casillasN = new Array();
+  TEXTURA.torreMalla = new Array();
+  for ( var i = 0; i < 16; i ++ ) {
+    if ( i < 2 ){
+      TEXTURA.torreMalla[i] = new THREE.Mesh(torreForma, material);
+      TEXTURA.torreMalla[i].position.set( (i%2)*70, 70, 5 );
+      /*torreMalla[i].castShadow = true;*/
+      TEXTURA.escena.add( TEXTURA.torreMalla[i] );
+    }
+    TEXTURA.casillasN[i] = new THREE.Mesh( casilla, material );
+    TEXTURA.escena.add( TEXTURA.casillasN[i] );
+  }
+  var n = 0;
+  for ( var i = 0; i < 8; i ++ ) {
+	  for ( var j = 0; j < 8; j ++ ) {
+		  if ( i%2 == 0 ) {
+			  if ( j%2 == 0 ) {
+				  casillasN[n].position.set( i*10, j*10, 0 );
+				  n++;
+			}				
+		} else {
+			if ( j%2 != 0 ) {
+				casillasB[n].position.set( i*10, j*10, 0 );
+				n++;
+			}
+		}
+		}
+	}
+}
  
 TEXTURA.setup = function() {
   TEXTURA.escena = new THREE.Scene(); 
