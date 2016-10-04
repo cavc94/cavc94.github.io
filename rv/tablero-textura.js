@@ -52,33 +52,42 @@ torreForma.rotateX( Math.PI/2 );
 /*TEXTURA*/
 var TEXTURA = new Object();
 
-TEXTURA.retrollamada = function( textura ){
+TEXTURA.negro = function( textura ){
   var material = new THREE.MeshBasicMaterial( {map: textura} );
   //TEXTURA.malla = new THREE.Mesh( torreForma, material );
   TEXTURA.torreMalla = new Array();
-  for ( var i = 0; i < 4; i ++ ) {  
-    if ( i < 2 ){ 
+  for ( var i = 0; i < 2; i ++ ) {  
+    //if ( i < 2 ){ 
       TEXTURA.torreMalla[i] = new THREE.Mesh(torreForma, material);
       TEXTURA.torreMalla[i].position.set( (i%2)*70, 0, 5 );
-      } else {
+      /*} else {
         TEXTURA.torreMalla[i] = new THREE.Mesh(torreForma, material);
-        TEXTURA.torreMalla[i].position.set( (i%2)*70, 70, 5 );}
+        TEXTURA.torreMalla[i].position.set( (i%2)*70, 70, 5 );
         /*torreMalla[i].castShadow = true;
-        TEXTURA.torreMalla[i].rotateX(Math.PI/2);
-      }
-  
-  /*torreMalla[0].position.set( 0, 0, 5 );
-  torreMalla[1].position.set( 70, 0, 5 );
-  torreMalla[2].position.set( 0, 70, 5 );
-  torreMalla[3].position.set( 70, 70, 5 );*/
-  
-  TEXTURA.escena.add( TEXTURA.torreMalla[i] );}
+        TEXTURA.torreMalla[i].rotateX(Math.PI/2);*/
+       }*/
+    TEXTURA.escena.add( TEXTURA.torreMalla[i] );
+  }
+ }
+
+TEXTURA.blanco = function( textura ){
+  var material = new THREE.MeshBasicMaterial( {map: textura} );
+  TEXTURA.torreMalla = new Array();
+  for ( var i = 0; i < 2; i ++ ) {  
+    TEXTURA.torreMalla[i] = new THREE.Mesh(torreForma, material);
+    TEXTURA.torreMalla[i].position.set( (i%2)*70, 70, 5 );
+    /*torreMalla[i].castShadow = true;
+    TEXTURA.torreMalla[i].rotateX(Math.PI/2);*/
+    TEXTURA.escena.add( TEXTURA.torreMalla[i] );
+  }
  }
  
 TEXTURA.setup = function() {
   TEXTURA.escena = new THREE.Scene(); 
   var cargador = new THREE.TextureLoader();
-  cargador.load( "marmol_negro.jpg", TEXTURA.retrollamada );
+  cargador.load( "marmol_negro.jpg", TEXTURA.negro );
+  var cargador_blanco = new THREE.TextureLoader();
+  cargador_blanco.load( "marmol_blanco.jpg", TEXTURA.blanco );
   TEXTURA.camara = new THREE.PerspectiveCamera( 75, window.innerWidth/window.innerHeight, 0.1, 1000 );
   TEXTURA.camara.position.z = 100;
   var lienzo = document.getElementById( "tablero-textura" );
