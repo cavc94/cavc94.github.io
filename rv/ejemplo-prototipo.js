@@ -8,7 +8,7 @@ PROTOTIPO.ArbolGeometry = function(){
   esferaForma.translate( 0, 1, 0 );
   
   var troncoMalla = new THREE.Mesh( troncoForma );
-  var esferaMalla = new THREE.Mesh( esferaForma );}
+  var esferaMalla = new THREE.Mesh( esferaForma );
   
   this.merge( troncoMalla.geometry, troncoMalla.matrix );
   this.merge( esferaMalla.geometry, esferaMalla.matrix );
