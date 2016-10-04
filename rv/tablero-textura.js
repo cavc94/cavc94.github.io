@@ -64,7 +64,7 @@ TEXTURA.negro = function( textura ){
         TEXTURA.torreMalla[i] = new THREE.Mesh(torreForma, material);
         TEXTURA.torreMalla[i].position.set( (i%2)*70, 70, 5 );
         /*torreMalla[i].castShadow = true;
-        TEXTURA.torreMalla[i].rotateX(Math.PI/2);*/
+        TEXTURA.torreMalla[i].rotateX(Math.PI/2);
        }*/
     TEXTURA.escena.add( TEXTURA.torreMalla[i] );
   }
