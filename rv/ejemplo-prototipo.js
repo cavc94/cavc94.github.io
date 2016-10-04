@@ -38,7 +38,7 @@ PROTOTIPO.setup = function() {
 
 PROTOTIPO.loop = function() {
   requestAnimationFrame( PROTOTIPO.loop );
-  PROTOTIPO.rendrizador.render( PROTOTIPO.escena, PROTOTIPO.camara );
+  PROTOTIPO.renderizador.render( PROTOTIPO.escena, PROTOTIPO.camara );
  }
 
 PROTOTIPO.setup();
