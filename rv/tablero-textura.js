@@ -72,12 +72,12 @@ TEXTURA.blanco = function( textura ){
 	  for ( var j = 0; j < 8; j ++ ) {
 		  if ( i%2 == 0 ) {
 			  if ( j%2 != 0 ) {
-				  casillasB[b].position.set( i*10, j*10, 0 );
+				  TEXTURA.casillasB[b].position.set( i*10, j*10, 0 );
 				  b++;
 			}				
 		} else {
 			if ( j%2 == 0 ) {
-				casillasB[b].position.set( i*10, j*10, 0 );
+				TEXTURA.casillasB[b].position.set( i*10, j*10, 0 );
 				b++;
 			}
 		}
@@ -104,12 +104,12 @@ TEXTURA.negro = function( textura ){
 	  for ( var j = 0; j < 8; j ++ ) {
 		  if ( i%2 == 0 ) {
 			  if ( j%2 == 0 ) {
-				  casillasN[n].position.set( i*10, j*10, 0 );
+				  TEXTURA.casillasN[n].position.set( i*10, j*10, 0 );
 				  n++;
 			}				
 		} else {
 			if ( j%2 != 0 ) {
-				casillasB[n].position.set( i*10, j*10, 0 );
+				TEXTURA.casillasB[n].position.set( i*10, j*10, 0 );
 				n++;
 			}
 		}
