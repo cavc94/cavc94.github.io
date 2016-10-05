@@ -123,15 +123,15 @@ TEXTURA.contorno = function( textura ) {
 	var material = new THREE.MeshBasicMaterial( {map: textura} );
 	TEXTURA.bordes = new Array();
 	for (var i = 1; i < 4; i++ ){
-		TEXTURA.bordes[i] = new THREE.Mesh( bordes, material ); 
+		TEXTURA.bordes[i] = new THREE.Mesh( bloque, material ); 
 		TEXTURA.escena.add( TEXTURA.bordes[i] );
 	}
-	bordes[0].translate( 35, -10, 0 );
-	bordes[1].translate( 35, 80, 0 );
-	bordes[2].rotateZ( Math.PI/2 );
-	bordes[3].rotateZ( Math.PI/2 );
-	bordes[2].translate( -10, 35, 0 );
-	bordes[3].translate( 80, 35, 0 );
+	TEXTURA.bordes[0].translate( 35, -10, 0 );
+	TEXTURA.bordes[1].translate( 35, 80, 0 );
+	TEXTURA.bordes[2].rotateZ( Math.PI/2 );
+	TEXTURA.bordes[3].rotateZ( Math.PI/2 );
+	TEXTURA.bordes[2].translate( -10, 35, 0 );
+	TEXTURA.bordes[3].translate( 80, 35, 0 );
 }
 
 TEXTURA.setup = function() {
