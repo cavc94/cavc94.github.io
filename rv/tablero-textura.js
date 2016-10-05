@@ -49,7 +49,6 @@ torreForma.rotateX( Math.PI/2 );
 
 /*TABLERO*/
 var casilla = new THREE.BoxGeometry(10, 10, 5);
-var bloques = new Array();
 var bloque = new THREE.BoxGeometry(100, 10, 10);
 	
 /*TEXTURA*/
