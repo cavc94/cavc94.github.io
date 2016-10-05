@@ -58,7 +58,7 @@ TEXTURA.blanco = function( textura ){
   //TEXTURA.malla = new THREE.Mesh( torreForma, material );
   TEXTURA.casillasB = new Array();
   TEXTURA.torreMalla = new Array();
-  for ( var i = 0; i < 16; i ++ ) {  
+  for ( var i = 0; i < 32; i ++ ) {  
     if ( i < 2 ){ 
       TEXTURA.torreMalla[i] = new THREE.Mesh( torreForma, material );
       TEXTURA.torreMalla[i].position.set( (i%2)*70, 0, 5 );
@@ -89,7 +89,7 @@ TEXTURA.negro = function( textura ){
   var material = new THREE.MeshBasicMaterial( {map: textura} );
   TEXTURA.casillasN = new Array();
   TEXTURA.torreMalla = new Array();
-  for ( var i = 0; i < 16; i ++ ) {
+  for ( var i = 0; i < 32; i ++ ) {
     if ( i < 2 ){
       TEXTURA.torreMalla[i] = new THREE.Mesh(torreForma, material);
       TEXTURA.torreMalla[i].position.set( (i%2)*70, 70, 5 );
@@ -124,7 +124,7 @@ TEXTURA.setup = function() {
   var cargador_blanco = new THREE.TextureLoader();
   cargador_blanco.load( "marmol_blanco.jpg", TEXTURA.blanco );
   TEXTURA.camara = new THREE.PerspectiveCamera( 75, window.innerWidth/window.innerHeight, 0.1, 1000 );
-  TEXTURA.camara.position.z = 100;
+  TEXTURA.camara.position.z = 120;
   var lienzo = document.getElementById( "tablero-textura" );
   TEXTURA.renderizador = new THREE.WebGLRenderer( {canvas: lienzo, antialias: true } );
   TEXTURA.renderizador.setSize( 600, 600 );
