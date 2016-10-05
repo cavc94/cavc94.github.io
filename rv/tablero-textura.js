@@ -121,7 +121,7 @@ TEXTURA.negro = function( textura ){
 TEXTURA.contorno = function( textura ) {
 	var material = new THREE.MeshBasicMaterial( {map: textura} );
 	TEXTURA.bordes = new Array();
-	for (var i = 1; i < 4; i++ ){
+	for (var i = 0; i < 4; i++ ){
 		TEXTURA.bordes[i] = new THREE.Mesh( bloque, material ); 
 		TEXTURA.escena.add( TEXTURA.bordes[i] );
 	}
