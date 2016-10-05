@@ -126,12 +126,12 @@ TEXTURA.contorno = function( textura ) {
 		TEXTURA.bordes[i] = new THREE.Mesh( bloque, material ); 
 		TEXTURA.escena.add( TEXTURA.bordes[i] );
 	}
-	TEXTURA.bordes[0].translate( 35, -10, 0 );
-	TEXTURA.bordes[1].translate( 35, 80, 0 );
-	TEXTURA.bordes[2].rotateZ( Math.PI/2 );
-	TEXTURA.bordes[3].rotateZ( Math.PI/2 );
-	TEXTURA.bordes[2].translate( -10, 35, 0 );
-	TEXTURA.bordes[3].translate( 80, 35, 0 );
+	TEXTURA.bordes[0].position.set( 35, -10, 0 );
+	TEXTURA.bordes[1].position.set( 35, 80, 0 );
+	TEXTURA.bordes[2].position.set( Math.PI/2 );
+	TEXTURA.bordes[3].position.set( Math.PI/2 );
+	TEXTURA.bordes[2].position.set( -10, 35, 0 );
+	TEXTURA.bordes[3].position.set( 80, 35, 0 );
 }
 
 TEXTURA.setup = function() {
