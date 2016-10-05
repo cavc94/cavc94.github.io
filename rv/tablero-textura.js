@@ -44,7 +44,7 @@ torreForma.merge(almenaM2.geometry, almenaM2.matrix);
 torreForma.merge(almenaM3.geometry, almenaM3.matrix);
 torreForma.merge(almenaM4.geometry, almenaM4.matrix);
 
-torreForma.scale( 10, 10, 10);
+torreForma.scale( 7, 7, 7);
 torreForma.rotateX( Math.PI/2 );
 //torreMalla.rotateY(Math.PI/3); 
 
@@ -72,8 +72,8 @@ TEXTURA.blanco = function( textura ){
 	  for ( var j = 0; j < 8; j ++ ) {
 		  if ( i%2 == 0 ) {
 			  if ( j%2 != 0 ) {
-				  TEXTURA.casillasB[b].position.set( i*10, j*10, 0 );
-				  b++;
+				TEXTURA.casillasB[b].position.set( i*10, j*10, 0 );
+				b++;
 			}				
 		} else {
 			if ( j%2 == 0 ) {
@@ -109,7 +109,7 @@ TEXTURA.negro = function( textura ){
 			}				
 		} else {
 			if ( j%2 != 0 ) {
-				TEXTURA.casillasB[n].position.set( i*10, j*10, 0 );
+				TEXTURA.casillasN[n].position.set( i*10, j*10, 0 );
 				n++;
 			}
 		}
