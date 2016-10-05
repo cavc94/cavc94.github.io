@@ -51,7 +51,10 @@ torreForma.rotateX( Math.PI/2 );
 var casilla = new THREE.BoxGeometry(10, 10, 5);
 var bloques = new Array();
 for ( var i = 0; i < 4; i ++ ) {
-	bloques[i] = new THREE.BoxGeometry(100, 10, 10);//new THREE.Mesh( bordes, material );
+	if ( i < 2 ){
+		bloques[i] = new THREE.BoxGeometry(100, 10, 10);
+	} else{
+		bloques[i] = new THREE.BoxGeometry(105, 10, 10); }//new THREE.Mesh( bordes, material );}
 	//TEXTURA.contornos[i].receiveShadow = true;
 }
 bloques[0].translate( 35, -10, 0 );
@@ -61,10 +64,10 @@ bloques[3].rotateZ( Math.PI/2 );
 bloques[2].translate( -10, 35, 0 );
 bloques[3].translate( 80, 35, 0 );
 var bordes = new THREE.Geometry();
-//for ( var i = 0; i < 4; i ++ ) {
-	bordes.merge(bloques[1].geometry, bloques[1].matrix);
-bordes.merge(bloques[2].geometry, bloques[2].matrix);
-//}
+for ( var i = 0; i < 4; i ++ ) {
+	bordes.merge(bloques[i].geometry, bloques[i].matrix);
+//bordes.merge(bloques[2].geometry, bloques[2].matrix);
+}
 
 /*TEXTURA*/
 var TEXTURA = new Object();
