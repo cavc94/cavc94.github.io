@@ -49,21 +49,22 @@ torreForma.rotateX( Math.PI/2 );
 
 /*TABLERO*/
 var casilla = new THREE.BoxGeometry(10, 10, 5);
-var contornos = new Array();
+var bloques = new Array();
 for ( var i = 0; i < 4; i ++ ) {
-	contornos[i] = new THREE.BoxGeometry(100, 10, 10);//new THREE.Mesh( bordes, material );
+	bloques[i] = new THREE.BoxGeometry(100, 10, 10);//new THREE.Mesh( bordes, material );
 	//TEXTURA.contornos[i].receiveShadow = true;
 }
-contornos[0].translate( 35, -10, 0 );
-contornos[1].translate( 35, 80, 0 );
-contornos[2].rotateZ( Math.PI/2 );
-contornos[3].rotateZ( Math.PI/2 );
-contornos[2].translate( -10, 35, 0 );
-contornos[3].translate( 80, 35, 0 );
+bloques[0].translate( 35, -10, 0 );
+bloques[1].translate( 35, 80, 0 );
+bloques[2].rotateZ( Math.PI/2 );
+bloques[3].rotateZ( Math.PI/2 );
+bloques[2].translate( -10, 35, 0 );
+bloques[3].translate( 80, 35, 0 );
 var bordes = new THREE.Geometry();
-for ( var i = 0; i < 4; i ++ ) {
-	bordes.merge(contornos[i].geometry, contornos[i].matrix);
-}
+//for ( var i = 0; i < 4; i ++ ) {
+	bordes.merge(bloques[1].geometry, bloques[1].matrix);
+bordes.merge(bloques[2].geometry, bloques[2].matrix);
+//}
 
 /*TEXTURA*/
 var TEXTURA = new Object();
