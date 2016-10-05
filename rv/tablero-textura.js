@@ -102,7 +102,7 @@ TEXTURA.negro = function( textura ){
     if ( i < 2 ){
       TEXTURA.torreMalla[i] = new THREE.Mesh(torreForma, material);
       TEXTURA.torreMalla[i].position.set( (i%2)*70, 70, 5 );
-      TECTURA.torreMalla[i].castShadow = true;
+      TEXTURA.torreMalla[i].castShadow = true;
       TEXTURA.escena.add( TEXTURA.torreMalla[i] );
     }
     TEXTURA.casillasN[i] = new THREE.Mesh( casilla, material );
@@ -154,7 +154,7 @@ TEXTURA.setup = function() {
   TEXTURA.escena.add( luzP1 );
   TEXTURA.camara = new THREE.PerspectiveCamera( 75, window.innerWidth/window.innerHeight, 0.1, 1000 );
   TEXTURA.camara.position.z = 120;
-  TEXTURA.camara.position.y = -100;
+  //TEXTURA.camara.position.y = -100;
   var lienzo = document.getElementById( "tablero-textura" );
   TEXTURA.renderizador = new THREE.WebGLRenderer( {canvas: lienzo, antialias: true } );
   TEXTURA.renderizador.setSize( 600, 600 );
