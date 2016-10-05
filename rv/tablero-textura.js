@@ -120,17 +120,17 @@ TEXTURA.negro = function( textura ){
  
 TEXTURA.contorno = function( textura ) {
 	var material = new THREE.MeshBasicMaterial( {map: textura} );
-	var TEXTURA.contornos = new Array();
+	TEXTURA.contornos = new Array();
 	for ( var i = 0; i < 4; i ++ ) {
 		TEXTURA.contornos[i] = new THREE.Mesh( contorno, material );
 		//TEXTURA.contornos[i].receiveShadow = true;
 	}
-	contornos[0].position.set( 35, -10, 0 );
-	contornos[1].position.set( 35, 80, 0 );
-	contornos[2].rotateZ( Math.PI/2 );
-	contornos[3].rotateZ( Math.PI/2 );
-	contornos[2].position.set( -10, 35, 0 );
-	contornos[3].position.set( 80, 35, 0 );
+	TEXTURA.contornos[0].position.set( 35, -10, 0 );
+	TEXTURA.contornos[1].position.set( 35, 80, 0 );
+	TEXTURA.contornos[2].rotateZ( Math.PI/2 );
+	TEXTURA.contornos[3].rotateZ( Math.PI/2 );
+	TEXTURA.contornos[2].position.set( -10, 35, 0 );
+	TEXTURA.contornos[3].position.set( 80, 35, 0 );
 }
 
 TEXTURA.setup = function() {
