@@ -124,6 +124,8 @@ TEXTURA.contorno = function( textura ) {
 	for ( var i = 0; i < 4; i ++ ) {
 		TEXTURA.contornos[i] = new THREE.Mesh( bordes, material );
 		//TEXTURA.contornos[i].receiveShadow = true;
+		TEXTURA.escena.add( TEXTURA.contornos[i] );
+
 	}
 	TEXTURA.contornos[0].position.set( 35, -10, 0 );
 	TEXTURA.contornos[1].position.set( 35, 80, 0 );
