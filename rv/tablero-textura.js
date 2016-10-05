@@ -127,8 +127,8 @@ TEXTURA.contorno = function( textura ) {
 	}
 	TEXTURA.bordes[0].position.set( 35, -10, 0 );
 	TEXTURA.bordes[1].position.set( 35, 80, 0 );
-	TEXTURA.bordes[2].position.set( Math.PI/2 );
-	TEXTURA.bordes[3].position.set( Math.PI/2 );
+	TEXTURA.bordes[2].rotateZ( Math.PI/2 );
+	TEXTURA.bordes[3].rotateZ( Math.PI/2 );
 	TEXTURA.bordes[2].position.set( -10, 35, 0 );
 	TEXTURA.bordes[3].position.set( 80, 35, 0 );
 }
