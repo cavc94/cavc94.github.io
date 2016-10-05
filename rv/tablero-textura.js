@@ -49,7 +49,21 @@ torreForma.rotateX( Math.PI/2 );
 
 /*TABLERO*/
 var casilla = new THREE.BoxGeometry(10, 10, 5);
-var bordes = new THREE.BoxGeometry(100, 10, 10);
+var contornos = new Array();
+for ( var i = 0; i < 4; i ++ ) {
+	contornos[i] = new THREE.BoxGeometry(100, 10, 10);//new THREE.Mesh( bordes, material );
+	//TEXTURA.contornos[i].receiveShadow = true;
+}
+contornos[0].translate( 35, -10, 0 );
+contornos[1].translate( 35, 80, 0 );
+contornos[2].rotateZ( Math.PI/2 );
+contornos[3].rotateZ( Math.PI/2 );
+contornos[2].translate( -10, 35, 0 );
+contornos[3].translate( 80, 35, 0 );
+var bordes = new THREE.Geometry();
+for ( var i = 0; i < 4; i ++ ) {
+	bordes.merge(contornos[i].geometry, contornos[i].matrix);
+}
 
 /*TEXTURA*/
 var TEXTURA = new Object();
@@ -120,19 +134,8 @@ TEXTURA.negro = function( textura ){
  
 TEXTURA.contorno = function( textura ) {
 	var material = new THREE.MeshBasicMaterial( {map: textura} );
-	TEXTURA.contornos = new Array();
-	for ( var i = 0; i < 4; i ++ ) {
-		TEXTURA.contornos[i] = new THREE.Mesh( bordes, material );
-		//TEXTURA.contornos[i].receiveShadow = true;
-		TEXTURA.escena.add( TEXTURA.contornos[i] );
-
-	}
-	TEXTURA.contornos[0].position.set( 35, -10, 0 );
-	TEXTURA.contornos[1].position.set( 35, 80, 0 );
-	TEXTURA.contornos[2].rotateZ( Math.PI/2 );
-	TEXTURA.contornos[3].rotateZ( Math.PI/2 );
-	TEXTURA.contornos[2].position.set( -10, 35, 0 );
-	TEXTURA.contornos[3].position.set( 80, 35, 0 );
+	TEXTURA.contornos = new THREE.Mesh( bordes, material );
+	TEXTURA.escena.add( TEXTURA.contornos );
 }
 
 TEXTURA.setup = function() {
