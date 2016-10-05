@@ -4,6 +4,16 @@ luzP1.position.x = 150;
 luzP1.position.y = -75;
 luzP1.position.z = 150;
 luzP1.castShadow = true;
+var luzP2 = new THREE.PointLight( 0xff00ff );
+luzP2.position.x = -150;
+luzP2.position.y = 75;
+luzP2.position.z = 150;
+luzP2.castShadow = true;
+var luzP3 = new THREE.PointLight( 0xffff00 );
+luzP3.position.x = 75;
+luzP3.position.y = 150;
+luzP3.position.z = 150;
+luzP3.castShadow = true;
 
 /*TORRE*/
 var troncoForma = new THREE.CylinderGeometry(0.3, 0.5, 1);
@@ -63,11 +73,12 @@ var TEXTURA = new Object();
 
 TEXTURA.blanco = function( textura ){
   var material = new THREE.MeshLambertMaterial( {map: textura} );
-  //TEXTURA.malla = new THREE.Mesh( torreForma, material );
+  material.transparent = true;
   TEXTURA.casillasB = new Array();
   TEXTURA.torreMalla = new Array();
   for ( var i = 0; i < 32; i ++ ) {  
     if ( i < 2 ){ 
+      material.opacity = 1-i*0.25;
       TEXTURA.torreMalla[i] = new THREE.Mesh( torreForma, material );
       TEXTURA.torreMalla[i].position.set( (i%2)*70, 0, 5 );
       TEXTURA.escena.add( TEXTURA.torreMalla[i] );
@@ -98,8 +109,10 @@ TEXTURA.negro = function( textura ){
   var material = new THREE.MeshLambertMaterial( {map: textura} );
   TEXTURA.casillasN = new Array();
   TEXTURA.torreMalla = new Array();
+  material.transparent = true;
   for ( var i = 0; i < 32; i ++ ) {
     if ( i < 2 ){
+      material.opacity = 0.5-i*0.25;	    
       TEXTURA.torreMalla[i] = new THREE.Mesh(torreForma, material);
       TEXTURA.torreMalla[i].position.set( (i%2)*70, 70, 5 );
       TEXTURA.torreMalla[i].castShadow = true;
@@ -153,8 +166,8 @@ TEXTURA.setup = function() {
   cargador_contorno.load( "marmol_gris.jpg", TEXTURA.contorno );
   TEXTURA.escena.add( luzP1 );
   TEXTURA.camara = new THREE.PerspectiveCamera( 75, window.innerWidth/window.innerHeight, 0.1, 1000 );
-  TEXTURA.camara.position.z = 150;
-  TEXTURA.camara.position.y = -100;
+  TEXTURA.camara.position.z = 120;
+  //TEXTURA.camara.position.y = -100;
   var lienzo = document.getElementById( "tablero-textura" );
   TEXTURA.renderizador = new THREE.WebGLRenderer( {canvas: lienzo, antialias: true } );
   TEXTURA.renderizador.setSize( 600, 600 );
