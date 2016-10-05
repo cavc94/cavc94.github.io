@@ -1,3 +1,10 @@
+/*ILUMINACIÓN*/
+var luzP1 = new THREE.PointLight( 0x00ffff );
+luzP1.position.x = 150;
+luzP1.position.y = -75;
+luzP1.position.z = 150;
+luzP1.castShadow = true;
+
 /*TORRE*/
 var troncoForma = new THREE.CylinderGeometry(0.3, 0.5, 1);
 var alamborForma = new THREE.CylinderGeometry(0.5, 0.75, 0.2);
@@ -55,7 +62,7 @@ var bloque = new THREE.BoxGeometry(100, 10, 10);
 var TEXTURA = new Object();
 
 TEXTURA.blanco = function( textura ){
-  var material = new THREE.MeshBasicMaterial( {map: textura} );
+  var material = new THREE.MeshLambertMaterial( {map: textura} );
   //TEXTURA.malla = new THREE.Mesh( torreForma, material );
   TEXTURA.casillasB = new Array();
   TEXTURA.torreMalla = new Array();
@@ -66,6 +73,7 @@ TEXTURA.blanco = function( textura ){
       TEXTURA.escena.add( TEXTURA.torreMalla[i] );
     }
     TEXTURA.casillasB[i] = new THREE.Mesh( casilla, material );
+    TEXTURA.casillasB[i].receiveShadow = true;
     TEXTURA.escena.add( TEXTURA.casillasB[i] );
   }
   var b = 0;
@@ -87,17 +95,18 @@ TEXTURA.blanco = function( textura ){
 }
 
 TEXTURA.negro = function( textura ){
-  var material = new THREE.MeshBasicMaterial( {map: textura} );
+  var material = new THREE.MeshLambertMaterial( {map: textura} );
   TEXTURA.casillasN = new Array();
   TEXTURA.torreMalla = new Array();
   for ( var i = 0; i < 32; i ++ ) {
     if ( i < 2 ){
       TEXTURA.torreMalla[i] = new THREE.Mesh(torreForma, material);
       TEXTURA.torreMalla[i].position.set( (i%2)*70, 70, 5 );
-      /*torreMalla[i].castShadow = true;*/
+      TECTURA.torreMalla[i].castShadow = true;
       TEXTURA.escena.add( TEXTURA.torreMalla[i] );
     }
     TEXTURA.casillasN[i] = new THREE.Mesh( casilla, material );
+    TEXTURA.casillasN[i].receiveShadow = true;
     TEXTURA.escena.add( TEXTURA.casillasN[i] );
   }
   var n = 0;
@@ -119,10 +128,11 @@ TEXTURA.negro = function( textura ){
 }
  
 TEXTURA.contorno = function( textura ) {
-	var material = new THREE.MeshBasicMaterial( {map: textura} );
+	var material = new THREE.MeshLambertMaterial( {map: textura} );
 	TEXTURA.bordes = new Array();
 	for (var i = 0; i < 4; i++ ){
 		TEXTURA.bordes[i] = new THREE.Mesh( bloque, material ); 
+		TEXTURA.bordes[i].receiveShadow = true;
 		TEXTURA.escena.add( TEXTURA.bordes[i] );
 	}
 	TEXTURA.bordes[0].position.set( 35, -10, 0 );
@@ -141,8 +151,10 @@ TEXTURA.setup = function() {
   cargador_blanco.load( "marmol_blanco.jpg", TEXTURA.blanco );
   var cargador_contorno = new THREE.TextureLoader();
   cargador_contorno.load( "marmol_gris.jpg", TEXTURA.contorno );
+  TEXTURA.escena.add( luzP1 );
   TEXTURA.camara = new THREE.PerspectiveCamera( 75, window.innerWidth/window.innerHeight, 0.1, 1000 );
   TEXTURA.camara.position.z = 120;
+  TEXTURA.camara.position.y = -100;
   var lienzo = document.getElementById( "tablero-textura" );
   TEXTURA.renderizador = new THREE.WebGLRenderer( {canvas: lienzo, antialias: true } );
   TEXTURA.renderizador.setSize( 600, 600 );
