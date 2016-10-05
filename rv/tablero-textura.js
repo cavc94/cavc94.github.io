@@ -54,13 +54,13 @@ for ( var i = 0; i < 4; i ++ ) {
 	if ( i < 2 ){
 		bloques[i] = new THREE.BoxGeometry(100, 10, 10);
 	} else{
-		bloques[i] = new THREE.BoxGeometry(105, 10, 10); }//new THREE.Mesh( bordes, material );}
+		bloques[i] = new THREE.BoxGeometry(10, 110, 10); }//new THREE.Mesh( bordes, material );}
 	//TEXTURA.contornos[i].receiveShadow = true;
 }
 bloques[0].translate( 35, -10, 0 );
 bloques[1].translate( 35, 80, 0 );
-bloques[2].rotateZ( Math.PI/2 );
-bloques[3].rotateZ( Math.PI/2 );
+//bloques[2].rotateZ( Math.PI/2 );
+//bloques[3].rotateZ( Math.PI/2 );
 bloques[2].translate( -10, 35, 0 );
 bloques[3].translate( 80, 35, 0 );
 var bordes = new THREE.Geometry();
