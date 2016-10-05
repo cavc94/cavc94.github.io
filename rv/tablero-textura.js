@@ -46,9 +46,10 @@ torreForma.merge(almenaM4.geometry, almenaM4.matrix);
 
 torreForma.scale( 7, 7, 7);
 torreForma.rotateX( Math.PI/2 );
-//torreMalla.rotateY(Math.PI/3); 
 
+/*TABLERO*/
 var casilla = new THREE.BoxGeometry(10, 10, 5);
+var contorno = new THREE.BoxGeometry(100, 10, 10);
 
 /*TEXTURA*/
 var TEXTURA = new Object();
@@ -117,12 +118,29 @@ TEXTURA.negro = function( textura ){
 	}
 }
  
+TEXTURA.contorno = function( textura ) {
+	var material = new THREE.MeshBasicMaterial( {map: textura} );
+	var TEXTURA.contornos = new Array();
+	for ( var i = 0; i < 4; i ++ ) {
+		TEXTURA.contornos[i] = new THREE.Mesh( contorno, material );
+		//TEXTURA.contornos[i].receiveShadow = true;
+	}
+	contornos[0].position.set( 35, -10, 0 );
+	contornos[1].position.set( 35, 80, 0 );
+	contornos[2].rotateZ( Math.PI/2 );
+	contornos[3].rotateZ( Math.PI/2 );
+	contornos[2].position.set( -10, 35, 0 );
+	contornos[3].position.set( 80, 35, 0 );
+}
+
 TEXTURA.setup = function() {
   TEXTURA.escena = new THREE.Scene(); 
   var cargador = new THREE.TextureLoader();
   cargador.load( "marmol_negro.jpg", TEXTURA.negro );
   var cargador_blanco = new THREE.TextureLoader();
   cargador_blanco.load( "marmol_blanco.jpg", TEXTURA.blanco );
+  var cargador_contorno = new THREE.TextureLoader();
+  cargador_contorno.load( "marmol_gris.jpg", TEXTURA.contorno );
   TEXTURA.camara = new THREE.PerspectiveCamera( 75, window.innerWidth/window.innerHeight, 0.1, 1000 );
   TEXTURA.camara.position.z = 120;
   var lienzo = document.getElementById( "tablero-textura" );
