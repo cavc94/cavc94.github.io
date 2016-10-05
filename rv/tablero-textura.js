@@ -49,7 +49,7 @@ torreForma.rotateX( Math.PI/2 );
 
 /*TABLERO*/
 var casilla = new THREE.BoxGeometry(10, 10, 5);
-var contorno = new THREE.BoxGeometry(100, 10, 10);
+var bordes = new THREE.BoxGeometry(100, 10, 10);
 
 /*TEXTURA*/
 var TEXTURA = new Object();
@@ -122,7 +122,7 @@ TEXTURA.contorno = function( textura ) {
 	var material = new THREE.MeshBasicMaterial( {map: textura} );
 	TEXTURA.contornos = new Array();
 	for ( var i = 0; i < 4; i ++ ) {
-		TEXTURA.contornos[i] = new THREE.Mesh( contorno, material );
+		TEXTURA.contornos[i] = new THREE.Mesh( bordes, material );
 		//TEXTURA.contornos[i].receiveShadow = true;
 	}
 	TEXTURA.contornos[0].position.set( 35, -10, 0 );
