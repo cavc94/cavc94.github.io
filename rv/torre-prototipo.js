@@ -67,12 +67,6 @@ PROTOTIPO.torreB = function( prototipo ){
  }
 
 PROTOTIPO.setup = function() {
-  //var torre1 = new THREE.Mesh( new PROTOTIPO.TorreGeometry(), new THREE.MeshNormalMaterial() );
-  //var torre2 = new THREE.Mesh( new PROTOTIPO.TorreGeometry(), new THREE.MeshNormalMaterial() );
-  
-  //torre1.position.x = -10;
-  //torre2.position.x =  10;
-  
   var cargador = new THREE.TextureLoader();
   cargador.load( "marmol_blanco.jpg", PROTOTIPO.torreB );
   
@@ -88,8 +82,6 @@ PROTOTIPO.setup = function() {
   PROTOTIPO.renderizador.setSize( 600, 600 );
   
   PROTOTIPO.escena = new THREE.Scene();
-  //PROTOTIPO.escena.add(torre1);
-  PROTOTIPO.escena.add(torre2);
  }
 
 PROTOTIPO.loop = function() {
