@@ -169,7 +169,7 @@ TEXTURA.setup = function() {
   TEXTURA.escena.add( luzP3 );
   TEXTURA.camara = new THREE.PerspectiveCamera( 75, window.innerWidth/window.innerHeight, 0.1, 1000 );
   TEXTURA.camara.position.z = 120;
-  //TEXTURA.camara.position.y = -100;
+  TEXTURA.camera.lookAt( TEXTURA.escena.position );
   var lienzo = document.getElementById( "tablero-textura" );
   TEXTURA.renderizador = new THREE.WebGLRenderer( {canvas: lienzo, antialias: true } );
   TEXTURA.renderizador.setSize( 600, 600 );
