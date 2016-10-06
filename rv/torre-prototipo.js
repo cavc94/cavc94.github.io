@@ -70,7 +70,7 @@ PROTOTIPO.setup = function() {
   cargador.load( "marmol_blanco.jpg", PROTOTIPO.retrollamada );
   
   PROTOTIPO.camara = new THREE.PerspectiveCamera();
-  PROTOTIPO.camara.position.z = 20;
+  PROTOTIPO.camara.position.z = 50;
   
   var lienzo = document.getElementById( "torre-prototipo" );
   PROTOTIPO.renderizador = new THREE.WebGLRenderer( {canvas: lienzo, antialias: true} );
