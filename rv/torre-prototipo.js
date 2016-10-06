@@ -54,16 +54,21 @@ PROTOTIPO.TorreGeometry.prototype = new THREE.Geometry();
 
 PROTOTIPO.torreN = function( prototipo ){
   var material = new THREE.MeshBasicMaterial( {map: prototipo} );
-  PROTOTIPO.torre1 = new THREE.Mesh( new PROTOTIPO.TorreGeometry(), material );
-  PROTOTIPO.torre1.position.x = -10
-  PROTOTIPO.escena.add( PROTOTIPO.torre1 );
+  var PROTOTIPO.torresN = new Array();
+  for( var i = 0; i < 2; i++ ){
+    PROTOTIPO.torresN[i] = new THREE.Mesh( new PROTOTIPO.TorreGeometry(), material );
+    PROTOTIPO.torresN[i].position.set( (i%2)*70, 70, 5 );
+    PROTOTIPO.escena.add( PROTOTIPO.torresN[i] );
+ }
  }
 
 PROTOTIPO.torreB = function( prototipo ){
   var material = new THREE.MeshBasicMaterial( {map: prototipo} );
-  PROTOTIPO.torre2 = new THREE.Mesh( new PROTOTIPO.TorreGeometry(), material );
-  PROTOTIPO.torre2.position.x = 10
-  PROTOTIPO.escena.add( PROTOTIPO.torre2 );
+  var PROTOTIPO.torresB = new Array();
+  for( var i = 0; i < 2; i++ ){
+    PROTOTIPO.torresB[i] = new THREE.Mesh( new PROTOTIPO.TorreGeometry(), material );
+    PROTOTIPO.torresB[i].position.set( (i%2)*70, 0, 5 );
+    PROTOTIPO.escena.add( PROTOTIPO.torresB[i] );
  }
 
 PROTOTIPO.setup = function() {
@@ -81,7 +86,7 @@ PROTOTIPO.setup = function() {
   PROTOTIPO.renderizador.setSize( 600, 600 );
   
   PROTOTIPO.escena = new THREE.Scene();
-  PROTOTIPO.camera.lookAt( PROTOTIPO.escena.position );
+  PROTOTIPO.camara.lookAt( PROTOTIPO.escena.position );
  }
 
 PROTOTIPO.loop = function() {
