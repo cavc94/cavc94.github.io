@@ -68,8 +68,8 @@ PROTOTIPO.setup = function() {
   PROTOTIPO.renderizador.setSize( 600, 600 );
   
   PROTOTIPO.escena = new THREE.Scene();
-  PROTOTIPO.escena.add(arbol1);
-  PROTOTIPO.escena.add(arbol2);
+  PROTOTIPO.escena.add(torre1);
+  PROTOTIPO.escena.add(torre2);
  }
 
 PROTOTIPO.loop = function() {
