@@ -26,7 +26,7 @@ PROTOTIPO.TorreGeometry = function(){
   
   var troncoMalla = new THREE.Mesh(troncoForma);
   var alamborMalla = new THREE.Mesh(alamborForma);
-   var torusMalla = new THREE.Mesh(torusForma);
+  var torusMalla = new THREE.Mesh(torusForma);
   var adornoMalla = new THREE.Mesh(adornoForma);
   var baseMalla = new THREE.Mesh(baseForma);
 
@@ -78,10 +78,10 @@ PROTOTIPO.setup = function() {
   
   var lienzo = document.getElementById( "torre-prototipo" );
   PROTOTIPO.renderizador = new THREE.WebGLRenderer( {canvas: lienzo, antialias: true} );
-  
   PROTOTIPO.renderizador.setSize( 600, 600 );
   
   PROTOTIPO.escena = new THREE.Scene();
+  PROTOTIPO.camera.lookAt( PROTOTIPO.escena.position );
  }
 
 PROTOTIPO.loop = function() {
