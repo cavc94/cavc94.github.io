@@ -53,7 +53,7 @@ PROTOTIPO.TorreGeometry = function(){
 PROTOTIPO.TorreGeometry.prototype = new THREE.Geometry();
 
 PROTOTIPO.retrollamada = function( prototipo ){
-  var material = new THREE.MeshLambertcMaterial( {map: textura} );
+  var material = new THREE.MeshLambertcMaterial( {map: prototipo} );
   PROTOTIPO.torre1 = new THREE.Mesh( new PROTOTIPO.TorreGeometry(), material );
   PROTOTIPO.torre1.position.x = -10
   PROTOTIPO.escena.add( PROTOTIPO.torre1 );
