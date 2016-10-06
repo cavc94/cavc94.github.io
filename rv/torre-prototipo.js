@@ -46,7 +46,7 @@ PROTOTIPO.TorreGeometry = function(){
   this.merge(almenaM3.geometry, almenaM3.matrix);
   this.merge(almenaM4.geometry, almenaM4.matrix);
   
-  this..scale( 7, 7, 7);
+  this.scale( 7, 7, 7);
   //this.rotateX( Math.PI/2 );
  }
  
