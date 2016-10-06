@@ -1,5 +1,5 @@
 var PROTOTIPO = new Object();
-//var torreForma = new THREE.Geometry();
+
 PROTOTIPO.TorreGeometry = function(){
   THREE.Geometry.call( this );
   
@@ -52,22 +52,32 @@ PROTOTIPO.TorreGeometry = function(){
  
 PROTOTIPO.TorreGeometry.prototype = new THREE.Geometry();
 
-PROTOTIPO.retrollamada = function( prototipo ){
+PROTOTIPO.torreN = function( prototipo ){
   var material = new THREE.MeshBasicMaterial( {map: prototipo} );
   PROTOTIPO.torre1 = new THREE.Mesh( new PROTOTIPO.TorreGeometry(), material );
   PROTOTIPO.torre1.position.x = -10
   PROTOTIPO.escena.add( PROTOTIPO.torre1 );
  }
 
+PROTOTIPO.torreB = function( prototipo ){
+  var material = new THREE.MeshBasicMaterial( {map: prototipo} );
+  PROTOTIPO.torre2 = new THREE.Mesh( new PROTOTIPO.TorreGeometry(), material );
+  PROTOTIPO.torre2.position.x = 10
+  PROTOTIPO.escena.add( PROTOTIPO.torre2 );
+ }
+
 PROTOTIPO.setup = function() {
   //var torre1 = new THREE.Mesh( new PROTOTIPO.TorreGeometry(), new THREE.MeshNormalMaterial() );
-  var torre2 = new THREE.Mesh( new PROTOTIPO.TorreGeometry(), new THREE.MeshNormalMaterial() );
+  //var torre2 = new THREE.Mesh( new PROTOTIPO.TorreGeometry(), new THREE.MeshNormalMaterial() );
   
   //torre1.position.x = -10;
-  torre2.position.x =  10;
+  //torre2.position.x =  10;
   
   var cargador = new THREE.TextureLoader();
-  cargador.load( "marmol_blanco.jpg", PROTOTIPO.retrollamada );
+  cargador.load( "marmol_blanco.jpg", PROTOTIPO.torreB );
+  
+  var cargador2 = new THREE.TextureLoader();
+  cargador2.load( "marmol_negro.jpg", PROTOTIPO.torreN );
   
   PROTOTIPO.camara = new THREE.PerspectiveCamera();
   PROTOTIPO.camara.position.z = 50;
