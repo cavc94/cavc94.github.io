@@ -54,7 +54,7 @@ PROTOTIPO.TorreGeometry.prototype = new THREE.Geometry();
 
 PROTOTIPO.torreN = function( prototipo ){
   var material = new THREE.MeshBasicMaterial( {map: prototipo} );
-  var PROTOTIPO.torresN = new Array();
+  PROTOTIPO.torresN = new Array();
   for( var i = 0; i < 2; i++ ){
     PROTOTIPO.torresN[i] = new THREE.Mesh( new PROTOTIPO.TorreGeometry(), material );
     PROTOTIPO.torresN[i].position.set( (i%2)*70, 70, 5 );
@@ -64,7 +64,7 @@ PROTOTIPO.torreN = function( prototipo ){
 
 PROTOTIPO.torreB = function( prototipo ){
   var material = new THREE.MeshBasicMaterial( {map: prototipo} );
-  var PROTOTIPO.torresB = new Array();
+  PROTOTIPO.torresB = new Array();
   for( var i = 0; i < 2; i++ ){
     PROTOTIPO.torresB[i] = new THREE.Mesh( new PROTOTIPO.TorreGeometry(), material );
     PROTOTIPO.torresB[i].position.set( (i%2)*70, 0, 5 );
