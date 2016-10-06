@@ -70,6 +70,7 @@ PROTOTIPO.torreB = function( prototipo ){
     PROTOTIPO.torresB[i].position.set( (i%2)*70, 0, 5 );
     PROTOTIPO.escena.add( PROTOTIPO.torresB[i] );
  }
+}
 
 PROTOTIPO.setup = function() {
   var cargador = new THREE.TextureLoader();
