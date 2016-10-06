@@ -1,32 +1,68 @@
 var PROTOTIPO = new Object();
-
-PROTOTIPO.ArbolGeometry = function(){
+//var torreForma = new THREE.Geometry();
+PROTOTIPO.TorreGeometry = function(){
   THREE.Geometry.call( this );
   
-  var troncoForma = new THREE.CylinderGeometry( 0.25, 0.5, 1 );
-  var esferaForma = new THREE.SphereGeometry( 0.65 );
-  esferaForma.translate( 0, 1, 0 );
+  var troncoForma = new THREE.CylinderGeometry(0.3, 0.5, 1);
+  var alamborForma = new THREE.CylinderGeometry(0.5, 0.75, 0.2);
+  var baseForma = new THREE.CylinderGeometry(0.4, 0.4, 0.1);
+  var torusForma = new THREE.TorusGeometry(0.5, 0.05, 16, 100);
+  var adornoForma = new THREE.TorusGeometry(0.3, 0.05, 16, 100);
+  var almenaF1 = new THREE.CylinderGeometry(0.4, 0.4, 0.2, 8, 1, true, 0, Math.PI/4);
+  var almenaF2 = new THREE.CylinderGeometry(0.4, 0.4, 0.2, 8, 1, true, Math.PI/2, Math.PI/4);
+  var almenaF3 = new THREE.CylinderGeometry(0.4, 0.4, 0.2, 8, 1, true, Math.PI, Math.PI/4);
+  var almenaF4 = new THREE.CylinderGeometry(0.4, 0.4, 0.2, 8, 1, true, 3*Math.PI/2, Math.PI/4);
+
+  troncoForma.translate(0,0.6,0);
+  baseForma.translate(0,1.15,0);
+  adornoForma.rotateX(Math.PI/2);
+  adornoForma.translate(0,1.1,0);
+  torusForma.rotateX(Math.PI/2);
+  torusForma.translate(0,0.11,0);
+  almenaF1.translate(0,1.2,0);
+  almenaF2.translate(0,1.2,0);
+  almenaF3.translate(0,1.2,0);
+  almenaF4.translate(0,1.2,0);
   
-  var troncoMalla = new THREE.Mesh( troncoForma );
-  var esferaMalla = new THREE.Mesh( esferaForma );
+  var troncoMalla = new THREE.Mesh(troncoForma);
+  var alamborMalla = new THREE.Mesh(alamborForma);
+   var torusMalla = new THREE.Mesh(torusForma);
+  var adornoMalla = new THREE.Mesh(adornoForma);
+  var baseMalla = new THREE.Mesh(baseForma);
+
+  var almenaM1 = new THREE.Mesh(almenaF1);
+  var almenaM2 = new THREE.Mesh(almenaF2);
+  var almenaM3 = new THREE.Mesh(almenaF3);
+  var almenaM4 = new THREE.Mesh(almenaF4);
   
-  this.merge( troncoMalla.geometry, troncoMalla.matrix );
-  this.merge( esferaMalla.geometry, esferaMalla.matrix );
+  this.merge(troncoMalla.geometry, troncoMalla.matrix);
+  this.merge(alamborMalla.geometry, alamborMalla.matrix);
+  this.merge(torusMalla.geometry, torusMalla.matrix);
+  this.merge(adornoMalla.geometry, adornoMalla.matrix);
+  this.merge(baseMalla.geometry, baseMalla.matrix);
+
+  this.merge(almenaM1.geometry, almenaM1.matrix);
+  this.merge(almenaM2.geometry, almenaM2.matrix);
+  this.merge(almenaM3.geometry, almenaM3.matrix);
+  this.merge(almenaM4.geometry, almenaM4.matrix);
+  
+  this..scale( 7, 7, 7);
+  //this.rotateX( Math.PI/2 );
  }
  
-PROTOTIPO.ArbolGeometry.prototype = new THREE.Geometry();
+PROTOTIPO.TorreGeometry.prototype = new THREE.Geometry();
 
 PROTOTIPO.setup = function() {
-  var arbol1 = new THREE.Mesh( new PROTOTIPO.ArbolGeometry(), new THREE.MeshNormalMaterial() );
-  var arbol2 = new THREE.Mesh( new PROTOTIPO.ArbolGeometry(), new THREE.MeshNormalMaterial() );
+  var torre1 = new THREE.Mesh( new PROTOTIPO.TorreGeometry(), new THREE.MeshNormalMaterial() );
+  var torre2 = new THREE.Mesh( new PROTOTIPO.TorreGeometry(), new THREE.MeshNormalMaterial() );
   
-  arbol1.position.x = -5;
-  arbol2.position.x =  5;
+  torre1.position.x = -5;
+  torre2.position.x =  5;
   
   PROTOTIPO.camara = new THREE.PerspectiveCamera();
   PROTOTIPO.camara.position.z = 20;
   
-  var lienzo = document.getElementById( "ejemplo-prototipo" );
+  var lienzo = document.getElementById( "torre-prototipo" );
   PROTOTIPO.renderizador = new THREE.WebGLRenderer( {canvas: lienzo, antialias: true} );
   
   PROTOTIPO.renderizador.setSize( 600, 600 );
