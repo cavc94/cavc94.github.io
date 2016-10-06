@@ -52,12 +52,22 @@ PROTOTIPO.TorreGeometry = function(){
  
 PROTOTIPO.TorreGeometry.prototype = new THREE.Geometry();
 
+PROTOTIPO.retrollamada = function( prototipo ){
+  var material = new THREE.MeshLambertcMaterial( {map: textura} );
+  PROTOTIPO.torre1 = new THREE.Mesh( new PROTOTIPO.TorreGeometry(), material );
+  PROTOTIPO.torre1.position.x = -10
+  PROTOTIPO.escena.add( PROTOTIPO.torre1 );
+ }
+
 PROTOTIPO.setup = function() {
-  var torre1 = new THREE.Mesh( new PROTOTIPO.TorreGeometry(), new THREE.MeshNormalMaterial() );
+  //var torre1 = new THREE.Mesh( new PROTOTIPO.TorreGeometry(), new THREE.MeshNormalMaterial() );
   var torre2 = new THREE.Mesh( new PROTOTIPO.TorreGeometry(), new THREE.MeshNormalMaterial() );
   
-  torre1.position.x = -5;
-  torre2.position.x =  5;
+  //torre1.position.x = -10;
+  torre2.position.x =  10;
+  
+  var cargador = new THREE.TextureLoader();
+  cargador.load( "marmol_blanco.jpg", PROTOTIPO.retrollamada );
   
   PROTOTIPO.camara = new THREE.PerspectiveCamera();
   PROTOTIPO.camara.position.z = 20;
@@ -68,7 +78,7 @@ PROTOTIPO.setup = function() {
   PROTOTIPO.renderizador.setSize( 600, 600 );
   
   PROTOTIPO.escena = new THREE.Scene();
-  PROTOTIPO.escena.add(torre1);
+  //PROTOTIPO.escena.add(torre1);
   PROTOTIPO.escena.add(torre2);
  }
 
