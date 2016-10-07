@@ -69,6 +69,7 @@ TEXTURA.blanco = function( textura ){
     if ( i < 2 ){
       TEXTURA.torreMalla[i] = new THREE.Mesh( torreForma, material );
       TEXTURA.torreMalla[i].position.set( (i%2)*70, 0, 5 );
+      TEXTURA.torreMalla[i].castShadow = true;
       TEXTURA.escena.add( TEXTURA.torreMalla[i] );
     }
     TEXTURA.casillasB[i] = new THREE.Mesh( casilla, material );
@@ -153,7 +154,7 @@ TEXTURA.setup = function() {
   TEXTURA.escena.add( luzP1 );
   TEXTURA.camara = new THREE.PerspectiveCamera( 75, window.innerWidth/window.innerHeight, 0.1, 1000 );
   TEXTURA.camara.position.z = 120;
-  //TEXTURA.camara.position.y = -50;
+  TEXTURA.camara.position.y = -50;
   //TEXTURA.camara.position.x = 100;
   TEXTURA.camara.lookAt( new THREE.Vector3(0,100,0) );
 
