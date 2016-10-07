@@ -153,7 +153,7 @@ TEXTURA.setup = function() {
   cargador_contorno.load( "marmol_gris.jpg", TEXTURA.contorno );
   TEXTURA.escena.add( luzP1 );
   TEXTURA.camara = new THREE.PerspectiveCamera( 75, window.innerWidth/window.innerHeight, 0.1, 1000 );
-  TEXTURA.camara.position.z = 120;
+  TEXTURA.camara.position.z = 100;
   TEXTURA.camara.position.y = -100;
   TEXTURA.camara.lookAt( new THREE.Vector3(0,100,0) );
 
