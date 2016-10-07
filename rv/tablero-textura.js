@@ -1,8 +1,8 @@
 /*ILUMINACIÓN*/
 var luzP1 = new THREE.PointLight( 0xffffff );
-luzP1.position.x = 150;
-luzP1.position.y = -75;
-luzP1.position.z = 150;
+luzP1.position.x = -35;
+luzP1.position.y = 100;
+luzP1.position.z = 120;
 luzP1.castShadow = true;
 
 /*TORRE*/
@@ -154,8 +154,8 @@ TEXTURA.setup = function() {
   TEXTURA.escena.add( luzP1 );
   TEXTURA.camara = new THREE.PerspectiveCamera( 75, window.innerWidth/window.innerHeight, 0.1, 1000 );
   TEXTURA.camara.position.z = 120;
-  TEXTURA.camara.position.y = -50;
-  //TEXTURA.camara.position.x = 100;
+  TEXTURA.camara.position.y = -100;
+  TEXTURA.camara.position.x = 35;
   TEXTURA.camara.lookAt( new THREE.Vector3(0,100,0) );
 
   var lienzo = document.getElementById( "tablero-textura" );
