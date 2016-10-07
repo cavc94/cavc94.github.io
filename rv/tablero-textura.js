@@ -155,7 +155,7 @@ TEXTURA.setup = function() {
   TEXTURA.camara.position.z = 120;
   //TEXTURA.camara.position.y = -50;
   //TEXTURA.camara.position.x = 100;
-  TEXTURA.camara.lookAt( new THREE.Vector3(10,0,0) );
+  TEXTURA.camara.lookAt( new THREE.Vector3(0,10,0) );
 
   var lienzo = document.getElementById( "tablero-textura" );
   TEXTURA.renderizador = new THREE.WebGLRenderer( {canvas: lienzo, antialias: true } );
