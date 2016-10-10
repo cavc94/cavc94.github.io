@@ -12,7 +12,8 @@ PROTOTIPO.Peon = function(){
       puntos.push(new THREE.Vector2(Math.sin(i*0.2)*15+50,(i-5)*2));
   }
   var troncoForma = new THREE.LatheGeometry(puntos);
- 
+  troncoForma.rotateX(Math.PI/6);
+  
   var troncoMalla = new THREE.Mesh( troncoForma );
   var cabezaMalla = new THREE.Mesh( cabezaForma );
   
@@ -26,7 +27,7 @@ PROTOTIPO.setup = function() {
   var peon1 = new THREE.Mesh( new PROTOTIPO.Peon(), new THREE.MeshNormalMaterial() );
   //var arbol2 = new THREE.Mesh( new PROTOTIPO.ArbolGeometry(), new THREE.MeshNormalMaterial() );
   
-  peon1.position.x = -5;
+  //peon1.position.x = -5;
   //arbol2.position.x =  5;
   
   PROTOTIPO.camara = new THREE.PerspectiveCamera();
