@@ -23,7 +23,7 @@ PROTOTIPO.Peon = function(){
 PROTOTIPO.Peon.prototype = new THREE.Geometry();
 
 PROTOTIPO.setup = function() {
-  var peon1 = new THREE.Mesh( new PROTOTIPO.ArbolGeometry(), new THREE.MeshNormalMaterial() );
+  var peon1 = new THREE.Mesh( new PROTOTIPO.Peon(), new THREE.MeshNormalMaterial() );
   //var arbol2 = new THREE.Mesh( new PROTOTIPO.ArbolGeometry(), new THREE.MeshNormalMaterial() );
   
   peon1.position.x = -5;
