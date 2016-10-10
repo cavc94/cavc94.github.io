@@ -6,12 +6,12 @@ PROTOTIPO.Peon = function(){
   var cabezaForma = new THREE.SphereGeometry( 0.3, 32, 32 );
   var troncoForma = new THREE.CylinderGeometry( 0.1, 0.3, 0.5 );
   var adornoForma = new THREE.TorusGeometry(0.3, 0.05, 16, 100);
-  var baseForma = new THREE.CylinderGeometry( 0.3, 0.3, 0.25 );
+  var baseForma = new THREE.CylinderGeometry( 0.3, 0.3, 0.125 );
   
   cabezaForma.translate( 0, 0.5, 0 );
   adornoForma.rotateX(Math.PI/2);
   adornoForma.translate( 0, -0.25, 0 );
-  baseForma.translate( 0, -0.375, 0 );
+  baseForma.translate( 0, -0.3125, 0 );
   
   var troncoMalla = new THREE.Mesh( troncoForma );
   var cabezaMalla = new THREE.Mesh( cabezaForma );
