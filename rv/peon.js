@@ -5,13 +5,17 @@ PROTOTIPO.Peon = function(){
   
   var cabezaForma = new THREE.SphereGeometry( 0.3, 32, 32 );
   var troncoForma = new THREE.CylinderGeometry( 0.1, 0.3, 0.5 );
+  var adornoForma = new THREE.TorusGeometry(0.3, 0.05, 16, 100);
   cabezaForma.translate( 0, 0.5, 0 );
+  adornoForma.translate( 0, -0.25, 0 );
   
   var troncoMalla = new THREE.Mesh( troncoForma );
   var cabezaMalla = new THREE.Mesh( cabezaForma );
+  var adornoMalla = new THREE.Mesh( adornoForma );
   
   this.merge( troncoMalla.geometry, troncoMalla.matrix );
   this.merge( cabezaMalla.geometry, cabezaMalla.matrix );
+  this.merge( adornoMalla.geometry, adornoMalla.matrix );
  }
  
 PROTOTIPO.Peon.prototype = new THREE.Geometry();
@@ -24,7 +28,7 @@ PROTOTIPO.setup = function() {
   //arbol2.position.x =  5;
   
   PROTOTIPO.camara = new THREE.PerspectiveCamera();
-  PROTOTIPO.camara.position.z = 20;
+  PROTOTIPO.camara.position.z = 10;
   
   var lienzo = document.getElementById( "peon" );
   PROTOTIPO.renderizador = new THREE.WebGLRenderer( {canvas: lienzo, antialias: true} );
