@@ -3,8 +3,8 @@ var PROTOTIPO = new Object();
 PROTOTIPO.Peon = function(){
   THREE.Geometry.call( this );
   
-  var cabezaForma = new THREE.SphereGeometry( 0.3, 32, 32 );
-  cabezaForma.translate( 0, 0.75, 0 );
+  //var cabezaForma = new THREE.SphereGeometry( 0.3, 32, 32 );
+  //cabezaForma.translate( 0, 0.75, 0 );
   
   var puntos=[];
   for (var i=0;i<50; i ++)
@@ -15,10 +15,10 @@ PROTOTIPO.Peon = function(){
   troncoForma.rotateX(Math.PI/6);
   
   var troncoMalla = new THREE.Mesh( troncoForma );
-  var cabezaMalla = new THREE.Mesh( cabezaForma );
+  //var cabezaMalla = new THREE.Mesh( cabezaForma );
   
   this.merge( troncoMalla.geometry, troncoMalla.matrix );
-  this.merge( cabezaMalla.geometry, cabezaMalla.matrix );
+  //this.merge( cabezaMalla.geometry, cabezaMalla.matrix );
  }
  
 PROTOTIPO.Peon.prototype = new THREE.Geometry();
