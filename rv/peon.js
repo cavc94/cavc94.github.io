@@ -5,7 +5,7 @@ PROTOTIPO.Peon = function(){
   
   var cabezaForma = new THREE.SphereGeometry( 0.3, 32, 32 );
   var troncoForma = new THREE.CylinderGeometry( 0.1, 0.3, 0.5 );
-  cabezaForma.translate( 0, 0.75, 0 );
+  cabezaForma.translate( 0, 0.5, 0 );
   
   var troncoMalla = new THREE.Mesh( troncoForma );
   var cabezaMalla = new THREE.Mesh( cabezaForma );
