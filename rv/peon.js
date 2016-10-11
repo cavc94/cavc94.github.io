@@ -37,7 +37,7 @@ PROTOTIPO.Reina = function(){
   var puntaForma = new THREE.SphereGeometry( 0.4, 32, 32 );
   var coronaForma = new THREE.CylinderGeometry( 0.4, 0.3, 0.35 );
   var troncoForma = new THREE.CylinderGeometry( 0.3, 0.5, 1.5 );
-  var adornoForma = new THREE.TorusGeometry(0.5, 0.05, 16, 100);
+  var adornoForma = new THREE.TorusGeometry(0.4, 0.05, 16, 100);
   //var discoForma = new THREE.CylinderGeometry( 0.3, 0.3, 0.1 );
   var baseForma = new THREE.CylinderGeometry( 0.5, 0.6, 0.25 );
   
