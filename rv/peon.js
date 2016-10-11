@@ -35,14 +35,14 @@ PROTOTIPO.Reina = function(){
   THREE.Geometry.call( this );
   
   var puntaForma = new THREE.SphereGeometry( 0.25, 32, 32 );
-  var coronaForma = new THREE.CylinderGeometry( 0.5, 0.3, 0.25 );
+  var coronaForma = new THREE.CylinderGeometry( 0.4, 0.3, 0.25 );
   var troncoForma = new THREE.CylinderGeometry( 0.3, 0.5, 1.5 );
   var adornoForma = new THREE.TorusGeometry(0.5, 0.05, 16, 100);
   //var discoForma = new THREE.CylinderGeometry( 0.3, 0.3, 0.1 );
   var baseForma = new THREE.CylinderGeometry( 0.5, 0.6, 0.25 );
   
   puntaForma.translate( 0, 0.75, 0 );
-  coronaForma.translate( 0, 0.5, 0 );
+  coronaForma.translate( 0, 0.7625, 0 );
   adornoForma.rotateX(Math.PI/2);
   adornoForma.translate( 0, -0.75, 0 );
   //discoForma.translate( 0, 0.25, 0 );
