@@ -41,7 +41,7 @@ PROTOTIPO.Reina = function(){
   //var discoForma = new THREE.CylinderGeometry( 0.3, 0.3, 0.1 );
   var baseForma = new THREE.CylinderGeometry( 0.5, 0.6, 0.25 );
   
-  puntaForma.translate( 0, 0.8125, 0 );
+  puntaForma.translate( 0, 0.82, 0 );
   coronaForma.translate( 0, 0.8125, 0 );
   adornoForma.rotateX(Math.PI/2);
   adornoForma.translate( 0, -0.75, 0 );
