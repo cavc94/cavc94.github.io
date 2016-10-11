@@ -21,7 +21,6 @@ PROTOTIPO.Peon = function(){
   var discoMalla = new THREE.Mesh( discoForma );
   var baseMalla = new THREE.Mesh( baseForma );
   
-  var discoMalla = new THREE.Mesh( discoForma );
   
   this.merge( troncoMalla.geometry, troncoMalla.matrix );
   this.merge( cabezaMalla.geometry, cabezaMalla.matrix );
@@ -55,8 +54,7 @@ PROTOTIPO.Reina = function(){
   var adornoMalla = new THREE.Mesh( adornoForma );
   //var discoMalla = new THREE.Mesh( discoForma );
   var baseMalla = new THREE.Mesh( baseForma );
-  
-  var discoMalla = new THREE.Mesh( discoForma );
+  //var discoMalla = new THREE.Mesh( discoForma );
   
   this.merge( puntaMalla.geometry, puntaMalla.matrix );
   this.merge( troncoMalla.geometry, troncoMalla.matrix );
