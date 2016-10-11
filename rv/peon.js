@@ -34,7 +34,7 @@ PROTOTIPO.Peon.prototype = new THREE.Geometry();
 PROTOTIPO.Reina = function(){
   THREE.Geometry.call( this );
   
-  var puntaForma = new THREE.SphereGeometry( 0.4, 32, 32 );
+  var puntaForma = new THREE.SphereGeometry( 0.3, 32, 32 );
   var coronaForma = new THREE.CylinderGeometry( 0.4, 0.3, 0.35 );
   var troncoForma = new THREE.CylinderGeometry( 0.3, 0.5, 1.5 );
   var adornoForma = new THREE.TorusGeometry(0.4, 0.05, 16, 100);
