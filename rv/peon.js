@@ -60,6 +60,7 @@ PROTOTIPO.Reina = function(){
   //var discoMalla = new THREE.Mesh( discoForma );
   
   this.merge( puntaMalla.geometry, puntaMalla.matrix );
+  this.merge( esferaMalla.geometry, puntaMalla.matrix );
   this.merge( troncoMalla.geometry, troncoMalla.matrix );
   this.merge( coronaMalla.geometry, coronaMalla.matrix );
   this.merge( adornoMalla.geometry, adornoMalla.matrix );
