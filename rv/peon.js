@@ -72,7 +72,7 @@ PROTOTIPO.Reina = function(){
   this.merge( troncoMalla.geometry, troncoMalla.matrix );
   this.merge( cuerpoMalla.geometry, cuerpoMalla.matrix );
   this.merge( coronaMalla.geometry, coronaMalla.matrix );
-  this.merge( adornoMalla.geometry, adornoMalla.matrix );
+  //this.merge( adornoMalla.geometry, adornoMalla.matrix );
   //this.merge( discoMalla.geometry, discoMalla.matrix );
   this.merge( baseMalla.geometry, baseMalla.matrix );
   this.merge( pieMalla.geometry, pieMalla.matrix );
