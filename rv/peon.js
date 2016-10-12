@@ -84,7 +84,7 @@ PROTOTIPO.setup = function() {
   reina.position.x =  5;
   
   PROTOTIPO.camara = new THREE.PerspectiveCamera();
-  PROTOTIPO.camara.position.z = 10;
+  PROTOTIPO.camara.position.z = 20;
   
   var lienzo = document.getElementById( "peon" );
   PROTOTIPO.renderizador = new THREE.WebGLRenderer( {canvas: lienzo, antialias: true} );
