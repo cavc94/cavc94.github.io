@@ -34,14 +34,16 @@ PROTOTIPO.Peon.prototype = new THREE.Geometry();
 PROTOTIPO.Reina = function(){
   THREE.Geometry.call( this );
   
-  var puntaForma = new THREE.SphereGeometry( 0.35, 32, 32 );
+  var puntaForma = new THREE.SphereGeometry( 0.1, 32, 32 );
+  var esferaForma = new THREE.SphereGeometry( 0.35, 32, 32 );
   var coronaForma = new THREE.CylinderGeometry( 0.4, 0.3, 0.35 );
   var troncoForma = new THREE.CylinderGeometry( 0.3, 0.5, 1.5 );
   var adornoForma = new THREE.TorusGeometry(0.4, 0.05, 16, 100);
   //var discoForma = new THREE.CylinderGeometry( 0.3, 0.3, 0.1 );
   var baseForma = new THREE.CylinderGeometry( 0.5, 0.6, 0.25 );
   
-  puntaForma.translate( 0, 0.9875, 0 );
+  puntaForma.translate( 0, 0.9925, 0 );
+  esferaForma.translate( 0, 0.9875, 0 );
   coronaForma.translate( 0, 0.8125, 0 );
   adornoForma.rotateX(Math.PI/2);
   adornoForma.translate( 0, -0.75, 0 );
@@ -49,6 +51,7 @@ PROTOTIPO.Reina = function(){
   baseForma.translate( 0, -0.7625, 0 );
   
   var puntaMalla = new THREE.Mesh( puntaForma );
+  var esferaMalla = new THREE.Mesh( esferaForma );
   var troncoMalla = new THREE.Mesh( troncoForma );
   var coronaMalla = new THREE.Mesh( coronaForma );
   var adornoMalla = new THREE.Mesh( adornoForma );
