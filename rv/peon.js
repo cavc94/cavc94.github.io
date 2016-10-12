@@ -41,7 +41,7 @@ PROTOTIPO.Reina = function(){
   var cuerpoForma = new THREE.CylinderGeometry( 0.3, 0.5, 0.75 );
   //var adornoForma = new THREE.TorusGeometry(0.4, 0.05, 16, 100);
   //var discoForma = new THREE.CylinderGeometry( 0.3, 0.3, 0.1 );
-  var baseForma = new THREE.CylinderGeometry( 0.5, 0.6, 0.125 );
+  var baseForma = new THREE.TorusGeometry( 0.4, 0.05, 16, 100 );
   var pieForma = new THREE.SphereGeometry(0.6, 32, 32, 0, Math.PI*2, 0, Math.PI/2);
   
   puntaForma.translate( 0, 1.3, 0 );
@@ -53,7 +53,7 @@ PROTOTIPO.Reina = function(){
   troncoForma.translate( 0, 0.375, 0 );
   cuerpoForma.translate( 0, -0.375, 0 );
   baseForma.translate( 0, -0.8125, 0 );
-  //pieForma.rotateX(Math.PI/2);
+  baseForma.rotateX(Math.PI/2);
   pieForma.translate( 0, -1.175, 0 );
   
   var puntaMalla = new THREE.Mesh( puntaForma );
