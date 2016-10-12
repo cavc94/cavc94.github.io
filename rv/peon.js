@@ -49,8 +49,9 @@ PROTOTIPO.Reina = function(){
   adornoForma.rotateX(Math.PI/2);
   adornoForma.translate( 0, -0.75, 0 );
   //discoForma.translate( 0, 0.25, 0 );
-  baseForma.translate( 0, -0.6248, 0 );
-  pieForma.translate( 0, -0.6873, 0 );
+  baseForma.translate( 0, -0.8125, 0 );
+  pieForma.rotateX(Math.PI/2);
+  pieForma.translate( 0, -0.8125, 0 );
   
   var puntaMalla = new THREE.Mesh( puntaForma );
   var esferaMalla = new THREE.Mesh( esferaForma );
