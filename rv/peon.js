@@ -77,11 +77,11 @@ PROTOTIPO.Reina = function(){
 PROTOTIPO.Reina.prototype = new THREE.Geometry();
 
 PROTOTIPO.setup = function() {
-  //var peon = new THREE.Mesh( new PROTOTIPO.Peon(), new THREE.MeshNormalMaterial() );
+  var peon = new THREE.Mesh( new PROTOTIPO.Peon(), new THREE.MeshNormalMaterial() );
   var reina = new THREE.Mesh( new PROTOTIPO.Reina(), new THREE.MeshNormalMaterial() );
   
-  //peon1.position.x = -5;
-  //arbol2.position.x =  5;
+  peon.position.x = -5;
+  reina.position.x =  5;
   
   PROTOTIPO.camara = new THREE.PerspectiveCamera();
   PROTOTIPO.camara.position.z = 10;
@@ -92,7 +92,7 @@ PROTOTIPO.setup = function() {
   PROTOTIPO.renderizador.setSize( 600, 600 );
   
   PROTOTIPO.escena = new THREE.Scene();
-  //PROTOTIPO.escena.add(peon);
+  PROTOTIPO.escena.add(peon);
   PROTOTIPO.escena.add(reina);
  }
 
