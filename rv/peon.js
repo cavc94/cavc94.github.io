@@ -35,9 +35,10 @@ PROTOTIPO.Reina = function(){
   THREE.Geometry.call( this );
   
   var puntaForma = new THREE.SphereGeometry( 0.1, 32, 32 );
-  var esferaForma = new THREE.SphereGeometry( 0.2, 32, 32 );
+  var esferaForma = new THREE.SphereGeometry( 0.25, 32, 32 );
   var coronaForma = new THREE.CylinderGeometry( 0.4, 0.3, 0.35 );
-  var troncoForma = new THREE.CylinderGeometry( 0.3, 0.5, 1.5 );
+  var troncoForma = new THREE.CylinderGeometry( 0.3, 0.3, 0.75 );
+  var cuerpoForma = new THREE.CylinderGeometry( 0.3, 0.5, 0.75 );
   var adornoForma = new THREE.TorusGeometry(0.4, 0.05, 16, 100);
   //var discoForma = new THREE.CylinderGeometry( 0.3, 0.3, 0.1 );
   var baseForma = new THREE.CylinderGeometry( 0.5, 0.6, 0.125 );
@@ -49,9 +50,10 @@ PROTOTIPO.Reina = function(){
   adornoForma.rotateX(Math.PI/2);
   adornoForma.translate( 0, -0.75, 0 );
   //discoForma.translate( 0, 0.25, 0 );
+  cuerpoForma.translate( 0, 0.75, 0 );
   baseForma.translate( 0, -0.8125, 0 );
   pieForma.rotateX(Math.PI/2);
-  pieForma.translate( 0, -0.8125, 0 );
+  pieForma.translate( 0, -0.8175, 0 );
   
   var puntaMalla = new THREE.Mesh( puntaForma );
   var esferaMalla = new THREE.Mesh( esferaForma );
