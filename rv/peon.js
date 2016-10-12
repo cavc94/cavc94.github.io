@@ -39,15 +39,15 @@ PROTOTIPO.Reina = function(){
   var coronaForma = new THREE.CylinderGeometry( 0.4, 0.3, 0.35 );
   var troncoForma = new THREE.CylinderGeometry( 0.3, 0.3, 0.75 );
   var cuerpoForma = new THREE.CylinderGeometry( 0.3, 0.5, 0.75 );
-  //var adornoForma = new THREE.TorusGeometry(0.4, 0.05, 16, 100);
-  var baseForma = new THREE.TorusGeometry( 0.4, 0.15, 16, 100 );
+  var adornoForma = new THREE.TorusGeometry(0.4, 0.05, 16, 100);
+  var baseForma = new THREE.TorusGeometry( 0.5, 0.15, 16, 100 );
   var pieForma = new THREE.SphereGeometry(0.6, 32, 32, 0, Math.PI*2, 0, Math.PI/2);
   
   puntaForma.translate( 0, 1.3, 0 );
   esferaForma.translate( 0, 0.9875, 0 );
   coronaForma.translate( 0, 0.8125, 0 );
-  //adornoForma.rotateX(Math.PI/2);
-  //adornoForma.translate( 0, -0.75, 0 );
+  adornoForma.rotateX(Math.PI/2);
+  adornoForma.translate( 0, 0.75, 0 );
   troncoForma.translate( 0, 0.375, 0 );
   cuerpoForma.translate( 0, -0.375, 0 );
   baseForma.rotateX(Math.PI/2);
@@ -59,8 +59,7 @@ PROTOTIPO.Reina = function(){
   var troncoMalla = new THREE.Mesh( troncoForma );
   var cuerpoMalla = new THREE.Mesh( cuerpoForma );
   var coronaMalla = new THREE.Mesh( coronaForma );
-  //var adornoMalla = new THREE.Mesh( adornoForma );
-  //var discoMalla = new THREE.Mesh( discoForma );
+  var adornoMalla = new THREE.Mesh( adornoForma );
   var baseMalla = new THREE.Mesh( baseForma );
   var pieMalla = new THREE.Mesh( pieForma );
   
@@ -70,8 +69,7 @@ PROTOTIPO.Reina = function(){
   this.merge( troncoMalla.geometry, troncoMalla.matrix );
   this.merge( cuerpoMalla.geometry, cuerpoMalla.matrix );
   this.merge( coronaMalla.geometry, coronaMalla.matrix );
-  //this.merge( adornoMalla.geometry, adornoMalla.matrix );
-  //this.merge( discoMalla.geometry, discoMalla.matrix );
+  this.merge( adornoMalla.geometry, adornoMalla.matrix );
   this.merge( baseMalla.geometry, baseMalla.matrix );
   this.merge( pieMalla.geometry, pieMalla.matrix );
  }
