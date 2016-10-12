@@ -58,15 +58,18 @@ PROTOTIPO.Reina = function(){
   var puntaMalla = new THREE.Mesh( puntaForma );
   var esferaMalla = new THREE.Mesh( esferaForma );
   var troncoMalla = new THREE.Mesh( troncoForma );
+  var cuerpoMalla = new THREE.Mesh( cuerpoForma );
   var coronaMalla = new THREE.Mesh( coronaForma );
   var adornoMalla = new THREE.Mesh( adornoForma );
   //var discoMalla = new THREE.Mesh( discoForma );
   var baseMalla = new THREE.Mesh( baseForma );
   var pieMalla = new THREE.Mesh( pieForma );
   
+  
   this.merge( puntaMalla.geometry, puntaMalla.matrix );
   this.merge( esferaMalla.geometry, esferaMalla.matrix );
   this.merge( troncoMalla.geometry, troncoMalla.matrix );
+  this.merge( cuerpoMalla.geometry, cuerpoMalla.matrix );
   this.merge( coronaMalla.geometry, coronaMalla.matrix );
   this.merge( adornoMalla.geometry, adornoMalla.matrix );
   //this.merge( discoMalla.geometry, discoMalla.matrix );
