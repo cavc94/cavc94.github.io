@@ -167,15 +167,19 @@ PROTOTIPO.setup = function() {
   var cargador2 = new THREE.TextureLoader();
   cargador2.load( "marmol_negro.jpg", PROTOTIPO.Negro );
   
-  PROTOTIPO.camara = new THREE.PerspectiveCamera();
-  PROTOTIPO.camara.position.z = 50;
+  //PROTOTIPO.camara = new THREE.PerspectiveCamera();
+  PROTOTIPO.escena = new THREE.Scene();
+  
+  PROTOTIPO.camara = new THREE.PerspectiveCamera( 75, window.innerWidth/window.innerHeight, 0.1, 1000 );
+  PROTOTIPO.camara.position.z = 100;
+  PROTOTIPO.camara.position.y = -100;
+  PROTOTIPO.camara.lookAt( new THREE.Vector3(0,100,0) );
+  //PROTOTIPO.camara.lookAt( PROTOTIPO.escena.position );
   
   var lienzo = document.getElementById( "ajedrez-prototipo" );
   PROTOTIPO.renderizador = new THREE.WebGLRenderer( {canvas: lienzo, antialias: true} );
   PROTOTIPO.renderizador.setSize( 600, 600 );
   
-  PROTOTIPO.escena = new THREE.Scene();
-  PROTOTIPO.camara.lookAt( PROTOTIPO.escena.position );
  }
 
 PROTOTIPO.loop = function() {
