@@ -166,12 +166,12 @@ PROTOTIPO.Negro = function( prototipo ){
   for ( var i = 0; i < 8; i ++ ) {
 	  for ( var j = 0; j < 8; j ++ ) {
 		  if ( i%2 == 0 ) {
-			  if ( j%2 != 0 ) {
+			  if ( j%2 == 0 ) {
 				PROTOTIPO.casillasN[b].position.set( i*10, j*10, 0 );
 				b++;
 			}				
 		} else {
-			if ( j%2 == 0 ) {
+			if ( j%2 != 0 ) {
 				PROTOTIPO.casillasN[b].position.set( i*10, j*10, 0 );
 				b++;
 			}
@@ -191,12 +191,12 @@ PROTOTIPO.Blanco = function( prototipo ){
   for ( var i = 0; i < 32; i ++ ) {  
     if ( i < 2 ){
       PROTOTIPO.torresB[i] = new THREE.Mesh( new PROTOTIPO.TorreGeometry(), material );
-      PROTOTIPO.torresB[i].position.set( (i%2)*70, 70, 5 );
+      PROTOTIPO.torresB[i].position.set( (i%2)*70, 0, 5 );
       PROTOTIPO.escena.add( PROTOTIPO.torresB[i] );
     }
     if ( i < 8 ){
       PROTOTIPO.peonesB[i] = new THREE.Mesh( new PROTOTIPO.PeonGeometry(), material );
-      PROTOTIPO.peonesB[i].position.set( i*10, 60, 5 );
+      PROTOTIPO.peonesB[i].position.set( i*10, 10, 5 );
       PROTOTIPO.escena.add( PROTOTIPO.peonesB[i] );
     }
     PROTOTIPO.casillasB[i] = new THREE.Mesh( new PROTOTIPO.CasillaGeometry(), material );
@@ -220,7 +220,7 @@ PROTOTIPO.Blanco = function( prototipo ){
 	}	
   }
   PROTOTIPO.ReinaB = new THREE.Mesh( new PROTOTIPO.ReinaGeometry(), material );
-  PROTOTIPO.ReinaB.position.set( 40, 70, 5 );
+  PROTOTIPO.ReinaB.position.set( 40, 0, 5 );
   PROTOTIPO.escena.add( PROTOTIPO.ReinaB );
 }
 
