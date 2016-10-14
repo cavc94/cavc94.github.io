@@ -216,7 +216,8 @@ PROTOTIPO.Blanco = function( prototipo ){
 				b++;
 			}
 		}
-		}
+	}	
+  }
   PROTOTIPO.ReinaB = new THREE.Mesh( new PROTOTIPO.ReinaGeometry(), material );
   PROTOTIPO.ReinaB.position.set( 40, 70, 5 );
   PROTOTIPO.escena.add( PROTOTIPO.ReinaB );
