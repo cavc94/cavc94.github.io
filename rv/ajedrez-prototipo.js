@@ -176,7 +176,8 @@ PROTOTIPO.Negro = function( prototipo ){
 				b++;
 			}
 		}
-		}
+	}
+  }
   PROTOTIPO.ReinaN = new THREE.Mesh( new PROTOTIPO.ReinaGeometry(), material );
   PROTOTIPO.ReinaN.position.set( 40, 70, 5 );
   PROTOTIPO.escena.add( PROTOTIPO.ReinaN );
