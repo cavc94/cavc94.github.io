@@ -21,12 +21,13 @@ PROTOTIPO.PeonGeometry = function(){
   var discoMalla = new THREE.Mesh( discoForma );
   var baseMalla = new THREE.Mesh( baseForma );
   
-  
   this.merge( troncoMalla.geometry, troncoMalla.matrix );
   this.merge( cabezaMalla.geometry, cabezaMalla.matrix );
   this.merge( adornoMalla.geometry, adornoMalla.matrix );
   this.merge( discoMalla.geometry, discoMalla.matrix );
   this.merge( baseMalla.geometry, baseMalla.matrix );
+  
+  this.scale( 7, 7, 7);
  }
  
 PROTOTIPO.PeonGeometry.prototype = new THREE.Geometry();
@@ -72,6 +73,8 @@ PROTOTIPO.ReinaGeometry = function(){
   this.merge( adornoMalla.geometry, adornoMalla.matrix );
   this.merge( baseMalla.geometry, baseMalla.matrix );
   this.merge( pieMalla.geometry, pieMalla.matrix );
+  
+  this.scale( 7, 7, 7);
  }
  
 PROTOTIPO.ReinaGeometry.prototype = new THREE.Geometry();
