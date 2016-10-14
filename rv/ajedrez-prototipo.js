@@ -142,9 +142,12 @@ PROTOTIPO.Negro = function( prototipo ){
  PROTOTIPO.peonesN = new Array();
  for( var i = 0; i < 8; i++ ){
    PROTOTIPO.peonesN[i] = new THREE.Mesh( new PROTOTIPO.PeonGeometry(), material );
-   PROTOTIPO.peonesN[i].position.set( i*10, 65, 5 );
+   PROTOTIPO.peonesN[i].position.set( i*10, 60, 5 );
    PROTOTIPO.escena.add( PROTOTIPO.peonesN[i] );
  }
+ PROTOTIPO.ReinaN = new THREE.Mesh( new PROTOTIPO.ReinaGeometry(), material );
+ PROTOTIPO.ReinaN.position.set( 40, 70, 5 );
+ PROTOTIPO.escena.add( PROTOTIPO.ReinaN );
 }
 
 PROTOTIPO.Blanco = function( prototipo ){
@@ -158,9 +161,12 @@ PROTOTIPO.Blanco = function( prototipo ){
   PROTOTIPO.peonesB = new Array();
   for( var i = 0; i < 8; i++ ){
     PROTOTIPO.peonesB[i] = new THREE.Mesh( new PROTOTIPO.PeonGeometry(), material );
-    PROTOTIPO.peonesB[i].position.set( i*10, 0, 5 );
+    PROTOTIPO.peonesB[i].position.set( i*10, 10, 5 );
     PROTOTIPO.escena.add( PROTOTIPO.peonesB[i] );
   }
+ PROTOTIPO.ReinaB = new THREE.Mesh( new PROTOTIPO.ReinaGeometry(), material );
+ PROTOTIPO.ReinaB.position.set( 40, 0, 5 );
+ PROTOTIPO.escena.add( PROTOTIPO.ReinaB );
 }
 
 PROTOTIPO.setup = function() {
