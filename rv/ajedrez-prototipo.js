@@ -160,7 +160,7 @@ PROTOTIPO.Negro = function( prototipo ){
     }
     PROTOTIPO.casillasN[i] = new THREE.Mesh( new PROTOTIPO.CasillaGeometry(), material );
     PROTOTIPO.casillasN[i].receiveShadow = true;
-    PROTOTIPO.escena.add( TEXTURA.casillasN[i] );
+    PROTOTIPO.escena.add( PROTOTIPO.casillasN[i] );
   }
   var b = 0;
   for ( var i = 0; i < 8; i ++ ) {
@@ -201,7 +201,7 @@ PROTOTIPO.Blanco = function( prototipo ){
     }
     PROTOTIPO.casillasB[i] = new THREE.Mesh( new PROTOTIPO.CasillaGeometry(), material );
     PROTOTIPO.casillasB[i].receiveShadow = true;
-    PROTOTIPO.escena.add( TEXTURA.casillasB[i] );
+    PROTOTIPO.escena.add( PROTOTIPO.casillasB[i] );
   }
   var b = 0;
   for ( var i = 0; i < 8; i ++ ) {
