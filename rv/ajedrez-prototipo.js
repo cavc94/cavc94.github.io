@@ -172,7 +172,7 @@ PROTOTIPO.Negro = function( prototipo ){
 			}				
 		} else {
 			if ( j%2 == 0 ) {
-				PROTOTIPO.casillasB[b].position.set( i*10, j*10, 0 );
+				PROTOTIPO.casillasN[b].position.set( i*10, j*10, 0 );
 				b++;
 			}
 		}
