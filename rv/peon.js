@@ -72,6 +72,7 @@ PROTOTIPO.Reina = function(){
   this.merge( adornoMalla.geometry, adornoMalla.matrix );
   this.merge( baseMalla.geometry, baseMalla.matrix );
   this.merge( pieMalla.geometry, pieMalla.matrix );
+  this.translate( 0, 1, 0 );
  }
  
 PROTOTIPO.Reina.prototype = new THREE.Geometry();
