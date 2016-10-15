@@ -17,22 +17,9 @@ PROTOTIPO.CasillaGeometry.prototype = new THREE.Geometry();
 
 PROTOTIPO.ContornoGeometry = function(){
   THREE.Geometry.call( this );
-  
   var bloqueForma = new THREE.BoxGeometry(100, 10, 10);
-  //this.merge( bloqueMalla.geometry, bloqueMalla.matrix );
-  var bordes = new Array();
-  for (var i = 0; i < 4; i++ ){
-	bordes[i] = new THREE.Mesh( bloqueForma ); 
-  }
-  bordes[0].position.set( 35, -10, 0 );
-  bordes[1].position.set( 35, 80, 0 );
-  bordes[2].rotateZ( Math.PI/2 );
-  bordes[3].rotateZ( Math.PI/2 );
-  bordes[2].position.set( -10, 35, 0 );
-  bordes[3].position.set( 80, 35, 0 );	
-  for (var i = 0; i < 4; i++ ){
-	  this.merge( bordes[i].geometry, bordes[i].matrix )
-  }
+  var bloqueMalla = new THREE.Mesh( bloqueForma );
+  this.merge( bloqueMalla.geometry, bloqueMalla.matrix );
 }
 
 PROTOTIPO.ContornoGeometry.prototype = new THREE.Geometry();
@@ -122,7 +109,7 @@ PROTOTIPO.TorreGeometry = function(){
   THREE.Geometry.call( this );
   
   var troncoForma = new THREE.CylinderGeometry(0.3, 0.5, 1);
-  var alamborForma = new THREE.CylinderGeometry(0.5, 0.75, 0.2);
+  var alamborForma = new THREE.CylinderGeometry(0.5, 0.7, 0.2);
   var baseForma = new THREE.CylinderGeometry(0.4, 0.4, 0.1);
   var torusForma = new THREE.TorusGeometry(0.5, 0.05, 16, 100);
   var adornoForma = new THREE.TorusGeometry(0.3, 0.05, 16, 100);
@@ -260,9 +247,18 @@ PROTOTIPO.Blanco = function( prototipo ){
 
 PROTOTIPO.Gris= function( prototipo ){
   var material = new THREE.MeshLambertMaterial( {map: prototipo} );
-  PROTOTIPO.Contorno = new THREE.Mesh( new PROTOTIPO.ContornoGeometry(), material );
-  PROTOTIPO.Contorno.castShadow = true;
-  PROTOTIPO.escena.add( PROTOTIPO.Contorno );
+  PROTOTIPO.bordes = new Array();
+  for (var i = 0; i < 4; i++ ){
+	PROTOTIPO.bordes[i] = new THREE.Mesh( new PROTOTIPO.ContornoGeometry(), material ); 
+	PROTOTIPO.bordes[i].receiveShadow = true;
+	PROTOTIPO.escena.add( PROTOTIPO.bordes[i] );
+  }
+  PROTOTIPO.bordes[0].position.set( 35, -10, 0 );
+  PROTOTIPO.bordes[1].position.set( 35, 80, 0 );
+  PROTOTIPO.bordes[2].rotateZ( Math.PI/2 );
+  PROTOTIPO.bordes[3].rotateZ( Math.PI/2 );
+  PROTOTIPO.bordes[2].position.set( -10, 35, 0 );
+  PROTOTIPO.bordes[3].position.set( 80, 35, 0 );
 }
 
 PROTOTIPO.setup = function() {
