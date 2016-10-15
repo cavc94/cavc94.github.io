@@ -19,12 +19,10 @@ PROTOTIPO.ContornoGeometry = function(){
   THREE.Geometry.call( this );
   
   var bloqueForma = new THREE.BoxGeometry(100, 10, 10);
-  var bloqueMalla = new THREE.Mesh( bloqueForma );
   //this.merge( bloqueMalla.geometry, bloqueMalla.matrix );
   var bordes = new Array();
   for (var i = 0; i < 4; i++ ){
-	bordes[i] = new THREE.Mesh( bloque, material ); 
-	bordes[i].receiveShadow = true;
+	bordes[i] = new THREE.Mesh( bloqueForma ); 
   }
   bordes[0].position.set( 35, -10, 0 );
   bordes[1].position.set( 35, 80, 0 );
@@ -173,7 +171,7 @@ PROTOTIPO.TorreGeometry = function(){
 PROTOTIPO.TorreGeometry.prototype = new THREE.Geometry();
 
 PROTOTIPO.Negro = function( prototipo ){
-  var material = new THREE.MeshLambertcMaterial( {map: prototipo} );
+  var material = new THREE.MeshLambertMaterial( {map: prototipo} );
   PROTOTIPO.torresN = new Array();
   PROTOTIPO.peonesN = new Array();
   PROTOTIPO.casillasN = new Array();
