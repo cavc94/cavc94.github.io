@@ -1,3 +1,9 @@
+var luzP1 = new THREE.PointLight( 0xffffff );
+luzP1.position.x = -35;
+luzP1.position.y = 100;
+luzP1.position.z = 120;
+luzP1.castShadow = true;
+
 var PROTOTIPO = new Object();
 
 PROTOTIPO.CasillaGeometry = function(){
@@ -8,6 +14,30 @@ PROTOTIPO.CasillaGeometry = function(){
 }
 
 PROTOTIPO.CasillaGeometry.prototype = new THREE.Geometry();
+
+PROTOTIPO.ContornoGeometry = function(){
+  THREE.Geometry.call( this );
+  
+  var bloqueForma = new THREE.BoxGeometry(100, 10, 10);
+  var bloqueMalla = new THREE.Mesh( bloqueForma );
+  //this.merge( bloqueMalla.geometry, bloqueMalla.matrix );
+  var bordes = new Array();
+  for (var i = 0; i < 4; i++ ){
+	bordes[i] = new THREE.Mesh( bloque, material ); 
+	bordes[i].receiveShadow = true;
+  }
+  bordes[0].position.set( 35, -10, 0 );
+  bordes[1].position.set( 35, 80, 0 );
+  bordes[2].rotateZ( Math.PI/2 );
+  bordes[3].rotateZ( Math.PI/2 );
+  bordes[2].position.set( -10, 35, 0 );
+  bordes[3].position.set( 80, 35, 0 );	
+  for (var i = 0; i < 4; i++ ){
+	  this.merge( bordes[i].geometry, bordes[i].matrix )
+  }
+}
+
+PROTOTIPO.ContornoGeometry.prototype = new THREE.Geometry();
 
 PROTOTIPO.PeonGeometry = function(){
   THREE.Geometry.call( this );
@@ -143,7 +173,7 @@ PROTOTIPO.TorreGeometry = function(){
 PROTOTIPO.TorreGeometry.prototype = new THREE.Geometry();
 
 PROTOTIPO.Negro = function( prototipo ){
-  var material = new THREE.MeshBasicMaterial( {map: prototipo} );
+  var material = new THREE.MeshLambertcMaterial( {map: prototipo} );
   PROTOTIPO.torresN = new Array();
   PROTOTIPO.peonesN = new Array();
   PROTOTIPO.casillasN = new Array();
@@ -151,11 +181,13 @@ PROTOTIPO.Negro = function( prototipo ){
     if ( i < 2 ){
       PROTOTIPO.torresN[i] = new THREE.Mesh( new PROTOTIPO.TorreGeometry(), material );
       PROTOTIPO.torresN[i].position.set( (i%2)*70, 70, 5 );
+      PROTOTIPO.torresN[i].castShadow = true;
       PROTOTIPO.escena.add( PROTOTIPO.torresN[i] );
     }
     if ( i < 8 ){
       PROTOTIPO.peonesN[i] = new THREE.Mesh( new PROTOTIPO.PeonGeometry(), material );
       PROTOTIPO.peonesN[i].position.set( i*10, 60, 5 );
+      PROTOTIPO.peonesN[i].castShadow = true;
       PROTOTIPO.escena.add( PROTOTIPO.peonesN[i] );
     }
     PROTOTIPO.casillasN[i] = new THREE.Mesh( new PROTOTIPO.CasillaGeometry(), material );
@@ -179,12 +211,13 @@ PROTOTIPO.Negro = function( prototipo ){
 	}
   }
   PROTOTIPO.ReinaN = new THREE.Mesh( new PROTOTIPO.ReinaGeometry(), material );
+  PROTOTIPO.ReinaN.castShadow = true;
   PROTOTIPO.ReinaN.position.set( 40, 70, 5 );
   PROTOTIPO.escena.add( PROTOTIPO.ReinaN );
 }
 
 PROTOTIPO.Blanco = function( prototipo ){
-  var material = new THREE.MeshBasicMaterial( {map: prototipo} );
+  var material = new THREE.MeshLambertMaterial( {map: prototipo} );
   PROTOTIPO.torresB = new Array();
   PROTOTIPO.peonesB = new Array();
   PROTOTIPO.casillasB = new Array();
@@ -192,11 +225,13 @@ PROTOTIPO.Blanco = function( prototipo ){
     if ( i < 2 ){
       PROTOTIPO.torresB[i] = new THREE.Mesh( new PROTOTIPO.TorreGeometry(), material );
       PROTOTIPO.torresB[i].position.set( (i%2)*70, 0, 5 );
+      PROTOTIPO.torresB[i].castShadow = true;
       PROTOTIPO.escena.add( PROTOTIPO.torresB[i] );
     }
     if ( i < 8 ){
       PROTOTIPO.peonesB[i] = new THREE.Mesh( new PROTOTIPO.PeonGeometry(), material );
       PROTOTIPO.peonesB[i].position.set( i*10, 10, 5 );
+      PROTOTIPO.peonesB[i].castShadow = true;
       PROTOTIPO.escena.add( PROTOTIPO.peonesB[i] );
     }
     PROTOTIPO.casillasB[i] = new THREE.Mesh( new PROTOTIPO.CasillaGeometry(), material );
@@ -220,8 +255,16 @@ PROTOTIPO.Blanco = function( prototipo ){
 	}	
   }
   PROTOTIPO.ReinaB = new THREE.Mesh( new PROTOTIPO.ReinaGeometry(), material );
+  PROTOTIPO.ReinaB.castShadow = true;
   PROTOTIPO.ReinaB.position.set( 40, 0, 5 );
   PROTOTIPO.escena.add( PROTOTIPO.ReinaB );
+}
+
+PROTOTIPO.Gris= function( prototipo ){
+  var material = new THREE.MeshLambertMaterial( {map: prototipo} );
+  PROTOTIPO.Contorno = new THREE.Mesh( new PROTOTIPO.ContornoGeometry(), material );
+  PROTOTIPO.Contorno.castShadow = true;
+  PROTOTIPO.escena.add( PROTOTIPO.Contorno );
 }
 
 PROTOTIPO.setup = function() {
@@ -231,19 +274,19 @@ PROTOTIPO.setup = function() {
   var cargador2 = new THREE.TextureLoader();
   cargador2.load( "marmol_negro.jpg", PROTOTIPO.Negro );
   
-  //PROTOTIPO.camara = new THREE.PerspectiveCamera();
-  PROTOTIPO.escena = new THREE.Scene();
+  var cargador3 = new THREE.TextureLoader();
+  cargador3.load( "marmol_gris.jpg", PROTOTIPO.Gris);
   
+  PROTOTIPO.escena = new THREE.Scene();
+  PROTOTIPO.escena.add( luzP1 );
   PROTOTIPO.camara = new THREE.PerspectiveCamera( 75, window.innerWidth/window.innerHeight, 0.1, 1000 );
   PROTOTIPO.camara.position.z = 100;
   PROTOTIPO.camara.position.y = -100;
   PROTOTIPO.camara.lookAt( new THREE.Vector3(0,100,0) );
-  //PROTOTIPO.camara.lookAt( PROTOTIPO.escena.position );
   
   var lienzo = document.getElementById( "ajedrez-prototipo" );
   PROTOTIPO.renderizador = new THREE.WebGLRenderer( {canvas: lienzo, antialias: true} );
   PROTOTIPO.renderizador.setSize( 600, 600 );
-  
  }
 
 PROTOTIPO.loop = function() {
