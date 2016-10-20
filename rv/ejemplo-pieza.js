@@ -21,27 +21,13 @@ function setup() {
   camara.position.z = 50;
   renderizador.setSize( 600, 600 );
  }
-var p = 0.1;
+//setTimeout
 function loop(){
   requestAnimationFrame( loop );
   pieza.rotateY( 0.1 );
+  pieza.piernaIzq.rotateZ( 0.1 );
+  pieza.piernaIzq.rotateZ( -0.1 );
   renderizador.render( escena, camara );
 }
-setTimeout( function piernita(){
-  requestAnimationFrame( loop );
-  pieza.piernaIzq.rotateZ( 0.1 );
-}, 1000);
-setTimeout( function piernota(){
-  requestAnimationFrame( loop );
-  pieza.piernaDer.rotateZ( 0.1 );
-}, 1000);
-/*function loop(){
-  requestAnimationFrame( loop );
-  pieza.rotateY( 0.1 );
-  pieza.piernaIzq.rotateZ( 0.1 );
-  pieza.piernaIzq.rotateZ( 0.1 );
-  renderizador.render( escena, camara );
-}*/
-
 setup();
 loop();
