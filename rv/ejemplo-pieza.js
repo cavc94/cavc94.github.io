@@ -21,7 +21,9 @@ function setup() {
   renderizador.setSize( 600, 600 );
  }
 function loop(){
+  requestAnimationFrame( loop );
   pieza.rotateY(0.1);
+  renderizador.render( escena, camara );
 }
 setup();
 loop();
