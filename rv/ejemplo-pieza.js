@@ -11,8 +11,8 @@ function Pieza(){
   cuerpo.position.z = 2.5;
   }
 Pieza.prototype = new THREE.Object3D;
+var pieza = new Pieza();
 function setup() {
-  var pieza = new Pieza();
   var escena = new THREE.Scene();
   escena.add( pieza );
   var camara = new THREE.PerspectiveCamera( 75, window.innerWidth/window.innerHeight, 0.1, 1000 );
@@ -20,4 +20,6 @@ function setup() {
   var renderizador = new THREE.WebGLRenderer( {canvas: lienzo, antialias: true} );
   renderizador.setSize( 600, 600 );
  }
-  
+function loop(){
+  pieza.rotateY(0.1);
+}
