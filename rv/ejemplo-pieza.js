@@ -18,7 +18,7 @@ var renderizador = new THREE.WebGLRenderer( {canvas: lienzo, antialias: true} );
 var escena = new THREE.Scene();
 function setup() {
   escena.add( pieza );
-  camara.position.z = 10;
+  camara.position.z = 50;
   renderizador.setSize( 600, 600 );
  }
 function loop(){
