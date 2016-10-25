@@ -66,7 +66,7 @@ Pelota.prototype.act = function( environment ) {
 
 function Pared( size, x = 0, y = 0 ){
   THREE.Object3D.call( this, x, y );
-  this.add( new THREE.Mesh( new THREE.BoxGeometry( size, size, size ), new THREE MeshNormalMaterial() ) );
+  this.add( new THREE.Mesh( new THREE.BoxGeometry( size, size, size ), new THREE MeshNormalMaterial() ) ;
   this.size = size;
   this.position.x = x;
   this.position.y = y;
