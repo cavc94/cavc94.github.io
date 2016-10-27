@@ -107,22 +107,22 @@ Robot.prototype.act = function( environment ){
 Robot.prototype.operations = {};
 
 Robot.prototype.operations.goStraight = function( robot, distance ){
-  if ( distance === undefined ){
+  if ( distance === undefined )
     distance = 0.05;
   robot.position.x += distance*Math.cos( robot.rotation.z);
-  robot.position.y += distance*Math.sin( robot.rotation.z);}
+  robot.position.y += distance*Math.sin( robot.rotation.z);
 };
 
 Robot.prototype.operations.rotateCW = function( robot, angle ){
-  if ( angle === undefined ){
+  if ( angle === undefined )
     angle = -Math.PI/2;
-  robot.rotation.z += angle;}
+  robot.rotation.z += angle;
 };
 
 Robot.prototype.operations.rotateCCW = function( robot, angle ){
-  if ( angle === undefined ){
+  if ( angle === undefined )
     angle = Math.PI/2;
-  robot.rotation.z += angle;}
+  robot.rotation.z += angle;
 };
 
 function setup(){
