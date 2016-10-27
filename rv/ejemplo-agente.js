@@ -97,7 +97,7 @@ function loop(){
   entorno.sense();
   entorno.plan();
   entorno.act();
-  entorno.render( entorno, camara );
+  renderizador.render( entorno, camara );
   }
 
 setup();
