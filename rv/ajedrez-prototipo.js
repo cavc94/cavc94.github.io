@@ -280,7 +280,7 @@ PROTOTIPO.setup = function() {
   
   var lienzo = document.getElementById( "ajedrez-prototipo" );
   PROTOTIPO.renderizador = new THREE.WebGLRenderer( {canvas: lienzo, antialias: true} );
-  PROTOTIPO.renderizador.setSize( 600, 600 );
+  PROTOTIPO.renderizador.setSize( 800, 600 );
  }
 
 PROTOTIPO.loop = function() {
