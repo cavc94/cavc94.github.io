@@ -274,9 +274,8 @@ PROTOTIPO.setup = function() {
   PROTOTIPO.escena = new THREE.Scene();
   PROTOTIPO.escena.add( luzP1 );
   PROTOTIPO.camara = new THREE.PerspectiveCamera( 75, window.innerWidth/window.innerHeight, 0.1, 1000 );
-  PROTOTIPO.camara.position.z = 70;
+  PROTOTIPO.camara.position.z = 80;
   PROTOTIPO.camara.position.y = -70;
-  PROTOTIPO.camara.position.x = 10;
   PROTOTIPO.camara.lookAt( new THREE.Vector3(0,70,0) );
   
   var lienzo = document.getElementById( "ajedrez-prototipo" );
