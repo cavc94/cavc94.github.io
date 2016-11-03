@@ -276,11 +276,12 @@ PROTOTIPO.setup = function() {
   PROTOTIPO.camara = new THREE.PerspectiveCamera( 75, window.innerWidth/window.innerHeight, 0.1, 1000 );
   PROTOTIPO.camara.position.z = 70;
   PROTOTIPO.camara.position.y = -70;
+  PROTOTIPO.camara.position.x = 10;
   PROTOTIPO.camara.lookAt( new THREE.Vector3(0,70,0) );
   
   var lienzo = document.getElementById( "ajedrez-prototipo" );
   PROTOTIPO.renderizador = new THREE.WebGLRenderer( {canvas: lienzo, antialias: true} );
-  PROTOTIPO.renderizador.setSize( 800, 600 );
+  PROTOTIPO.renderizador.setSize( 600, 600 );
  }
 
 PROTOTIPO.loop = function() {
