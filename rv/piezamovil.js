@@ -70,7 +70,7 @@ Environment.prototype.act = function(){
    }
 }
 
-function Pelota( x = 0, y = 0 ){
+function Pelota( r, x = 0, y = 0 ){
   Agent.call( this, x, y )
   this.add( new THREE.Mesh( new PROTOTIPO.Peon(), new THREE.MeshNormalMaterial() ) );
   this.step = 0.1;
