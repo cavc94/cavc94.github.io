@@ -94,7 +94,7 @@ Pieza.prototype.sense = function( environment ){
 Pieza.prototype.act = function( environment ) {
   if( this.colision === 1 )
     this.step = -this.step;
-  this.position.x += this.step;
+  this.position.x = this.step;
 };
 
 function Pared( size, x = 0, y = 0 ){
