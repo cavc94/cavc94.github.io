@@ -95,9 +95,9 @@ document.addEventListener("keydown", movement);
 
 function movement(environment) { 
   var keyboard = environment.which;  
-  if( keyboard === 39 ) 
+  if( keyboard == 39 ) 
     Pieza.step += Pieza.step;
-  else if ( keyboard === 37 )
+  else if ( keyboard == 37 )
     Pieza.step -= Pieza.step;
 }
 
@@ -145,3 +145,4 @@ function loop(){
 
 setup();
 loop();
+movement();
