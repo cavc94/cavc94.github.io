@@ -91,16 +91,19 @@ Pieza.prototype.sense = function( environment ){
     this.colision = 0;
 };
 
-Pieza.addEventListener("keydown", act);
+document.addEventListener("keydown", movement);
+
+function movement(environment) { 
+  var keyboard = environment.which;  
+  if( keyboard === 39 ) 
+    Pieza.position.x += Pieza.step;
+  else if ( keyboard === 37 )
+    Pieza.position.x -= Pieza.step;
+}
 
 Pieza.prototype.act = function( environment ) {
-  var keyboard = environment.which;
   if( this.colision === 1 )
     this.step = -this.step;
-  if( keyboard === 39 ) 
-    this.position.x += this.step;
-  else if ( keyboard === 37 )
-    this.position.x -= this.step;
 };
 
 function Pared( size, x = 0, y = 0 ){
