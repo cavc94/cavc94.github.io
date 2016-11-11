@@ -94,7 +94,7 @@ Pieza.prototype.sense = function( environment ){
 document.addEventListener("keydown", Pieza.prototype.act);
 
 Pieza.prototype.act = function( environment ) {
-  var keyboard = evironment.which;
+  var keyboard = environment.which;
   if( this.colision === 1 )
     this.step = -this.step;
   if( keyboard == 39 ) 
