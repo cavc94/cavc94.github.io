@@ -97,9 +97,9 @@ Pieza.prototype.act = function( environment ) {
   var keyboard = environment.which;
   if( this.colision === 1 )
     this.step = -this.step;
-  if( keyboard == 39 ) 
+  if( keyboard === 39 ) 
     this.position.x += this.step;
-  else if ( keyboard == 37 )
+  else if ( keyboard === 37 )
     this.position.x -= this.step;
 };
 
