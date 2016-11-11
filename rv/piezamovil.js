@@ -95,9 +95,9 @@ Pieza.prototype.act = function( environment ) {
   var keyboard = new THREEx.KeyboardState();
   if( this.colision === 1 )
     this.step = -this.step;
-  if( keyboard.pressed("right") ) 
+  if( keyboard.pressed("C") ) 
     this.position.x += this.step;
-  else if ( keyboard.pressed("left") )
+  else if ( keyboard.pressed("Z") )
     this.position.x -= this.step;
 };
 
