@@ -70,7 +70,7 @@ Environment.prototype.act = function(){
    }
 }
 
-function Pelota( r, x = 0, y = 0 ){
+function Pieza( r, x = 0, y = 0 ){
   Agent.call( this, x, y )
   this.add( new THREE.Mesh( new PROTOTIPO.Peon(), new THREE.MeshNormalMaterial() ) );
   this.step = 0.1;
@@ -79,8 +79,8 @@ function Pelota( r, x = 0, y = 0 ){
   this.sensor = new THREE.Raycaster( this.position, new THREE.Vector3( 1, 0, 0 ) );
   }
   
-Pelota.prototype = new Agent();
-Pelota.prototype.sense = function( environment ){
+Pieza.prototype = new Agent();
+Pieza.prototype.sense = function( environment ){
   this.sensor.set( this.position, new THREE.Vector3( 1, 0, 0 ) );
   var obstaculo1 = this.sensor.intersectObjects( environment.children, true);
   this.sensor.set( this.position, new THREE.Vector3( -1, 0, 0 ) );
@@ -91,10 +91,14 @@ Pelota.prototype.sense = function( environment ){
     this.colision = 0;
 };
 
-Pelota.prototype.act = function( environment ) {
+Pieza.prototype.act = function( environment ) {
+  var keyboard = new THREEx.KeyboardState();
   if( this.colision === 1 )
     this.step = -this.step;
-  this.position.x += this.step;
+  if( keyboard.pressed("right") ) 
+    this.position.x += this.step;
+  else if ( keyboard.pressed("left") )
+    this.position.x -= this.step;
 };
 
 function Pared( size, x = 0, y = 0 ){
@@ -117,7 +121,7 @@ function Pared( size, x = 0, y = 0 ){
   entorno.add( new Pared( 1, -7, 1 ) );
   entorno.add( new Pared( 1, 7, -1 ) );
   entorno.add( new Pared( 1, -7, -1 ) );
-  entorno.add( new Pelota( 0.5 ) );
+  entorno.add( new Pieza( 0.5 ) );
   entorno.add( camara );
   
   renderer = new THREE.WebGLRenderer();
