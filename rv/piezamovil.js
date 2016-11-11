@@ -129,7 +129,6 @@ function loop(){
   requestAnimationFrame( loop );
   entorno.sense();
   entorno.plan();
-  entorno.act();
   renderer.render( entorno, camara );
   document.addEventListener("keydown", movement);
 
@@ -140,6 +139,7 @@ function movement(event) {
   else if ( keyboard == 37 )
     Pieza.step -= Pieza.step;
 }
+  entorno.act();
 
   }
 
