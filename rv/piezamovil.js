@@ -91,7 +91,7 @@ Pieza.prototype.sense = function( environment ){
     this.colision = 0;
 };
 
-document.addEventListener("keydown", act);
+document.addEventListener("keydown", Pieza.prototype.act);
 
 Pieza.prototype.act = function( environment ) {
   var keyboard = evironment.which;
