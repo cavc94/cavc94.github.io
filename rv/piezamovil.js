@@ -84,10 +84,11 @@ Pieza.prototype = new Agent();
 
 function movement(event) { 
   var keyboard = event.which;  
+  var avance = 0.1;
   if( keyboard == 39 ) 
-        environment.children[0].position.x+=Pieza.step;
+        environment.children[0].position.x+=avance;
   else if ( keyboard == 37 )
-       environment.children[0].position.x-=Pieza.step;
+       environment.children[0].position.x-=avance;
 }
 
 Pieza.prototype.sense = function( environment ){
