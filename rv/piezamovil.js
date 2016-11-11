@@ -132,7 +132,7 @@ function Pared( size, x = 0, y = 0 ){
   
   renderer = new THREE.WebGLRenderer();
   renderer.setSize( window.innerHeight*.95, window.innerHeight*.95 );
-  document.body.appendChild( renderer.domElement ).innerHTML = Pieza.step;
+  document.body.appendChild( renderer.domElement ).innerHTML = "Hola Mundo";
 }
 
 function loop(){
