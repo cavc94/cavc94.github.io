@@ -145,4 +145,3 @@ function loop(){
 
 setup();
 loop();
-movement();
