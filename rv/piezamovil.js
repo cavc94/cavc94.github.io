@@ -85,9 +85,9 @@ Pieza.prototype = new Agent();
 function movement(event) { 
   var keyboard = event.which;  
   if( keyboard == 39 ) 
-        environment.children[100].position.x+=Pieza.step;
+        environment.children[0].position.x+=Pieza.step;
   else if ( keyboard == 37 )
-       environment.children[100].position.x-=Pieza.step;
+       environment.children[0].position.x-=Pieza.step;
 }
 
 Pieza.prototype.sense = function( environment ){
