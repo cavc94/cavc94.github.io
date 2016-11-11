@@ -77,18 +77,17 @@ function Pieza( r, x = 0, y = 0 ){
   this.colision = 0;
   this.radius = r;
   this.sensor = new THREE.Raycaster( this.position, new THREE.Vector3( 1, 0, 0 ) );
+  document.addEventListener("onkeydown", movement, false);
   }
   
 Pieza.prototype = new Agent();
 
-document.addEventListener("onkeydown", movement);
-
 function movement(event) { 
   var keyboard = event.which;  
   if( keyboard == 39 ) 
-    Pieza.step += Pieza.step;
+        environment.children[100].position.x+=Pieza.step;
   else if ( keyboard == 37 )
-    Pieza.step -= Pieza.step;
+       environment.children[100].position.x-=Pieza.step;
 }
 
 Pieza.prototype.sense = function( environment ){
@@ -105,8 +104,7 @@ Pieza.prototype.sense = function( environment ){
 Pieza.prototype.act = function( environment ) {
   if( this.colision === 1 )
     this.step = -this.step;
-  this.position.x = this.step;
-};
+ };
 
 function Pared( size, x = 0, y = 0 ){
   THREE.Object3D.call( this, x, y );
