@@ -106,8 +106,8 @@ function Pared( size, x = 0, y = 0 ){
  }
  
  Pared.prototype = new THREE.Object3D();
- 
- function setup(){
+
+function setup(){
   entorno = new Environment();
   camara = new THREE.PerspectiveCamera();
   camara.position.z = 30;
@@ -131,6 +131,16 @@ function loop(){
   entorno.plan();
   entorno.act();
   renderer.render( entorno, camara );
+  document.addEventListener("keydown", movement);
+
+function movement(event) { 
+  var keyboard = event.which;  
+  if( keyboard == 39 ) 
+    Pieza.step += Pieza.step;
+  else if ( keyboard == 37 )
+    Pieza.step -= Pieza.step;
+}
+
   }
 
 setup();
