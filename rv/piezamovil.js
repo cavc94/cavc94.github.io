@@ -128,12 +128,17 @@ function Sensor( position, direction ){
   THREE.Raycaster.call( this, position, direction );
   this.colision = false;
 }
+Sensor.prototype = new THREE.Raycaster();
 
 function Pieza( x, y ){
   Agent.call( this, x, y );
-  this.sensor = new Sensor();
   var cargador = new THREE.TextureLoader();
   textura = cargador.load( 'marmol_blanco.jpg' );
+  this.castShadow = true;
+  this.position.x = x;
+  this.position.y = y;
+  this.position.z = 5;
+  this.sensor = new Sensor();
   this.actuator( new THREE.Mesh( new PROTOTIPO.Peon(), new THREE.MeshLambertMaterial( {map: textura} ) ) );
   //this.actuator.commands = [];  
   this.actuator.scale.set( 7, 7, 7 );
