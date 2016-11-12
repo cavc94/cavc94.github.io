@@ -134,7 +134,7 @@ function Pieza( x, y ){
   this.sensor = new Sensor();
   var cargador = new THREE.TextureLoader();
   textura = cargador.load( 'marmol_blanco.jpg' );
-  this.actuator( new THREE.Mesh( new PROTOTIPO.Peon(), new THREE.MeshLambertMaterial( {map: textura} ) );
+  this.actuator( new THREE.Mesh( new PROTOTIPO.Peon(), new THREE.MeshLambertMaterial( {map: textura} ) ) );
   //this.actuator.commands = [];  
   this.actuator.scale.set( 7, 7, 7 );
   this.actuator.rotateX( Math.PI/2 );
