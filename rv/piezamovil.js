@@ -119,7 +119,7 @@ Environment.prototype.setMapPiece=function(map){
   for( var i = 0; i < map.length; i++){
     for(var j = 0; j < map.length; j++){
       if( map[i][j] === "p")
-        this.add( new Pieza( 5+10*i, 5+10*i ) );
+        this.add( new Pieza( 5+10*i, 5+10*j ) );
     }
   }
 }
@@ -211,7 +211,7 @@ function setup(){
   environment.setMap( pieza );
   camara = new THREE.PerspectiveCamera( 45, window.innerWidth/window.innerHeight, 0.1, 1000 );
   camara.position.z = 150;
-  camara.position.y = -90;
+  camara.position.y = -50;
   camara.lookAt( new THREE.Vector3(0,0,0) );
   renderer = new THREE.WebGLRenderer();
   renderer.setSize( window.innerHeight*.95, window.innerHeight*.95 );
