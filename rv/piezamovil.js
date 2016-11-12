@@ -231,7 +231,7 @@ function loop(){
   environment.sense();
   environment.plan();
   environment.act();
-  renderer.render( environment, camera );
+  renderer.render( environment, camara );
   }
   
 var environment, camara, renderer, luzpuntual;
