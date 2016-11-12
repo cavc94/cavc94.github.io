@@ -119,7 +119,7 @@ Environment.prototype.setMapPiece=function(map){
   for( var i = 0; i < map.length; i++){
     for(var j = 0; j < map.length; j++){
       if( map[i][j] === "p")
-        this.add(new Pieza( 5+10*i, 5+10*i );
+        this.add( new Pieza( 5+10*i, 5+10*i ) );
     }
   }
 }
