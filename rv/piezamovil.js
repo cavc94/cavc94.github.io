@@ -124,12 +124,6 @@ Environment.prototype.setMapPiece = function( map ){
   }
 }
 
-function Sensor( position, direction ){
-  THREE.Raycaster.call( this, position, direction );
-  this.colision = false;
-}
-Sensor.prototype = new THREE.Raycaster();
-
 function Pieza( x, y ){
   Agent.call( this, x, y );
   var cargador = new THREE.TextureLoader();
@@ -138,9 +132,7 @@ function Pieza( x, y ){
   this.position.x = x;
   this.position.y = y;
   this.position.z = 5;
-  this.sensor = new Sensor();
   this.actuator = new THREE.Mesh( new PROTOTIPO.Peon(), new THREE.MeshLambertMaterial( {map: textura} ) );
-  //this.actuator.commands = [];  
   this.actuator.scale.set( 7, 7, 7 );
   this.actuator.rotateX( Math.PI/2 );
   this.actuator.castShadow = true;
@@ -168,26 +160,6 @@ function movement(event) {
     break;
     }
 }
-
-Pieza.prototype.sense = function( environment ){
-  this.sensor.set( this.position, new THREE.Vector3( 1, 0, 0 ) );
-  var obstaculo1 = this.sensor.intersectObjects( environment.children, true);
-  this.sensor.set( this.position, new THREE.Vector3( -1, 0, 0 ) );
-  var obstaculo2 = this.sensor.intersectObjects( environment.children, true);
-  this.sensor.set( this.position, new THREE.Vector3( 0, 1, 0 ) );
-  var obstaculo3 = this.sensor.intersectObjects( environment.children, true);
-  this.sensor.set( this.position, new THREE.Vector3( 0, -1, 0 ) );
-  var obstaculo4 = this.sensor.intersectObjects( environment.children, true);
-  if ( (obstaculo1.length>0 && (obstaculo1[0].distance<=2.1)) || (obstaculo2.length>0 && (obstaculo2[0].distance<=2.1)) || (obstaculo2.length>0 && (obstaculo3[0].distance<=2.1)) || (obstaculo2.length>0 && (obstaculo4[0].distance<=2.1)) )
-    this.colision = true;
-  else
-    this.colision = false;
-};
-
-Pieza.prototype.act = function( environment ) {
-  if( this.colision === true )
-    environment.children[100].position.y = environment.children[100].position.y;
-};
 
 function setup(){
   var mapa = new Array();
