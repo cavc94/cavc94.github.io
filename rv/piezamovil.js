@@ -184,13 +184,13 @@ Pieza.prototype.act = function( environment ) {
 function setup(){
   var mapa = new Array();
   mapa[0] = "CCCCCCCCCC";
-  mapa[1] = "CNBNBNBNBC";
+  mapa[1] = "CBNBNBNBNC";
   mapa[2] = "CNBNBNBNBC";
-  mapa[3] = "CNBNBNBNBC";
+  mapa[3] = "CBNBNBNBNC";
   mapa[4] = "CNBNBNBNBC";
-  mapa[5] = "CNBNBNBNBC";
+  mapa[5] = "CBNBNBNBNC";
   mapa[6] = "CNBNBNBNBC";
-  mapa[7] = "CNBNBNBNBC";
+  mapa[7] = "CBNBNBNBNC";
   mapa[8] = "CNBNBNBNBC";
   mapa[9] = "CCCCCCCCCC";
   var pieza = new Array();
@@ -210,7 +210,7 @@ function setup(){
   environment.setMap( mapa );
   environment.setMap( pieza );
   camara = new THREE.PerspectiveCamera( 45, window.innerWidth/window.innerHeight, 0.1, 1000 );
-  camara.position.z = 120;
+  camara.position.z = 150;
   camara.position.y = -90;
   camara.lookAt( new THREE.Vector3(0,0,0) );
   renderer = new THREE.WebGLRenderer();
