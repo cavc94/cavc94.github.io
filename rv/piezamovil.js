@@ -84,11 +84,11 @@ Pieza.prototype = new Agent();
 
 function movement(event) { 
   var keyboard = event.which;  
-  var avance = 0.1;
+  //var avance = 0.1;
   if( keyboard == 39 ) 
-        environment.children[0].position.x+=avance;
-  else if ( keyboard == 37 )
-       environment.children[0].position.x-=avance;
+        Pieza.step+=Pieza.step;
+  else if ( keyboard == 37 )       
+        Pieza.step-=Pieza.step;
 }
 
 Pieza.prototype.sense = function( environment ){
@@ -105,6 +105,7 @@ Pieza.prototype.sense = function( environment ){
 Pieza.prototype.act = function( environment ) {
   if( this.colision === 1 )
     this.step = -this.step;
+  this.position.x = this.step;
  };
 
 function Pared( size, x = 0, y = 0 ){
