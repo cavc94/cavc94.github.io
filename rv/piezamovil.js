@@ -1,3 +1,4 @@
+/*PEÓN*/
 var PROTOTIPO = new Object();
 
 PROTOTIPO.Peon = function(){
@@ -30,7 +31,7 @@ PROTOTIPO.Peon = function(){
  }
  
 PROTOTIPO.Peon.prototype = new THREE.Geometry();
-///////////////
+/*CONSTRUCCIÓN DEL AGENTE*/
 function Agent( x=0, y=0 ){
   THREE.Object3D.call( this );
   this.position.x = x;
@@ -69,14 +70,76 @@ Environment.prototype.act = function(){
       this.children[i].act( this );
    }
 }
+/*TABLERO*/
+function CasillaB( size, x, y ){
+  var cargador = new THREE.TextureLoader();
+  textura = cargador.load( 'marmol_blanco.jpg' );
+  THREE.Mesh.call( this, new THREE.BoxGeometry( size, size, size/2 ), new THREE.MeshLambertMaterial( {map: textura} ) );
+  this.size = size;
+  this.position.x = x;
+  this.position.y = y;
+  this.receiveShadow=true;
+}
+CasillaB.prototype = new THREE.Mesh();
+function CasillaN( size, x, y ){
+  var cargador = new THREE.TextureLoader();
+  textura = cargador.load( 'marmol_negro.jpg' );
+  THREE.Mesh.call( this, new THREE.BoxGeometry( size, size, size/2 ), new THREE.MeshLambertMaterial( {map: textura} ) );
+  this.size = size;
+  this.position.x = x;
+  this.position.y = y;
+  this.receiveShadow=true;
+}
+CasillaN.prototype = new THREE.Mesh();
+function Contorno( size, x, y ){
+  var cargador = new THREE.TextureLoader();
+  textura = cargador.load( 'marmol_gris.jpg' );
+  THREE.Mesh.call( this, new THREE.BoxGeometry( size, size, size ), new THREE.MeshLambertMaterial( {map: textura} ) );
+  this.size = size;
+  this.position.x = x;
+  this.position.y = y;
+  this.receiveShadow=true;
+}
+Contorno.prototype = new THREE.Mesh();
 
-function Pieza( r, x = 0, y = 0 ){
-  Agent.call( this, x, y )
-  this.add( new THREE.Mesh( new PROTOTIPO.Peon(), new THREE.MeshNormalMaterial() ) );
-  this.step = 0.1;
-  this.colision = 0;
-  this.radius = r;
-  this.sensor = new THREE.Raycaster( this.position, new THREE.Vector3( 1, 0, 0 ) );
+Environment.prototype.setMap = function( map ){
+  for ( var i = 0; i < map.length; i++ ){
+    for ( var j = 0; j < map.length; j++ ){
+      if ( map[i][j] === "B" )
+        this.add( new CasillaB( 10, 5+10*i, 5+10*j ) );
+      else if ( map[i][j] === "N" )
+        this.add( new CasillaN( 10, 5+10*i, 5+10*j ) );
+      else if ( map[i][j] === "C" )
+        this.add( new Contorno( 10, 5+10*i, 5+10*j ) );
+      }
+   }
+ }
+
+Environment.prototype.setMapPiece=function(map){
+  for( var i = 0; i < map.length; i++){
+    for(var j = 0; j < map.length; j++){
+      if( map[i][j] === "p")
+        this.add(new Pieza( 5+10*i, 5+10*i );
+    }
+  }
+}
+
+function Sensor( position, direction ){
+  THREE.Raycaster.call( this, position, direction );
+  this.colision = false;
+}
+
+function Pieza( x, y ){
+  Agent.call( this, x, y );
+  this.sensor = new Sensor();
+  var cargador = new THREE.TextureLoader();
+  textura = cargador.load( 'marmol_blanco.jpg' );
+  this.actuator( new THREE.Mesh( new PROTOTIPO.Peon(), new THREE.MeshLambertMaterial( {map: textura} ) );
+  //this.actuator.commands = [];  
+  this.actuator.scale.set( 7, 7, 7 );
+  this.actuator.rotateX( Math.PI/2 );
+  this.actuator.castshadow=true;
+  this.add( this.actuator );
   document.addEventListener("keydown", movement, false);
   }
   
@@ -85,13 +148,23 @@ Pieza.prototype = new Agent();
 function movement(event) { 
   var keyboard = event.which;  
   var avance = 0.1;
-  if( keyboard == 39 ) 
+  switch ( keyboard ){
+    case 37:
+      environment.children[100].position.x+=-avance;
+    break;
+    case 38:
+        environment.children[100].position.y+=avance;
+    break;
+    case 39:
         environment.children[100].position.x+=avance;
-  else if ( keyboard == 37 )       
-        environment.children[100].position.x-=avance;//Pieza.step-=Pieza.step;
+    break;
+    case 40:
+        environment.children[100].position.y-=avance;
+    break;
+    }
 }
 
-Pieza.prototype.sense = function( environment ){
+/*Pieza.prototype.sense = function( environment ){
   this.sensor.set( this.position, new THREE.Vector3( 1, 0, 0 ) );
   var obstaculo1 = this.sensor.intersectObjects( environment.children, true);
   this.sensor.set( this.position, new THREE.Vector3( -1, 0, 0 ) );
@@ -106,43 +179,62 @@ Pieza.prototype.act = function( environment ) {
   if( this.colision === 1 )
     this.step = -this.step;
   this.position.x = this.step;
- };
-
-function Pared( size, x = 0, y = 0 ){
-  THREE.Object3D.call( this, x, y );
-  this.add( new THREE.Mesh( new THREE.BoxGeometry( size, size, size ), new THREE.MeshNormalMaterial() ) ) ;
-  this.size = size;
-  this.position.x = x;
-  this.position.y = y;
- }
- 
-Pared.prototype = new THREE.Object3D();
+ };*/
 
 function setup(){
-  entorno = new Environment();
-  camara = new THREE.PerspectiveCamera();
-  camara.position.z = 30;
-  entorno.add( new Pared( 1, 7, 0 ) );
-  entorno.add( new Pared( 1, -7, 0 ) );
-  entorno.add( new Pared( 1, 7, 1 ) );
-  entorno.add( new Pared( 1, -7, 1 ) );
-  entorno.add( new Pared( 1, 7, -1 ) );
-  entorno.add( new Pared( 1, -7, -1 ) );
-  entorno.add( new Pieza( 0.5 ) );
-  entorno.add( camara );
-
+  var mapa = new Array();
+  mapa[0] = "CCCCCCCCCC";
+  mapa[1] = "CNBNBNBNBC";
+  mapa[2] = "CNBNBNBNBC";
+  mapa[3] = "CNBNBNBNBC";
+  mapa[4] = "CNBNBNBNBC";
+  mapa[5] = "CNBNBNBNBC";
+  mapa[6] = "CNBNBNBNBC";
+  mapa[7] = "CNBNBNBNBC";
+  mapa[8] = "CNBNBNBNBC";
+  mapa[9] = "CCCCCCCCCC";
+  var pieza = new Array();
+  pieza[0] = "          ";
+  pieza[1] = "          ";
+  pieza[2] = "          ";
+  pieza[3] = "          ";
+  pieza[4] = "          ";
+  pieza[5] = "          ";
+  pieza[6] = "          ";
+  pieza[7] = "          ";
+  pieza[8] = " p        ";
+  pieza[9] = "          ";
+  
+  
+  environment = new Environment();
+  environment.setMap( mapa );
+  environment.setMap( pieza );
+  camara = new THREE.PerspectiveCamera( 45, window.innerWidth/window.innerHeight, 0.1, 1000 );
+  camara.position.z = 120;
+  camara.position.y = -90;
+  camara.lookAt( new THREE.Vector3(0,0,0) );
   renderer = new THREE.WebGLRenderer();
   renderer.setSize( window.innerHeight*.95, window.innerHeight*.95 );
+  renderer.shadowMap.enabled=true;
   document.body.appendChild( renderer.domElement );
+  luzPuntual=new THREE.PointLight(0xFFFFFF);
+  luzPuntual.position.x=50;
+  luzPuntual.position.y=-50;
+  luzPuntual.position.z=50;
+  luzPuntual.castShadow=true;
+  environment.add( camara );
+  environment.add( luzPuntual ); 
 }
 
 function loop(){
   requestAnimationFrame( loop );
-  entorno.sense();
-  entorno.plan();
-  entorno.act();
-  renderer.render( entorno, camara );
-}
+  environment.sense();
+  environment.plan();
+  environment.act();
+  renderer.render( environment, camera );
+  }
+  
+var environment, camara, renderer, luzpuntual;
 
 setup();
 loop();
