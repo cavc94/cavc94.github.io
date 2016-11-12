@@ -169,7 +169,7 @@ function movement(event) {
     }
 }
 
-Pelota.prototype.sense = function( environment ){
+Pieza.prototype.sense = function( environment ){
   this.sensor.set( this.position, new THREE.Vector3( 1, 0, 0 ) );
   var obstaculo1 = this.sensor.intersectObjects( environment.children, true);
   this.sensor.set( this.position, new THREE.Vector3( -1, 0, 0 ) );
@@ -184,7 +184,7 @@ Pelota.prototype.sense = function( environment ){
     this.colision = false;
 };
 
-Pelota.prototype.act = function( environment ) {
+Pieza.prototype.act = function( environment ) {
   if( this.colision === true )
     environment.children[100].position.y = environment.children[100].position.y;
 };
