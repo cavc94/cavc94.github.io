@@ -143,7 +143,7 @@ function Pieza( x, y ){
   //this.actuator.commands = [];  
   this.actuator.scale.set( 7, 7, 7 );
   this.actuator.rotateX( Math.PI/2 );
-  this.actuator.castshadow=true;
+  this.actuator.castShadow = true;
   this.add( this.actuator );
   document.addEventListener("keydown", movement, false);
   }
@@ -169,22 +169,25 @@ function movement(event) {
     }
 }
 
-/*Pieza.prototype.sense = function( environment ){
+Pelota.prototype.sense = function( environment ){
   this.sensor.set( this.position, new THREE.Vector3( 1, 0, 0 ) );
   var obstaculo1 = this.sensor.intersectObjects( environment.children, true);
   this.sensor.set( this.position, new THREE.Vector3( -1, 0, 0 ) );
   var obstaculo2 = this.sensor.intersectObjects( environment.children, true);
-  if ( (obstaculo1.length>0 && (obstaculo1[0].distance<=this.radius) ) || (obstaculo2.length>0 && (obstaculo2[0].distance<=this.radius)) )
-    this.colision = 1;
+  this.sensor.set( this.position, new THREE.Vector3( 0, 1, 0 ) );
+  var obstaculo3 = this.sensor.intersectObjects( environment.children, true);
+  this.sensor.set( this.position, new THREE.Vector3( 0, -1, 0 ) );
+  var obstaculo4 = this.sensor.intersectObjects( environment.children, true);
+  if ( (obstaculo1.length>0 && (obstaculo1[0].distance<=2.1)) || (obstaculo2.length>0 && (obstaculo2[0].distance<=2.1)) || (obstaculo2.length>0 && (obstaculo3[0].distance<=2.1)) || (obstaculo2.length>0 && (obstaculo4[0].distance<=2.1)) )
+    this.colision = true;
   else
-    this.colision = 0;
+    this.colision = false;
 };
 
-Pieza.prototype.act = function( environment ) {
-  if( this.colision === 1 )
-    this.step = -this.step;
-  this.position.x = this.step;
- };*/
+Pelota.prototype.act = function( environment ) {
+  if( this.colision === true )
+    environment.children[100].position.y = environment.children[100].position.y;
+};
 
 function setup(){
   var mapa = new Array();
