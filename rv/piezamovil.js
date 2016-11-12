@@ -77,7 +77,7 @@ function Pieza( r, x = 0, y = 0 ){
   this.colision = 0;
   this.radius = r;
   this.sensor = new THREE.Raycaster( this.position, new THREE.Vector3( 1, 0, 0 ) );
-  document.addEventListener("onkeydown", movement, false);
+  document.addEventListener("keydown", movement, false);
   }
   
 Pieza.prototype = new Agent();
