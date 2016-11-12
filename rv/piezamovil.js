@@ -139,7 +139,7 @@ function Pieza( x, y ){
   this.position.y = y;
   this.position.z = 5;
   this.sensor = new Sensor();
-  this.actuator( new THREE.Mesh( new PROTOTIPO.Peon(), new THREE.MeshLambertMaterial( {map: textura} ) ) );
+  this.actuator = new THREE.Mesh( new PROTOTIPO.Peon(), new THREE.MeshLambertMaterial( {map: textura} ) );
   //this.actuator.commands = [];  
   this.actuator.scale.set( 7, 7, 7 );
   this.actuator.rotateX( Math.PI/2 );
