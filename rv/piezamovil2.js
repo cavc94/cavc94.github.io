@@ -33,7 +33,7 @@ PROTOTIPO.Peon.prototype = new THREE.Geometry();
 
 PROTOTIPO.Selector = function(){
   THREE.Geometry.call( this );
-  var cuadritoForma = new THREE.BoxGeometry( 1, 1, 1,);
+  var cuadritoForma = new THREE.BoxGeometry( 1, 1, 1 );
   var cuadritoMalla = new THREE.Mesh( cuadritoForma );
   this.merge( cuadritoMalla.geometry, cuadritoMalla.matrix );
 }
