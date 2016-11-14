@@ -28,10 +28,16 @@ PROTOTIPO.Peon = function(){
   this.merge( adornoMalla.geometry, adornoMalla.matrix );
   this.merge( discoMalla.geometry, discoMalla.matrix );
   this.merge( baseMalla.geometry, baseMalla.matrix );
- }
- 
+ } 
 PROTOTIPO.Peon.prototype = new THREE.Geometry();
 
+function PROTOTIPO.Selector = function(){
+  THREE.Geometry.call( this );
+  var cuadritoForma = new THREE.BoxGeometry( 1, 1, 1,);
+  var cuadritoMalla = new THREE.Mesh( cuadritoForma );
+  this.merge( cuadritoMalla.geometry, cuadritoMalla.matrix );
+}
+PROTOTIPO.Selector.prototype = new THREE.Geometry();
 /*CONSTRUCCIÓN DEL AGENTE*/
 function Agent( x=0, y=0 ){
   THREE.Object3D.call( this );
@@ -44,14 +50,6 @@ Agent.prototype = new THREE.Object3D();
 Agent.prototype.sense = function(environment) {};
 Agent.prototype.plan = function(environment) {};
 Agent.prototype.act = function(environment) {};
-
-function PROTOTIPO.Selector(){
-  THREE.Geometry.call( this );
-  var cuadritoForma = new THREE.BoxGeometry( 1, 1, 1,);
-  var cuadritoMalla = new THREE.Mesh( cuadritoForma );
-  this.merge( cuadritoMalla.geometry, cuadritoMalla.matrix );
-}
-PROTOTIPO.Selector.prototype = new THREE.Geometry();
 
 function Environment(){
   THREE.Scene.call( this );
@@ -129,8 +127,8 @@ Environment.prototype.setMapPiece = function( map ){
     for(var j = 0; j < map.length; j++){
       if( map[i][j] === "p")
         this.add( new Pieza( 5+10*i, 5+10*j ) );
-      else if( map[i][j] === "p")
-        this.add( new Selector( 5+10*i, 5+10*j ) );
+      else if( map[i][j] === "s")
+        this.add( new Seleccionador( 5+10*i, 5+10*j ) );
     }
   }
 }
@@ -148,10 +146,26 @@ function Pieza( x, y ){
   this.actuator.rotateX( Math.PI/2 );
   this.actuator.castShadow = true;
   this.add( this.actuator );
-  document.addEventListener("keydown", movement, false);
-  }
-  
+  //document.addEventListener("keydown", movement, false);
+  }  
 Pieza.prototype = new Agent();
+
+function Seleccionador( x, y ){
+  Agent.call( this, x, y );
+  /*var cargador = new THREE.TextureLoader();
+  textura = cargador.load( 'marmol_blanco.jpg' );
+  this.castShadow = true;*/
+  this.position.x = x;
+  this.position.y = y;
+  this.position.z = 5.5;
+  this.actuator = new THREE.Mesh( new PROTOTIPO.Selector(), new THREE.MeshNormalMaterial( ) );
+  /*this.actuator.scale.set( 7, 7, 7 );
+  this.actuator.rotateX( Math.PI/2 );
+  this.actuator.castShadow = true;*/
+  this.add( this.actuator );
+  document.addEventListener("keydown", movement, false);
+  }  
+Seleccionador.prototype = new Agent();
 
 function movement(event) { 
   var keyboard = event.which;  
