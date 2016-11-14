@@ -171,6 +171,8 @@ function movement(event) {
   var keyboard = event.which;  
   var avance = 0.5;
   switch ( keyboard ){
+    case 13:
+      environment.children[100].position.z = 10;
     case 37:
       environment.children[100].position.x+=-avance;
     break;
