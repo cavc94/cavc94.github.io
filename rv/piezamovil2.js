@@ -31,6 +31,7 @@ PROTOTIPO.Peon = function(){
  }
  
 PROTOTIPO.Peon.prototype = new THREE.Geometry();
+
 /*CONSTRUCCIÓN DEL AGENTE*/
 function Agent( x=0, y=0 ){
   THREE.Object3D.call( this );
@@ -43,6 +44,14 @@ Agent.prototype = new THREE.Object3D();
 Agent.prototype.sense = function(environment) {};
 Agent.prototype.plan = function(environment) {};
 Agent.prototype.act = function(environment) {};
+
+function PROTOTIPO.Selector(){
+  THREE.Geometry.call( this );
+  var cuadritoForma = new THREE.BoxGeometry( 1, 1, 1,);
+  var cuadritoMalla = new THREE.Mesh( cuadritoForma );
+  this.merge( cuadritoMalla.geometry, cuadritoMalla.matrix );
+}
+PROTOTIPO.Selector.prototype = new THREE.Geometry();
 
 function Environment(){
   THREE.Scene.call( this );
@@ -120,6 +129,8 @@ Environment.prototype.setMapPiece = function( map ){
     for(var j = 0; j < map.length; j++){
       if( map[i][j] === "p")
         this.add( new Pieza( 5+10*i, 5+10*j ) );
+      else if( map[i][j] === "p")
+        this.add( new Selector( 5+10*i, 5+10*j ) );
     }
   }
 }
@@ -180,7 +191,7 @@ function setup(){
   pieza[3] = "          ";
   pieza[4] = "          ";
   pieza[5] = "          ";
-  pieza[6] = "          ";
+  pieza[6] = " s        ";
   pieza[7] = " p        ";
   pieza[8] = "          ";
   pieza[9] = "          ";
