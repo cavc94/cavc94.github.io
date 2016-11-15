@@ -153,16 +153,32 @@ function Pieza( estado, x, y ){
   }  
 Pieza.prototype = new Agent();
 
-/*Pieza.prototype.act = function( environment ) {
+Pieza.prototype.act = function( environment ) {
   if( this.estado === true ){
-    if ( this.position.x !== environment.children[100].position.x) 
-      this.position.x += this.step;
-    if ( this.position.y !== environment.children[100].position.y )
-      this.position.y += this.step;
-  }
-  if ( this.position.x === environment.children[100].position.x && this.position.y === environment.children[100].position.y )
-    this.estado = false;
-};*/
+    if ( environment.children[101].position.x !== environment.children[100].position.x ){
+      if ( environment.children[101].position.x - environment.children[100].position.x < 0 ){
+        this.stepX = -0.1;  
+        this.position.x += this.stepX;
+      }
+      else{
+        this.stepX = 0.1;  
+        this.position.x += this.stepX;
+        }
+      }
+      if ( environment.children[101].position.y !== environment.children[100].position.y ){
+        if ( environment.children[101].position.y - environment.children[100].position.y < 0 ){
+          this.stepY = -0.1;  
+          this.position.y += this.stepY;
+        }
+        else{
+          this.stepY = 0.1;  
+          this.position.y += this.stepY;
+        }
+      }
+    }
+    else
+      this.estado = false;
+};
 
 function Seleccionador( x, y ){
   Agent.call( this, x, y );
@@ -192,10 +208,10 @@ function movement(event) {
       /*if ( (environment.children[101].position.x - environment.children[100].position.x) > 0 )   
         environment.children[101].stepX = -0.1;
       if ( (environment.children[101].position.y - environment.children[100].position.y) > 0 )   
-        environment.children[101].stepY = -0.1;
-      environment.children[101].estado = true;*/
-      environment.children[100].position.x = environment.children[101].position.x;
-      environment.children[100].position.y = environment.children[101].position.y;
+        environment.children[101].stepY = -0.1;*/
+      environment.children[100].estado = true;
+      /*environment.children[100].position.x = environment.children[101].position.x;
+      environment.children[100].position.y = environment.children[101].position.y;*/
       break;
     case 37:
       environment.children[101].position.x+=-avance;
