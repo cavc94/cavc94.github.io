@@ -113,11 +113,11 @@ Environment.prototype.setMap = function( map ){
   for ( var i = 0; i < map.length; i++ ){
     for ( var j = 0; j < map.length; j++ ){
       if ( map[i][j] === "B" )
-        this.add( new CasillaB( 10, 5+10*i, 5+10*j ) );
+        this.add( new CasillaB( 10, 5+10*j, 5+10*i ) );
       else if ( map[i][j] === "N" )
-        this.add( new CasillaN( 10, 5+10*i, 5+10*j ) );
+        this.add( new CasillaN( 10, 5+10*j, 5+10*i ) );
       else if ( map[i][j] === "C" )
-        this.add( new Contorno( 10, 5+10*i, 5+10*j ) );
+        this.add( new Contorno( 10, 5+10*j, 5+10*i ) );
       }
    }
  }
@@ -126,9 +126,9 @@ Environment.prototype.setMapPiece = function( map ){
   for( var i = 0; i < map.length; i++){
     for(var j = 0; j < map.length; j++){
       if( map[i][j] === "p")
-        this.add( new Pieza( false, 5+10*i, 5+10*j ) );
+        this.add( new Pieza( false, 5+10*j, 5+10*i ) );
       else if( map[i][j] === "s")
-        this.add( new Seleccionador( 5+10*i, 5+10*j ) );
+        this.add( new Seleccionador( 5+10*j, 5+10*i ) );
     }
   }
 }
