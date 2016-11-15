@@ -128,7 +128,7 @@ Environment.prototype.setMapPiece = function( map ){
       if( map[i][j] === "p")
         this.add( new Pieza( 5+10*i, 5+10*j ) );
       else if( map[i][j] === "s")
-        this.add( new Seleccionador( 5+10*i, 5+10*j ) );
+        this.add( new Seleccionador( false ,5+10*i, 5+10*j ) );
     }
   }
 }
@@ -150,14 +150,16 @@ function Pieza( x, y ){
   }  
 Pieza.prototype = new Agent();
 
-function Seleccionador( x, y ){
+function Seleccionador( estado, x, y ){
   Agent.call( this, x, y );
   /*var cargador = new THREE.TextureLoader();
   textura = cargador.load( 'marmol_blanco.jpg' );
   this.castShadow = true;*/
+  this.estado = estado;
   this.position.x = x;
   this.position.y = y;
   this.position.z = 5.5;
+  this.step = 0;
   this.actuator = new THREE.Mesh( new PROTOTIPO.Selector(), new THREE.MeshNormalMaterial( ) );
   /*this.actuator.scale.set( 7, 7, 7 );
   this.actuator.rotateX( Math.PI/2 );
@@ -167,13 +169,27 @@ function Seleccionador( x, y ){
   }  
 Seleccionador.prototype = new Agent();
 
+/*Seleccionador.prototype.sense = function( estado, environment ){
+  this.estado = estado;
+};*/
+
+Seleccionador.prototype.act = function( environment ) {
+  if( this.estado === true ){
+    if ( this.position.x !== 55 ) 
+      this.position.x += this.step;
+    if ( this.position.y !== 55 )
+      this.position.y += this.step;
+  }
+  if ( this.position.x === 55 && this.position.y === 55 )
+    this.estado = false;
+};
+
 function movement(event) { 
   var keyboard = event.which;  
   var avance = 0.5;
   switch ( keyboard ){
     case 13:
-      environment.children[101].position.x = 50;  
-      environment.children[101].position.y = 50;
+      environment.children[101].estado = true;  
     case 37:
       environment.children[100].position.x+=-avance;
     break;
