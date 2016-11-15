@@ -189,7 +189,7 @@ function movement(event) {
   var avance = 0.5;
   switch ( keyboard ){
     case 13:
-      environment.children[101].estado = true;  
+      environment.children[100].estado = true;  
     case 37:
       environment.children[100].position.x+=-avance;
     break;
