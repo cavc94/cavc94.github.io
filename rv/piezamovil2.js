@@ -155,12 +155,12 @@ Pieza.prototype = new Agent();
 
 Pieza.prototype.act = function( environment ) {
   if( this.estado === true ){
-    if ( this.position.x !== 55 ) 
+    if ( this.position.x !== environment.children[100].position.x) 
       this.position.x += this.step;
-    if ( this.position.y !== 55 )
+    if ( this.position.y !== environment.children[100].position.y )
       this.position.y += this.step;
   }
-  if ( this.position.x === 55 && this.position.y === 55 )
+  if ( this.position.x === environment.children[100].position.x && this.position.y === environment.children[100].position.y )
     this.estado = false;
 };
 
