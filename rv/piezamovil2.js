@@ -194,20 +194,20 @@ function movement(event) {
       if ( (environment.children[101].position.y - environment.children[100].position.y) > 0 )   
         environment.children[101].stepY = -0.1;
       environment.children[101].estado = true;*/
-      environment.children[101].position.x = environment.children[100].position.x;
-      environment.children[101].position.y = environment.children[100].position.y;
+      environment.children[100].position.x = environment.children[101].position.x;
+      environment.children[100].position.y = environment.children[101].position.y;
       break;
     case 37:
-      environment.children[100].position.x+=-avance;
+      environment.children[101].position.x+=-avance;
     break;
     case 38:
-        environment.children[100].position.y+=avance;
+        environment.children[101].position.y+=avance;
     break;
     case 39:
-        environment.children[100].position.x+=avance;
+        environment.children[101].position.x+=avance;
     break;
     case 40:
-        environment.children[100].position.y-=avance;
+        environment.children[101].position.y-=avance;
     break;
     }
 }
