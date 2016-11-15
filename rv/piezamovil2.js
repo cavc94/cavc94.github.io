@@ -214,27 +214,27 @@ function movement(event) {
 
 function setup(){
   var mapa = new Array();
-  mapa[0] = "CCCCCCCCCC";
-  mapa[1] = "CBNBNBNBNC";
-  mapa[2] = "CNBNBNBNBC";
-  mapa[3] = "CBNBNBNBNC";
-  mapa[4] = "CNBNBNBNBC";
-  mapa[5] = "CBNBNBNBNC";
-  mapa[6] = "CNBNBNBNBC";
-  mapa[7] = "CBNBNBNBNC";
-  mapa[8] = "CNBNBNBNBC";
   mapa[9] = "CCCCCCCCCC";
+  mapa[8] = "CBNBNBNBNC";
+  mapa[7] = "CNBNBNBNBC";
+  mapa[6] = "CBNBNBNBNC";
+  mapa[5] = "CNBNBNBNBC";
+  mapa[4] = "CBNBNBNBNC";
+  mapa[3] = "CNBNBNBNBC";
+  mapa[2] = "CBNBNBNBNC";
+  mapa[1] = "CNBNBNBNBC";
+  mapa[0] = "CCCCCCCCCC";
   var pieza = new Array();
-  pieza[0] = "          ";
-  pieza[1] = "          ";
-  pieza[2] = "          ";
-  pieza[3] = "          ";
-  pieza[4] = "          ";
-  pieza[5] = "          ";
-  pieza[6] = " s        ";
-  pieza[7] = " p        ";
-  pieza[8] = "          ";
   pieza[9] = "          ";
+  pieza[8] = "          ";
+  pieza[7] = "          ";
+  pieza[6] = "          ";
+  pieza[5] = "          ";
+  pieza[4] = "          ";
+  pieza[3] = " s        ";
+  pieza[2] = " p        ";
+  pieza[1] = "          ";
+  pieza[0] = "          ";
   
   environment = new Environment();
   environment.setMap( mapa );
