@@ -126,14 +126,14 @@ Environment.prototype.setMapPiece = function( map ){
   for( var i = 0; i < map.length; i++){
     for(var j = 0; j < map.length; j++){
       if( map[i][j] === "p")
-        this.add( new Pieza( 5+10*i, 5+10*j ) );
+        this.add( new Pieza( false, 5+10*i, 5+10*j ) );
       else if( map[i][j] === "s")
-        this.add( new Seleccionador( false ,5+10*i, 5+10*j ) );
+        this.add( new Seleccionador( 5+10*i, 5+10*j ) );
     }
   }
 }
 
-function Pieza( x, y ){
+function Pieza( estado, x, y ){
   Agent.call( this, x, y );
   var cargador = new THREE.TextureLoader();
   textura = cargador.load( 'marmol_blanco.jpg' );
@@ -141,6 +141,9 @@ function Pieza( x, y ){
   this.position.x = x;
   this.position.y = y;
   this.position.z = 5;
+  this.estado = estado;
+  this.stepX = 0.1;
+  this.stepY = 0.1;
   this.actuator = new THREE.Mesh( new PROTOTIPO.Peon(), new THREE.MeshLambertMaterial( {map: textura} ) );
   this.actuator.scale.set( 7, 7, 7 );
   this.actuator.rotateX( Math.PI/2 );
@@ -150,7 +153,18 @@ function Pieza( x, y ){
   }  
 Pieza.prototype = new Agent();
 
-function Seleccionador( estado, x, y ){
+Pieza.prototype.act = function( environment ) {
+  if( this.estado === true ){
+    if ( this.position.x !== 55 ) 
+      this.position.x += this.step;
+    if ( this.position.y !== 55 )
+      this.position.y += this.step;
+  }
+  if ( this.position.x === 55 && this.position.y === 55 )
+    this.estado = false;
+};
+
+function Seleccionador( x, y ){
   Agent.call( this, x, y );
   /*var cargador = new THREE.TextureLoader();
   textura = cargador.load( 'marmol_blanco.jpg' );
@@ -159,7 +173,6 @@ function Seleccionador( estado, x, y ){
   this.position.x = x;
   this.position.y = y;
   this.position.z = 5.5;
-  this.step = 0.1;
   this.actuator = new THREE.Mesh( new PROTOTIPO.Selector(), new THREE.MeshNormalMaterial( ) );
   /*this.actuator.scale.set( 7, 7, 7 );
   this.actuator.rotateX( Math.PI/2 );
@@ -172,24 +185,16 @@ Seleccionador.prototype = new Agent();
 /*Seleccionador.prototype.sense = function( estado, environment ){
   this.estado = estado;
 };*/
-
-Seleccionador.prototype.act = function( environment ) {
-  if( this.estado === true ){
-    if ( this.position.x !== 55 ) 
-      this.position.x += this.step;
-    if ( this.position.y !== 55 )
-      this.position.y += this.step;
-  }
-  if ( this.position.x === 55 && this.position.y === 55 )
-    this.estado = false;
-};
-
 function movement(event) { 
   var keyboard = event.which;  
   var avance = 0.5;
   switch ( keyboard ){
     case 13:
-      environment.children[100].estado = true;  
+      if ( (environment.children[101].position.x - environment.children[100].position.x) > 0 )   
+        environment.children[101].stepX = -0.1;
+      if ( (environment.children[101].position.y - environment.children[100].position.y) > 0 )   
+        environment.children[101].stepY = -0.1;
+      environment.children[101].estado = true;  
     case 37:
       environment.children[100].position.x+=-avance;
     break;
