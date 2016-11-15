@@ -186,7 +186,7 @@ Seleccionador.prototype = new Agent();
 };*/
 function movement(event) { 
   var keyboard = event.which;  
-  var avance = 0.5;
+  var avance = 10;
   switch ( keyboard ){
     case 13:
       if ( (environment.children[101].position.x - environment.children[100].position.x) > 0 )   
@@ -194,6 +194,7 @@ function movement(event) {
       if ( (environment.children[101].position.y - environment.children[100].position.y) > 0 )   
         environment.children[101].stepY = -0.1;
       environment.children[101].estado = true;  
+      break;
     case 37:
       environment.children[100].position.x+=-avance;
     break;
