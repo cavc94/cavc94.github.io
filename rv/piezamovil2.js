@@ -176,7 +176,7 @@ Pieza.prototype.act = function( environment ) {
         }
       }
     }
-    else
+    if( environment.children[101].position.x === environment.children[100].position.x && environment.children[101].position.y === environment.children[100].position.y )
       this.estado = false;
 };
 
