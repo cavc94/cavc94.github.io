@@ -159,7 +159,7 @@ function Seleccionador( estado, x, y ){
   this.position.x = x;
   this.position.y = y;
   this.position.z = 5.5;
-  this.step = 0;
+  this.step = 0.1;
   this.actuator = new THREE.Mesh( new PROTOTIPO.Selector(), new THREE.MeshNormalMaterial( ) );
   /*this.actuator.scale.set( 7, 7, 7 );
   this.actuator.rotateX( Math.PI/2 );
