@@ -169,7 +169,6 @@ function Seleccionador( x, y ){
   /*var cargador = new THREE.TextureLoader();
   textura = cargador.load( 'marmol_blanco.jpg' );
   this.castShadow = true;*/
-  this.estado = estado;
   this.position.x = x;
   this.position.y = y;
   this.position.z = 5.5;
