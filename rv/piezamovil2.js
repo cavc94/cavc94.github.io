@@ -170,7 +170,7 @@ Pieza.prototype.act = function( environment ) {
         this.position.y += this.stepY;
       }
     }
-    if( environment.children[101].position.x === environment.children[100].position.x && environment.children[101].position.y === environment.children[100].position.y )
+    if( environment.children[101].position.x === Math.round(environment.children[100].position.x) && environment.children[101].position.y === Math.round(environment.children[100].position.y) )
       this.estado = false;
 };
 
@@ -199,25 +199,19 @@ function movement(event) {
   var avance = 10;
   switch ( keyboard ){
     case 13:
-      /*if ( (environment.children[101].position.x - environment.children[100].position.x) > 0 )   
-        environment.children[101].stepX = -0.1;
-      if ( (environment.children[101].position.y - environment.children[100].position.y) > 0 )   
-        environment.children[101].stepY = -0.1;*/
       environment.children[100].estado = true;
-      /*environment.children[100].position.x = environment.children[101].position.x;
-      environment.children[100].position.y = environment.children[101].position.y;*/
       break;
     case 37:
       environment.children[101].position.x+=-avance;
     break;
     case 38:
-        environment.children[101].position.y+=avance;
+      environment.children[101].position.y+=avance;
     break;
     case 39:
-        environment.children[101].position.x+=avance;
+      environment.children[101].position.x+=avance;
     break;
     case 40:
-        environment.children[101].position.y-=avance;
+      environment.children[101].position.y-=avance;
     break;
     }
 }
