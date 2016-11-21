@@ -216,7 +216,7 @@ Environment.prototype.setMapPiezas=function(map)
       if(map[i][j]==="A")
       {
         sTP=2;
-        this.add(new Alfil((j*10)-45,(i*10)-45));
+        this.add(new Alfil(false,(j*10)-45,(i*10)-45));
       }
       if(map[i][j]==="x")
       {
