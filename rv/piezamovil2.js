@@ -58,16 +58,16 @@ Agent.prototype.act = function(environment) {
         this.stepX = 0.1;  
       this.position.x += this.stepX;
       }
-      if ( environment.children[101].position.y !== environment.children[100].position.y ){
-        if ( (environment.children[101].position.y - environment.children[100].position.y) < 0 )
-          this.stepY = -0.1;  
-        else
-          this.stepY = 0.1;  
-        this.position.y += this.stepY;
+    else if (environment.children[101].position.x === environment.children[100].position.x && environment.children[101].position.y !== environment.children[100].position.y){
+      if ( (environment.children[101].position.y - environment.children[100].position.y) < 0 )
+        this.stepY = -0.1; 
+      else
+        this.stepY = 0.1;  
+      this.position.y += this.stepY;
       }
     }
     if( environment.children[101].position.x === Math.round(environment.children[100].position.x) && environment.children[101].position.y === Math.round(environment.children[100].position.y) )
-      this.estado = false;
+      this.estado = false;    
 };
 
 function Environment(){
