@@ -410,6 +410,7 @@ Alfil.prototype.sense=function(environment)
 
 Alfil.prototype.act=function(environment){
   //ALFIL_MIO
+  this.estado = seleccionF2;
   if (this.estado === true){
     if(x!==X){
       if(x-X<0)
