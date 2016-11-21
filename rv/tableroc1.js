@@ -409,14 +409,14 @@ Alfil.prototype.sense=function(environment)
 
 Alfil.prototype.act=function(environment){
     if(X!==x){
-      if(X-x!<0)
+      if(X-x<0)
         this.stepX = - 0.1;
       else
         this.stepX = 0.1;
       this.position.x += this.stepX;
     }
   if(Y!==y){
-      if(Y-y!<0)
+      if(Y-y<0)
         this.stepY = - 0.1;
       else
         this.stepY = 0.1;
