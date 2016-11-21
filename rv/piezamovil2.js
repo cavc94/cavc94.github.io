@@ -49,7 +49,26 @@ Agent.prototype = new THREE.Object3D();
 
 Agent.prototype.sense = function(environment) {};
 Agent.prototype.plan = function(environment) {};
-Agent.prototype.act = function(environment) {};
+Agent.prototype.act = function(environment) {
+  if( this.estado === true ){
+    if ( environment.children[101].position.x !== environment.children[100].position.x ){
+      if ( (environment.children[101].position.x - environment.children[100].position.x) < 0 )
+        this.stepX = -0.1; 
+      else
+        this.stepX = 0.1;  
+      this.position.x += this.stepX;
+      }
+      if ( environment.children[101].position.y !== environment.children[100].position.y ){
+        if ( (environment.children[101].position.y - environment.children[100].position.y) < 0 )
+          this.stepY = -0.1;  
+        else
+          this.stepY = 0.1;  
+        this.position.y += this.stepY;
+      }
+    }
+    if( environment.children[101].position.x === Math.round(environment.children[100].position.x) && environment.children[101].position.y === Math.round(environment.children[100].position.y) )
+      this.estado = false;
+};
 
 function Environment(){
   THREE.Scene.call( this );
@@ -153,7 +172,7 @@ function Pieza( estado, x, y ){
   }  
 Pieza.prototype = new Agent();
 
-Pieza.prototype.act = function( environment ) {
+/*Pieza.prototype.act = function( environment ) {
   if( this.estado === true ){
     if ( environment.children[101].position.x !== environment.children[100].position.x ){
       if ( (environment.children[101].position.x - environment.children[100].position.x) < 0 )
@@ -172,20 +191,14 @@ Pieza.prototype.act = function( environment ) {
     }
     if( environment.children[101].position.x === Math.round(environment.children[100].position.x) && environment.children[101].position.y === Math.round(environment.children[100].position.y) )
       this.estado = false;
-};
+};*/
 
 function Seleccionador( x, y ){
   Agent.call( this, x, y );
-  /*var cargador = new THREE.TextureLoader();
-  textura = cargador.load( 'marmol_blanco.jpg' );
-  this.castShadow = true;*/
   this.position.x = x;
   this.position.y = y;
   this.position.z = 5.5;
   this.actuator = new THREE.Mesh( new PROTOTIPO.Selector(), new THREE.MeshNormalMaterial( ) );
-  /*this.actuator.scale.set( 7, 7, 7 );
-  this.actuator.rotateX( Math.PI/2 );
-  this.actuator.castShadow = true;*/
   this.add( this.actuator );
   document.addEventListener("keydown", movement, false);
   }  
