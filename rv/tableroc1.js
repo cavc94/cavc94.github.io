@@ -275,9 +275,9 @@ function Caballo(x,y,textura)
   cargador=new THREE.TextureLoader();
   Agent.call(this,x,y);
   if(sTP===1)
-    textura=cargador.load('maderaN.jpg');
+    textura=cargador.load('marmol_negro.jpg');
   else
-    textura=cargador.load('maderaB.jpg');
+    textura=cargador.load('marmol_blanco.jpg');
   this.position.x=x;
   this.position.y=y;
   this.position.z=0.4;
