@@ -427,7 +427,7 @@ Alfil.prototype.act=function(environment){
       this.position.y += this.stepY;
     }
   }
-  if( x === Y)
+  if( x===X&&y===Y )
     this.estado = false;
 };
 
