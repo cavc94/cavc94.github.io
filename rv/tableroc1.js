@@ -1,4 +1,3 @@
-
 ///////////////CONSTRUCTOR CABALLO///////////////
 CaballoGeometry=function()
 {
@@ -303,12 +302,6 @@ Caballo.prototype.sense=function(environment)
 Caballo.prototype.plan=function(environment)
 {
      this.actuator.commands=[];
-  //if(this.sensor.colision===true)
-  //{
-  //  this.actuator.commands.push('rotateCCW');
-  //}
-  //else
-  //{ 
     if(X!==x)
       this.actuator.commands.push('goStraightX');
     else if(X===x&&Y!==y) 
@@ -377,19 +370,20 @@ Caballo.prototype.operations.rotateCCW=function(pieza,angle)
     angle=Math.PI/2;
   pieza.rotation.z+=angle;
 };
-
 ///////////////ALFIL///////////////
 function Alfil(x,y)
 {
   cargador=new THREE.TextureLoader();
   Agent.call(this,x,y);
   if(sTP===1)
-    textura=cargador.load('maderaN.jpg');
+    textura=cargador.load('marmol_negro.jpg');
   else
-    textura=cargador.load('maderaB.jpg');
+    textura=cargador.load('marmol_blanco.jpg');
   this.position.x=x;
   this.position.y=y;
   this.position.z=0.4;
+  this.stepX = 0.1;
+  this.stepY = 0.1;
   this.sensor=new Sensor();
   this.actuator=new THREE.Mesh(new AlfilGeometry(),new THREE.MeshLambertMaterial({map:textura}));
   this.add(this.actuator);
@@ -409,68 +403,28 @@ Alfil.prototype.sense=function(environment)
     this.sensor.colision=false;
 };
 
-Alfil.prototype.plan=function(environment)
-{
-     this.actuator.commands=[];
-  //if(this.sensor.colision===true)
-  //{
-  //  this.actuator.commands.push('rotateCCW');
-  //}
-  //else
-  //{ 
-    if(X!==x)
-      this.actuator.commands.push('goStraightX');
-    else if(X===x&&Y!==y) 
-      this.actuator.commands.push('goStraightY');
-    else if(X===x&&Y===y)
-    {
-      this.actuator.commands.push('stop');
-      seleccionF2=false;
-      seleccionF1=false;
-    }
-  //}
-};
+/*Alfil.prototype.plan=function(environment)
+{ 
+};*/
 
-Alfil.prototype.act=function(environment)
-{
-  var command = this.actuator.commands.pop();
-  if(command===undefined)
-    console.log('Undefined command');
-  else if(command in this.operations)
-    this.operations[command](this);
-  else
-    console.log('Unknown command');
+Alfil.prototype.act=function(environment){
+    if(X!==x){
+      if(X-x!<0)
+        this.stepX = - 0.1;
+      else
+        this.stepX = 0.1;
+      this.position.x += this.stepX;
+    }
+  if(Y!==y){
+      if(Y-y!<0)
+        this.stepY = - 0.1;
+      else
+        this.stepY = 0.1;
+      this.position.y += this.stepY;
+    }
 };
 
 Alfil.prototype.operations={};
-
-Alfil.prototype.operations.goStraightX=function(pieza,distance)
-{
-  if(distance===undefined)
-  {
-    if(X<x)
-      distance=0.5;
-    else if(X===x)
-      distance=0;
-    else
-      distance=-0.5; 
-  }
-  pieza.position.x+=distance*Math.cos(pieza.rotation.z);
-};
-
-Alfil.prototype.operations.goStraightY=function(pieza,distance)
-{
-  if(distance===undefined)
-   {
-    if(Y<y)
-      distance=0.5;
-    else if(Y===y)
-      distance=0;
-    else
-      distance=-0.5; 
-  }
-  pieza.position.y+=distance*Math.cos(pieza.rotation.z);
-};
 
 Alfil.prototype.operations.stop=function(pieza,distance)
 {
@@ -492,9 +446,9 @@ function Reina(x,y)
   cargador=new THREE.TextureLoader();
   Agent.call(this,x,y);
   if(sTP===1)
-    textura=cargador.load('maderaN.jpg');
+    textura=cargador.load('marmol_negro.jpg');
   else
-    textura=cargador.load('maderaB.jpg');
+    textura=cargador.load('marmol_blanco.jpg');
   this.position.x=x;
   this.position.y=y;
   this.position.z=0.4;
@@ -553,6 +507,7 @@ Reina.prototype.act=function(environment)
 Reina.prototype.operations={};
 
 Reina.prototype.operations.goStraightX=function(pieza,distance)
+
 {
   if(distance===undefined)
   {
@@ -600,9 +555,9 @@ function Rey(x,y)
   cargador=new THREE.TextureLoader();
   Agent.call(this,x,y);
   if(sTP===1)
-    textura=cargador.load('maderaN.jpg');
+    textura=cargador.load('marmol_negro.jpg');
   else
-    textura=cargador.load('maderaB.jpg');
+    textura=cargador.load('marmol_blanco.jpg');
   this.position.x=x;
   this.position.y=y;
   this.position.z=0.4;
@@ -708,9 +663,9 @@ function Torre(x,y)
   cargador=new THREE.TextureLoader();
   Agent.call(this,x,y);
   if(sTP===1)
-    textura=cargador.load('maderaN.jpg');
+    textura=cargador.load('marmol_negro.jpg');
   else
-    textura=cargador.load('maderaB.jpg');
+    textura=cargador.load('marmol_blanco.jpg');
   this.position.x=x;
   this.position.y=y;
   this.position.z=0.4;
@@ -816,9 +771,9 @@ function Peon(x,y)
   cargador=new THREE.TextureLoader();
   Agent.call(this,x,y);
   if(sTP===1)
-    textura=cargador.load('maderaN.jpg');
+    textura=cargador.load('marmol_negro.jpg');
   else
-    textura=cargador.load('maderaB.jpg');
+    textura=cargador.load('marmol_blanco.jpg');
   this.position.x=x;
   this.position.y=y;
   this.position.z=0.4;
