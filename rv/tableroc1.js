@@ -211,7 +211,7 @@ Environment.prototype.setMapPiezas=function(map)
       if(map[i][j]==="a")
       {
         sTP=1;
-        this.add(new Alfil((j*10)-45,(i*10)-45));
+        this.add(new Alfil(false,(j*10)-45,(i*10)-45));
       }
       if(map[i][j]==="A")
       {
@@ -371,7 +371,7 @@ Caballo.prototype.operations.rotateCCW=function(pieza,angle)
   pieza.rotation.z+=angle;
 };
 ///////////////ALFIL///////////////
-function Alfil(x,y)
+function Alfil(estado,x,y)
 {
   cargador=new THREE.TextureLoader();
   Agent.call(this,x,y);
@@ -384,6 +384,7 @@ function Alfil(x,y)
   this.position.z=0.4;
   this.stepX = 0.1;
   this.stepY = 0.1;
+  this.estado = estado;
   this.sensor=new Sensor();
   this.actuator=new THREE.Mesh(new AlfilGeometry(),new THREE.MeshLambertMaterial({map:textura}));
   this.add(this.actuator);
@@ -408,6 +409,8 @@ Alfil.prototype.sense=function(environment)
 };*/
 
 Alfil.prototype.act=function(environment){
+  //ALFIL_MIO
+  if (this.estado === true){
     if(x!==X){
       if(x-X<0)
         this.stepX = - 0.1;
@@ -422,6 +425,9 @@ Alfil.prototype.act=function(environment){
         this.stepY = 0.1;
       this.position.y += this.stepY;
     }
+  }
+  if( x === Y)
+    this.estado = false;
 };
 
 Alfil.prototype.operations={};
