@@ -902,11 +902,11 @@ Peon.prototype.plan=function(environment)
   }
   else{
     if(Y===25) {
-      if( y-Y<=20 && y-Y>0 && x===X ) 
+      if( Y-y<=20 && Y-y>0 && x===X ) 
         this.actuator.commands.push('goStraightY');
     }
     else{ 
-      if(y-Y<=10 && y-Y>0 && x===X)
+      if(Y-y<=10 && Y-y>0 && x===X)
         this.actuator.commands.push('goStraightY');
     }
   }
