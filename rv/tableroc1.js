@@ -642,11 +642,11 @@ Rey.prototype.plan=function(environment)
   //}
   //else
   //{ 
-    if(x===X+10||x===X-10)
+    if(x<=X+10||x>=X-10)
       this.actuator.commands.push('goStraightX');
-    else if(y===Y+10||y===Y-10) 
+    else if(y<=Y+10||y>=Y-10) 
       this.actuator.commands.push('goStraightY');
-    else if((x===X+10||x===X-10)&&(y===Y+10||y===Y-10)) 
+    else if((x<=X+10||x>=X-10)&&(y<=Y+10||y>=Y-10)) 
       this.actuator.commands.push('goDiagonal');
     else if(X===x&&Y===y)
     {
@@ -859,7 +859,6 @@ function Peon(sTP,x,y)
   this.position.x=x;
   this.position.y=y;
   this.position.z=0.4;
-  this.peond=0;
   this.sensor=new Sensor();
   this.actuator=new THREE.Mesh(new PeonGeometry(),new THREE.MeshLambertMaterial({map:textura}));
   this.add(this.actuator);
@@ -888,13 +887,15 @@ Peon.prototype.plan=function(environment)
   //}
   //else
   //{
-  if (this.sTP===true)
-    this.peond = 10;
-  else
-    this.peond = -10;     
-  if(y===Y+this.peond) 
+  if (this.sTP===true){
+    if(y<=Y+10)
       this.actuator.commands.push('goStraightY');
-  else if(X===x&&Y===y)
+  }
+  else{
+    if(y>=Y-10)
+      this.actuator.commands.push('goStraightY');
+  }
+  if(X===x&&Y===y)
     {
       this.actuator.commands.push('stop');
       seleccionF2=false;
