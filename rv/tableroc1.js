@@ -420,7 +420,7 @@ Alfil.prototype.plan=function(environment)
   //{ 
     if(X!==x)
       this.actuator.commands.push('goStraightX');
-     if(X===x&&Y!==y) 
+     if(Y!==y) 
       this.actuator.commands.push('goStraightY');
     else if(X===x&&Y===y)
     {
@@ -636,7 +636,7 @@ Rey.prototype.plan=function(environment)
   //{ 
     if(X!==x)
       this.actuator.commands.push('goStraightX');
-     if(X===x&&Y!==y) 
+     if(Y!==y) 
       this.actuator.commands.push('goStraightY');
     else if(X===x&&Y===y)
     {
@@ -852,7 +852,7 @@ Peon.prototype.plan=function(environment)
   //{ 
     if(X!==x)
       this.actuator.commands.push('goStraightX');
-     if(X===x&&Y!==y) 
+     if(Y!==y) 
       this.actuator.commands.push('goStraightY');
     else if(X===x&&Y===y)
     {
