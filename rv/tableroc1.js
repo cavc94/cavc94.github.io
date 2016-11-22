@@ -891,7 +891,7 @@ Peon.prototype.plan=function(environment)
   //else
   //{
   if (this.sTP===true){
-    if(Y>=-25 && Y<=-15) {
+    if(Y>=-25 && Y<-15) {
       if( y-Y<=20 && y-Y>0 && x===X ) 
         this.actuator.commands.push('goStraightY');
     }
@@ -901,7 +901,7 @@ Peon.prototype.plan=function(environment)
     }
   }
   else{
-    if(Y<=25 && Y>=15) {
+    if(Y<=25 && Y>15) {
       if( Y-y<=20 && Y-y>0 && x===X ) 
         this.actuator.commands.push('goStraightY');
     }
