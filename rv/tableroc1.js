@@ -422,7 +422,7 @@ Alfil.prototype.plan=function(environment)
       this.actuator.commands.push('goStraightX');
      if(Y!==y) 
       this.actuator.commands.push('goStraightY');
-    else if(X===x&&Y===y)
+     if(X===x&&Y===y)
     {
       this.actuator.commands.push('stop');
       seleccionF2=false;
@@ -528,9 +528,9 @@ Reina.prototype.plan=function(environment)
   //{ 
     if(X!==x)
       this.actuator.commands.push('goStraightX');
-     if(X===x&&Y!==y) 
+     if(Y!==y) 
       this.actuator.commands.push('goStraightY');
-    else if(X===x&&Y===y)
+     if(X===x&&Y===y)
     {
       this.actuator.commands.push('stop');
       seleccionF2=false;
@@ -638,7 +638,7 @@ Rey.prototype.plan=function(environment)
       this.actuator.commands.push('goStraightX');
      if(Y!==y) 
       this.actuator.commands.push('goStraightY');
-    else if(X===x&&Y===y)
+     if(X===x&&Y===y)
     {
       this.actuator.commands.push('stop');
       seleccionF2=false;
@@ -744,9 +744,9 @@ Torre.prototype.plan=function(environment)
   //{ 
     if(X!==x)
       this.actuator.commands.push('goStraightX');
-     if(X===x&&Y!==y) 
+     if(Y!==y) 
       this.actuator.commands.push('goStraightY');
-    else if(X===x&&Y===y)
+     if(X===x&&Y===y)
     {
       this.actuator.commands.push('stop');
       seleccionF2=false;
@@ -854,7 +854,7 @@ Peon.prototype.plan=function(environment)
       this.actuator.commands.push('goStraightX');
      if(Y!==y) 
       this.actuator.commands.push('goStraightY');
-    else if(X===x&&Y===y)
+     if(X===x&&Y===y)
     {
       this.actuator.commands.push('stop');
       seleccionF2=false;
