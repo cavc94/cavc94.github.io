@@ -1,3 +1,4 @@
+
 ///////////////CONSTRUCTOR CABALLO///////////////
 CaballoGeometry=function()
 {
@@ -150,7 +151,7 @@ function Casillas(size,x,y)
   else if (sTC===2)
     textura=cargador.load('marmol_negro.jpg');
   else
-    textura=cargador.load('marmol_gris.jpg');
+    textura=cargador.load('marmolA.jpg');
   THREE.Mesh.call(this,new THREE.BoxGeometry(size,size,0.4,10,10,10),new THREE.MeshLambertMaterial({map:textura}));
   this.size=size;
   this.receiveShadow=true;
@@ -269,7 +270,7 @@ function Sensor(position,direction)
 Sensor.prototype = new THREE.Raycaster();
 
 ///////////////CABALLO///////////////
-function Caballo(x,y)
+function Caballo(x,y,textura)
 {
   cargador=new THREE.TextureLoader();
   Agent.call(this,x,y);
@@ -301,6 +302,8 @@ Caballo.prototype.sense=function(environment)
     this.sensor.colision=false;
 };
 
+Caballo.prototype.plan=function(environment){};
+
 Caballo.prototype.act=function(environment)
 {
   if (seleccionF2 === true){
@@ -324,6 +327,7 @@ Caballo.prototype.act=function(environment)
     seleccionF2 = false;
   }
 };
+
 ///////////////ALFIL///////////////
 function Alfil(x,y)
 {
@@ -357,7 +361,7 @@ Alfil.prototype.sense=function(environment)
     this.sensor.colision=false;
 };
 
-/*Alfil.prototype.plan=function(environment){};*/
+Alfil.prototype.plan=function(environment){};
 
 Alfil.prototype.act=function(environment){
   if (seleccionF2 === true){
@@ -416,8 +420,7 @@ Reina.prototype.sense=function(environment)
 
 Reina.prototype.plan=function(environment){};
 
-Reina.prototype.act=function(environment)
-{
+Reina.prototype.act=function(environment){
   if (seleccionF2 === true){
     if(x!==X){
       if(x-X<0)
@@ -531,8 +534,7 @@ Torre.prototype.sense=function(environment)
 
 Torre.prototype.plan=function(environment){};
 
-Torre.prototype.act=function(environment)
-{
+Torre.prototype.act=function(environment){
   if (seleccionF2 === true){
     if(x!==X){
       if(x-X<0)
@@ -620,7 +622,7 @@ function SeleccionD(event)
   raycaster.setFromCamera(mouse3D,camara);
   seleccion=raycaster.intersectObjects(environment.children,true);
   if(seleccion.length>0)
-  { 
+  {
     console.log(turno);
     if(seleccionF1==false)
       id=seleccion[0].object.id;
@@ -633,7 +635,7 @@ function SeleccionD(event)
       seleccionF2=true;
     }
     
-    if(Math.round(X)===x&&Math.round(Y)===y)
+    if(X===x&&Y===y)
     {
       turno=!turno
     }
@@ -754,7 +756,7 @@ function loop()
   environment.plan();
   if(turno==false)
   {
-   if(id===114)
+    if(id===114)
       {
         X=environment.children[100].position.x;
         Y=environment.children[100].position.y;
@@ -986,6 +988,8 @@ function loop()
   renderizador.render(environment,camara);
 
 }
+
+
 
 var turno=false,sTP,sTC,id,environment,camara,renderizador,luzpuntual,avance,seleccion,x,X,Y,Z,z,y,activar=false,seleccionO=true,seleccionF2=false,seleccionF1=false,xf,yf;
 
