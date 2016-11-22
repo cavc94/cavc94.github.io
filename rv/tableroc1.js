@@ -471,8 +471,8 @@ function Reina(sTP,x,y)
 {
   cargador=new THREE.TextureLoader();
   Agent.call(this,x,y);
-  this.sTP = true;
-  if(this.sTP===1)
+  this.sTP = sTP;
+  if(this.sTP===true)
     textura=cargador.load('maderaN.jpg');
   else
     textura=cargador.load('maderaB.jpg');
