@@ -1,4 +1,3 @@
-
 ///////////////CONSTRUCTOR CABALLO///////////////
 CaballoGeometry=function()
 {
@@ -635,7 +634,7 @@ function SeleccionD(event)
       seleccionF2=true;
     }
     
-    if(X===x&&Y===y)
+    if(Math.round(X)===x&&Math.round(Y)===y)
     {
       turno=!turno
     }
