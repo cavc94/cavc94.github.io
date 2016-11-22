@@ -97,8 +97,9 @@ TorreGeometry=function()
 }
 TorreGeometry.prototype=new THREE.Geometry();
 ///////////////AGENTE///////////////
-function Agent(x=0,y=0)
+function Agent(x=0,y=0,sTP)
 {
+  this.sTP=sTP;
   THREE.Object3D.call(this);
   this.position.x=x;
   this.position.y=y;
