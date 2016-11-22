@@ -385,7 +385,7 @@ Alfil.prototype.act=function(environment){
     seleccionF1 = false;
     seleccionF2 = false;
     X=x;
-    Y=y;;
+    Y=y;
   }
 };
 ///////////////REINA///////////////
@@ -444,7 +444,7 @@ Reina.prototype.act=function(environment){
     seleccionF1 = false;
     seleccionF2 = false;
     X=x;
-    Y=y;;
+    Y=y;
   }
 };
 ///////////////REY///////////////
