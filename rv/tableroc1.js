@@ -890,14 +890,14 @@ Peon.prototype.plan=function(environment)
   //}
   //else
   //{
-  //if (this.sTP===true){
-    if(Math.abs(y-Y)<=10 && x===X)
+  if (this.sTP===true){
+    if(Y-y<=10 && x===X)
       this.actuator.commands.push('goStraightY');
-  //}
-  //else{
-    //if(y>=Y-10)
-      //this.actuator.commands.push('goStraightY');
-  //}
+  }
+  else{
+    if(y-Y<=10 && x===X)
+      this.actuator.commands.push('goStraightY');
+  }
   else if(X===x&&Y===y)
     {
       this.actuator.commands.push('stop');
