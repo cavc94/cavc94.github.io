@@ -201,62 +201,62 @@ Environment.prototype.setMapPiezas=function(map)
       if(map[i][j]==="c")
       {
         sTP=1;
-        this.add(new Caballo(false,(j*10)-45,(i*10)-45));
+        this.add(new Caballo((j*10)-45,(i*10)-45));
       }
       if(map[i][j]==="C")
       {
         sTP=2;
-        this.add(new Caballo(false,(j*10)-45,(i*10)-45));
+        this.add(new Caballo((j*10)-45,(i*10)-45));
       }
       if(map[i][j]==="a")
       {
         sTP=1;
-        this.add(new Alfil(false,(j*10)-45,(i*10)-45));
+        this.add(new Alfil((j*10)-45,(i*10)-45));
       }
       if(map[i][j]==="A")
       {
         sTP=2;
-        this.add(new Alfil(false,(j*10)-45,(i*10)-45));
+        this.add(new Alfil((j*10)-45,(i*10)-45));
       }
       if(map[i][j]==="x")
       {
         sTP=1;
-        this.add(new Reina(false,(j*10)-45,(i*10)-45));
+        this.add(new Reina((j*10)-45,(i*10)-45));
       }
       if(map[i][j]==="X")
       {
         sTP=2;
-        this.add(new Reina(false,(j*10)-45,(i*10)-45));
+        this.add(new Reina((j*10)-45,(i*10)-45));
       }
       if(map[i][j]==="r")
       {
         sTP=1;
-        this.add(new Rey(false,(j*10)-45,(i*10)-45));
+        this.add(new Rey((j*10)-45,(i*10)-45));
       }
       if(map[i][j]==="R")
       {
         sTP=2;
-        this.add(new Rey(false,(j*10)-45,(i*10)-45));
+        this.add(new Rey((j*10)-45,(i*10)-45));
       }
       if(map[i][j]==="t")
       {
         sTP=1;
-        this.add(new Torre(false,(j*10)-45,(i*10)-45));
+        this.add(new Torre((j*10)-45,(i*10)-45));
       }
       if(map[i][j]==="T")
       {
         sTP=2;
-        this.add(new Torre(false,(j*10)-45,(i*10)-45));
+        this.add(new Torre((j*10)-45,(i*10)-45));
       }
       if(map[i][j]==="p")
       {
         sTP=1;
-        this.add(new Peon(false,(j*10)-45,(i*10)-45));
+        this.add(new Peon((j*10)-45,(i*10)-45));
       }
       if(map[i][j]==="P")
       {
         sTP=2;
-        this.add(new Peon(false,(j*10)-45,(i*10)-45));
+        this.add(new Peon((j*10)-45,(i*10)-45));
       }
     }
   }
@@ -269,7 +269,7 @@ function Sensor(position,direction)
 Sensor.prototype = new THREE.Raycaster();
 
 ///////////////CABALLO///////////////
-function Caballo(estado,x,y)
+function Caballo(x,y)
 {
   cargador=new THREE.TextureLoader();
   Agent.call(this,x,y);
@@ -282,7 +282,6 @@ function Caballo(estado,x,y)
   this.position.z=0.4;
   this.stepX = 0.4;
   this.stepY = 0.4;
-  this.estado = estado;
   this.sensor=new Sensor();
   this.actuator=new THREE.Mesh(new CaballoGeometry(),new THREE.MeshLambertMaterial({map:textura}));
   this.add(this.actuator);
@@ -304,9 +303,7 @@ Caballo.prototype.sense=function(environment)
 
 Caballo.prototype.act=function(environment)
 {
-  if (seleccionF2==true && X==this.position.x && Y==this.position.y) 
-    this.estado = true;
-  if (this.estado === true){
+  if (seleccionF2 === true){
     if(x!==X){
       if(x-X<0)
         this.stepX = - 0.4;
@@ -323,13 +320,12 @@ Caballo.prototype.act=function(environment)
     }
   }
   if( x===Math.round(X) && y===Math.round(Y) ){
-    this.estado = false;
     seleccionF1 = false;
     seleccionF2 = false;
   }
 };
 ///////////////ALFIL///////////////
-function Alfil(estado,x,y)
+function Alfil(x,y)
 {
   cargador=new THREE.TextureLoader();
   Agent.call(this,x,y);
@@ -342,7 +338,6 @@ function Alfil(estado,x,y)
   this.position.z=0.4;
   this.stepX = 0.4;
   this.stepY = 0.4;
-  this.estado = estado;
   this.sensor=new Sensor();
   this.actuator=new THREE.Mesh(new AlfilGeometry(),new THREE.MeshLambertMaterial({map:textura}));
   this.add(this.actuator);
@@ -365,9 +360,7 @@ Alfil.prototype.sense=function(environment)
 /*Alfil.prototype.plan=function(environment){};*/
 
 Alfil.prototype.act=function(environment){
-  if (seleccionF2==true && X==this.position.x && Y==this.position.y) 
-    this.estado = true;
-  if (this.estado === true){
+  if (seleccionF2 === true){
     if(x!==X){
       if(x-X<0)
         this.stepX = - 0.4;
@@ -384,13 +377,12 @@ Alfil.prototype.act=function(environment){
     }
   }
   if( x===Math.round(X) && y===Math.round(Y) ){
-    this.estado = false;
     seleccionF1 = false;
     seleccionF2 = false;
   }
 };
 ///////////////REINA///////////////
-function Reina(estado,x,y)
+function Reina(x,y)
 {
   cargador=new THREE.TextureLoader();
   Agent.call(this,x,y);
@@ -403,7 +395,6 @@ function Reina(estado,x,y)
   this.position.z=0.4;
   this.stepX = 0.4;
   this.stepY = 0.4;
-  this.estado = estado;
   this.sensor=new Sensor();
   this.actuator=new THREE.Mesh(new ReinaGeometry(),new THREE.MeshLambertMaterial({map:textura}));
   this.add(this.actuator);
@@ -427,9 +418,7 @@ Reina.prototype.plan=function(environment){};
 
 Reina.prototype.act=function(environment)
 {
-  if (seleccionF2==true && X==this.position.x && Y==this.position.y) 
-    this.estado = true;
-  if (this.estado === true){
+  if (seleccionF2 === true){
     if(x!==X){
       if(x-X<0)
         this.stepX = - 0.4;
@@ -446,13 +435,12 @@ Reina.prototype.act=function(environment)
     }
   }
   if( x===Math.round(X) && y===Math.round(Y) ){
-    this.estado = false;
     seleccionF1 = false;
     seleccionF2 = false;
   }
 };
 ///////////////REY///////////////
-function Rey(estado,x,y)
+function Rey(x,y)
 {
   cargador=new THREE.TextureLoader();
   Agent.call(this,x,y);
@@ -465,7 +453,6 @@ function Rey(estado,x,y)
   this.position.z=0.4;
   this.stepX = 0.4;
   this.stepY = 0.4;
-  this.estado = estado;
   this.sensor=new Sensor();
   this.actuator=new THREE.Mesh(new ReyGeometry(),new THREE.MeshLambertMaterial({map:textura}));
   this.add(this.actuator);
@@ -488,8 +475,7 @@ Rey.prototype.sense=function(environment)
 Rey.prototype.plan=function(environment){};
 
 Rey.prototype.act=function(environment){
-  this.estado = seleccionF2;
-  if (this.estado === true){
+  if (seleccionF2 === true){
     if(x!==X){
       if(x-X<0)
         this.stepX = - 0.4;
@@ -506,13 +492,12 @@ Rey.prototype.act=function(environment){
     }
   }
   if( x===Math.round(X) && y===Math.round(Y) ){
-    this.estado = false;
     seleccionF1 = false;
     seleccionF2 = false;
   }
 };
 ///////////////TORRE///////////////
-function Torre(estado,x,y)
+function Torre(x,y)
 {
   cargador=new THREE.TextureLoader();
   Agent.call(this,x,y);
@@ -525,7 +510,6 @@ function Torre(estado,x,y)
   this.position.z=0.4;
   this.stepX = 0.4;
   this.stepY = 0.4;
-  this.estado = estado;
   this.sensor=new Sensor();
   this.actuator=new THREE.Mesh(new TorreGeometry(),new THREE.MeshLambertMaterial({map:textura}));
   this.add(this.actuator);
@@ -549,9 +533,7 @@ Torre.prototype.plan=function(environment){};
 
 Torre.prototype.act=function(environment)
 {
-  if (seleccionF2==true && X==this.position.x && Y==this.position.y) 
-    this.estado = true;
-  if (this.estado === true){
+  if (seleccionF2 === true){
     if(x!==X){
       if(x-X<0)
         this.stepX = - 0.4;
@@ -568,13 +550,12 @@ Torre.prototype.act=function(environment)
     }
   }
   if( x===Math.round(X) && y===Math.round(Y) ){
-    this.estado = false;
     seleccionF1 = false;
     seleccionF2 = false;
   }
 };
 ///////////////PEON///////////////
-function Peon(estado,x,y)
+function Peon(x,y)
 {
   cargador=new THREE.TextureLoader();
   Agent.call(this,x,y);
@@ -587,7 +568,6 @@ function Peon(estado,x,y)
   this.position.z=0.4;
   this.stepX = 0.4;
   this.stepY = 0.4;
-  this.estado = estado;
   this.sensor=new Sensor();
   this.actuator=new THREE.Mesh(new PeonGeometry(),new THREE.MeshLambertMaterial({map:textura}));
   this.add(this.actuator);
@@ -610,9 +590,7 @@ Peon.prototype.sense=function(environment)
 Peon.prototype.plan=function(environment){};
 
 Peon.prototype.act=function(environment){
-  if (seleccionF2==true && X==this.position.x && Y==this.position.y) 
-    this.estado = true;
-  if (this.estado === true){
+  if (seleccionF2 === true){
     if(x!==X){
       if(x-X<0)
         this.stepX = - 0.4;
@@ -629,7 +607,6 @@ Peon.prototype.act=function(environment){
     }
   }
   if( x===Math.round(X) && y===Math.round(Y) ){
-    this.estado = false;
     seleccionF1 = false;
     seleccionF2 = false;
   }
@@ -745,85 +722,117 @@ function loop()
   environment.act();
   if(turno==false)
   {
-    if(id===114)
+   if(id===114)
       {
         X=environment.children[100].position.x;
         Y=environment.children[100].position.y;
+        if(seleccionF2==true)
+          environment.children[100].act();
       }
     else if(id===119)
       {
         X=environment.children[101].position.x;
         Y=environment.children[101].position.y;
+        if(seleccionF2==true)
+          environment.children[101].act();
       }
     else if(id===123)
       {
         X=environment.children[102].position.x;
         Y=environment.children[102].position.y;
+        if(seleccionF2==true)
+          environment.children[102].act();
       }
     else if(id===128)
       {
         X=environment.children[103].position.x;
         Y=environment.children[103].position.y;
+        if(seleccionF2==true)
+          environment.children[103].act();
       }
     else if(id===133)
       {
         X=environment.children[104].position.x;
         Y=environment.children[104].position.y;
+        if(seleccionF2==true)
+          environment.children[104].act();
       }
     else if(id===137)
       {
         X=environment.children[105].position.x;
         Y=environment.children[105].position.y;
+        if(seleccionF2==true)
+          environment.children[105].act();
       }
     else if(id===142)
       {
         X=environment.children[106].position.x;
         Y=environment.children[106].position.y;
+        if(seleccionF2==true)
+          environment.children[106].act();
       }
     else if(id===146)
       {
         X=environment.children[107].position.x;
         Y=environment.children[107].position.y;
+        if(seleccionF2==true)
+          environment.children[107].act();
       }
     else if(id===150)
       {
         X=environment.children[108].position.x;
         Y=environment.children[108].position.y;
+        if(seleccionF2==true)
+          environment.children[108].act();
       }
     else if(id===154)
       {
         X=environment.children[109].position.x;
         Y=environment.children[109].position.y;
+        if(seleccionF2==true)
+          environment.children[109].act();
       }
     else if(id===158)
       {
         X=environment.children[110].position.x;
         Y=environment.children[110].position.y;
+        if(seleccionF2==true)
+          environment.children[110].act();
       }
     else if(id===162)
       {
         X=environment.children[111].position.x;
         Y=environment.children[111].position.y;
+        if(seleccionF2==true)
+          environment.children[111].act();
       }
     else if(id===166)
       {
         X=environment.children[112].position.x;
         Y=environment.children[112].position.y;
+        if(seleccionF2==true)
+          environment.children[112].act();
       }
     else if(id===170)
       {
         X=environment.children[113].position.x;
         Y=environment.children[113].position.y;
+        if(seleccionF2==true)
+          environment.children[113].act();
       }
     else if(id===174)
       {
         X=environment.children[114].position.x;
         Y=environment.children[114].position.y;
+        if(seleccionF2==true)
+          environment.children[114].act();
       }
     else if(id===178)
       {
         X=environment.children[115].position.x;
         Y=environment.children[115].position.y;
+        if(seleccionF2==true)
+          environment.children[115].act();
       }
   }
   else
@@ -832,81 +841,113 @@ function loop()
       {
         X=environment.children[116].position.x;
         Y=environment.children[116].position.y;
+        if(seleccionF2==true)
+          environment.children[116].act(); 
       }
     else if(id===186)
       {
         X=environment.children[117].position.x;
         Y=environment.children[117].position.y;
+        if(seleccionF2==true)
+          environment.children[117].act();
       }
     else if(id===190)
       {
         X=environment.children[118].position.x;
         Y=environment.children[118].position.y;
+        if(seleccionF2==true)
+          environment.children[118].act();
       }
     else if(id===194)
       {
         X=environment.children[119].position.x;
         Y=environment.children[119].position.y;
+        if(seleccionF2==true)
+          environment.children[119].act();
       }
     else if(id===198)
       {
         X=environment.children[120].position.x;
         Y=environment.children[120].position.y;
+        if(seleccionF2==true)
+          environment.children[120].act();
       }
     else if(id===202)
       {
         X=environment.children[121].position.x;
         Y=environment.children[121].position.y;
+        if(seleccionF2==true)
+          environment.children[121].act();
       }
     else if(id===206)
       {
         X=environment.children[122].position.x;
         Y=environment.children[122].position.y;
+        if(seleccionF2==true)
+          environment.children[122].act();
       }
     else if(id===210)
       {
         X=environment.children[123].position.x;
         Y=environment.children[123].position.y;
+        if(seleccionF2==true)
+          environment.children[123].act();
       }
     else if(id===214)
       {
         X=environment.children[124].position.x;
         Y=environment.children[124].position.y;
+        if(seleccionF2==true)
+          environment.children[124].act();
       }
     else if(id===219)
       {
         X=environment.children[125].position.x;
         Y=environment.children[125].position.y;
+        if(seleccionF2==true)
+          environment.children[125].act();
       }
     else if(id===223)
       {
         X=environment.children[126].position.x;
         Y=environment.children[126].position.y;
+        if(seleccionF2==true)
+          environment.children[126].act();
       }
     else if(id===228)
       {
         X=environment.children[127].position.x;
         Y=environment.children[127].position.y;
+        if(seleccionF2==true)
+          environment.children[127].act();
       }
     else if(id===233)
       {
         X=environment.children[128].position.x;
         Y=environment.children[128].position.y;
+        if(seleccionF2==true)
+          environment.children[128].act();
       }
     else if(id===237)
       {
         X=environment.children[129].position.x;
         Y=environment.children[129].position.y;
+        if(seleccionF2==true)
+          environment.children[129].act();
       }
     else if(id===242)
       {
         X=environment.children[130].position.x;
         Y=environment.children[130].position.y;
+        if(seleccionF2==true)
+          environment.children[130].act();
       }
      else if(id===246)
       {
         X=environment.children[131].position.x;
         Y=environment.children[131].position.y;
+        if(seleccionF2==true)
+          environment.children[131].act();
       }
   }
   
