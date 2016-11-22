@@ -643,12 +643,12 @@ Rey.prototype.plan=function(environment)
   //else
   //{ 
   // 
-    if(Math.abs(x-X)<=10)
-      this.actuator.commands.push('goStraightX');
+    if(Math.abs(x-X)<=10 && Math.abs(y-Y)<=10) 
+      this.actuator.commands.push('goDiagonal');
     else if(Math.abs(y-Y)<=10) 
       this.actuator.commands.push('goStraightY');
-    else if(Math.abs(x-X)<=10 && Math.abs(y-Y)<=10) 
-      this.actuator.commands.push('goDiagonal');
+    else if(Math.abs(x-X)<=10)
+      this.actuator.commands.push('goStraightX');
     else if(X===x&&Y===y)
     {
       this.actuator.commands.push('stop');
