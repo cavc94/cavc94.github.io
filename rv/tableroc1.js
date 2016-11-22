@@ -643,17 +643,19 @@ Rey.prototype.plan=function(environment)
   //else
   //{ 
   // 
-    if(Math.abs(x-X)<=10 && Math.abs(y-Y)<=10) 
-      this.actuator.commands.push('goDiagonal');
-    else if(Math.abs(y-Y)<=10) 
-      this.actuator.commands.push('goStraightY');
-    else if(Math.abs(x-X)<=10)
-      this.actuator.commands.push('goStraightX');
-    else if(X===x&&Y===y)
-    {
-      this.actuator.commands.push('stop');
-      seleccionF2=false;
-      seleccionF1=false;
+    if(Math.abs(x-X)<=10 || Math.abs(y-Y)<=10){ 
+      if (x!==X && y!==Y)
+        this.actuator.commands.push('goDiagonal');
+      else if(x===X && y!==Y) 
+        this.actuator.commands.push('goStraightY');
+      else if(x!==X && y===Y)
+        this.actuator.commands.push('goStraightX');
+      else if(X===x&&Y===y)
+      {
+        this.actuator.commands.push('stop');
+        seleccionF2=false;
+        seleccionF1=false;
+      }
     }
   //}
 };
@@ -888,15 +890,15 @@ Peon.prototype.plan=function(environment)
   //}
   //else
   //{
-  if (this.sTP===true){
-    if(y<=Y+10)
+  //if (this.sTP===true){
+    if(Math.abs(y-Y)<=10 && x===X)
       this.actuator.commands.push('goStraightY');
-  }
-  else{
-    if(y>=Y-10)
-      this.actuator.commands.push('goStraightY');
-  }
-  if(X===x&&Y===y)
+  //}
+  //else{
+    //if(y>=Y-10)
+      //this.actuator.commands.push('goStraightY');
+  //}
+  else if(X===x&&Y===y)
     {
       this.actuator.commands.push('stop');
       seleccionF2=false;
@@ -1328,8 +1330,6 @@ function loop()
   renderizador.render(environment,camara);
 
 }
-
-
 
 var turno=false,sTC,id,environment,camara,renderizador,luzpuntual,avance,seleccion,x,X,Y,Z,z,y,activar=false,seleccionO=true,seleccionF2=false,seleccionF1=false,xf,yf;
 
