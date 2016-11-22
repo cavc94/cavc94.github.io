@@ -404,11 +404,9 @@ Alfil.prototype.sense=function(environment)
 Alfil.prototype.plan=function(environment)
 {
     this.actuator.commands=[];
-    if (this.sensor.colision == true )
-      this.actuator.commands.push( 'stop' );
     if(X!==x&&Y!==y){
-      this.actuator.commands.push('goStraightX');
-      this.actuator.commands.push('goStraightY');
+      this.actuator.commands.push('goDiagonal');
+      //this.actuator.commands.push('goStraightY');
     }
      if(X===x&&Y===y)
     {
@@ -431,7 +429,7 @@ Alfil.prototype.act=function(environment)
 
 Alfil.prototype.operations={};
 
-Alfil.prototype.operations.goStraightX=function(pieza,distance)
+/*Alfil.prototype.operations.goStraightX=function(pieza,distance)
 {
   if(distance===undefined)
   {
@@ -457,6 +455,37 @@ Alfil.prototype.operations.goStraightY=function(pieza,distance)
       distance=-0.5; 
   }
   pieza.position.y+=distance*Math.cos(pieza.rotation.z);
+};*/
+
+Alfil.prototype.operations.goDiagonal=function(pieza,distance)
+{
+  if(distance===undefined)
+   {
+    if(Y<y&&X<x){
+      distance=0.5;
+      pieza.position.x+=distance*Math.cos(pieza.rotation.z);
+      pieza.position.y+=distance*Math.cos(pieza.rotation.z);
+    }
+     else if(Y<y&&X>x){
+      distance=0.5;
+      pieza.position.x-=distance*Math.cos(pieza.rotation.z);
+      pieza.position.y+=distance*Math.cos(pieza.rotation.z);
+     }
+     else if(Y>y&&X<x){
+      distance=0.5;
+      pieza.position.x+=distance*Math.cos(pieza.rotation.z);
+      pieza.position.y-=distance*Math.cos(pieza.rotation.z);
+     }
+     else if(Y>y&&X>x){
+      distance=0.5;
+      pieza.position.x-=distance*Math.cos(pieza.rotation.z);
+      pieza.position.y-=distance*Math.cos(pieza.rotation.z);
+     }
+    else if(Y===y)
+      distance=0;
+    else
+      distance=-0.5; 
+  }
 };
 
 Alfil.prototype.operations.stop=function(pieza,distance)
@@ -506,13 +535,7 @@ Reina.prototype.sense=function(environment)
 
 Reina.prototype.plan=function(environment)
 {
-     this.actuator.commands=[];
-  //if(this.sensor.colision===true)
-  //{
-  //  this.actuator.commands.push('rotateCCW');
-  //}
-  //else
-  //{ 
+    this.actuator.commands=[]; 
     if(X!==x)
       this.actuator.commands.push('goStraightX');
      if(Y!==y) 
@@ -523,7 +546,6 @@ Reina.prototype.plan=function(environment)
       seleccionF2=false;
       seleccionF1=false;
     }
-  //}
 };
 
 Reina.prototype.act=function(environment)
