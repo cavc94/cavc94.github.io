@@ -260,12 +260,12 @@ Sensor.prototype = new THREE.Raycaster();
 function Caballo(x,y,sTP)
 {
   cargador=new THREE.TextureLoader();
-  Agent.call(this,x,y);
   this.sTP = sTP;
   if(this.sTP===1)
     textura=cargador.load('maderaN.jpg');
   else
     textura=cargador.load('maderaB.jpg');
+  Agent.call(this,x,y);
   this.position.x=x;
   this.position.y=y;
   this.position.z=0.4;
