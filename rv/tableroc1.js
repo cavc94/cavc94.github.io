@@ -308,17 +308,15 @@ Caballo.prototype.act=function(environment)
   if (seleccionF2 === true){
     if(x!==X){
       if(x-X<0)
-        this.stepX = - 0.1;
+        this.position.x -= this.stepX;
       else
-        this.stepX = 0.1;
-      this.position.x += this.stepX;
+        this.position.x += this.stepX;
     }
   if(x!==X && y!==Y){
       if(y-Y<0)
-        this.stepY = - 0.1;
+        this.position.y -= this.stepY;
       else
-        this.stepY = 0.1;
-      this.position.y += this.stepY;
+        this.position.y += this.stepY;
     }
   }
   if( x===Math.round(X) && y===Math.round(Y) ){
@@ -368,17 +366,15 @@ Alfil.prototype.act=function(environment){
   if (seleccionF2 === true){
     if(x!==X){
       if(x-X<0)
-        this.stepX = - 0.1;
+        this.position.x -= this.stepX;
       else
-        this.stepX = 0.1;
-      this.position.x += this.stepX;
+        this.position.x += this.stepX;
     }
   if(y!==Y){
       if(y-Y<0)
-        this.stepY = - 0.1;
+        this.position.y -= this.stepY;
       else
-        this.stepY = 0.1;
-      this.position.y += this.stepY;
+        this.position.y += this.stepY;
     }
   }
   if( x===Math.round(X) && y===Math.round(Y) ){
@@ -427,17 +423,15 @@ Reina.prototype.act=function(environment){
   if (seleccionF2 === true){
     if(x!==X){
       if(x-X<0)
-        this.stepX = - 0.1;
+        this.position.x -= this.stepX;
       else
-        this.stepX = 0.1;
-      this.position.x += this.stepX;
+        this.position.x += this.stepX;
     }
   if(y!==Y){
       if(y-Y<0)
-        this.stepY = - 0.1;
+        this.position.y -= this.stepY;
       else
-        this.stepY = 0.1;
-      this.position.y += this.stepY;
+        this.position.y += this.stepY;
     }
   }
   if( x===Math.round(X) && y===Math.round(Y) ){
@@ -486,17 +480,15 @@ Rey.prototype.act=function(environment){
   if (seleccionF2 === true){
     if(x!==X){
       if(x-X<0)
-        this.stepX = - 0.1;
+        this.position.x -= this.stepX;
       else
-        this.stepX = 0.1;
-      this.position.x += this.stepX;
+        this.position.x += this.stepX;
     }
   if(y!==Y){
       if(y-Y<0)
-        this.stepY = - 0.1;
+        this.position.y -= this.stepY;
       else
-        this.stepY = 0.1;
-      this.position.y += this.stepY;
+        this.position.y += this.stepY;
     }
   }
   if( x===Math.round(X) && y===Math.round(Y) ){
@@ -545,17 +537,15 @@ Torre.prototype.act=function(environment){
   if (seleccionF2 === true){
     if(x!==X){
       if(x-X<0)
-        this.stepX = - 0.1;
+        this.position.x -= this.stepX;
       else
-        this.stepX = 0.1;
-      this.position.x += this.stepX;
+        this.position.x += this.stepX;
     }
   if(y!==Y){
       if(y-Y<0)
-        this.stepY = - 0.1;
+        this.position.y -= this.stepY;
       else
-        this.stepY = 0.1;
-      this.position.y += this.stepY;
+        this.position.y += this.stepY;
     }
   }
   if( x===Math.round(X) && y===Math.round(Y) ){
@@ -604,17 +594,15 @@ Peon.prototype.act=function(environment){
   if (seleccionF2 === true){
     if(x!==X){
       if(x-X<0)
-        this.stepX = - 0.1;
+        this.position.x -= this.stepX;
       else
-        this.stepX = 0.1;
-      this.position.x += this.stepX;
+        this.position.x += this.stepX;
     }
   if(y!==Y){
       if(y-Y<0)
-        this.stepY = - 0.1;
+        this.position.y -= this.stepY;
       else
-        this.stepY = 0.1;
-      this.position.y += this.stepY;
+        this.position.y += this.stepY;
     }
   }
   if( x===Math.round(X) && y===Math.round(Y) ){
