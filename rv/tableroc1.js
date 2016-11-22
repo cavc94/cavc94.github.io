@@ -324,6 +324,8 @@ Caballo.prototype.act=function(environment)
   }
   if( x===Math.round(X) && y===Math.round(Y) ){
     this.estado = false;
+    seleccionF1 = false;
+    seleccionF2 = false;
   }
 };
 ///////////////ALFIL///////////////
@@ -381,8 +383,11 @@ Alfil.prototype.act=function(environment){
       this.position.y += this.stepY;
     }
   }
-  if( x===Math.round(X) && y===Math.round(Y) )
+  if( x===Math.round(X) && y===Math.round(Y) ){
     this.estado = false;
+    seleccionF1 = false;
+    seleccionF2 = false;
+  }
 };
 ///////////////REINA///////////////
 function Reina(estado,x,y)
@@ -440,8 +445,11 @@ Reina.prototype.act=function(environment)
       this.position.y += this.stepY;
     }
   }
-  if( x===Math.round(X) && y===Math.round(Y) )
+  if( x===Math.round(X) && y===Math.round(Y) ){
     this.estado = false;
+    seleccionF1 = false;
+    seleccionF2 = false;
+  }
 };
 ///////////////REY///////////////
 function Rey(estado,x,y)
@@ -497,8 +505,11 @@ Rey.prototype.act=function(environment){
       this.position.y += this.stepY;
     }
   }
-  if( x===Math.round(X) && y===Math.round(Y) )
+  if( x===Math.round(X) && y===Math.round(Y) ){
     this.estado = false;
+    seleccionF1 = false;
+    seleccionF2 = false;
+  }
 };
 ///////////////TORRE///////////////
 function Torre(estado,x,y)
@@ -556,8 +567,11 @@ Torre.prototype.act=function(environment)
       this.position.y += this.stepY;
     }
   }
-  if( x===Math.round(X) && y===Math.round(Y) )
+  if( x===Math.round(X) && y===Math.round(Y) ){
     this.estado = false;
+    seleccionF1 = false;
+    seleccionF2 = false;
+  }
 };
 ///////////////PEON///////////////
 function Peon(estado,x,y)
@@ -614,8 +628,11 @@ Peon.prototype.act=function(environment){
       this.position.y += this.stepY;
     }
   }
-  if( x===Math.round(X) && y===Math.round(Y) )
+  if( x===Math.round(X) && y===Math.round(Y) ){
     this.estado = false;
+    seleccionF1 = false;
+    seleccionF2 = false;
+  }
 };
 ///////////////SELECCION DE POSICIONES///////////////
 function SeleccionD(event)
