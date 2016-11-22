@@ -1,4 +1,3 @@
-
 ///////////////CONSTRUCTOR CABALLO///////////////
 CaballoGeometry=function()
 {
@@ -302,13 +301,7 @@ Caballo.prototype.sense=function(environment)
 
 Caballo.prototype.plan=function(environment)
 {
-     this.actuator.commands=[];
-  //if(this.sensor.colision===true)
-  //{
-  //  this.actuator.commands.push('rotateCCW');
-  //}
-  //else
-  //{ 
+    this.actuator.commands=[]; 
     if(X!==x)
       this.actuator.commands.push('goStraightX');
     else if(X===x&&Y!==y) 
@@ -319,7 +312,6 @@ Caballo.prototype.plan=function(environment)
       seleccionF2=false;
       seleccionF1=false;
     }
-  //}
 };
 
 Caballo.prototype.act=function(environment)
@@ -411,24 +403,19 @@ Alfil.prototype.sense=function(environment)
 
 Alfil.prototype.plan=function(environment)
 {
-     this.actuator.commands=[];
-  //if(this.sensor.colision===true)
-  //{
-  //  this.actuator.commands.push('rotateCCW');
-  //}
-  //else
-  //{ 
-    if(X!==x)
+    this.actuator.commands=[];
+    if (this.sensor.colision == true )
+      this.actuator.commands.push( 'stop' );
+    if(X!==x&&Y!==y){
       this.actuator.commands.push('goStraightX');
-     if(Y!==y) 
       this.actuator.commands.push('goStraightY');
+    }
      if(X===x&&Y===y)
     {
       this.actuator.commands.push('stop');
       seleccionF2=false;
       seleccionF1=false;
     }
-  //}
 };
 
 Alfil.prototype.act=function(environment)
