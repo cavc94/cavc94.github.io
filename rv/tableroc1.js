@@ -891,11 +891,11 @@ Peon.prototype.plan=function(environment)
   //else
   //{
   if (this.sTP===true){
-    if(y-Y<=10 && x===X)
+    if(y-Y<=10 && y-Y>0 && x===X)
       this.actuator.commands.push('goStraightY');
   }
   else{
-    if(Y-y<=10 && x===X)
+    if(Y-y<=10 && Y-y>0 && x===X)
       this.actuator.commands.push('goStraightY');
   }
   if(X===x&&Y===y)
