@@ -898,7 +898,7 @@ Peon.prototype.plan=function(environment)
     if(y-Y<=10 && x===X)
       this.actuator.commands.push('goStraightY');
   }
-  else if(X===x&&Y===y)
+  if(X===x&&Y===y)
     {
       this.actuator.commands.push('stop');
       seleccionF2=false;
