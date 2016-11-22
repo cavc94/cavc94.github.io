@@ -324,6 +324,7 @@ Caballo.prototype.act=function(environment)
   if( x===Math.round(X) && y===Math.round(Y) ){
     seleccionF1 = false;
     seleccionF2 = false;
+    turno=!turno;
   }
 };
 
@@ -382,6 +383,7 @@ Alfil.prototype.act=function(environment){
   if( x===Math.round(X) && y===Math.round(Y) ){
     seleccionF1 = false;
     seleccionF2 = false;
+    turno=!turno;
   }
 };
 ///////////////REINA///////////////
@@ -439,6 +441,7 @@ Reina.prototype.act=function(environment){
   if( x===Math.round(X) && y===Math.round(Y) ){
     seleccionF1 = false;
     seleccionF2 = false;
+    turno=!turno;
   }
 };
 ///////////////REY///////////////
@@ -496,6 +499,7 @@ Rey.prototype.act=function(environment){
   if( x===Math.round(X) && y===Math.round(Y) ){
     seleccionF1 = false;
     seleccionF2 = false;
+    turno=!turno;
   }
 };
 ///////////////TORRE///////////////
@@ -553,6 +557,7 @@ Torre.prototype.act=function(environment){
   if( x===Math.round(X) && y===Math.round(Y) ){
     seleccionF1 = false;
     seleccionF2 = false;
+    turno=!turno;
   }
 };
 ///////////////PEON///////////////
@@ -610,6 +615,7 @@ Peon.prototype.act=function(environment){
   if( x===Math.round(X) && y===Math.round(Y) ){
     seleccionF1 = false;
     seleccionF2 = false;
+    turno=!turno;
   }
 };
 ///////////////SELECCION DE POSICIONES///////////////
@@ -634,10 +640,10 @@ function SeleccionD(event)
       seleccionF2=true;
     }
     
-    if(X===x&&Y===y)
+    /*if(X===x&&Y===y)
     {
       turno=!turno
-    }
+    }*/
     
     if((-50<x&&x<50&&40<y&&y<50)||(-50<x&&x<50&&-50<y&&y<-40)||(-50<y&&y<50&&-50<x&&x<-40)||(-50<y&&y<50&&40<x&&x<50))
       seleccion[0].object.material.color.setHex(0xffffff);
