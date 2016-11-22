@@ -97,9 +97,8 @@ TorreGeometry=function()
 }
 TorreGeometry.prototype=new THREE.Geometry();
 ///////////////AGENTE///////////////
-function Agent(x=0,y=0,sTP)
+function Agent(x=0,y=0)
 {
-  this.sTP=sTP;
   THREE.Object3D.call(this);
   this.position.x=x;
   this.position.y=y;
@@ -201,51 +200,51 @@ Environment.prototype.setMapPiezas=function(map)
     {
       if(map[i][j]==="c")
       {
-        this.add(new Caballo((j*10)-45,(i*10)-45),true);
+        this.add(new Caballo(true,(j*10)-45,(i*10)-45));
       }
       if(map[i][j]==="C")
       {
-        this.add(new Caballo((j*10)-45,(i*10)-45),false);
+        this.add(new Caballo(false,(j*10)-45,(i*10)-45));
       }
       if(map[i][j]==="a")
       {
-        this.add(new Alfil((j*10)-45,(i*10)-45),true);
+        this.add(new Alfil(true,(j*10)-45,(i*10)-45));
       }
       if(map[i][j]==="A")
       {
-        this.add(new Alfil((j*10)-45,(i*10)-45),false);
+        this.add(new Alfil(false,(j*10)-45,(i*10)-45));
       }
       if(map[i][j]==="x")
       {
-        this.add(new Reina((j*10)-45,(i*10)-45),true);
+        this.add(new Reina(true,(j*10)-45,(i*10)-45));
       }
       if(map[i][j]==="X")
       {
-        this.add(new Reina((j*10)-45,(i*10)-45),false);
+        this.add(new Reina(false,(j*10)-45,(i*10)-45));
       }
       if(map[i][j]==="r")
       {
-        this.add(new Rey((j*10)-45,(i*10)-45),true);
+        this.add(new Rey(true,(j*10)-45,(i*10)-45));
       }
       if(map[i][j]==="R")
       {
-        this.add(new Rey((j*10)-45,(i*10)-45),false);
+        this.add(new Rey(false,(j*10)-45,(i*10)-45));
       }
       if(map[i][j]==="t")
       {
-        this.add(new Torre((j*10)-45,(i*10)-45),true);
+        this.add(new Torre(true,(j*10)-45,(i*10)-45));
       }
       if(map[i][j]==="T")
       {
-        this.add(new Torre((j*10)-45,(i*10)-45),false);
+        this.add(new Torre(false,(j*10)-45,(i*10)-45));
       }
       if(map[i][j]==="p")
       {
-        this.add(new Peon((j*10)-45,(i*10)-45),true);
+        this.add(new Peon(true,(j*10)-45,(i*10)-45));
       }
       if(map[i][j]==="P")
       {
-        this.add(new Peon((j*10)-45,(i*10)-45),false);
+        this.add(new Peon(false,(j*10)-45,(i*10)-45));
       }
     }
   }
@@ -258,15 +257,15 @@ function Sensor(position,direction)
 Sensor.prototype = new THREE.Raycaster();
 
 ///////////////CABALLO///////////////
-function Caballo(x,y,sTP)
+function Caballo(sTP,x,y)
 {
   cargador=new THREE.TextureLoader();
+  Agent.call(this,x,y);
   this.sTP = sTP;
   if(this.sTP===true)
     textura=cargador.load('maderaN.jpg');
   else
     textura=cargador.load('maderaB.jpg');
-  Agent.call(this,x,y);
   this.position.x=x;
   this.position.y=y;
   this.position.z=0.4;
@@ -364,7 +363,7 @@ Caballo.prototype.operations.rotateCCW=function(pieza,angle)
 };
 
 ///////////////ALFIL///////////////
-function Alfil(x,y,sTP)
+function Alfil(sTP,x,y)
 {
   cargador=new THREE.TextureLoader();
   Agent.call(this,x,y);
@@ -468,7 +467,7 @@ Alfil.prototype.operations.rotateCCW=function(pieza,angle)
   pieza.rotation.z+=angle;
 };
 ///////////////REINA///////////////
-function Reina(x,y,sTP)
+function Reina(sTP,x,y)
 {
   cargador=new THREE.TextureLoader();
   Agent.call(this,x,y);
@@ -603,7 +602,7 @@ Reina.prototype.operations.rotateCCW=function(pieza,angle)
   pieza.rotation.z+=angle;
 };
 ///////////////REY///////////////
-function Rey(x,y,sTP)
+function Rey(sTP,x,y)
 {
   cargador=new THREE.TextureLoader();
   Agent.call(this,x,y);
@@ -745,7 +744,7 @@ Rey.prototype.operations.rotateCCW=function(pieza,angle)
   pieza.rotation.z+=angle;
 };
 ///////////////TORRE///////////////
-function Torre(x,y,sTP)
+function Torre(sTP,x,y)
 {
   cargador=new THREE.TextureLoader();
   Agent.call(this,x,y);
@@ -848,7 +847,7 @@ Torre.prototype.operations.rotateCCW=function(pieza,angle)
   pieza.rotation.z+=angle;
 };
 ///////////////PEON///////////////
-function Peon(x,y,sTP)
+function Peon(sTP,x,y)
 {
   cargador=new THREE.TextureLoader();
   Agent.call(this,x,y);
