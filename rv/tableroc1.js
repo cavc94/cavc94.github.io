@@ -304,7 +304,8 @@ Caballo.prototype.sense=function(environment)
 
 Caballo.prototype.act=function(environment)
 {
-  this.estado = seleccionF2;
+  if (seleccionF2==true && X==this.position.x && Y==this.position.y) 
+    this.estado = true;
   if (this.estado === true){
     if(x!==X){
       if(x-X<0)
@@ -362,7 +363,8 @@ Alfil.prototype.sense=function(environment)
 /*Alfil.prototype.plan=function(environment){};*/
 
 Alfil.prototype.act=function(environment){
-  this.estado = seleccionF2;
+  if (seleccionF2==true && X==this.position.x && Y==this.position.y) 
+    this.estado = true;
   if (this.estado === true){
     if(x!==X){
       if(x-X<0)
@@ -420,7 +422,8 @@ Reina.prototype.plan=function(environment){};
 
 Reina.prototype.act=function(environment)
 {
-  this.estado = seleccionF2;
+  if (seleccionF2==true && X==this.position.x && Y==this.position.y) 
+    this.estado = true;
   if (this.estado === true){
     if(x!==X){
       if(x-X<0)
@@ -535,7 +538,8 @@ Torre.prototype.plan=function(environment){};
 
 Torre.prototype.act=function(environment)
 {
-  this.estado = seleccionF2;
+  if (seleccionF2==true && X==this.position.x && Y==this.position.y) 
+    this.estado = true;
   if (this.estado === true){
     if(x!==X){
       if(x-X<0)
@@ -592,7 +596,8 @@ Peon.prototype.sense=function(environment)
 Peon.prototype.plan=function(environment){};
 
 Peon.prototype.act=function(environment){
-  this.estado = seleccionF2;
+  if (seleccionF2==true && X==this.position.x && Y==this.position.y) 
+    this.estado = true;
   if (this.estado === true){
     if(x!==X){
       if(x-X<0)
