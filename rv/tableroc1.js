@@ -641,13 +641,13 @@ Rey.prototype.plan=function(environment)
   //  this.actuator.commands.push('rotateCCW');
   //}
   //else
-  //{ abs(X-x)<=10 
-  // X=1, x=10
-    if(abs(x-X)<=10)
+  //{ 
+  // 
+    if(Math.abs(x-X)<=10)
       this.actuator.commands.push('goStraightX');
-    else if(abs(y-Y)<=10) 
+    else if(Math.abs(y-Y)<=10) 
       this.actuator.commands.push('goStraightY');
-    else if(abs(x-X)<=10 && abs(y-Y)<=10) 
+    else if(Math.abs(x-X)<=10 && Math.abs(y-Y)<=10) 
       this.actuator.commands.push('goDiagonal');
     else if(X===x&&Y===y)
     {
