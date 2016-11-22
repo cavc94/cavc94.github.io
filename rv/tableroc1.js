@@ -634,7 +634,7 @@ function SeleccionD(event)
       seleccionF2=true;
     }
     
-    if(Math.round(X)===x&&Math.round(Y)===y)
+    if(X===x&&Y===y)
     {
       turno=!turno
     }
