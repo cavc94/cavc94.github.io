@@ -200,63 +200,51 @@ Environment.prototype.setMapPiezas=function(map)
     {
       if(map[i][j]==="c")
       {
-        sTP=1;
-        this.add(new Caballo((j*10)-45,(i*10)-45));
+        this.add(new Caballo((j*10)-45,(i*10)-45),1);
       }
       if(map[i][j]==="C")
       {
-        sTP=2;
-        this.add(new Caballo((j*10)-45,(i*10)-45));
+        this.add(new Caballo((j*10)-45,(i*10)-45),2);
       }
       if(map[i][j]==="a")
       {
-        sTP=1;
-        this.add(new Alfil((j*10)-45,(i*10)-45));
+        this.add(new Alfil((j*10)-45,(i*10)-45),1);
       }
       if(map[i][j]==="A")
       {
-        sTP=2;
-        this.add(new Alfil((j*10)-45,(i*10)-45));
+        this.add(new Alfil((j*10)-45,(i*10)-45),2);
       }
       if(map[i][j]==="x")
       {
-        sTP=1;
-        this.add(new Reina((j*10)-45,(i*10)-45));
+        this.add(new Reina((j*10)-45,(i*10)-45),1);
       }
       if(map[i][j]==="X")
       {
-        sTP=2;
-        this.add(new Reina((j*10)-45,(i*10)-45));
+        this.add(new Reina((j*10)-45,(i*10)-45),2);
       }
       if(map[i][j]==="r")
       {
-        sTP=1;
-        this.add(new Rey((j*10)-45,(i*10)-45));
+        this.add(new Rey((j*10)-45,(i*10)-45),1);
       }
       if(map[i][j]==="R")
       {
-        sTP=2;
-        this.add(new Rey((j*10)-45,(i*10)-45));
+        this.add(new Rey((j*10)-45,(i*10)-45),2);
       }
       if(map[i][j]==="t")
       {
-        sTP=1;
-        this.add(new Torre((j*10)-45,(i*10)-45));
+        this.add(new Torre((j*10)-45,(i*10)-45),1);
       }
       if(map[i][j]==="T")
       {
-        sTP=2;
-        this.add(new Torre((j*10)-45,(i*10)-45));
+        this.add(new Torre((j*10)-45,(i*10)-45),2);
       }
       if(map[i][j]==="p")
       {
-        sTP=1;
-        this.add(new Peon((j*10)-45,(i*10)-45));
+        this.add(new Peon((j*10)-45,(i*10)-45),1);
       }
       if(map[i][j]==="P")
       {
-        sTP=2;
-        this.add(new Peon((j*10)-45,(i*10)-45));
+        this.add(new Peon((j*10)-45,(i*10)-45),2);
       }
     }
   }
@@ -269,11 +257,12 @@ function Sensor(position,direction)
 Sensor.prototype = new THREE.Raycaster();
 
 ///////////////CABALLO///////////////
-function Caballo(x,y,textura)
+function Caballo(x,y,sTP)
 {
   cargador=new THREE.TextureLoader();
   Agent.call(this,x,y);
-  if(sTP===1)
+  this.sTP = sTP;
+  if(this.sTP===1)
     textura=cargador.load('maderaN.jpg');
   else
     textura=cargador.load('maderaB.jpg');
@@ -302,6 +291,8 @@ Caballo.prototype.sense=function(environment)
 Caballo.prototype.plan=function(environment)
 {
     this.actuator.commands=[]; 
+  if( ((x===X+20||x===X-20) && (y===Y+10||y===Y-10)) || ((x===X+10||x===X-10) && (y===Y+20||y===Y-20)) )
+  {
     if(X!==x)
       this.actuator.commands.push('goStraightX');
     else if(X===x&&Y!==y) 
@@ -312,6 +303,7 @@ Caballo.prototype.plan=function(environment)
       seleccionF2=false;
       seleccionF1=false;
     }
+  }
 };
 
 Caballo.prototype.act=function(environment)
@@ -371,11 +363,12 @@ Caballo.prototype.operations.rotateCCW=function(pieza,angle)
 };
 
 ///////////////ALFIL///////////////
-function Alfil(x,y)
+function Alfil(x,y,sTP)
 {
   cargador=new THREE.TextureLoader();
   Agent.call(this,x,y);
-  if(sTP===1)
+  this.sTP = sTP;
+  if(this.sTP===1)
     textura=cargador.load('maderaN.jpg');
   else
     textura=cargador.load('maderaB.jpg');
@@ -406,9 +399,8 @@ Alfil.prototype.plan=function(environment)
     this.actuator.commands=[];
     if(X!==x&&Y!==y){
       this.actuator.commands.push('goDiagonal');
-      //this.actuator.commands.push('goStraightY');
     }
-     if(X===x&&Y===y)
+    else if(X===x&&Y===y)
     {
       this.actuator.commands.push('stop');
       seleccionF2=false;
@@ -428,34 +420,6 @@ Alfil.prototype.act=function(environment)
 };
 
 Alfil.prototype.operations={};
-
-/*Alfil.prototype.operations.goStraightX=function(pieza,distance)
-{
-  if(distance===undefined)
-  {
-    if(X<x)
-      distance=0.5;
-    else if(X===x)
-      distance=0;
-    else
-      distance=-0.5; 
-  }
-  pieza.position.x+=distance*Math.cos(pieza.rotation.z);
-};
-
-Alfil.prototype.operations.goStraightY=function(pieza,distance)
-{
-  if(distance===undefined)
-   {
-    if(Y<y)
-      distance=0.5;
-    else if(Y===y)
-      distance=0;
-    else
-      distance=-0.5; 
-  }
-  pieza.position.y+=distance*Math.cos(pieza.rotation.z);
-};*/
 
 Alfil.prototype.operations.goDiagonal=function(pieza,distance)
 {
@@ -503,11 +467,12 @@ Alfil.prototype.operations.rotateCCW=function(pieza,angle)
   pieza.rotation.z+=angle;
 };
 ///////////////REINA///////////////
-function Reina(x,y)
+function Reina(x,y,sTP)
 {
   cargador=new THREE.TextureLoader();
   Agent.call(this,x,y);
-  if(sTP===1)
+  this.sTP = sTP;
+  if(this.sTP===1)
     textura=cargador.load('maderaN.jpg');
   else
     textura=cargador.load('maderaB.jpg');
@@ -536,11 +501,13 @@ Reina.prototype.sense=function(environment)
 Reina.prototype.plan=function(environment)
 {
     this.actuator.commands=[]; 
-    if(X!==x)
+    if(X!==x&&Y===y)
       this.actuator.commands.push('goStraightX');
-     if(Y!==y) 
+    else if(Y!==y&&X===x) 
       this.actuator.commands.push('goStraightY');
-     if(X===x&&Y===y)
+    else if(Y!==y&&X!==x)
+      this.actuator.commands.push('goDiagonal');
+    else if(X===x&&Y===y)
     {
       this.actuator.commands.push('stop');
       seleccionF2=false;
@@ -589,6 +556,37 @@ Reina.prototype.operations.goStraightY=function(pieza,distance)
   pieza.position.y+=distance*Math.cos(pieza.rotation.z);
 };
 
+Reina.prototype.operations.goDiagonal=function(pieza,distance)
+{
+  if(distance===undefined)
+   {
+    if(Y<y&&X<x){
+      distance=0.5;
+      pieza.position.x+=distance*Math.cos(pieza.rotation.z);
+      pieza.position.y+=distance*Math.cos(pieza.rotation.z);
+    }
+     else if(Y<y&&X>x){
+      distance=0.5;
+      pieza.position.x-=distance*Math.cos(pieza.rotation.z);
+      pieza.position.y+=distance*Math.cos(pieza.rotation.z);
+     }
+     else if(Y>y&&X<x){
+      distance=0.5;
+      pieza.position.x+=distance*Math.cos(pieza.rotation.z);
+      pieza.position.y-=distance*Math.cos(pieza.rotation.z);
+     }
+     else if(Y>y&&X>x){
+      distance=0.5;
+      pieza.position.x-=distance*Math.cos(pieza.rotation.z);
+      pieza.position.y-=distance*Math.cos(pieza.rotation.z);
+     }
+    else if(Y===y)
+      distance=0;
+    else
+      distance=-0.5; 
+  }
+};
+
 Reina.prototype.operations.stop=function(pieza,distance)
 {
   if(distance===undefined)
@@ -604,11 +602,12 @@ Reina.prototype.operations.rotateCCW=function(pieza,angle)
   pieza.rotation.z+=angle;
 };
 ///////////////REY///////////////
-function Rey(x,y)
+function Rey(x,y,sTP)
 {
   cargador=new THREE.TextureLoader();
   Agent.call(this,x,y);
-  if(sTP===1)
+  this.sTP = sTP;
+  if(this.sTP===1)
     textura=cargador.load('maderaN.jpg');
   else
     textura=cargador.load('maderaB.jpg');
@@ -643,11 +642,13 @@ Rey.prototype.plan=function(environment)
   //}
   //else
   //{ 
-    if(X!==x)
+    if(x===X+10||x===X-10)
       this.actuator.commands.push('goStraightX');
-     if(Y!==y) 
+    else if(y===Y+10||y===Y-10) 
       this.actuator.commands.push('goStraightY');
-     if(X===x&&Y===y)
+    else if((x===X+10||x===X-10)&&(y===Y+10||y===Y-10)) 
+      this.actuator.commands.push('goDiagonal');
+    else if(X===x&&Y===y)
     {
       this.actuator.commands.push('stop');
       seleccionF2=false;
@@ -697,6 +698,37 @@ Rey.prototype.operations.goStraightY=function(pieza,distance)
   pieza.position.y+=distance*Math.cos(pieza.rotation.z);
 };
 
+Rey.prototype.operations.goDiagonal=function(pieza,distance)
+{
+  if(distance===undefined)
+   {
+    if(Y<y&&X<x){
+      distance=0.5;
+      pieza.position.x+=distance*Math.cos(pieza.rotation.z);
+      pieza.position.y+=distance*Math.cos(pieza.rotation.z);
+    }
+     else if(Y<y&&X>x){
+      distance=0.5;
+      pieza.position.x-=distance*Math.cos(pieza.rotation.z);
+      pieza.position.y+=distance*Math.cos(pieza.rotation.z);
+     }
+     else if(Y>y&&X<x){
+      distance=0.5;
+      pieza.position.x+=distance*Math.cos(pieza.rotation.z);
+      pieza.position.y-=distance*Math.cos(pieza.rotation.z);
+     }
+     else if(Y>y&&X>x){
+      distance=0.5;
+      pieza.position.x-=distance*Math.cos(pieza.rotation.z);
+      pieza.position.y-=distance*Math.cos(pieza.rotation.z);
+     }
+    else if(Y===y)
+      distance=0;
+    else
+      distance=-0.5; 
+  }
+};
+
 Rey.prototype.operations.stop=function(pieza,distance)
 {
   if(distance===undefined)
@@ -712,11 +744,12 @@ Rey.prototype.operations.rotateCCW=function(pieza,angle)
   pieza.rotation.z+=angle;
 };
 ///////////////TORRE///////////////
-function Torre(x,y)
+function Torre(x,y,sTP)
 {
   cargador=new THREE.TextureLoader();
   Agent.call(this,x,y);
-  if(sTP===1)
+  this.sTP = sTP;
+  if(this.sTP===1)
     textura=cargador.load('maderaN.jpg');
   else
     textura=cargador.load('maderaB.jpg');
@@ -744,18 +777,12 @@ Torre.prototype.sense=function(environment)
 
 Torre.prototype.plan=function(environment)
 {
-   this.actuator.commands=[];
-  //if(this.sensor.colision===true)
-  //{
-  //  this.actuator.commands.push('rotateCCW');
-  //}
-  //else
-  //{ 
-    if(X!==x)
+    this.actuator.commands=[];
+    if(X!==x&&Y===y)
       this.actuator.commands.push('goStraightX');
-     if(Y!==y) 
+     else if(Y!==y&&X===x) 
       this.actuator.commands.push('goStraightY');
-     if(X===x&&Y===y)
+     else if(X===x&&Y===y)
     {
       this.actuator.commands.push('stop');
       seleccionF2=false;
@@ -820,11 +847,12 @@ Torre.prototype.operations.rotateCCW=function(pieza,angle)
   pieza.rotation.z+=angle;
 };
 ///////////////PEON///////////////
-function Peon(x,y)
+function Peon(x,y,sTP)
 {
   cargador=new THREE.TextureLoader();
   Agent.call(this,x,y);
-  if(sTP===1)
+  this.sTP = sTP;
+  if(this.sTP===1)
     textura=cargador.load('maderaN.jpg');
   else
     textura=cargador.load('maderaB.jpg');
@@ -858,12 +886,14 @@ Peon.prototype.plan=function(environment)
   //  this.actuator.commands.push('rotateCCW');
   //}
   //else
-  //{ 
-    if(X!==x)
-      this.actuator.commands.push('goStraightX');
-     if(Y!==y) 
+  //{
+  if (this.sTP===1)
+    var peond = 10;
+  else
+    var peond = -10;     
+  if(Y===y+10) 
       this.actuator.commands.push('goStraightY');
-     if(X===x&&Y===y)
+  else if(X===x&&Y===y)
     {
       this.actuator.commands.push('stop');
       seleccionF2=false;
@@ -884,20 +914,6 @@ Peon.prototype.act=function(environment)
 };
 
 Peon.prototype.operations={};
-
-Peon.prototype.operations.goStraightX=function(pieza,distance)
-{
-  if(distance===undefined)
-  {
-    if(X<x)
-      distance=0.5;
-    else if(X===x)
-      distance=0;
-    else
-      distance=-0.5; 
-  }
-  pieza.position.x+=distance*Math.cos(pieza.rotation.z);
-};
 
 Peon.prototype.operations.goStraightY=function(pieza,distance)
 {
