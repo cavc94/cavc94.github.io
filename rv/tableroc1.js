@@ -891,7 +891,7 @@ Peon.prototype.plan=function(environment)
     var peond = 10;
   else
     var peond = -10;     
-  if(Y===y+10) 
+  if(y===Y+peond) 
       this.actuator.commands.push('goStraightY');
   else if(X===x&&Y===y)
     {
