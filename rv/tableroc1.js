@@ -200,51 +200,51 @@ Environment.prototype.setMapPiezas=function(map)
     {
       if(map[i][j]==="c")
       {
-        this.add(new Caballo((j*10)-45,(i*10)-45),1);
+        this.add(new Caballo((j*10)-45,(i*10)-45),true);
       }
       if(map[i][j]==="C")
       {
-        this.add(new Caballo((j*10)-45,(i*10)-45),2);
+        this.add(new Caballo((j*10)-45,(i*10)-45),false);
       }
       if(map[i][j]==="a")
       {
-        this.add(new Alfil((j*10)-45,(i*10)-45),1);
+        this.add(new Alfil((j*10)-45,(i*10)-45),true);
       }
       if(map[i][j]==="A")
       {
-        this.add(new Alfil((j*10)-45,(i*10)-45),2);
+        this.add(new Alfil((j*10)-45,(i*10)-45),false);
       }
       if(map[i][j]==="x")
       {
-        this.add(new Reina((j*10)-45,(i*10)-45),1);
+        this.add(new Reina((j*10)-45,(i*10)-45),true);
       }
       if(map[i][j]==="X")
       {
-        this.add(new Reina((j*10)-45,(i*10)-45),2);
+        this.add(new Reina((j*10)-45,(i*10)-45),false);
       }
       if(map[i][j]==="r")
       {
-        this.add(new Rey((j*10)-45,(i*10)-45),1);
+        this.add(new Rey((j*10)-45,(i*10)-45),true);
       }
       if(map[i][j]==="R")
       {
-        this.add(new Rey((j*10)-45,(i*10)-45),2);
+        this.add(new Rey((j*10)-45,(i*10)-45),false);
       }
       if(map[i][j]==="t")
       {
-        this.add(new Torre((j*10)-45,(i*10)-45),1);
+        this.add(new Torre((j*10)-45,(i*10)-45),true);
       }
       if(map[i][j]==="T")
       {
-        this.add(new Torre((j*10)-45,(i*10)-45),2);
+        this.add(new Torre((j*10)-45,(i*10)-45),false);
       }
       if(map[i][j]==="p")
       {
-        this.add(new Peon((j*10)-45,(i*10)-45),1);
+        this.add(new Peon((j*10)-45,(i*10)-45),true);
       }
       if(map[i][j]==="P")
       {
-        this.add(new Peon((j*10)-45,(i*10)-45),2);
+        this.add(new Peon((j*10)-45,(i*10)-45),false);
       }
     }
   }
@@ -261,7 +261,7 @@ function Caballo(x,y,sTP)
 {
   cargador=new THREE.TextureLoader();
   this.sTP = sTP;
-  if(this.sTP===1)
+  if(this.sTP===true)
     textura=cargador.load('maderaN.jpg');
   else
     textura=cargador.load('maderaB.jpg');
@@ -368,7 +368,7 @@ function Alfil(x,y,sTP)
   cargador=new THREE.TextureLoader();
   Agent.call(this,x,y);
   this.sTP = sTP;
-  if(this.sTP===1)
+  if(this.sTP===true)
     textura=cargador.load('maderaN.jpg');
   else
     textura=cargador.load('maderaB.jpg');
@@ -471,7 +471,7 @@ function Reina(x,y,sTP)
 {
   cargador=new THREE.TextureLoader();
   Agent.call(this,x,y);
-  this.sTP = sTP;
+  this.sTP = true;
   if(this.sTP===1)
     textura=cargador.load('maderaN.jpg');
   else
@@ -607,7 +607,7 @@ function Rey(x,y,sTP)
   cargador=new THREE.TextureLoader();
   Agent.call(this,x,y);
   this.sTP = sTP;
-  if(this.sTP===1)
+  if(this.sTP===true)
     textura=cargador.load('maderaN.jpg');
   else
     textura=cargador.load('maderaB.jpg');
@@ -749,7 +749,7 @@ function Torre(x,y,sTP)
   cargador=new THREE.TextureLoader();
   Agent.call(this,x,y);
   this.sTP = sTP;
-  if(this.sTP===1)
+  if(this.sTP===true)
     textura=cargador.load('maderaN.jpg');
   else
     textura=cargador.load('maderaB.jpg');
@@ -852,7 +852,7 @@ function Peon(x,y,sTP)
   cargador=new THREE.TextureLoader();
   Agent.call(this,x,y);
   this.sTP = sTP;
-  if(this.sTP===1)
+  if(this.sTP===true)
     textura=cargador.load('maderaN.jpg');
   else
     textura=cargador.load('maderaB.jpg');
@@ -887,7 +887,7 @@ Peon.prototype.plan=function(environment)
   //}
   //else
   //{
-  if (this.sTP===1)
+  if (this.sTP===true)
     var peond = 10;
   else
     var peond = -10;     
