@@ -280,8 +280,8 @@ function Caballo(x,y)
   this.position.x=x;
   this.position.y=y;
   this.position.z=0.4;
-  this.stepX = 0.4;
-  this.stepY = 0.4;
+  this.stepX = 0.1;
+  this.stepY = 0.1;
   this.sensor=new Sensor();
   this.actuator=new THREE.Mesh(new CaballoGeometry(),new THREE.MeshLambertMaterial({map:textura}));
   this.add(this.actuator);
@@ -306,16 +306,16 @@ Caballo.prototype.act=function(environment)
   if (seleccionF2 === true){
     if(x!==X){
       if(x-X<0)
-        this.stepX = - 0.4;
+        this.stepX = - 0.1;
       else
-        this.stepX = 0.4;
+        this.stepX = 0.1;
       this.position.x += this.stepX;
     }
   if(x!==X && y!==Y){
       if(y-Y<0)
-        this.stepY = - 0.4;
+        this.stepY = - 0.1;
       else
-        this.stepY = 0.4;
+        this.stepY = 0.1;
       this.position.y += this.stepY;
     }
   }
@@ -336,8 +336,8 @@ function Alfil(x,y)
   this.position.x=x;
   this.position.y=y;
   this.position.z=0.4;
-  this.stepX = 0.4;
-  this.stepY = 0.4;
+  this.stepX = 0.1;
+  this.stepY = 0.1;
   this.sensor=new Sensor();
   this.actuator=new THREE.Mesh(new AlfilGeometry(),new THREE.MeshLambertMaterial({map:textura}));
   this.add(this.actuator);
@@ -363,16 +363,16 @@ Alfil.prototype.act=function(environment){
   if (seleccionF2 === true){
     if(x!==X){
       if(x-X<0)
-        this.stepX = - 0.4;
+        this.stepX = - 0.1;
       else
-        this.stepX = 0.4;
+        this.stepX = 0.1;
       this.position.x += this.stepX;
     }
   if(y!==Y){
       if(y-Y<0)
-        this.stepY = - 0.4;
+        this.stepY = - 0.1;
       else
-        this.stepY = 0.4;
+        this.stepY = 0.1;
       this.position.y += this.stepY;
     }
   }
@@ -393,8 +393,8 @@ function Reina(x,y)
   this.position.x=x;
   this.position.y=y;
   this.position.z=0.4;
-  this.stepX = 0.4;
-  this.stepY = 0.4;
+  this.stepX = 0.1;
+  this.stepY = 0.1;
   this.sensor=new Sensor();
   this.actuator=new THREE.Mesh(new ReinaGeometry(),new THREE.MeshLambertMaterial({map:textura}));
   this.add(this.actuator);
@@ -421,16 +421,16 @@ Reina.prototype.act=function(environment)
   if (seleccionF2 === true){
     if(x!==X){
       if(x-X<0)
-        this.stepX = - 0.4;
+        this.stepX = - 0.1;
       else
-        this.stepX = 0.4;
+        this.stepX = 0.1;
       this.position.x += this.stepX;
     }
   if(y!==Y){
       if(y-Y<0)
-        this.stepY = - 0.4;
+        this.stepY = - 0.1;
       else
-        this.stepY = 0.4;
+        this.stepY = 0.1;
       this.position.y += this.stepY;
     }
   }
@@ -451,8 +451,8 @@ function Rey(x,y)
   this.position.x=x;
   this.position.y=y;
   this.position.z=0.4;
-  this.stepX = 0.4;
-  this.stepY = 0.4;
+  this.stepX = 0.1;
+  this.stepY = 0.1;
   this.sensor=new Sensor();
   this.actuator=new THREE.Mesh(new ReyGeometry(),new THREE.MeshLambertMaterial({map:textura}));
   this.add(this.actuator);
@@ -478,16 +478,16 @@ Rey.prototype.act=function(environment){
   if (seleccionF2 === true){
     if(x!==X){
       if(x-X<0)
-        this.stepX = - 0.4;
+        this.stepX = - 0.1;
       else
-        this.stepX = 0.4;
+        this.stepX = 0.1;
       this.position.x += this.stepX;
     }
   if(y!==Y){
       if(y-Y<0)
-        this.stepY = - 0.4;
+        this.stepY = - 0.1;
       else
-        this.stepY = 0.4;
+        this.stepY = 0.1;
       this.position.y += this.stepY;
     }
   }
@@ -508,8 +508,8 @@ function Torre(x,y)
   this.position.x=x;
   this.position.y=y;
   this.position.z=0.4;
-  this.stepX = 0.4;
-  this.stepY = 0.4;
+  this.stepX = 0.1;
+  this.stepY = 0.1;
   this.sensor=new Sensor();
   this.actuator=new THREE.Mesh(new TorreGeometry(),new THREE.MeshLambertMaterial({map:textura}));
   this.add(this.actuator);
@@ -536,16 +536,16 @@ Torre.prototype.act=function(environment)
   if (seleccionF2 === true){
     if(x!==X){
       if(x-X<0)
-        this.stepX = - 0.4;
+        this.stepX = - 0.1;
       else
-        this.stepX = 0.4;
+        this.stepX = 0.1;
       this.position.x += this.stepX;
     }
   if(y!==Y){
       if(y-Y<0)
-        this.stepY = - 0.4;
+        this.stepY = - 0.1;
       else
-        this.stepY = 0.4;
+        this.stepY = 0.1;
       this.position.y += this.stepY;
     }
   }
@@ -566,8 +566,8 @@ function Peon(x,y)
   this.position.x=x;
   this.position.y=y;
   this.position.z=0.4;
-  this.stepX = 0.4;
-  this.stepY = 0.4;
+  this.stepX = 0.1;
+  this.stepY = 0.1;
   this.sensor=new Sensor();
   this.actuator=new THREE.Mesh(new PeonGeometry(),new THREE.MeshLambertMaterial({map:textura}));
   this.add(this.actuator);
@@ -593,16 +593,16 @@ Peon.prototype.act=function(environment){
   if (seleccionF2 === true){
     if(x!==X){
       if(x-X<0)
-        this.stepX = - 0.4;
+        this.stepX = - 0.1;
       else
-        this.stepX = 0.4;
+        this.stepX = 0.1;
       this.position.x += this.stepX;
     }
   if(y!==Y){
       if(y-Y<0)
-        this.stepY = - 0.4;
+        this.stepY = - 0.1;
       else
-        this.stepY = 0.4;
+        this.stepY = 0.1;
       this.position.y += this.stepY;
     }
   }
@@ -642,6 +642,39 @@ function SeleccionD(event)
       seleccion[0].object.material.color.setHex(0xffffff);
     else
       seleccion[0].object.material.color.setHex(0x00ff00);
+    
+    if(-40<x&&x<-30)
+      x=-35;
+    else if(-30<x&&x<-20)
+      x=-25;
+    else if(-20<x&&x<-10)
+      x=-15;
+    else if(-10<x&&x<0)
+      x=-5;
+    else if(0<x&&x<10)
+      x=5;
+    else if(10<x&&x<20)
+      x=15;
+    else if(20<x&&x<30)
+      x=25;
+    else if(30<x&&x<40)
+      x=35;
+    if(-40<y&&y<-30)
+      y=-35;
+    else if(-30<y&&y<-20)
+      y=-25;
+    else if(-20<y&&y<-10)
+      y=-15;
+    else if(-10<y&&y<0)
+      y=-5;
+    else if(0<y&&y<10)
+      y=5;
+    else if(10<y&&y<20)
+      y=15;
+    else if(20<y&&y<30)
+      y=25;
+    else if(30<y&&y<40)
+      y=35;
     console.log(x);
     console.log(y);
   }
