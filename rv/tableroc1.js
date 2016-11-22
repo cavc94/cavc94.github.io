@@ -719,7 +719,6 @@ function loop()
   requestAnimationFrame(loop);
   environment.sense();
   environment.plan();
-  environment.act();
   if(turno==false)
   {
    if(id===114)
