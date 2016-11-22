@@ -859,6 +859,7 @@ function Peon(sTP,x,y)
   this.position.x=x;
   this.position.y=y;
   this.position.z=0.4;
+  this.peond=0;
   this.sensor=new Sensor();
   this.actuator=new THREE.Mesh(new PeonGeometry(),new THREE.MeshLambertMaterial({map:textura}));
   this.add(this.actuator);
@@ -888,9 +889,9 @@ Peon.prototype.plan=function(environment)
   //else
   //{
   if (this.sTP===true)
-    var peond = 10;
+    this.peond = 10;
   else
-    var peond = -10;     
+    this.peond = -10;     
   if(y===Y+peond) 
       this.actuator.commands.push('goStraightY');
   else if(X===x&&Y===y)
