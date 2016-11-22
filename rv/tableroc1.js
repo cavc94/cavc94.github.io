@@ -324,7 +324,8 @@ Caballo.prototype.act=function(environment)
   if( x===Math.round(X) && y===Math.round(Y) ){
     seleccionF1 = false;
     seleccionF2 = false;
-    turno=!turno;
+    X=x;
+    Y=y;
   }
 };
 
@@ -383,7 +384,8 @@ Alfil.prototype.act=function(environment){
   if( x===Math.round(X) && y===Math.round(Y) ){
     seleccionF1 = false;
     seleccionF2 = false;
-    turno=!turno;
+    X=x;
+    Y=y;;
   }
 };
 ///////////////REINA///////////////
@@ -441,7 +443,8 @@ Reina.prototype.act=function(environment){
   if( x===Math.round(X) && y===Math.round(Y) ){
     seleccionF1 = false;
     seleccionF2 = false;
-    turno=!turno;
+    X=x;
+    Y=y;;
   }
 };
 ///////////////REY///////////////
@@ -499,7 +502,8 @@ Rey.prototype.act=function(environment){
   if( x===Math.round(X) && y===Math.round(Y) ){
     seleccionF1 = false;
     seleccionF2 = false;
-    turno=!turno;
+    X=x;
+    Y=y;
   }
 };
 ///////////////TORRE///////////////
@@ -557,7 +561,8 @@ Torre.prototype.act=function(environment){
   if( x===Math.round(X) && y===Math.round(Y) ){
     seleccionF1 = false;
     seleccionF2 = false;
-    turno=!turno;
+    X=x;
+    Y=y;
   }
 };
 ///////////////PEON///////////////
@@ -615,7 +620,8 @@ Peon.prototype.act=function(environment){
   if( x===Math.round(X) && y===Math.round(Y) ){
     seleccionF1 = false;
     seleccionF2 = false;
-    turno=!turno;
+    X=x;
+    Y=y;
   }
 };
 ///////////////SELECCION DE POSICIONES///////////////
@@ -640,10 +646,10 @@ function SeleccionD(event)
       seleccionF2=true;
     }
     
-    /*if(X===x&&Y===y)
+    if(X===x&&Y===y)
     {
       turno=!turno
-    }*/
+    }
     
     if((-50<x&&x<50&&40<y&&y<50)||(-50<x&&x<50&&-50<y&&y<-40)||(-50<y&&y<50&&-50<x&&x<-40)||(-50<y&&y<50&&40<x&&x<50))
       seleccion[0].object.material.color.setHex(0xffffff);
