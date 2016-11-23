@@ -294,13 +294,13 @@ Caballo.prototype.plan=function(environment)
   if( Math.abs(x-X)<=20 && Math.abs(y-Y)<=10 && Math.abs(x-X)!==Math.abs(y-Y) && y!==Y  ){
     if(X!==x&&Y!==y)
       this.actuator.commands.push('goStraightX');
-    else
+    else if (X===x&&Y!==y)
       this.actuator.commands.push('goStraightY');
   }
   else if( Math.abs(x-X)<=10 && Math.abs(y-Y)<=20 && Math.abs(x-X)!==Math.abs(y-Y) && x!==X  ){
     if(Y!==y&&X!==x)
       this.actuator.commands.push('goStraightY');
-    else
+    else if (Y===y&&X!==x)
       this.actuator.commands.push('goStraightX');
   }
   else if(X===x&&Y===y)
