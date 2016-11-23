@@ -290,12 +290,14 @@ Caballo.prototype.sense=function(environment)
 
 Caballo.prototype.plan=function(environment)
 {
-  this.actuator.commands=[]; 
-  if( Math.abs(x-X)<=20 && Math.abs(y-Y)<=10 && Math.abs(x-X)!==Math.abs(y-Y) && Y!=y ){
+  this.actuator.commands=[];
+  var cnt = 0;
+  if( Math.abs(x-X)<=20 && Math.abs(y-Y)<=10 && Math.abs(x-X)!==Math.abs(y-Y) && Y!=y && X!=x ){
        //(Math.abs(x-X)<=10 && Math.abs(y-Y)<=20)) && Math.abs(x-X)!==Math.abs(y-Y) ){
-    if(X!==x&&Y!==y)
+    if(X!==x&&Y!==y){
       this.actuator.commands.push('goStraightX');
-    else if (X==x&&Y!==y)
+      cnt++; }
+    else if (X==x&&cnt!==0)
       this.actuator.commands.push('goStraightY');
   }
   else if(X===x&&Y===y)
@@ -306,6 +308,20 @@ Caballo.prototype.plan=function(environment)
       seleccionF1=false;
     }
 };
+
+/*if( ((Math.abs(x-X)<=20 && Math.abs(y-Y)<=10) || (Math.abs(x-X)<=10 && Math.abs(y-Y)<=20)) && Math.abs(x-X)!==Math.abs(y-Y) ){
+    if(X!==x&&Y!==y)
+      this.actuator.commands.push('goStraightX');
+    else if (Y!==y)
+      this.actuator.commands.push('goStraightY');
+  }
+  else if(X===x&&Y===y)
+    {
+      this.actuator.commands.push('stop');
+      marca = false;
+      seleccionF2=false;
+      seleccionF1=false;
+    }*/
 
 Caballo.prototype.act=function(environment)
 {
