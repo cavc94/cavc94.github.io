@@ -291,7 +291,7 @@ Caballo.prototype.sense=function(environment)
 Caballo.prototype.plan=function(environment)
 {
   this.actuator.commands=[]; 
-  if( ( Math.abs(x-X)<=20 && Math.abs(y-Y)<=10 && Math.abs(x-X)!==Math.abs(y-Y) && Y!=y ){
+  if( Math.abs(x-X)<=20 && Math.abs(y-Y)<=10 && Math.abs(x-X)!==Math.abs(y-Y) && Y!=y ){
        //(Math.abs(x-X)<=10 && Math.abs(y-Y)<=20)) && Math.abs(x-X)!==Math.abs(y-Y) ){
     if(X!==x&&Y!==y)
       this.actuator.commands.push('goStraightX');
