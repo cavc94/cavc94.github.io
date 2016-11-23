@@ -291,7 +291,6 @@ Caballo.prototype.sense=function(environment)
 Caballo.prototype.plan=function(environment)
 {
   this.actuator.commands=[];
-  var cnt = 0;
   if( Math.abs(x-X)<=20 && Math.abs(y-Y)<=10 && Math.abs(x-X)!==Math.abs(y-Y) && Y!=y){
        //(Math.abs(x-X)<=10 && Math.abs(y-Y)<=20)) && Math.abs(x-X)!==Math.abs(y-Y) ){
     if(X!==x&&Y!==y){
@@ -1360,7 +1359,7 @@ function loop()
 
 }
 
-var turno=false,sTC,id,environment,camara,renderizador,luzpuntual,avance,seleccion,x,X,Y,Z,z,y,activar=false,seleccionO=true,seleccionF2=false,seleccionF1=false,xf,yf;
+var cnt=0,turno=false,sTC,id,environment,camara,renderizador,luzpuntual,avance,seleccion,x,X,Y,Z,z,y,activar=false,seleccionO=true,seleccionF2=false,seleccionF1=false,xf,yf;
 
 setup();
 loop();
