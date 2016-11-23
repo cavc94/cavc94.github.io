@@ -294,7 +294,7 @@ Caballo.prototype.plan=function(environment)
   if( ((Math.abs(x-X)<=20 && Math.abs(y-Y)<=10) || (Math.abs(x-X)<=10 && Math.abs(y-Y)<=20)) && Math.abs(x-X)!=Math.abs(y-Y) ){
     if(X!==x&&y!==Y )
       this.actuator.commands.push('goStraightX');
-    else if(X===x&&Y!==y) 
+    else if(X===x&&Y!==y&&Math.abs(y-Y)>=10) 
       this.actuator.commands.push('goStraightY');
     else if(X===x&&Y===y)
     {
