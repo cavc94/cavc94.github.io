@@ -10,7 +10,7 @@ CaballoGeometry=function()
   CabezaCaballo1.translate(0.3,0.6,0);
   var BaseCaballo=new THREE.Mesh(BaseCaballo1);
   var CuerpoCaballo=new THREE.Mesh(CuerpoCaballo1);
-  var CabezaCaballo=new THREE.Mesh(CabezaCaballo1);
+  var CabezaCaballo=new THREE.Mesh(CabezaCaballo1);<
   this.merge(BaseCaballo.geometry,BaseCaballo.matrix);
   this.merge(CuerpoCaballo.geometry,CuerpoCaballo.matrix);
   this.merge(CabezaCaballo.geometry,CabezaCaballo.matrix);
@@ -291,17 +291,11 @@ Caballo.prototype.sense=function(environment)
 Caballo.prototype.plan=function(environment)
 {
   this.actuator.commands=[]; 
-  if( Math.abs(x-X)<=20 && Math.abs(y-Y)<=10 && Math.abs(x-X)!==Math.abs(y-Y) && y!==Y  ){
+  if( ((Math.abs(x-X)<=20 && Math.abs(y-Y)<=10) || (Math.abs(x-X)<=10 && Math.abs(y-Y)<=20)) && Math.abs(x-X)!==Math.abs(y-Y) ){
     if(X!==x&&Y!==y)
       this.actuator.commands.push('goStraightX');
     else if (X===x&&Y!==y)
       this.actuator.commands.push('goStraightY');
-  }
-  else if( Math.abs(x-X)<=10 && Math.abs(y-Y)<=20 && Math.abs(x-X)!==Math.abs(y-Y) && x!==X  ){
-    if(Y!==y&&X!==x)
-      this.actuator.commands.push('goStraightY');
-    else if (Y===y&&X!==x)
-      this.actuator.commands.push('goStraightX');
   }
   else if(X===x&&Y===y)
     {
