@@ -10,7 +10,7 @@ CaballoGeometry=function()
   CabezaCaballo1.translate(0.3,0.6,0);
   var BaseCaballo=new THREE.Mesh(BaseCaballo1);
   var CuerpoCaballo=new THREE.Mesh(CuerpoCaballo1);
-  var CabezaCaballo=new THREE.Mesh(CabezaCaballo1);<
+  var CabezaCaballo=new THREE.Mesh(CabezaCaballo1);
   this.merge(BaseCaballo.geometry,BaseCaballo.matrix);
   this.merge(CuerpoCaballo.geometry,CuerpoCaballo.matrix);
   this.merge(CabezaCaballo.geometry,CabezaCaballo.matrix);
