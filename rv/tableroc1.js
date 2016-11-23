@@ -290,9 +290,11 @@ Caballo.prototype.sense=function(environment)
 
 Caballo.prototype.plan=function(environment)
 {
-    this.actuator.commands=[]; 
-  //if( ((x===X+20||x===X-20) && (y===Y+10||y===Y-10)) || ((x===X+10||x===X-10) && (y===Y+20||y===Y-20)) )
-  if( (Math.abs(x-X)<=20 && Math.abs(y-Y)<=10) || (Math.abs(x-X)<=10 && Math.abs(y-Y)<=20) )
+  var marca;  
+  this.actuator.commands=[]; 
+  if( (Math.abs(x-X)< 20 && Math.abs(y-Y)< 10) || (Math.abs(x-X)< 10 && Math.abs(y-Y)< 20) )
+    marca = true;
+  if ( marca == true )
   {
     if(X!==x)
       this.actuator.commands.push('goStraightX');
@@ -301,6 +303,7 @@ Caballo.prototype.plan=function(environment)
     else if(X===x&&Y===y)
     {
       this.actuator.commands.push('stop');
+      marca = false;
       seleccionF2=false;
       seleccionF1=false;
     }
