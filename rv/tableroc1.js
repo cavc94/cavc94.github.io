@@ -269,6 +269,7 @@ function Caballo(sTP,x,y)
   this.position.x=x;
   this.position.y=y;
   this.position.z=0.4;
+  this.cnt = 0;
   this.sensor=new Sensor();
   this.actuator=new THREE.Mesh(new CaballoGeometry(),new THREE.MeshLambertMaterial({map:textura}));
   this.add(this.actuator);
@@ -294,35 +295,19 @@ Caballo.prototype.plan=function(environment)
   if( ((Math.abs(x-X)<=20 && Math.abs(y-Y)<=10) || (Math.abs(x-X)<=10 && Math.abs(y-Y)<=20)) && Math.abs(x-X)!==Math.abs(y-Y) ){
     if(X!==x&&Y!==y){
       this.actuator.commands.push('goStraightX');
-      cnt = 1;}
-    else if (X===X&&Y!==y&&cnt!==0)
+      this.cnt = 1;}
+    else if (X===X&&Y!==y&&this.cnt!==0)
       this.actuator.commands.push('goStraightY');
   }
   else if(X===x&&Y===y)
     {
       this.actuator.commands.push('stop');
-      cnt = 0;
-      marca = false;
+      this.cnt = 0;
+      //marca = false;
       seleccionF2=false;
       seleccionF1=false;
     }
 };
-
-/*if( Math.abs(x-X)<=20 && Math.abs(y-Y)<=10 && Math.abs(x-X)!==Math.abs(y-Y) && Y!=y){
-       //(Math.abs(x-X)<=10 && Math.abs(y-Y)<=20)) && Math.abs(x-X)!==Math.abs(y-Y) ){
-    if(X!==x&&Y!==y){
-      this.actuator.commands.push('goStraightX');
-      cnt++; }
-    else if (X==x&&cnt!==0)
-      this.actuator.commands.push('goStraightY');
-  }
-  else if(X===x&&Y===y)
-    {
-      this.actuator.commands.push('stop');
-      marca = false;
-      seleccionF2=false;
-      seleccionF1=false;
-    }*/
 
 Caballo.prototype.act=function(environment)
 {
@@ -1361,7 +1346,7 @@ function loop()
 
 }
 
-var cnt=0,turno=false,sTC,id,environment,camara,renderizador,luzpuntual,avance,seleccion,x,X,Y,Z,z,y,activar=false,seleccionO=true,seleccionF2=false,seleccionF1=false,xf,yf;
+var turno=false,sTC,id,environment,camara,renderizador,luzpuntual,avance,seleccion,x,X,Y,Z,z,y,activar=false,seleccionO=true,seleccionF2=false,seleccionF1=false,xf,yf;
 
 setup();
 loop();
