@@ -291,27 +291,29 @@ Caballo.prototype.sense=function(environment)
 Caballo.prototype.plan=function(environment)
 {
   this.actuator.commands=[];
-  if( Math.abs(x-X)<=20 && Math.abs(y-Y)<=10 && Math.abs(x-X)!==Math.abs(y-Y) && Y!=y){
-       //(Math.abs(x-X)<=10 && Math.abs(y-Y)<=20)) && Math.abs(x-X)!==Math.abs(y-Y) ){
+  if( ((Math.abs(x-X)<=20 && Math.abs(y-Y)<=10) || (Math.abs(x-X)<=10 && Math.abs(y-Y)<=20)) && Math.abs(x-X)!==Math.abs(y-Y) ){
     if(X!==x&&Y!==y){
       this.actuator.commands.push('goStraightX');
-      cnt++; }
-    else if (X==x&&cnt!==0)
+      cnt = 1;}
+    else if (X===X&&Y!==y&&cnt!==0)
       this.actuator.commands.push('goStraightY');
   }
   else if(X===x&&Y===y)
     {
       this.actuator.commands.push('stop');
+      cnt = 0;
       marca = false;
       seleccionF2=false;
       seleccionF1=false;
     }
 };
 
-/*if( ((Math.abs(x-X)<=20 && Math.abs(y-Y)<=10) || (Math.abs(x-X)<=10 && Math.abs(y-Y)<=20)) && Math.abs(x-X)!==Math.abs(y-Y) ){
-    if(X!==x&&Y!==y)
+/*if( Math.abs(x-X)<=20 && Math.abs(y-Y)<=10 && Math.abs(x-X)!==Math.abs(y-Y) && Y!=y){
+       //(Math.abs(x-X)<=10 && Math.abs(y-Y)<=20)) && Math.abs(x-X)!==Math.abs(y-Y) ){
+    if(X!==x&&Y!==y){
       this.actuator.commands.push('goStraightX');
-    else if (Y!==y)
+      cnt++; }
+    else if (X==x&&cnt!==0)
       this.actuator.commands.push('goStraightY');
   }
   else if(X===x&&Y===y)
