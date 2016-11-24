@@ -386,17 +386,6 @@ Caballo.prototype.plan=function(environment)
     }
 };
 
-Caballo.prototype.act=function(environment)
-{
-  var command = this.actuator.commands.pop();
-  if(command===undefined)
-    console.log('Undefined command');
-  else if(command in this.operations)
-    this.operations[command](this);
-  else
-    console.log('Unknown command');
-};
-
 Caballo.prototype.operations.rotateCCW=function(pieza,angle)
 {
   if(angle===undefined)
@@ -448,25 +437,6 @@ Alfil.prototype.plan=function(environment)
       seleccionF2=false;
       seleccionF1=false;
     }
-};
-
-Alfil.prototype.act=function(environment)
-{
-  var command = this.actuator.commands.pop();
-  if(command===undefined)
-    console.log('Undefined command');
-  else if(command in this.operations)
-    this.operations[command](this);
-  else
-    console.log('Unknown command');
-};
-
-Alfil.prototype.operations.stop=function(pieza,distance)
-{
-  if(distance===undefined)
-    distance=0;
-  pieza.position.x+=distance*Math.cos(pieza.rotation.z);
-  pieza.position.y+=distance*Math.cos(pieza.rotation.z);
 };
 
 Alfil.prototype.operations.rotateCCW=function(pieza,angle)
@@ -522,17 +492,6 @@ Reina.prototype.plan=function(environment)
       seleccionF2=false;
       seleccionF1=false;
     }
-};
-
-Reina.prototype.act=function(environment)
-{
-  var command = this.actuator.commands.pop();
-  if(command===undefined)
-    console.log('Undefined command');
-  else if(command in this.operations)
-    this.operations[command](this);
-  else
-    console.log('Unknown command');
 };
 
 Reina.prototype.operations.rotateCCW=function(pieza,angle)
@@ -598,17 +557,6 @@ Rey.prototype.plan=function(environment)
       }
     }
   //}
-};
-
-Rey.prototype.act=function(environment)
-{
-  var command = this.actuator.commands.pop();
-  if(command===undefined)
-    console.log('Undefined command');
-  else if(command in this.operations)
-    this.operations[command](this);
-  else
-    console.log('Unknown command');
 };
 
 Rey.prototype.operations.rotateCCW=function(pieza,angle)
@@ -738,17 +686,6 @@ Peon.prototype.plan=function(environment)
       seleccionF1=false;
     }
   //}
-};
-
-Peon.prototype.act=function(environment)
-{
-  var command = this.actuator.commands.pop();
-  if(command===undefined)
-    console.log('Undefined command');
-  else if(command in this.operations)
-    this.operations[command](this);
-  else
-    console.log('Unknown command');
 };
 
 Peon.prototype.operations.rotateCCW=function(pieza,angle)
