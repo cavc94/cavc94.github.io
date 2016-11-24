@@ -107,7 +107,85 @@ Agent.prototype=new THREE.Object3D();
 
 Agent.prototype.sense=function(environment){};
 Agent.prototype.plan=function(environment){};
-Agent.prototype.act=function(environment){};
+Agent.prototype.act=function(environment)
+{
+  var command = this.actuator.commands.pop();
+  if(command===undefined)
+    console.log('Undefined command');
+  else if(command in this.operations)
+    this.operations[command](this);
+  else
+    console.log('Unknown command');
+};
+
+Agent.prototype.operations={};
+
+Agent.prototype.operations.goStraightX=function(pieza,distance)
+{
+  if(distance===undefined)
+  {
+    if(X<x)
+      distance=0.5;
+    else if(X===x)
+      distance=0;
+    else
+      distance=-0.5; 
+  }
+  pieza.position.x+=distance*Math.cos(pieza.rotation.z);
+};
+
+Agent.prototype.operations.goStraightY=function(pieza,distance)
+{
+  if(distance===undefined)
+   {
+    if(Y<y)
+      distance=0.5;
+    else if(Y===y)
+      distance=0;
+    else
+      distance=-0.5; 
+  }
+  pieza.position.y+=distance*Math.cos(pieza.rotation.z);
+};
+
+Agent.prototype.operations.goDiagonal=function(pieza,distance)
+{
+  if(distance===undefined)
+   {
+    if(Y<y&&X<x){
+      distance=0.5;
+      pieza.position.x+=distance*Math.cos(pieza.rotation.z);
+      pieza.position.y+=distance*Math.cos(pieza.rotation.z);
+    }
+     else if(Y<y&&X>x){
+      distance=0.5;
+      pieza.position.x-=distance*Math.cos(pieza.rotation.z);
+      pieza.position.y+=distance*Math.cos(pieza.rotation.z);
+     }
+     else if(Y>y&&X<x){
+      distance=0.5;
+      pieza.position.x+=distance*Math.cos(pieza.rotation.z);
+      pieza.position.y-=distance*Math.cos(pieza.rotation.z);
+     }
+     else if(Y>y&&X>x){
+      distance=0.5;
+      pieza.position.x-=distance*Math.cos(pieza.rotation.z);
+      pieza.position.y-=distance*Math.cos(pieza.rotation.z);
+     }
+    else if(Y===y)
+      distance=0;
+    else
+      distance=-0.5; 
+  }
+};
+
+Agent.prototype.operations.stop=function(pieza,distance)
+{
+  if(distance===undefined)
+    distance=0;
+  pieza.position.x+=distance*Math.cos(pieza.rotation.z);
+  pieza.position.y+=distance*Math.cos(pieza.rotation.z);
+};
 
 function Environment()
 {
@@ -319,44 +397,6 @@ Caballo.prototype.act=function(environment)
     console.log('Unknown command');
 };
 
-Caballo.prototype.operations={};
-
-Caballo.prototype.operations.goStraightX=function(pieza,distance)
-{
-  if(distance===undefined)
-  {
-    if(X<x)
-      distance=0.5;
-    else if(X===x)
-      distance=0;
-    else
-      distance=-0.5; 
-  }
-  pieza.position.x+=distance*Math.cos(pieza.rotation.z);
-};
-
-Caballo.prototype.operations.goStraightY=function(pieza,distance)
-{
-  if(distance===undefined)
-   {
-    if(Y<y)
-      distance=0.5;
-    else if(Y===y)
-      distance=0;
-    else
-      distance=-0.5; 
-  }
-  pieza.position.y+=distance*Math.cos(pieza.rotation.z);
-};
-
-Caballo.prototype.operations.stop=function(pieza,distance)
-{
-  if(distance===undefined)
-    distance=0;
-  pieza.position.x+=distance*Math.cos(pieza.rotation.z);
-  pieza.position.y+=distance*Math.cos(pieza.rotation.z);
-};
-
 Caballo.prototype.operations.rotateCCW=function(pieza,angle)
 {
   if(angle===undefined)
@@ -419,39 +459,6 @@ Alfil.prototype.act=function(environment)
     this.operations[command](this);
   else
     console.log('Unknown command');
-};
-
-Alfil.prototype.operations={};
-
-Alfil.prototype.operations.goDiagonal=function(pieza,distance)
-{
-  if(distance===undefined)
-   {
-    if(Y<y&&X<x){
-      distance=0.5;
-      pieza.position.x+=distance*Math.cos(pieza.rotation.z);
-      pieza.position.y+=distance*Math.cos(pieza.rotation.z);
-    }
-     else if(Y<y&&X>x){
-      distance=0.5;
-      pieza.position.x-=distance*Math.cos(pieza.rotation.z);
-      pieza.position.y+=distance*Math.cos(pieza.rotation.z);
-     }
-     else if(Y>y&&X<x){
-      distance=0.5;
-      pieza.position.x+=distance*Math.cos(pieza.rotation.z);
-      pieza.position.y-=distance*Math.cos(pieza.rotation.z);
-     }
-     else if(Y>y&&X>x){
-      distance=0.5;
-      pieza.position.x-=distance*Math.cos(pieza.rotation.z);
-      pieza.position.y-=distance*Math.cos(pieza.rotation.z);
-     }
-    else if(Y===y)
-      distance=0;
-    else
-      distance=-0.5; 
-  }
 };
 
 Alfil.prototype.operations.stop=function(pieza,distance)
@@ -526,75 +533,6 @@ Reina.prototype.act=function(environment)
     this.operations[command](this);
   else
     console.log('Unknown command');
-};
-
-Reina.prototype.operations={};
-
-Reina.prototype.operations.goStraightX=function(pieza,distance)
-{
-  if(distance===undefined)
-  {
-    if(X<x)
-      distance=0.5;
-    else if(X===x)
-      distance=0;
-    else
-      distance=-0.5; 
-  }
-  pieza.position.x+=distance*Math.cos(pieza.rotation.z);
-};
-
-Reina.prototype.operations.goStraightY=function(pieza,distance)
-{
-  if(distance===undefined)
-   {
-    if(Y<y)
-      distance=0.5;
-    else if(Y===y)
-      distance=0;
-    else
-      distance=-0.5; 
-  }
-  pieza.position.y+=distance*Math.cos(pieza.rotation.z);
-};
-
-Reina.prototype.operations.goDiagonal=function(pieza,distance)
-{
-  if(distance===undefined)
-   {
-    if(Y<y&&X<x){
-      distance=0.5;
-      pieza.position.x+=distance*Math.cos(pieza.rotation.z);
-      pieza.position.y+=distance*Math.cos(pieza.rotation.z);
-    }
-     else if(Y<y&&X>x){
-      distance=0.5;
-      pieza.position.x-=distance*Math.cos(pieza.rotation.z);
-      pieza.position.y+=distance*Math.cos(pieza.rotation.z);
-     }
-     else if(Y>y&&X<x){
-      distance=0.5;
-      pieza.position.x+=distance*Math.cos(pieza.rotation.z);
-      pieza.position.y-=distance*Math.cos(pieza.rotation.z);
-     }
-     else if(Y>y&&X>x){
-      distance=0.5;
-      pieza.position.x-=distance*Math.cos(pieza.rotation.z);
-      pieza.position.y-=distance*Math.cos(pieza.rotation.z);
-     }
-    else if(Y===y)
-      distance=0;
-    else
-      distance=-0.5; 
-  }
-};
-
-Reina.prototype.operations.stop=function(pieza,distance)
-{
-  if(distance===undefined)
-    distance=0;
-  pieza.position.x+=distance*Math.cos(pieza.rotation.z);
-  pieza.position.y+=distance*Math.cos(pieza.rotation.z);
 };
 
 Reina.prototype.operations.rotateCCW=function(pieza,angle)
@@ -673,75 +611,6 @@ Rey.prototype.act=function(environment)
     console.log('Unknown command');
 };
 
-Rey.prototype.operations={};
-
-Rey.prototype.operations.goStraightX=function(pieza,distance)
-{
-  if(distance===undefined)
-  {
-    if(X<x)
-      distance=0.5;
-    else if(X===x)
-      distance=0;
-    else
-      distance=-0.5; 
-  }
-  pieza.position.x+=distance*Math.cos(pieza.rotation.z);
-};
-
-Rey.prototype.operations.goStraightY=function(pieza,distance)
-{
-  if(distance===undefined)
-   {
-    if(Y<y)
-      distance=0.5;
-    else if(Y===y)
-      distance=0;
-    else
-      distance=-0.5; 
-  }
-  pieza.position.y+=distance*Math.cos(pieza.rotation.z);
-};
-
-Rey.prototype.operations.goDiagonal=function(pieza,distance)
-{
-  if(distance===undefined)
-   {
-    if(Y<y&&X<x){
-      distance=0.5;
-      pieza.position.x+=distance*Math.cos(pieza.rotation.z);
-      pieza.position.y+=distance*Math.cos(pieza.rotation.z);
-    }
-     else if(Y<y&&X>x){
-      distance=0.5;
-      pieza.position.x-=distance*Math.cos(pieza.rotation.z);
-      pieza.position.y+=distance*Math.cos(pieza.rotation.z);
-     }
-     else if(Y>y&&X<x){
-      distance=0.5;
-      pieza.position.x+=distance*Math.cos(pieza.rotation.z);
-      pieza.position.y-=distance*Math.cos(pieza.rotation.z);
-     }
-     else if(Y>y&&X>x){
-      distance=0.5;
-      pieza.position.x-=distance*Math.cos(pieza.rotation.z);
-      pieza.position.y-=distance*Math.cos(pieza.rotation.z);
-     }
-    else if(Y===y)
-      distance=0;
-    else
-      distance=-0.5; 
-  }
-};
-
-Rey.prototype.operations.stop=function(pieza,distance)
-{
-  if(distance===undefined)
-    distance=0;
-  pieza.position.x+=distance*Math.cos(pieza.rotation.z);
-  pieza.position.y+=distance*Math.cos(pieza.rotation.z);
-};
-
 Rey.prototype.operations.rotateCCW=function(pieza,angle)
 {
   if(angle===undefined)
@@ -793,56 +662,6 @@ Torre.prototype.plan=function(environment)
       seleccionF2=false;
       seleccionF1=false;
     }
-  //}
-};
-
-Torre.prototype.act=function(environment)
-{
-  var command = this.actuator.commands.pop();
-  if(command===undefined)
-    console.log('Undefined command');
-  else if(command in this.operations)
-    this.operations[command](this);
-  else
-    console.log('Unknown command');
-};
-
-Torre.prototype.operations={};
-
-Torre.prototype.operations.goStraightX=function(pieza,distance)
-{
-  if(distance===undefined)
-  {
-    if(X<x)
-      distance=0.5;
-    else if(X===x)
-      distance=0;
-    else
-      distance=-0.5; 
-  }
-  pieza.position.x+=distance*Math.cos(pieza.rotation.z);
-};
-
-Torre.prototype.operations.goStraightY=function(pieza,distance)
-{
-  if(distance===undefined)
-   {
-    if(Y<y)
-      distance=0.5;
-    else if(Y===y)
-      distance=0;
-    else
-      distance=-0.5; 
-  }
-  pieza.position.y+=distance*Math.cos(pieza.rotation.z);
-};
-
-Torre.prototype.operations.stop=function(pieza,distance)
-{
-  if(distance===undefined)
-    distance=0;
-  pieza.position.x+=distance*Math.cos(pieza.rotation.z);
-  pieza.position.y+=distance*Math.cos(pieza.rotation.z);
 };
 
 Torre.prototype.operations.rotateCCW=function(pieza,angle)
@@ -930,30 +749,6 @@ Peon.prototype.act=function(environment)
     this.operations[command](this);
   else
     console.log('Unknown command');
-};
-
-Peon.prototype.operations={};
-
-Peon.prototype.operations.goStraightY=function(pieza,distance)
-{
-  if(distance===undefined)
-   {
-    if(Y<y)
-      distance=0.5;
-    else if(Y===y)
-      distance=0;
-    else
-      distance=-0.5; 
-  }
-  pieza.position.y+=distance*Math.cos(pieza.rotation.z);
-};
-
-Peon.prototype.operations.stop=function(pieza,distance)
-{
-  if(distance===undefined)
-    distance=0;
-  pieza.position.x+=distance*Math.cos(pieza.rotation.z);
-  pieza.position.y+=distance*Math.cos(pieza.rotation.z);
 };
 
 Peon.prototype.operations.rotateCCW=function(pieza,angle)
