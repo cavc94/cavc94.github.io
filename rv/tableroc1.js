@@ -303,7 +303,6 @@ Caballo.prototype.plan=function(environment)
     {
       this.actuator.commands.push('stop');
       this.cnt = 0;
-      //marca = false;
       seleccionF2=false;
       seleccionF1=false;
     }
