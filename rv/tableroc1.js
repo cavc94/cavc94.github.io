@@ -797,14 +797,14 @@ function setup()
   
   var Piezas=new Array();
   Piezas[0]="          ";
-  Piezas[1]=" tcaxract ";
+  Piezas[1]=" tcarxact ";
   Piezas[2]=" pppppppp ";
   Piezas[3]="          ";
   Piezas[4]="          ";
   Piezas[5]="          ";
   Piezas[6]="          ";
   Piezas[7]=" PPPPPPPP ";
-  Piezas[8]=" TCAXRACT ";
+  Piezas[8]=" TCARXACT ";
   Piezas[9]="          ";
      
   environment=new Environment();
