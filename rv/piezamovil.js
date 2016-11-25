@@ -160,21 +160,21 @@ function movement(event) {
     break;
     case 38:
       if (id == 60 )
-        environment.children[100].position.x+=-avance;
+        environment.children[100].position.y+=avance;
       else if (id == 80)
-        environment.children[101].position.x+=-avance;
+        environment.children[101].position.y+=avance;
     break;
     case 39:
       if (id == 60 )
-        environment.children[100].position.x+=-avance;
+        environment.children[100].position.x+=avance;
       else if (id == 80)
-        environment.children[101].position.x+=-avance;
+        environment.children[101].position.x+=avance;
     break;
     case 40:
       if (id == 60 )
-        environment.children[100].position.x+=-avance;
+        environment.children[100].position.y+=-avance;
       else if (id == 80)
-        environment.children[101].position.x+=-avance;
+        environment.children[101].position.y+=-avance;
     break;
     }
 }
