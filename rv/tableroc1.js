@@ -941,6 +941,7 @@ function loop()
         if(seleccionF2==true)
           environment.children[115].act();
       break;
+    }
   }
   else
   {
@@ -1041,7 +1042,8 @@ function loop()
         if(seleccionF2==true)
           environment.children[131].act();
       break;
-  }
+    }
+  }   
   renderizador.render(environment,camara);
 }
 
