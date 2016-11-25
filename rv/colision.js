@@ -386,12 +386,12 @@ Caballo.prototype.plan=function(environment)
     }
 };
 
-Caballo.prototype.operations.rotateCCW=function(pieza,angle)
+/*Caballo.prototype.operations.rotateCCW=function(pieza,angle)
 {
   if(angle===undefined)
     angle=Math.PI/2;
   pieza.rotation.z+=angle;
-};
+};*/
 
 ///////////////ALFIL///////////////
 function Alfil(sTP,x,y)
