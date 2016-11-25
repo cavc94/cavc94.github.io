@@ -356,6 +356,7 @@ function Caballo(sTP,x,y)
   this.actuator.rotateX(Math.PI/2);
   this.actuator.castShadow=true;
 }
+Caballo.prototype=new Agent();
 
 Caballo.prototype.sense=function(environment)
 {
