@@ -327,6 +327,7 @@ Environment.prototype.setMapPiezas=function(map)
     }
   }
 }
+
 function Sensor(position,direction)
 {
   THREE.Raycaster.call(this,position,direction);
@@ -355,7 +356,6 @@ function Caballo(sTP,x,y)
   this.actuator.rotateX(Math.PI/2);
   this.actuator.castShadow=true;
 }
-Caballo.prototype=new Agent();
 
 Caballo.prototype.sense=function(environment)
 {
@@ -417,9 +417,9 @@ Alfil.prototype=new Agent();
 
 Alfil.prototype.sense=function(environment)
 {
-  this.sensor.set(this.position,new THREE.Vector3(Math.cos(this.rotation.z),Math.sin(this.rotation.z),0));
+  this.sensor.set(this.position, new THREE.Vector3(x, y, 0));
   var obstaculo=this.sensor.intersectObjects(environment.children,true);
-  if((obstaculo.length>0 && (obstaculo[0].distance<=1)))
+  if( obstaculo.length>0 && obstaculo[0].distance<Math.sqrt(Math.pow(X-x,2)+Math.pow(Y-y,2)) )
     this.sensor.colision=true;
   else
     this.sensor.colision=false;
@@ -428,6 +428,7 @@ Alfil.prototype.sense=function(environment)
 Alfil.prototype.plan=function(environment)
 {
     this.actuator.commands=[];
+  if (this.sensor.colision == false){
     if(X!==x&&Y!==y&&Math.abs(y-Y)===Math.abs(x-X)){
       this.actuator.commands.push('goDiagonal');
     }
@@ -437,6 +438,7 @@ Alfil.prototype.plan=function(environment)
       seleccionF2=false;
       seleccionF1=false;
     }
+  }
 };
 
 Alfil.prototype.operations.rotateCCW=function(pieza,angle)
