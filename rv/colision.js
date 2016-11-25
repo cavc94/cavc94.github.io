@@ -29,8 +29,8 @@ PROTOTIPO.Peon = function(){
   this.merge( discoMalla.geometry, discoMalla.matrix );
   this.merge( baseMalla.geometry, baseMalla.matrix );
  }
- 
 PROTOTIPO.Peon.prototype = new THREE.Geometry();
+
 /*CONSTRUCCIÓN DEL AGENTE*/
 function Agent( x=0, y=0 ){
   THREE.Object3D.call( this );
@@ -157,7 +157,7 @@ Pieza.prototype.sense = function( environment ){
   this.sensor.set( this.position, new THREE.Vector3( Math.cos( this.rotation.z ), Math.sin( this.rotation.z ), 0 ));
   var obstaculo = this.sensor.intersectObjects( environment.children, true );
   
-  if ( (obstaculo.length > 0 && (obstaculo[0].distance <= 0.5)) )
+  if ( (obstaculo.length > 0 && (obstaculo[0].distance <= 2.1)) )
     this.sensor.colision = true;
   else
     this.sensor.colision = false;
