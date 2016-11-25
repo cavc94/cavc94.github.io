@@ -157,7 +157,7 @@ Pieza.prototype.sense = function( environment ){
     this.sensor.colision = false;
 };
 
-Robot.prototype.plan = function( environment ){
+Pieza.prototype.plan = function( environment ){
   if (this.sensor.colision == true )
     avance = 0;
   else
