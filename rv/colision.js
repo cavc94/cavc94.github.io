@@ -144,13 +144,28 @@ function Pieza( c, x, y ){
   this.actuator.castShadow = true;
   this.add( this.actuator );
   document.addEventListener("keydown", movement, false);
-  }
-  
+  }  
 Pieza.prototype = new Agent();
+
+Pieza.prototype.sense = function( environment ){
+  this.sensor.set( this.position, new THREE.Vector3( Math.cos( this.rotation.z ), Math.sin( this.rotation.z ), 0 ));
+  var obstaculo = this.sensor.intersectObjects( environment.children, true );
+  
+  if ( (obstaculo.length > 0 && (obstaculo[0].distance <= 0.5)) )
+    this.sensor.colision = true;
+  else
+    this.sensor.colision = false;
+};
+
+Robot.prototype.plan = function( environment ){
+  if (this.sensor.colision == true )
+    avance = 0;
+  else
+    avance = 0.5;
+};
 
 function movement(event) { 
   var keyboard = event.which;  
-  var avance = 0.5;
   switch ( keyboard ){
     case 37:
       if (id == 114)
@@ -253,7 +268,7 @@ function loop(){
   renderer.render( environment, camara );
   }
   
-var environment, camara, renderer, luzpuntual;
+var environment, camara, renderer, luzpuntual, avance;
 
 setup();
 loop();
