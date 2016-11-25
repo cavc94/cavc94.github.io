@@ -106,11 +106,11 @@ Environment.prototype.setMap = function( map ){
   for ( var i = 0; i < map.length; i++ ){
     for ( var j = 0; j < map.length; j++ ){
       if ( map[i][j] === "B" )
-        this.add( new CasillaB( 10, 5+10*i, 5+10*j ) );
+        this.add( new CasillaB( 10, -45+10*i, -45+10*j ) );
       else if ( map[i][j] === "N" )
-        this.add( new CasillaN( 10, 5+10*i, 5+10*j ) );
+        this.add( new CasillaN( 10, -45+10*i, -45+10*j ) );
       else if ( map[i][j] === "C" )
-        this.add( new Contorno( 10, 5+10*i, 5+10*j ) );
+        this.add( new Contorno( 10, -45+10*i, -45+10*j ) );
       }
    }
  }
@@ -119,9 +119,9 @@ Environment.prototype.setMapPiece = function( map ){
   for( var i = 0; i < map.length; i++){
     for(var j = 0; j < map.length; j++){
       if( map[i][j] === "p")
-        this.add( new Pieza( true, 5+10*i, 5+10*j ) );
+        this.add( new Pieza( true, -45+10*i, -45+10*j ) );
       else if( map[i][j] === "P")
-        this.add( new Pieza( false, 5+10*i, 5+10*j ) );
+        this.add( new Pieza( false, -45+10*i, -45+10*j ) );
     }
   }
 }
@@ -207,9 +207,9 @@ function setup(){
   environment.setMap( mapa );
   environment.setMapPiece( pieza );
   camara = new THREE.PerspectiveCamera( 45, window.innerWidth/window.innerHeight, 0.1, 1000 );
-  camara.position.z = 150;
-  camara.position.y = -120;
-  camara.lookAt( new THREE.Vector3( 0, 50, 0) );
+  camara.position.z = 120;
+  camara.position.y = -90;
+  camara.lookAt( new THREE.Vector3( 0, 0, 0) );
   renderer = new THREE.WebGLRenderer();
   renderer.setSize( window.innerHeight*.95, window.innerHeight*.95 );
   renderer.shadowMap.enabled=true;
