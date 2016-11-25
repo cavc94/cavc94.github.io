@@ -542,7 +542,7 @@ Rey.prototype.plan=function(environment)
   //else
   //{ 
   // 
-    if(Math.abs(x-X)<=10 || Math.abs(y-Y)<=10){ 
+    if( Math.abs(x-X)<=10 && Math.abs(y-Y)<=10 ){ 
       if (x!==X && y!==Y && Math.abs(y-Y)===Math.abs(x-X))
         this.actuator.commands.push('goDiagonal');
       else if(x===X && y!==Y) 
