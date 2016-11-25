@@ -37,7 +37,6 @@ function Agent( x=0, y=0 ){
   this.position.x = x;
   this.position.y = y;
   }
-
 Agent.prototype = new THREE.Object3D();
 
 Agent.prototype.sense = function(environment) {};
@@ -126,8 +125,15 @@ Environment.prototype.setMapPiece = function( map ){
   }
 }
 
+function Sensor( position, direction ){
+  THREE.Raycaster.call( this, position, direction );
+  this.colision = false;
+}
+Sensor.prototype = new THREE.Raycaster();
+
 function Pieza( c, x, y ){
   Agent.call( this, x, y );
+  this.sensor = new Sensor();
   var cargador = new THREE.TextureLoader();
   this.castShadow = true;
   this.position.x = x;
