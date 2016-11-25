@@ -153,27 +153,27 @@ function movement(event) {
   var avance = 0.5;
   switch ( keyboard ){
     case 37:
-      if (id == 60 )
+      if (id == 20)
         environment.children[100].position.x+=-avance;
-      else if (id == 80)
+      else if (id == 60)
         environment.children[101].position.x+=-avance;
     break;
     case 38:
-      if (id == 60 )
+      if (id == 20)
         environment.children[100].position.y+=avance;
-      else if (id == 80)
+      else if (id == 60)
         environment.children[101].position.y+=avance;
     break;
     case 39:
-      if (id == 60 )
+      if (id == 20)
         environment.children[100].position.x+=avance;
-      else if (id == 80)
+      else if (id == 60)
         environment.children[101].position.x+=avance;
     break;
     case 40:
-      if (id == 60 )
+      if (id == 20)
         environment.children[100].position.y+=-avance;
-      else if (id == 80)
+      else if (id == 60)
         environment.children[101].position.y+=-avance;
     break;
     }
@@ -238,8 +238,7 @@ function SeleccionD(event){
 
 function SeleccionU(event) {
   event.preventDefault();
-  seleccion[0].object.material.color.setHex(0xffffff);
-  //seleccionF1=true;   
+  seleccion[0].object.material.color.setHex(0xff00ff);  
 }
 
 function loop(){
