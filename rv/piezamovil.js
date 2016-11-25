@@ -206,6 +206,8 @@ function setup(){
   environment = new Environment();
   environment.setMap( mapa );
   environment.setMapPiece( pieza );
+  document.addEventListener('mousedown',SeleccionD);
+  document.addEventListener('mouseup',SeleccionU);
   camara = new THREE.PerspectiveCamera( 45, window.innerWidth/window.innerHeight, 0.1, 1000 );
   camara.position.z = 120;
   camara.position.y = -90;
@@ -231,6 +233,7 @@ function SeleccionD(event){
   var raycaster=new THREE.Raycaster();                                        
   raycaster.setFromCamera(mouse3D,camara);
   seleccion=raycaster.intersectObjects(environment.children,true);
+  seleccion[0].object.material.color.setHex(0xff00ff);  
   if(seleccion.length>0)
     id=seleccion[0].object.id;
   console.log(id);
@@ -238,7 +241,7 @@ function SeleccionD(event){
 
 function SeleccionU(event) {
   event.preventDefault();
-  seleccion[0].object.material.color.setHex(0xff00ff);  
+  seleccion[0].object.material.color.setHex(0xffffff);  
 }
 
 function loop(){
