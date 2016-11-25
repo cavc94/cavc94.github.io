@@ -119,19 +119,25 @@ Environment.prototype.setMapPiece = function( map ){
   for( var i = 0; i < map.length; i++){
     for(var j = 0; j < map.length; j++){
       if( map[i][j] === "p")
-        this.add( new Pieza( 5+10*i, 5+10*j ) );
+        this.add( new Pieza( true, 5+10*i, 5+10*j ) );
+      else if( map[i][j] === "P")
+        this.add( new Pieza( false, 5+10*i, 5+10*j ) );
     }
   }
 }
 
-function Pieza( x, y ){
+function Pieza( c, x, y ){
   Agent.call( this, x, y );
   var cargador = new THREE.TextureLoader();
-  textura = cargador.load( 'marmol_blanco.jpg' );
   this.castShadow = true;
   this.position.x = x;
   this.position.y = y;
   this.position.z = 5;
+  this.c = c;
+  if ( c == true )
+    textura = cargador.load( 'marmol_blanco.jpg' );
+  else
+    textura = cargador.load( 'marmol_negro.jpg' );
   this.actuator = new THREE.Mesh( new PROTOTIPO.Peon(), new THREE.MeshLambertMaterial( {map: textura} ) );
   this.actuator.scale.set( 7, 7, 7 );
   this.actuator.rotateX( Math.PI/2 );
@@ -147,16 +153,28 @@ function movement(event) {
   var avance = 0.5;
   switch ( keyboard ){
     case 37:
-      environment.children[100].position.x+=-avance;
+      if (id == 200 )
+        environment.children[100].position.x+=-avance;
+      else if (id == 201)
+        environment.children[101].position.x+=-avance;
     break;
     case 38:
-        environment.children[100].position.y+=avance;
+      if (id == 200 )
+        environment.children[100].position.x+=-avance;
+      else if (id == 201)
+        environment.children[101].position.x+=-avance;
     break;
     case 39:
-        environment.children[100].position.x+=avance;
+      if (id == 200 )
+        environment.children[100].position.x+=-avance;
+      else if (id == 201)
+        environment.children[101].position.x+=-avance;
     break;
     case 40:
-        environment.children[100].position.y-=avance;
+      if (id == 200 )
+        environment.children[100].position.x+=-avance;
+      else if (id == 201)
+        environment.children[101].position.x+=-avance;
     break;
     }
 }
@@ -183,7 +201,7 @@ function setup(){
   pieza[6] = "          ";
   pieza[7] = " p        ";
   pieza[8] = "          ";
-  pieza[9] = "          ";
+  pieza[9] = " P        ";
   
   environment = new Environment();
   environment.setMap( mapa );
@@ -202,7 +220,26 @@ function setup(){
   luzPuntual.position.z = 50;
   luzPuntual.castShadow=true;
   environment.add( camara );
-  environment.add( luzPuntual ); 
+  environment.add( luzPuntual );
+  document.addEventListener('mousedown',SeleccionD);
+  document.addEventListener('mouseup',SeleccionU);
+}
+
+function SeleccionD(event){
+  event.preventDefault();
+  var mouse3D=new THREE.Vector3((event.clientX/window.innerWidth)*2-1,-(event.clientY/window.innerHeight)*2+1,0);     
+  var raycaster=new THREE.Raycaster();                                        
+  raycaster.setFromCamera(mouse3D,camara);
+  seleccion=raycaster.intersectObjects(environment.children,true);
+  if(seleccion.length>0)
+    id=seleccion[0].object.id;
+  console.log(id);
+}
+
+function SeleccionU(event) {
+  event.preventDefault();
+  seleccion[0].object.material.color.setHex(0xffffff);
+  //seleccionF1=true;   
 }
 
 function loop(){
