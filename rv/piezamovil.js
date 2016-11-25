@@ -155,25 +155,25 @@ function movement(event) {
     case 37:
       if (id == 20)
         environment.children[100].position.x+=-avance;
-      else if (id == 60)
+      else if (id == 121)
         environment.children[101].position.x+=-avance;
     break;
     case 38:
       if (id == 20)
         environment.children[100].position.y+=avance;
-      else if (id == 60)
+      else if (id == 121)
         environment.children[101].position.y+=avance;
     break;
     case 39:
       if (id == 20)
         environment.children[100].position.x+=avance;
-      else if (id == 60)
+      else if (id == 121)
         environment.children[101].position.x+=avance;
     break;
     case 40:
       if (id == 20)
         environment.children[100].position.y+=-avance;
-      else if (id == 60)
+      else if (id == 121)
         environment.children[101].position.y+=-avance;
     break;
     }
@@ -208,10 +208,10 @@ function setup(){
   environment.setMapPiece( pieza );
   document.addEventListener('mousedown',SeleccionD);
   document.addEventListener('mouseup',SeleccionU);
-  camara = new THREE.PerspectiveCamera( 45, window.innerWidth/window.innerHeight, 0.1, 1000 );
+  camara = new THREE.PerspectiveCamera( 45, window.innerWidth/window.innerHeight, 1, 1000 );
   camara.position.z = 120;
   camara.position.y = -90;
-  camara.lookAt( new THREE.Vector3( 0, 0, 0) );
+  camara.lookAt( new THREE.Vector3( 0, 0, 0 ) );
   renderer = new THREE.WebGLRenderer();
   renderer.setSize( window.innerHeight*.95, window.innerHeight*.95 );
   renderer.shadowMap.enabled=true;
