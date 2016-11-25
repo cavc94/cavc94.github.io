@@ -153,27 +153,27 @@ function movement(event) {
   var avance = 0.5;
   switch ( keyboard ){
     case 37:
-      if (id == 200 )
+      if (id == 60 )
         environment.children[100].position.x+=-avance;
-      else if (id == 201)
+      else if (id == 80)
         environment.children[101].position.x+=-avance;
     break;
     case 38:
-      if (id == 200 )
+      if (id == 60 )
         environment.children[100].position.x+=-avance;
-      else if (id == 201)
+      else if (id == 80)
         environment.children[101].position.x+=-avance;
     break;
     case 39:
-      if (id == 200 )
+      if (id == 60 )
         environment.children[100].position.x+=-avance;
-      else if (id == 201)
+      else if (id == 80)
         environment.children[101].position.x+=-avance;
     break;
     case 40:
-      if (id == 200 )
+      if (id == 60 )
         environment.children[100].position.x+=-avance;
-      else if (id == 201)
+      else if (id == 80)
         environment.children[101].position.x+=-avance;
     break;
     }
@@ -193,15 +193,15 @@ function setup(){
   mapa[9] = "CCCCCCCCCC";
   var pieza = new Array();
   pieza[0] = "          ";
-  pieza[1] = "          ";
+  pieza[1] = " p        ";
   pieza[2] = "          ";
   pieza[3] = "          ";
   pieza[4] = "          ";
   pieza[5] = "          ";
   pieza[6] = "          ";
-  pieza[7] = " p        ";
+  pieza[7] = " P        ";
   pieza[8] = "          ";
-  pieza[9] = " P        ";
+  pieza[9] = "          ";
   
   environment = new Environment();
   environment.setMap( mapa );
