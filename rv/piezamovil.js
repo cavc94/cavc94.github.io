@@ -153,25 +153,25 @@ function movement(event) {
   var avance = 0.5;
   switch ( keyboard ){
     case 37:
-      if (id == 20)
+      if (id == 114)
         environment.children[100].position.x+=-avance;
       else if (id == 121)
         environment.children[101].position.x+=-avance;
     break;
     case 38:
-      if (id == 20)
+      if (id == 114)
         environment.children[100].position.y+=avance;
       else if (id == 121)
         environment.children[101].position.y+=avance;
     break;
     case 39:
-      if (id == 20)
+      if (id == 114)
         environment.children[100].position.x+=avance;
       else if (id == 121)
         environment.children[101].position.x+=avance;
     break;
     case 40:
-      if (id == 20)
+      if (id == 114)
         environment.children[100].position.y+=-avance;
       else if (id == 121)
         environment.children[101].position.y+=-avance;
@@ -180,6 +180,9 @@ function movement(event) {
 }
 
 function setup(){
+  
+  document.documentElement.style.overflow = 'hidden';
+  
   var mapa = new Array();
   mapa[0] = "CCCCCCCCCC";
   mapa[1] = "CBNBNBNBNC";
@@ -223,8 +226,6 @@ function setup(){
   luzPuntual.castShadow=true;
   environment.add( camara );
   environment.add( luzPuntual );
-  document.addEventListener('mousedown',SeleccionD);
-  document.addEventListener('mouseup',SeleccionU);
 }
 
 function SeleccionD(event){
