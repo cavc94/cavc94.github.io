@@ -347,7 +347,7 @@ function Caballo(sTP,x,y)
     textura=cargador.load('maderaB.jpg');
   this.position.x=x;
   this.position.y=y;
-  this.position.z=0.4;
+  this.position.z=0;
   this.cnt = 0;
   this.sensor=new Sensor();
   this.actuator=new THREE.Mesh(new CaballoGeometry(),new THREE.MeshLambertMaterial({map:textura}));
@@ -406,7 +406,7 @@ function Alfil(sTP,x,y)
     textura=cargador.load('maderaB.jpg');
   this.position.x=x;
   this.position.y=y;
-  this.position.z=0.4;
+  this.position.z=0;
   this.sensor=new Sensor();
   this.actuator=new THREE.Mesh(new AlfilGeometry(),new THREE.MeshLambertMaterial({map:textura}));
   this.add(this.actuator);
@@ -419,7 +419,7 @@ Alfil.prototype=new Agent();
 Alfil.prototype.sense=function(environment)
 {
   var mod = Math.sqrt(Math.pow(x,2)+Math.pow(y,2));
-  this.sensor.set(this.position, new THREE.Vector3(x/mod, y/mod, 0.4));
+  this.sensor.set(this.position, new THREE.Vector3(x/mod, y/mod, 0));
   culo=this.sensor.intersectObjects(environment.children,true);
   if( culo.length>0 && culo[0].distance<Math.sqrt(Math.pow(X-x,2)+Math.pow(Y-y,2)) )
     this.sensor.colision=true; 
@@ -461,7 +461,7 @@ function Reina(sTP,x,y)
     textura=cargador.load('maderaB.jpg');
   this.position.x=x;
   this.position.y=y;
-  this.position.z=0.4;
+  this.position.z=0;
   this.sensor=new Sensor();
   this.actuator=new THREE.Mesh(new ReinaGeometry(),new THREE.MeshLambertMaterial({map:textura}));
   this.add(this.actuator);
@@ -516,7 +516,7 @@ function Rey(sTP,x,y)
     textura=cargador.load('maderaB.jpg');
   this.position.x=x;
   this.position.y=y;
-  this.position.z=0.4;
+  this.position.z=0;
   this.sensor=new Sensor();
   this.actuator=new THREE.Mesh(new ReyGeometry(),new THREE.MeshLambertMaterial({map:textura}));
   this.add(this.actuator);
@@ -581,7 +581,7 @@ function Torre(sTP,x,y)
     textura=cargador.load('maderaB.jpg');
   this.position.x=x;
   this.position.y=y;
-  this.position.z=0.4;
+  this.position.z=0;
   this.sensor=new Sensor();
   this.actuator=new THREE.Mesh(new TorreGeometry(),new THREE.MeshLambertMaterial({map:textura}));
   this.add(this.actuator);
@@ -634,7 +634,7 @@ function Peon(sTP,x,y)
     textura=cargador.load('maderaB.jpg');
   this.position.x=x;
   this.position.y=y;
-  this.position.z=0.4;
+  this.position.z=0;
   this.sensor=new Sensor();
   this.actuator=new THREE.Mesh(new PeonGeometry(),new THREE.MeshLambertMaterial({map:textura}));
   this.add(this.actuator);
