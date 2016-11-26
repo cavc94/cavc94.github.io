@@ -96,6 +96,13 @@ TorreGeometry=function()
   this.merge(CuerpoTorre.geometry,CuerpoTorre.matrix);
 }
 TorreGeometry.prototype=new THREE.Geometry();
+//////////////SENSOR////////////////
+function Sensor(position,direction)
+{
+  THREE.Raycaster.call(this,position,direction);
+  this.colision=false;
+}
+Sensor.prototype = new THREE.Raycaster();
 ///////////////AGENTE///////////////
 function Agent(x=0,y=0)
 {
@@ -336,14 +343,6 @@ Environment.prototype.setMapPiezas=function(map)
     }
   }
 }
-
-function Sensor(position,direction)
-{
-  THREE.Raycaster.call(this,position,direction);
-  this.colision=false;
-}
-Sensor.prototype = new THREE.Raycaster();
-
 ///////////////CABALLO///////////////
 function Caballo(sTP,x,y)
 {
