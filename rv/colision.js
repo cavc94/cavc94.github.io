@@ -418,13 +418,15 @@ Alfil.prototype=new Agent();
 
 Alfil.prototype.sense=function(environment)
 {
-  this.sensor.set(this.position, new THREE.Vector3(x, y, 1));
+  var mod = Math.sqrt(Math.pow(x,2)+Math.pow(y,2));
+  this.sensor.set(this.position, new THREE.Vector3(x/mod, y/mod, 0.4));
   var obstaculo=this.sensor.intersectObjects(environment.children,true);
   if( obstaculo.length>0 && obstaculo[0].distance<Math.sqrt(Math.pow(X-x,2)+Math.pow(Y-y,2)) ){
-    this.sensor.colision=true;
+    this.sensor.colision=true; 
     console.log(obstaculo[0].distance);}
-  else
+  else{
     this.sensor.colision=false;
+    console.log(obstaculo[0].distance);}
 };
 
 Alfil.prototype.plan=function(environment)
