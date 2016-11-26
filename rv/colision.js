@@ -419,7 +419,7 @@ Alfil.prototype=new Agent();
 Alfil.prototype.sense=function(environment)
 {
   var mod = Math.sqrt(Math.pow(x,2)+Math.pow(y,2));
-  this.sensor.set(this.position, new THREE.Vector3(x/mod, y/mod, 0.4));
+  this.sensor.set(this.position, new THREE.Vector3(x/mod, y/mod, 1));
   var obstaculo=this.sensor.intersectObjects(environment.children,true);
   if( obstaculo.length>0 && obstaculo[0].distance<Math.sqrt(Math.pow(X-x,2)+Math.pow(Y-y,2)) ){
     this.sensor.colision=true; 
