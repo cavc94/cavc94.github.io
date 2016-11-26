@@ -424,9 +424,8 @@ Alfil.prototype.sense=function(environment)
   if( obstaculo.length>0 && obstaculo[0].distance<Math.sqrt(Math.pow(X-x,2)+Math.pow(Y-y,2)) ){
     this.sensor.colision=true; 
     console.log(obstaculo[0].distance);}
-  else{
+  else
     this.sensor.colision=false;
-    console.log(obstaculo[0].distance);}
 };
 
 Alfil.prototype.plan=function(environment)
