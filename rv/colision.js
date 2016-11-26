@@ -115,8 +115,8 @@ Agent.prototype=new THREE.Object3D();
 Agent.prototype.plan=function(environment){};
 
 Agent.prototype.sense=function(environment){
-  var mod = Math.sqrt(Math.pow(x,2)+Math.pow(y,2));
-  this.sensor.set(this.position, new THREE.Vector3(x/mod, y/mod, 0));
+  //var mod = Math.sqrt(Math.pow(x,2)+Math.pow(y,2));
+  this.sensor.set(this.position, new THREE.Vector3(x, y, 0));
   culo=this.sensor.intersectObjects(environment.children,true);
   if( culo.length>0 && culo[0].distance<Math.sqrt(Math.pow(X-x,2)+Math.pow(Y-y,2)) )
     this.sensor.colision=true; 
