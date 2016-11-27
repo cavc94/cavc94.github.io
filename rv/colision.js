@@ -518,28 +518,9 @@ function Torre(sTP,x,y)
 Torre.prototype=new Agent();
 
 Torre.prototype.sense=function(environment){
-  /*if (this.sTP == true)
-    this.sensor.set(this.position, new THREE.Vector3(0, 1, 0));
-  else*/
-  if(X!==x&&Y===y){
-    if (Y<y){
-      this.sensor.set(this.position, new THREE.Vector3(1, 0, 0));
-      var obstaculo=this.sensor.intersectObjects(environment.children,true);
-    }
-    else{
-      this.sensor.set(this.position, new THREE.Vector3(-1, 0, 0));
-      var obstaculo=this.sensor.intersectObjects(environment.children,true);
-    }
-  }
-  else if(Y!==y&&X===x){
-    if (X<x){
-      this.sensor.set(this.position, new THREE.Vector3(0, 1, 0));
-      var obstaculo=this.sensor.intersectObjects(environment.children,true);
-    }
-    else{
-      this.sensor.set(this.position, new THREE.Vector3(0, -1, 0));
-      var obstaculo=this.sensor.intersectObjects(environment.children,true);
-    }     
+  var mod = Math.sqrt(Math.pow(x,2)+Math.pow(y,2));
+  this.sensor.set(this.position, new THREE.Vector3(x/mod, y/mod, 0));
+  var obstaculo=this.sensor.intersectObjects(environment.children,true);
   if( obstaculo.length>0 && obstaculo[0].distance<Math.sqrt(Math.pow(X-x,2)+Math.pow(Y-y,2)) )
     this.sensor.colision=true;
     obstaculo[0].object.material.color.setHex(0xff00ff);}
