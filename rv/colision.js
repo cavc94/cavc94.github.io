@@ -557,7 +557,10 @@ Peon.prototype=new Agent();
 
 Peon.prototype.sense=function(environment){
   //var mod = Math.sqrt(Math.pow(x,2)+Math.pow(y,2));
-  this.sensor.set(this.position, new THREE.Vector3(0, 1, 0));
+  if (this.sTP == true)
+    this.sensor.set(this.position, new THREE.Vector3(0, 1, 0));
+  else
+    this.sensor.set(this.position, new THREE.Vector3(0, -1, 0));
   culo=this.sensor.intersectObjects(environment.children,true);
   if( culo.length>0 && culo[0].distance<Math.sqrt(Math.pow(X-x,2)+Math.pow(Y-y,2)) ){
     this.sensor.colision=true;
