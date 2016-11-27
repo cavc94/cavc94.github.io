@@ -743,8 +743,6 @@ function setup()
   environment.add(camara);
   environment.add(luzPuntual); 
 }
-  renderizador.render(environment,camara);
-}
 
 function loop()
 {
@@ -985,7 +983,8 @@ function loop()
       break;
     }
   }   
-
+  renderizador.render(environment,camara);
+}
 
 var culo,turno=false,sTC,id,environment,camara,renderizador,luzpuntual,avance,seleccion,x,X,Y,Z,z,y,activar=false,seleccionO=true,seleccionF2=false,seleccionF1=false,xf,yf;
 
