@@ -517,10 +517,24 @@ function Torre(sTP,x,y)
 }
 Torre.prototype=new Agent();
 
+Torre.prototype.sense=function(environment){
+  //var mod = Math.sqrt(Math.pow(x,2)+Math.pow(y,2));
+  /*if (this.sTP == true)
+    this.sensor.set(this.position, new THREE.Vector3(0, 1, 0));
+  else*/
+    this.sensor.set(this.position, new THREE.Vector3(Math.cos( this.rotation.z ), Math.sin( this.rotation.z , 0));
+  var obstaculo=this.sensor.intersectObjects(environment.children,true);
+  if( obstaculo.length>0 && obstaculo[0].distance<Math.sqrt(Math.pow(X-x,2)+Math.pow(Y-y,2)) ){
+    this.sensor.colision=true;
+    obstaculo[0].object.material.color.setHex(0xff00ff);}
+  else
+    this.sensor.colision=false;
+};
+
 Torre.prototype.plan=function(environment)
 {
   this.actuator.commands=[];
-  //if (this.sensor.colision == false){
+  if (this.sensor.colision == false){
     if(X!==x&&Y===y)
       this.actuator.commands.push('goStraightX');
      else if(Y!==y&&X===x) 
@@ -531,7 +545,7 @@ Torre.prototype.plan=function(environment)
       seleccionF2=false;
       seleccionF1=false;
     }
-  //}
+  }
 };
 ///////////////PEON///////////////
 function Peon(sTP,x,y)
