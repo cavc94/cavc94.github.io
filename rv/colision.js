@@ -114,16 +114,6 @@ Agent.prototype=new THREE.Object3D();
 
 Agent.prototype.plan=function(environment){};
 
-Agent.prototype.sense=function(environment){
-  //var mod = Math.sqrt(Math.pow(x,2)+Math.pow(y,2));
-  this.sensor.set(this.position, new THREE.Vector3(x, y, 0));
-  culo=this.sensor.intersectObjects(environment.children,true);
-  if( culo.length>0 && culo[0].distance<Math.sqrt(Math.pow(X-x,2)+Math.pow(Y-y,2)) )
-    this.sensor.colision=true; 
-  else
-    this.sensor.colision=false;
-};
-
 Agent.prototype.act=function(environment){
   var command = this.actuator.commands.pop();
   if(command===undefined)
@@ -163,6 +153,8 @@ Agent.prototype.operations.goStraightY=function(pieza,distance)
   }
   pieza.position.y+=distance*Math.cos(pieza.rotation.z);
 };
+
+Agent.prototype.sense=function(environment){};
 
 Agent.prototype.operations.goDiagonal=function(pieza,distance)
 {
@@ -409,7 +401,7 @@ Alfil.prototype=new Agent();
 Alfil.prototype.plan=function(environment)
 {
   this.actuator.commands=[];
-  if (this.sensor.colision == false){
+  //if (this.sensor.colision == false){
     if(X!==x&&Y!==y&&Math.abs(y-Y)===Math.abs(x-X)){
       this.actuator.commands.push('goDiagonal');
     }
@@ -419,7 +411,7 @@ Alfil.prototype.plan=function(environment)
       seleccionF2=false;
       seleccionF1=false;
     }
-  }
+  //}
 };
 ///////////////REINA///////////////
 function Reina(sTP,x,y)
@@ -446,7 +438,7 @@ Reina.prototype=new Agent();
 Reina.prototype.plan=function(environment)
 {
   this.actuator.commands=[]; 
-  if (this.sensor.colision == false){  
+  //if (this.sensor.colision == false){  
     if(X!==x&&Y===y)
       this.actuator.commands.push('goStraightX');
     else if(Y!==y&&X===x) 
@@ -459,7 +451,7 @@ Reina.prototype.plan=function(environment)
       seleccionF2=false;
       seleccionF1=false;
     }
-  }
+  //}
 };
 ///////////////REY///////////////
 function Rey(sTP,x,y)
@@ -486,7 +478,7 @@ Rey.prototype=new Agent();
 Rey.prototype.plan=function(environment)
 {
   this.actuator.commands=[];
-  if (this.sensor.colision == false){
+  //if (this.sensor.colision == false){
     if( Math.abs(x-X)<=10 && Math.abs(y-Y)<=10 ){ 
       if (x!==X && y!==Y && Math.abs(y-Y)===Math.abs(x-X))
         this.actuator.commands.push('goDiagonal');
@@ -501,7 +493,7 @@ Rey.prototype.plan=function(environment)
         seleccionF1=false;
       }
     }
-  }
+  //}
 };
 ///////////////TORRE///////////////
 function Torre(sTP,x,y)
@@ -528,7 +520,7 @@ Torre.prototype=new Agent();
 Torre.prototype.plan=function(environment)
 {
   this.actuator.commands=[];
-  if (this.sensor.colision == false){
+  //if (this.sensor.colision == false){
     if(X!==x&&Y===y)
       this.actuator.commands.push('goStraightX');
      else if(Y!==y&&X===x) 
@@ -539,7 +531,7 @@ Torre.prototype.plan=function(environment)
       seleccionF2=false;
       seleccionF1=false;
     }
-  }
+  //}
 };
 ///////////////PEON///////////////
 function Peon(sTP,x,y)
@@ -562,6 +554,16 @@ function Peon(sTP,x,y)
   this.actuator.castShadow=true;
 }
 Peon.prototype=new Agent();
+
+Peon.prototype.sense=function(environment){
+  //var mod = Math.sqrt(Math.pow(x,2)+Math.pow(y,2));
+  this.sensor.set(this.position, new THREE.Vector3(x, y, 0));
+  culo=this.sensor.intersectObjects(environment.children,true);
+  if( culo.length>0 && culo[0].distance<Math.sqrt(Math.pow(X-x,2)+Math.pow(Y-y,2)) )
+    this.sensor.colision=true; 
+  else
+    this.sensor.colision=false;
+};
 
 Peon.prototype.plan=function(environment)
 {
