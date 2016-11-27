@@ -530,6 +530,7 @@ Torre.prototype.sense=function(environment){
       this.sensor.set(this.position, new THREE.Vector3(0, -1, 0));
       var obstaculo=this.sensor.intersectObjects(environment.children,true);
     }
+  }
   else if(Y!==y&&X===x){
     if (X<x){
       this.sensor.set(this.position, new THREE.Vector3(1, 0, 0));
