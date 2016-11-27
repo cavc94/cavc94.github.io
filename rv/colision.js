@@ -540,7 +540,7 @@ Torre.prototype.sense=function(environment){
       this.sensor.set(this.position, new THREE.Vector3(-1, 0, 0));
       var obstaculo=this.sensor.intersectObjects(environment.children,true);
     }     
-  if( (obstaculo.length>0 && obstaculo[0].distance<Math.sqrt(Math.pow(X-x,2)+Math.pow(Y-y,2)) ){
+  if( obstaculo.length>0 && obstaculo[0].distance<Math.sqrt(Math.pow(X-x,2)+Math.pow(Y-y,2) )
     this.sensor.colision=true;
     obstaculo[0].object.material.color.setHex(0xff00ff);}
   else
