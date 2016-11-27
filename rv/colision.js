@@ -555,21 +555,21 @@ function Peon(sTP,x,y)
 }
 Peon.prototype=new Agent();
 
-/*Peon.prototype.sense=function(environment){
+Peon.prototype.sense=function(environment){
   //var mod = Math.sqrt(Math.pow(x,2)+Math.pow(y,2));
-  this.sensor.set(this.position, new THREE.Vector3(x, y, 0));
+  this.sensor.set(this.position, new THREE.Vector3(0, 1, 0));
   culo=this.sensor.intersectObjects(environment.children,true);
   if( culo.length>0 && culo[0].distance<Math.sqrt(Math.pow(X-x,2)+Math.pow(Y-y,2)) ){
     this.sensor.colision=true;
     culo[0].object.material.color.setHex(0xffffff);}
   else
     this.sensor.colision=false;
-};*/
+};
 
 Peon.prototype.plan=function(environment)
 {
   this.actuator.commands=[];
-  //if (this.sensor.colision === false){
+  if (this.sensor.colision === false){
     if (this.sTP===true){
     if(Y>=-25 && Y<-15) {
       if( y-Y<=20 && y-Y>0 && x===X ) 
@@ -596,7 +596,7 @@ Peon.prototype.plan=function(environment)
       seleccionF2=false;
       seleccionF1=false;
     }
-  //}
+  }
 };
 ///////////////SELECCION DE POSICIONES///////////////
 function SeleccionD(event)
