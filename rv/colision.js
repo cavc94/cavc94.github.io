@@ -746,7 +746,7 @@ function setup()
 function loop()
 {
   requestAnimationFrame(loop);
-  environment.sense();
+  //environment.sense();
   environment.plan();
   if(turno==false)
   {
@@ -754,98 +754,114 @@ function loop()
       case 114:
         X=environment.children[100].position.x;
         Y=environment.children[100].position.y;
-        if(seleccionF2==true)
+        if(seleccionF2==true){
           environment.children[100].act();
+          environment.children[100].sense();}
       break;
       case 119:
         X=environment.children[101].position.x;
         Y=environment.children[101].position.y;
-        if(seleccionF2==true)
+        if(seleccionF2==true){
           environment.children[101].act();
+          environment.children[101].sense();}
       break;
       case 123:
         X=environment.children[102].position.x;
         Y=environment.children[102].position.y;
-        if(seleccionF2==true)
+        if(seleccionF2==true){
           environment.children[102].act();
+          environment.children[102].sense();}
       break;
       case 128:
         X=environment.children[103].position.x;
         Y=environment.children[103].position.y;
-        if(seleccionF2==true)
+        if(seleccionF2==true){
           environment.children[103].act();
+          environment.children[103].sense();}
       break;
       case 133:
         X=environment.children[104].position.x;
         Y=environment.children[104].position.y;
-        if(seleccionF2==true)
+        if(seleccionF2==true){
           environment.children[104].act();
+          environment.children[104].sense();}
       break;
       case 137:
         X=environment.children[105].position.x;
         Y=environment.children[105].position.y;
-        if(seleccionF2==true)
+        if(seleccionF2==true){
           environment.children[105].act();
+          environment.children[105].sense();}
       break;
       case 142:
         X=environment.children[106].position.x;
         Y=environment.children[106].position.y;
-        if(seleccionF2==true)
+        if(seleccionF2==true){
           environment.children[106].act();
+          environment.children[106].sense();}
       break;
       case 146:
         X=environment.children[107].position.x;
         Y=environment.children[107].position.y;
-        if(seleccionF2==true)
+        if(seleccionF2==true){
           environment.children[107].act();
+          environment.children[107].sense();}
       break;
       case 150:
         X=environment.children[108].position.x;
         Y=environment.children[108].position.y;
-        if(seleccionF2==true)
+        if(seleccionF2==true){
           environment.children[108].act();
+          environment.children[108].sense();}
       break;
       case 154:
         X=environment.children[109].position.x;
         Y=environment.children[109].position.y;
-        if(seleccionF2==true)
+        if(seleccionF2==true){
           environment.children[109].act();
+          environment.children[109].sense();}
       break;
       case 158:
         X=environment.children[110].position.x;
         Y=environment.children[110].position.y;
-        if(seleccionF2==true)
+        if(seleccionF2==true){
           environment.children[110].act();
+          environment.children[110].sense();}
       break;
       case 162:
         X=environment.children[111].position.x;
         Y=environment.children[111].position.y;
-        if(seleccionF2==true)
+        if(seleccionF2==true){
           environment.children[111].act();
+          environment.children[111].sense();}
       break;
       case 166:
         X=environment.children[112].position.x;
         Y=environment.children[112].position.y;
-        if(seleccionF2==true)
+        if(seleccionF2==true){
           environment.children[112].act();
+          environment.children[112].sense();}
       break;
       case 170:
         X=environment.children[113].position.x;
         Y=environment.children[113].position.y;
-        if(seleccionF2==true)
+        if(seleccionF2==true){
           environment.children[113].act();
+          environment.children[113].sense();}
       break;
       case 174:
         X=environment.children[114].position.x;
         Y=environment.children[114].position.y;
-        if(seleccionF2==true)
+        if(seleccionF2==true){
           environment.children[114].act();
+          environment.children[114].sense();}
       break;
       case 178:
         X=environment.children[115].position.x;
         Y=environment.children[115].position.y;
-        if(seleccionF2==true)
+        if(seleccionF2==true){
           environment.children[115].act();
+          environment.children[115].sense();}
       break;
     }
   }
@@ -855,98 +871,114 @@ function loop()
       case 182:
         X=environment.children[116].position.x;
         Y=environment.children[116].position.y;
-        if(seleccionF2==true)
-          environment.children[116].act(); 
+        if(seleccionF2==true){
+          environment.children[116].act();
+          environment.children[116].sense();}
       break;
       case 186:
         X=environment.children[117].position.x;
         Y=environment.children[117].position.y;
-        if(seleccionF2==true)
+        if(seleccionF2==true){
           environment.children[117].act();
+          environment.children[117].sense();}
       break;
       case 190:
         X=environment.children[118].position.x;
         Y=environment.children[118].position.y;
-        if(seleccionF2==true)
+        if(seleccionF2==true){
           environment.children[118].act();
+          environment.children[118].sense();}
       break;
       case 194:
         X=environment.children[119].position.x;
         Y=environment.children[119].position.y;
-        if(seleccionF2==true)
+        if(seleccionF2==true){
           environment.children[119].act();
+          environment.children[119].sense();}
       break;
       case 198:
         X=environment.children[120].position.x;
         Y=environment.children[120].position.y;
-        if(seleccionF2==true)
+        if(seleccionF2==true){
           environment.children[120].act();
+          environment.children[120].sense();}
       break;
       case 202:
         X=environment.children[121].position.x;
         Y=environment.children[121].position.y;
-        if(seleccionF2==true)
+        if(seleccionF2==true){
           environment.children[121].act();
+          environment.children[121].sense();}
       break;
       case 206:
         X=environment.children[122].position.x;
         Y=environment.children[122].position.y;
-        if(seleccionF2==true)
+        if(seleccionF2==true){
           environment.children[122].act();
+          environment.children[122].sense();}
       break;
       case 210:
         X=environment.children[123].position.x;
         Y=environment.children[123].position.y;
-        if(seleccionF2==true)
+        if(seleccionF2==true){
           environment.children[123].act();
+          environment.children[123].sense();}
       break;
       case 214:
         X=environment.children[124].position.x;
         Y=environment.children[124].position.y;
-        if(seleccionF2==true)
+        if(seleccionF2==true){
           environment.children[124].act();
+          environment.children[124].sense();}
       break;
       case 219:
         X=environment.children[125].position.x;
         Y=environment.children[125].position.y;
-        if(seleccionF2==true)
+        if(seleccionF2==true){
           environment.children[125].act();
+          environment.children[125].sense();}
       break;
       case 223:
         X=environment.children[126].position.x;
         Y=environment.children[126].position.y;
-        if(seleccionF2==true)
+        if(seleccionF2==true){
           environment.children[126].act();
+          environment.children[126].sense();}
       break;
       case 228:
         X=environment.children[127].position.x;
         Y=environment.children[127].position.y;
-        if(seleccionF2==true)
+        if(seleccionF2==true){
           environment.children[127].act();
+          environment.children[127].sense();}
       break;
       case 233:
         X=environment.children[128].position.x;
         Y=environment.children[128].position.y;
-        if(seleccionF2==true)
+        if(seleccionF2==true){
           environment.children[128].act();
+          environment.children[128].sense();}
       break;
       case 237:
         X=environment.children[129].position.x;
         Y=environment.children[129].position.y;
-        if(seleccionF2==true)
+        if(seleccionF2==true){
           environment.children[129].act();
+          environment.children[129].sense();}
       break;
       case 242:
         X=environment.children[130].position.x;
         Y=environment.children[130].position.y;
-        if(seleccionF2==true)
+        if(seleccionF2==true){
           environment.children[130].act();
+          environment.children[130].sense();}
       break;
       case 246:
         X=environment.children[131].position.x;
         Y=environment.children[131].position.y;
-        if(seleccionF2==true)
+        if(seleccionF2==true){
           environment.children[131].act();
+          environment.children[131].sense();}
       break;
     }
   }   
