@@ -561,10 +561,10 @@ Peon.prototype.sense=function(environment){
     this.sensor.set(this.position, new THREE.Vector3(0, 1, 0));
   else
     this.sensor.set(this.position, new THREE.Vector3(0, -1, 0));
-  culo=this.sensor.intersectObjects(environment.children,true);
-  if( culo.length>0 && culo[0].distance<Math.sqrt(Math.pow(X-x,2)+Math.pow(Y-y,2)) ){
+  var obstaculo=this.sensor.intersectObjects(environment.children,true);
+  if( obstaculo.length>0 && obstaculo[0].distance<Math.sqrt(Math.pow(X-x,2)+Math.pow(Y-y,2)) ){
     this.sensor.colision=true;
-    culo[0].object.material.color.setHex(0xff00ff);}
+    obstaculo[0].object.material.color.setHex(0xff00ff);}
   else
     this.sensor.colision=false;
 };
