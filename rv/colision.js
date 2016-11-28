@@ -398,7 +398,7 @@ function Alfil(sTP,x,y)
 }
 Alfil.prototype=new Agent();
 
-Rey.prototype.sense=function(environment){
+Alfil.prototype.sense=function(environment){
   /*var mod = Math.sqrt(Math.pow(x,2)+Math.pow(y,2));
   this.sensor.set(this.position, new THREE.Vector3(x/mod, y/mod, 0));*/
   if(Y!==y&&X!==x&&Math.abs(y-Y)===Math.abs(x-X)){
@@ -420,7 +420,7 @@ Rey.prototype.sense=function(environment){
     }
   }
   var obstaculo=this.sensor.intersectObjects(environment.children,true);
-  if( obstaculo.length>0 && obstaculo[0].distance<Math.sqrt(Math.pow(X-x,2)+Math.pow(Y-y,2)) ){
+  if( obstaculo.length>0 && obstaculo[0].distance<=Math.sqrt(Math.pow(X-x,2)+Math.pow(Y-y,2)) ){
     this.sensor.colision=true;
     obstaculo[0].object.material.color.setHex(0xff00ff);}
   else
@@ -430,7 +430,7 @@ Rey.prototype.sense=function(environment){
 Alfil.prototype.plan=function(environment)
 {
   this.actuator.commands=[];
-  //if (this.sensor.colision == false){
+  if (this.sensor.colision == false){
     if(X!==x&&Y!==y&&Math.abs(y-Y)===Math.abs(x-X)){
       this.actuator.commands.push('goDiagonal');
     }
@@ -440,7 +440,7 @@ Alfil.prototype.plan=function(environment)
       seleccionF2=false;
       seleccionF1=false;
     }
-  //}
+  }
 };
 ///////////////REINA///////////////
 function Reina(sTP,x,y)
@@ -506,7 +506,7 @@ Reina.prototype.sense=function(environment){
     }
   }
   var obstaculo=this.sensor.intersectObjects(environment.children,true);
-  if( obstaculo.length>0 && obstaculo[0].distance<Math.sqrt(Math.pow(X-x,2)+Math.pow(Y-y,2)) ){
+  if( obstaculo.length>0 && obstaculo[0].distance<=Math.sqrt(Math.pow(X-x,2)+Math.pow(Y-y,2)) ){
     this.sensor.colision=true;
     obstaculo[0].object.material.color.setHex(0xff00ff);}
   else
@@ -516,7 +516,7 @@ Reina.prototype.sense=function(environment){
 Reina.prototype.plan=function(environment)
 {
   this.actuator.commands=[]; 
-  //if (this.sensor.colision == false){  
+  if (this.sensor.colision == false){  
     if(X!==x&&Y===y)
       this.actuator.commands.push('goStraightX');
     else if(Y!==y&&X===x) 
@@ -529,7 +529,7 @@ Reina.prototype.plan=function(environment)
       seleccionF2=false;
       seleccionF1=false;
     }
-  //}
+  }
 };
 ///////////////REY///////////////
 function Rey(sTP,x,y)
@@ -595,7 +595,7 @@ Rey.prototype.sense=function(environment){
     }
   }
   var obstaculo=this.sensor.intersectObjects(environment.children,true);
-  if( obstaculo.length>0 && obstaculo[0].distance<Math.sqrt(Math.pow(X-x,2)+Math.pow(Y-y,2)) ){
+  if( obstaculo.length>0 && obstaculo[0].distance<=Math.sqrt(Math.pow(X-x,2)+Math.pow(Y-y,2)) ){
     this.sensor.colision=true;
     obstaculo[0].object.material.color.setHex(0xff00ff);}
   else
@@ -605,7 +605,7 @@ Rey.prototype.sense=function(environment){
 Rey.prototype.plan=function(environment)
 {
   this.actuator.commands=[];
-  //if (this.sensor.colision == false){
+  if (this.sensor.colision == false){
     if( Math.abs(x-X)<=10 && Math.abs(y-Y)<=10 ){ 
       if (x!==X && y!==Y && Math.abs(y-Y)===Math.abs(x-X))
         this.actuator.commands.push('goDiagonal');
@@ -620,7 +620,7 @@ Rey.prototype.plan=function(environment)
         seleccionF1=false;
       }
     }
-  //}
+  }
 };
 ///////////////TORRE///////////////
 function Torre(sTP,x,y)
@@ -668,7 +668,7 @@ Torre.prototype.sense=function(environment){
     } 
   }
   var obstaculo=this.sensor.intersectObjects(environment.children,true);
-  if( obstaculo.length>0 && obstaculo[0].distance<Math.sqrt(Math.pow(X-x,2)+Math.pow(Y-y,2)) ){
+  if( obstaculo.length>0 && obstaculo[0].distance<=Math.sqrt(Math.pow(X-x,2)+Math.pow(Y-y,2)) ){
     this.sensor.colision=true;
     obstaculo[0].object.material.color.setHex(0xff00ff);}
   else
@@ -720,7 +720,7 @@ Peon.prototype.sense=function(environment){
   else
     this.sensor.set(this.position, new THREE.Vector3(0, -1, 0));
   var obstaculo=this.sensor.intersectObjects(environment.children,true);
-  if( obstaculo.length>0 && obstaculo[0].distance<Math.sqrt(Math.pow(X-x,2)+Math.pow(Y-y,2)) ){
+  if( obstaculo.length>0 && obstaculo[0].distance<=Math.sqrt(Math.pow(X-x,2)+Math.pow(Y-y,2)) ){
     this.sensor.colision=true;
     obstaculo[0].object.material.color.setHex(0xff00ff);}
   else
