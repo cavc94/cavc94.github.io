@@ -119,8 +119,9 @@ Agent.prototype.act=function(environment){
   var command = this.actuator.commands.pop();
   if(command===undefined)
     console.log('Undefined command');
-  else if(command in this.operations)
+  else if(command in this.operations){
     this.operations[command](this);
+    this.cnt = true;}
   else
     console.log('Unknown command');
 };
@@ -443,11 +444,9 @@ Alfil.prototype.plan=function(environment)
 {
   this.actuator.commands=[];
   if (this.sensor.colision == false){
-    if(X!==x&&Y!==y&&Math.abs(y-Y)===Math.abs(x-X)){
+    if(X!==x&&Y!==y&&Math.abs(y-Y)===Math.abs(x-X))
       this.actuator.commands.push('goDiagonal');
-    this.cnt = true;
-    }
-    else if(X===x&&Y===y)
+    else if(X===x&&Y===y&&this.cnt===true)
     {
       this.actuator.commands.push('stop');
       seleccionF2=false;
@@ -531,14 +530,13 @@ Reina.prototype.plan=function(environment)
 {
   this.actuator.commands=[]; 
   if (this.sensor.colision == false){  
-    this.cnt = true;
     if(X!==x&&Y===y)
       this.actuator.commands.push('goStraightX');
     else if(Y!==y&&X===x) 
       this.actuator.commands.push('goStraightY');
     else if(Y!==y&&X!==x&&Math.abs(y-Y)===Math.abs(x-X))
       this.actuator.commands.push('goDiagonal');
-    else if(X===x&&Y===y)
+    else if(X===x&&Y===y&&this.cnt===true)
     {
       this.actuator.commands.push('stop');
       seleccionF2=false;
@@ -622,7 +620,6 @@ Rey.prototype.plan=function(environment)
 {
   this.actuator.commands=[];
   if (this.sensor.colision == false){
-    this.cnt = true;
     if( Math.abs(x-X)<=10 && Math.abs(y-Y)<=10 ){ 
       if (x!==X && y!==Y && Math.abs(y-Y)===Math.abs(x-X))
         this.actuator.commands.push('goDiagonal');
@@ -630,7 +627,7 @@ Rey.prototype.plan=function(environment)
         this.actuator.commands.push('goStraightY');
       else if(x!==X && y===Y)
         this.actuator.commands.push('goStraightX');
-      else if(X===x&&Y===y)
+      else if(X===x&&Y===y&&this.cnt===true)
       {
         this.actuator.commands.push('stop');
         seleccionF2=false;
@@ -697,12 +694,11 @@ Torre.prototype.plan=function(environment)
 {
   this.actuator.commands=[];
   if (this.sensor.colision == false){
-    this.cnt = true;
     if(X!==x&&Y===y)
       this.actuator.commands.push('goStraightX');
      else if(Y!==y&&X===x) 
       this.actuator.commands.push('goStraightY');
-     else if(X===x&&Y===y)
+     else if(X===x&&Y===y&&this.cnt===true)
     {
       this.actuator.commands.push('stop');
       seleccionF2=false;
@@ -751,7 +747,6 @@ Peon.prototype.plan=function(environment)
 {
   this.actuator.commands=[];
   if (this.sensor.colision === false){
-    this.cnt = true;
     if (this.sTP===true){
     if(Y>=-25 && Y<-15) {
       if( y-Y<=20 && y-Y>0 && x===X ) 
@@ -772,7 +767,7 @@ Peon.prototype.plan=function(environment)
         this.actuator.commands.push('goStraightY');
     }
   }
-  if(X===x&&Y===y)
+  if(X===x&&Y===y&&this.cnt===true)
     {
       this.actuator.commands.push('stop');
       seleccionF2=false;
@@ -790,15 +785,9 @@ function SeleccionD(event)
   raycaster.setFromCamera(mouse3D,camara);
   seleccion=raycaster.intersectObjects(environment.children,true);
   if(seleccion.length>0)
-  {
-     /*console.log(turno);
-      if(turno===1)
-        turno=0;
-      else
-        turno=1;*/
-    
+  { 
     console.log(turno);
-    //console.log(environment.children)
+    
     if(seleccionF1==false)
       id=seleccion[0].object.id;
     console.log(id);
