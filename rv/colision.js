@@ -109,6 +109,7 @@ function Agent(x=0,y=0)
   THREE.Object3D.call(this);
   this.position.x=x;
   this.position.y=y;
+  this.cnt=false;
 }
 Agent.prototype=new THREE.Object3D();
 
@@ -348,7 +349,6 @@ function Caballo(sTP,x,y)
   this.position.x=x;
   this.position.y=y;
   this.position.z=0;
-  this.cnt = 0;
   this.sensor=new Sensor();
   this.actuator=new THREE.Mesh(new CaballoGeometry(),new THREE.MeshLambertMaterial({map:textura}));
   this.add(this.actuator);
@@ -376,14 +376,14 @@ Caballo.prototype.plan=function(environment)
   if( ((Math.abs(x-X)<=20 && Math.abs(y-Y)<=10) || (Math.abs(x-X)<=10 && Math.abs(y-Y)<=20)) && Math.abs(x-X)!==Math.abs(y-Y) ){
     if(X!==x&&Y!==y){
       this.actuator.commands.push('goStraightX');
-      this.cnt = 1;}
-    else if (X===X&&Y!==y&&this.cnt!==0)
+      this.cnt = true;}
+    else if (X===X&&Y!==y&&this.cnt!==false)
       this.actuator.commands.push('goStraightY');
   }
   else if(X===x&&Y===y)
     {
       this.actuator.commands.push('stop');
-      this.cnt = 0;
+      this.cnt = false;
       seleccionF2=false;
       seleccionF1=false;
     }
@@ -445,12 +445,14 @@ Alfil.prototype.plan=function(environment)
   if (this.sensor.colision == false){
     if(X!==x&&Y!==y&&Math.abs(y-Y)===Math.abs(x-X)){
       this.actuator.commands.push('goDiagonal');
+    this.cnt = true;
     }
     else if(X===x&&Y===y)
     {
       this.actuator.commands.push('stop');
       seleccionF2=false;
       seleccionF1=false;
+      this.cnt = false;
     }
   }
 };
@@ -529,6 +531,7 @@ Reina.prototype.plan=function(environment)
 {
   this.actuator.commands=[]; 
   if (this.sensor.colision == false){  
+    this.cnt = true;
     if(X!==x&&Y===y)
       this.actuator.commands.push('goStraightX');
     else if(Y!==y&&X===x) 
@@ -540,6 +543,7 @@ Reina.prototype.plan=function(environment)
       this.actuator.commands.push('stop');
       seleccionF2=false;
       seleccionF1=false;
+      this.cnt = false;
     }
   }
 };
@@ -618,6 +622,7 @@ Rey.prototype.plan=function(environment)
 {
   this.actuator.commands=[];
   if (this.sensor.colision == false){
+    this.cnt = true;
     if( Math.abs(x-X)<=10 && Math.abs(y-Y)<=10 ){ 
       if (x!==X && y!==Y && Math.abs(y-Y)===Math.abs(x-X))
         this.actuator.commands.push('goDiagonal');
@@ -630,6 +635,7 @@ Rey.prototype.plan=function(environment)
         this.actuator.commands.push('stop');
         seleccionF2=false;
         seleccionF1=false;
+        this.cnt = false;
       }
     }
   }
@@ -691,6 +697,7 @@ Torre.prototype.plan=function(environment)
 {
   this.actuator.commands=[];
   if (this.sensor.colision == false){
+    this.cnt = true;
     if(X!==x&&Y===y)
       this.actuator.commands.push('goStraightX');
      else if(Y!==y&&X===x) 
@@ -700,6 +707,7 @@ Torre.prototype.plan=function(environment)
       this.actuator.commands.push('stop');
       seleccionF2=false;
       seleccionF1=false;
+      this.cnt = false;
     }
   }
 };
@@ -743,6 +751,7 @@ Peon.prototype.plan=function(environment)
 {
   this.actuator.commands=[];
   if (this.sensor.colision === false){
+    this.cnt = true;
     if (this.sTP===true){
     if(Y>=-25 && Y<-15) {
       if( y-Y<=20 && y-Y>0 && x===X ) 
@@ -768,6 +777,7 @@ Peon.prototype.plan=function(environment)
       this.actuator.commands.push('stop');
       seleccionF2=false;
       seleccionF1=false;
+      this.cnt = false;
     }
   }
 };
