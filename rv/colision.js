@@ -399,7 +399,7 @@ function Caballo(sTP,x,y)
     textura=cargador.load('maderaN.jpg');
   else
     textura=cargador.load('maderaB.jpg');
-  this.position.set(x,y,4);
+  this.position.set(x,y,3.6);
   this.cnt=false;
   this.sensor=new Sensor();
   this.actuator=new THREE.Mesh(new CaballoGeometry(),new THREE.MeshLambertMaterial({map:textura}));
@@ -536,7 +536,7 @@ function Reina(sTP,x,y)
     textura=cargador.load('maderaN.jpg');
   else
     textura=cargador.load('maderaB.jpg');
-  this.position.set(x,y,4);
+  this.position.set(x,y,3.6);
   this.sensor=new Sensor();
   this.actuator=new THREE.Mesh(new ReinaGeometry(),new THREE.MeshLambertMaterial({map:textura}));
   this.piernaizq=new THREE.Mesh(new THREE.BoxGeometry(1,1,10),new THREE.MeshLambertMaterial({map:textura}));
@@ -635,7 +635,7 @@ function Rey(sTP,x,y)
     textura=cargador.load('maderaN.jpg');
   else
     textura=cargador.load('maderaB.jpg'); 
-  this.position.set(x,y,4);
+  this.position.set(x,y,3.6);
   this.sensor=new Sensor();
   this.actuator=new THREE.Mesh(new ReyGeometry(),new THREE.MeshLambertMaterial({map:textura}));
   this.piernaizq=new THREE.Mesh(new THREE.BoxGeometry(1,1,10),new THREE.MeshLambertMaterial({map:textura}));
@@ -736,7 +736,7 @@ function Torre(sTP,x,y)
     textura=cargador.load('maderaN.jpg');
   else
     textura=cargador.load('maderaB.jpg');
-  this.position.set(x,y,4);
+  this.position.set(x,y,3.6);
   this.sensor=new Sensor();
   this.actuator=new THREE.Mesh(new TorreGeometry(),new THREE.MeshLambertMaterial({map:textura}));
   this.piernaizq=new THREE.Mesh(new THREE.BoxGeometry(1,1,10),new THREE.MeshLambertMaterial({map:textura}));
@@ -815,7 +815,7 @@ function Peon(sTP,x,y)
     textura=cargador.load('maderaN.jpg');
   else
     textura=cargador.load('maderaB.jpg');
-  this.position.set(x,y,4);
+  this.position.set(x,y,3.6);
   this.sensor=new Sensor();
   this.actuator=new THREE.Mesh(new PeonGeometry(),new THREE.MeshLambertMaterial({map:textura}));
   this.piernaizq=new THREE.Mesh(new THREE.BoxGeometry(1,1,10),new THREE.MeshLambertMaterial({map:textura}));
