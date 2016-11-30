@@ -109,7 +109,6 @@ function Agent(x=0,y=0)
   THREE.Object3D.call(this);
   this.position.x=x;
   this.position.y=y;
-  this.cnt=false;
 }
 Agent.prototype=new THREE.Object3D();
 
@@ -119,9 +118,8 @@ Agent.prototype.act=function(environment){
   var command = this.actuator.commands.pop();
   if(command===undefined)
     console.log('Undefined command');
-  else if(command in this.operations){
+  else if(command in this.operations)
     this.operations[command](this);
-    this.cnt = true;}
   else
     console.log('Unknown command');
 };
@@ -140,6 +138,24 @@ Agent.prototype.operations.goStraightX=function(pieza,distance)
       distance=-0.5; 
   }
   pieza.position.x+=distance*Math.cos(pieza.rotation.z);
+  b=pieza.piernader.rotation.x*Math.pow(10, 1);
+  b=Math.round(b);
+  b= b/Math.pow(10,1);
+  if(b===0.3)
+    a=-0.05;
+  else if(b===-0.3)
+    a=0.05;
+  pieza.piernader.rotation.x+=a;
+  pieza.piernaizq.rotation.x+=-a;
+  c=pieza.brazoder.rotation.z*Math.pow(10, 1);
+  c=Math.round(c);
+  c= c/Math.pow(10,1);
+  if(c===0.3)
+    d=-0.05;
+  else if(c===-0.3)
+    d=0.05;
+  pieza.brazoder.rotation.z+=d;
+  pieza.brazoizq.rotation.z+=d;
 };
 
 Agent.prototype.operations.goStraightY=function(pieza,distance)
@@ -154,9 +170,25 @@ Agent.prototype.operations.goStraightY=function(pieza,distance)
       distance=-0.5; 
   }
   pieza.position.y+=distance*Math.cos(pieza.rotation.z);
+  b=pieza.piernader.rotation.x*Math.pow(10, 1);
+  b=Math.round(b);
+  b= b/Math.pow(10,1);
+  if(b===0.3)
+    a=-0.05;
+  else if(b===-0.3)
+    a=0.05;
+  pieza.piernader.rotation.x+=a;
+  pieza.piernaizq.rotation.x+=-a;
+  c=pieza.brazoder.rotation.z*Math.pow(10, 1);
+  c=Math.round(c);
+  c= c/Math.pow(10,1);
+  if(c===0.3)
+    d=-0.05;
+  else if(c===-0.3)
+    d=0.05;
+  pieza.brazoder.rotation.z+=d;
+  pieza.brazoizq.rotation.z+=d;
 };
-
-Agent.prototype.sense=function(environment){};
 
 Agent.prototype.operations.goDiagonal=function(pieza,distance)
 {
@@ -185,8 +217,26 @@ Agent.prototype.operations.goDiagonal=function(pieza,distance)
     else if(Y===y)
       distance=0;
     else
-      distance=-0.5; 
-  }
+      distance=-0.5;
+    b=pieza.piernader.rotation.x*Math.pow(10, 1);
+    b=Math.round(b);
+    b= b/Math.pow(10,1);
+    if(b===0.3)
+      a=-0.05;
+    else if(b===-0.3)
+      a=0.05;
+    pieza.piernader.rotation.x+=a;
+    pieza.piernaizq.rotation.x+=-a;
+    c=pieza.brazoder.rotation.z*Math.pow(10, 1);
+    c=Math.round(c);
+    c= c/Math.pow(10,1);
+    if(c===0.3)
+      d=-0.05;
+    else if(c===-0.3)
+      d=0.05;
+    pieza.brazoder.rotation.z+=d;
+    pieza.brazoizq.rotation.z+=d;
+  } 
 };
 
 Agent.prototype.operations.stop=function(pieza,distance)
@@ -196,6 +246,8 @@ Agent.prototype.operations.stop=function(pieza,distance)
   pieza.position.x+=distance*Math.cos(pieza.rotation.z);
   pieza.position.y+=distance*Math.cos(pieza.rotation.z);
 };
+
+Agent.prototype.sense=function(environment){};
 
 function Environment()
 {
@@ -347,15 +399,26 @@ function Caballo(sTP,x,y)
     textura=cargador.load('maderaN.jpg');
   else
     textura=cargador.load('maderaB.jpg');
-  this.position.x=x;
-  this.position.y=y;
-  this.position.z=0;
+  this.position.set(x,y,4);
+  this.cnt=false;
   this.sensor=new Sensor();
   this.actuator=new THREE.Mesh(new CaballoGeometry(),new THREE.MeshLambertMaterial({map:textura}));
-  this.add(this.actuator);
+  this.piernaizq=new THREE.Mesh(new THREE.BoxGeometry(1,1,10),new THREE.MeshLambertMaterial({map:textura}));
+  this.piernader=new THREE.Mesh(new THREE.BoxGeometry(1,1,10),new THREE.MeshLambertMaterial({map:textura}));
+  this.brazoizq=new THREE.Mesh(new THREE.BoxGeometry(1,6,1),new THREE.MeshLambertMaterial({map:textura}));
+  this.brazoder=new THREE.Mesh(new THREE.BoxGeometry(1,6,1),new THREE.MeshLambertMaterial({map:textura}));
+  this.piernaizq.position.set(-1.8,0,0)
+  this.piernader.position.set(1.8,0,0);
+  this.brazoder.position.set(0.4,1.4,4);
+  this.brazoizq.position.set(0.4,-1.4,4);
+  this.add(this.brazoizq,this.brazoder,this.piernaizq,this.piernader,this.actuator);
   this.actuator.scale.set(9.5,9.5,9.5);
   this.actuator.rotateX(Math.PI/2);
   this.actuator.castShadow=true;
+  this.piernader.castShadow=true;
+  this.piernaizq.castShadow=true;
+  this.brazoder.castShadow=true;
+  this.brazoizq.castShadow=true;
 }
 Caballo.prototype=new Agent();
 
@@ -369,7 +432,6 @@ Caballo.prototype.sense=function(environment){
   else
     this.sensor.colision=false;*/
 };
-
 
 Caballo.prototype.plan=function(environment)
 {
@@ -399,15 +461,25 @@ function Alfil(sTP,x,y)
     textura=cargador.load('maderaN.jpg');
   else
     textura=cargador.load('maderaB.jpg');
-  this.position.x=x;
-  this.position.y=y;
-  this.position.z=0;
+  this.position.set=(x,y,4);
   this.sensor=new Sensor();
   this.actuator=new THREE.Mesh(new AlfilGeometry(),new THREE.MeshLambertMaterial({map:textura}));
-  this.add(this.actuator);
+  this.piernaizq=new THREE.Mesh(new THREE.BoxGeometry(1,1,8),new THREE.MeshLambertMaterial({map:textura}));
+  this.piernader=new THREE.Mesh(new THREE.BoxGeometry(1,1,8),new THREE.MeshLambertMaterial({map:textura}));
+  this.brazoizq=new THREE.Mesh(new THREE.BoxGeometry(5,1,1),new THREE.MeshLambertMaterial({map:textura}));
+  this.brazoder=new THREE.Mesh(new THREE.BoxGeometry(5,1,1),new THREE.MeshLambertMaterial({map:textura}));
+  this.piernaizq.position.set(-1.8,0,-1.3)
+  this.piernader.position.set(1.8,0,-1.3);
+  this.brazoder.position.set(2.5,0,4);
+  this.brazoizq.position.set(-2.5,0,4);
+  this.add(this.brazoizq,this.brazoder,this.piernaizq,this.piernader,this.actuator);
   this.actuator.scale.set(9.5,9.5,9.5);
   this.actuator.rotateX(Math.PI/2);
   this.actuator.castShadow=true;
+  this.piernader.castShadow=true;
+  this.piernaizq.castShadow=true;
+  this.brazoder.castShadow=true;
+  this.brazoizq.castShadow=true;
 }
 Alfil.prototype=new Agent();
 
@@ -446,12 +518,11 @@ Alfil.prototype.plan=function(environment)
   if (this.sensor.colision == false){
     if(X!==x&&Y!==y&&Math.abs(y-Y)===Math.abs(x-X))
       this.actuator.commands.push('goDiagonal');
-    else if(X===x&&Y===y&&this.cnt===true)
+    else if(X===x&&Y===y)
     {
       this.actuator.commands.push('stop');
       seleccionF2=false;
       seleccionF1=false;
-      this.cnt = false;
     }
   }
 };
@@ -465,15 +536,25 @@ function Reina(sTP,x,y)
     textura=cargador.load('maderaN.jpg');
   else
     textura=cargador.load('maderaB.jpg');
-  this.position.x=x;
-  this.position.y=y;
-  this.position.z=0;
+  this.position.set(x,y,4);
   this.sensor=new Sensor();
   this.actuator=new THREE.Mesh(new ReinaGeometry(),new THREE.MeshLambertMaterial({map:textura}));
-  this.add(this.actuator);
+  this.piernaizq=new THREE.Mesh(new THREE.BoxGeometry(1,1,10),new THREE.MeshLambertMaterial({map:textura}));
+  this.piernader=new THREE.Mesh(new THREE.BoxGeometry(1,1,10),new THREE.MeshLambertMaterial({map:textura}));
+  this.brazoizq=new THREE.Mesh(new THREE.BoxGeometry(6,1,1),new THREE.MeshLambertMaterial({map:textura}));
+  this.brazoder=new THREE.Mesh(new THREE.BoxGeometry(6,1,1),new THREE.MeshLambertMaterial({map:textura}));
+  this.piernaizq.position.set(-1.8,0,0)
+  this.piernader.position.set(1.8,0,0);
+  this.brazoder.position.set(1.8,0,4);
+  this.brazoizq.position.set(-1.8,0,4);
+  this.add(this.brazoizq,this.brazoder,this.piernaizq,this.piernader,this.actuator);
   this.actuator.scale.set(9.5,9.5,9.5);
   this.actuator.rotateX(Math.PI/2);
   this.actuator.castShadow=true;
+  this.piernader.castShadow=true;
+  this.piernaizq.castShadow=true;
+  this.brazoder.castShadow=true;
+  this.brazoizq.castShadow=true;
 }
 Reina.prototype=new Agent();
 
@@ -536,12 +617,11 @@ Reina.prototype.plan=function(environment)
       this.actuator.commands.push('goStraightY');
     else if(Y!==y&&X!==x&&Math.abs(y-Y)===Math.abs(x-X))
       this.actuator.commands.push('goDiagonal');
-    else if(X===x&&Y===y&&this.cnt===true)
+    else if(X===x&&Y===y)
     {
       this.actuator.commands.push('stop');
       seleccionF2=false;
       seleccionF1=false;
-      this.cnt = false;
     }
   }
 };
@@ -554,16 +634,26 @@ function Rey(sTP,x,y)
   if(this.sTP===true)
     textura=cargador.load('maderaN.jpg');
   else
-    textura=cargador.load('maderaB.jpg');
-  this.position.x=x;
-  this.position.y=y;
-  this.position.z=0;
+    textura=cargador.load('maderaB.jpg'); 
+  this.position.set(x,y,4);
   this.sensor=new Sensor();
   this.actuator=new THREE.Mesh(new ReyGeometry(),new THREE.MeshLambertMaterial({map:textura}));
-  this.add(this.actuator);
+  this.piernaizq=new THREE.Mesh(new THREE.BoxGeometry(1,1,10),new THREE.MeshLambertMaterial({map:textura}));
+  this.piernader=new THREE.Mesh(new THREE.BoxGeometry(1,1,10),new THREE.MeshLambertMaterial({map:textura}));
+  this.brazoizq=new THREE.Mesh(new THREE.BoxGeometry(6,1,1),new THREE.MeshLambertMaterial({map:textura}));
+  this.brazoder=new THREE.Mesh(new THREE.BoxGeometry(6,1,1),new THREE.MeshLambertMaterial({map:textura}));
+  this.piernaizq.position.set(-1.8,0,0)
+  this.piernader.position.set(1.8,0,0);
+  this.brazoder.position.set(1.8,0,4);
+  this.brazoizq.position.set(-1.8,0,4);
+  this.add(this.brazoizq,this.brazoder,this.piernaizq,this.piernader,this.actuator);
   this.actuator.scale.set(9.5,9.5,9.5);
   this.actuator.rotateX(Math.PI/2);
   this.actuator.castShadow=true;
+  this.piernader.castShadow=true;
+  this.piernaizq.castShadow=true;
+  this.brazoder.castShadow=true;
+  this.brazoizq.castShadow=true;
 }
 Rey.prototype=new Agent();
 
@@ -627,12 +717,11 @@ Rey.prototype.plan=function(environment)
         this.actuator.commands.push('goStraightY');
       else if(x!==X && y===Y)
         this.actuator.commands.push('goStraightX');
-      else if(X===x&&Y===y&&this.cnt===true)
+      else if(X===x&&Y===y)
       {
         this.actuator.commands.push('stop');
         seleccionF2=false;
         seleccionF1=false;
-        this.cnt = false;
       }
     }
   }
@@ -647,15 +736,25 @@ function Torre(sTP,x,y)
     textura=cargador.load('maderaN.jpg');
   else
     textura=cargador.load('maderaB.jpg');
-  this.position.x=x;
-  this.position.y=y;
-  this.position.z=0;
+  this.position.set(x,y,4);
   this.sensor=new Sensor();
   this.actuator=new THREE.Mesh(new TorreGeometry(),new THREE.MeshLambertMaterial({map:textura}));
-  this.add(this.actuator);
+  this.piernaizq=new THREE.Mesh(new THREE.BoxGeometry(1,1,10),new THREE.MeshLambertMaterial({map:textura}));
+  this.piernader=new THREE.Mesh(new THREE.BoxGeometry(1,1,10),new THREE.MeshLambertMaterial({map:textura}));
+  this.brazoizq=new THREE.Mesh(new THREE.BoxGeometry(6,1,1),new THREE.MeshLambertMaterial({map:textura}));
+  this.brazoder=new THREE.Mesh(new THREE.BoxGeometry(6,1,1),new THREE.MeshLambertMaterial({map:textura}));
+  this.piernaizq.position.set(-1.8,0,0)
+  this.piernader.position.set(1.8,0,0);
+  this.brazoder.position.set(1.8,0,4);
+  this.brazoizq.position.set(-1.8,0,4);
+  this.add(this.brazoizq,this.brazoder,this.piernaizq,this.piernader,this.actuator);
   this.actuator.scale.set(9.5,9.5,9.5);
   this.actuator.rotateX(Math.PI/2);
   this.actuator.castShadow=true;
+  this.piernader.castShadow=true;
+  this.piernaizq.castShadow=true;
+  this.brazoder.castShadow=true;
+  this.brazoizq.castShadow=true;
 }
 Torre.prototype=new Agent();
 
@@ -698,12 +797,11 @@ Torre.prototype.plan=function(environment)
       this.actuator.commands.push('goStraightX');
      else if(Y!==y&&X===x) 
       this.actuator.commands.push('goStraightY');
-     else if(X===x&&Y===y&&this.cnt===true)
+     else if(X===x&&Y===y)
     {
       this.actuator.commands.push('stop');
       seleccionF2=false;
       seleccionF1=false;
-      this.cnt = false;
     }
   }
 };
@@ -717,15 +815,25 @@ function Peon(sTP,x,y)
     textura=cargador.load('maderaN.jpg');
   else
     textura=cargador.load('maderaB.jpg');
-  this.position.x=x;
-  this.position.y=y;
-  this.position.z=0;
+  this.position.set(x,y,4);
   this.sensor=new Sensor();
   this.actuator=new THREE.Mesh(new PeonGeometry(),new THREE.MeshLambertMaterial({map:textura}));
-  this.add(this.actuator);
+  this.piernaizq=new THREE.Mesh(new THREE.BoxGeometry(1,1,10),new THREE.MeshLambertMaterial({map:textura}));
+  this.piernader=new THREE.Mesh(new THREE.BoxGeometry(1,1,10),new THREE.MeshLambertMaterial({map:textura}));
+  this.brazoizq=new THREE.Mesh(new THREE.BoxGeometry(6,1,1),new THREE.MeshLambertMaterial({map:textura}));
+  this.brazoder=new THREE.Mesh(new THREE.BoxGeometry(6,1,1),new THREE.MeshLambertMaterial({map:textura}));
+  this.piernaizq.position.set(-1.8,0,0)
+  this.piernader.position.set(1.8,0,0);
+  this.brazoder.position.set(1.8,0,4);
+  this.brazoizq.position.set(-1.8,0,4);
+  this.add(this.brazoizq,this.brazoder,this.piernaizq,this.piernader,this.actuator);
   this.actuator.scale.set(9.5,9.5,9.5);
   this.actuator.rotateX(Math.PI/2);
   this.actuator.castShadow=true;
+  this.piernader.castShadow=true;
+  this.piernaizq.castShadow=true;
+  this.brazoder.castShadow=true;
+  this.brazoizq.castShadow=true;
 }
 Peon.prototype=new Agent();
 
@@ -767,12 +875,11 @@ Peon.prototype.plan=function(environment)
         this.actuator.commands.push('goStraightY');
     }
   }
-  if(X===x&&Y===y&&this.cnt===true)
+  if(X===x&&Y===y)
     {
       this.actuator.commands.push('stop');
       seleccionF2=false;
       seleccionF1=false;
-      this.cnt = false;
     }
   }
 };
