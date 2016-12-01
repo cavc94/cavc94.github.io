@@ -727,7 +727,7 @@ Peon.prototype.sense=function(environment){
 Peon.prototype.plan=function(environment)
 {
   this.actuator.commands=[];
-  if (this.sensor.colision === false){
+  //if (this.sensor.colision === false){
     if (this.sTP===true){
     if(Y>=-25 && Y<-15) {
       if( y-Y<=20 && y-Y>0 && x===X ) 
@@ -754,7 +754,7 @@ Peon.prototype.plan=function(environment)
       seleccionF2=false;
       seleccionF1=false;
     }
-  }
+  //}
 };
 ///////////////SELECCION DE POSICIONES///////////////
 function SeleccionD(event)
