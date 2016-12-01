@@ -137,25 +137,6 @@ Agent.prototype.operations.goStraightX=function(pieza,distance)
     else
       distance=-0.5; 
   }
-  pieza.position.x+=distance*Math.cos(pieza.rotation.z);
-  b=pieza.piernader.rotation.x*Math.pow(10, 1);
-  b=Math.round(b);
-  b= b/Math.pow(10,1);
-  if(b===0.3)
-    a=-0.05;
-  else if(b===-0.3)
-    a=0.05;
-  pieza.piernader.rotation.x+=a;
-  pieza.piernaizq.rotation.x+=-a;
-  c=pieza.brazoder.rotation.z*Math.pow(10, 1);
-  c=Math.round(c);
-  c= c/Math.pow(10,1);
-  if(c===0.3)
-    d=-0.05;
-  else if(c===-0.3)
-    d=0.05;
-  pieza.brazoder.rotation.z+=d;
-  pieza.brazoizq.rotation.z+=d;
 };
 
 Agent.prototype.operations.goStraightY=function(pieza,distance)
@@ -169,25 +150,6 @@ Agent.prototype.operations.goStraightY=function(pieza,distance)
     else
       distance=-0.5; 
   }
-  pieza.position.y+=distance*Math.cos(pieza.rotation.z);
-  b=pieza.piernader.rotation.x*Math.pow(10, 1);
-  b=Math.round(b);
-  b= b/Math.pow(10,1);
-  if(b===0.3)
-    a=-0.05;
-  else if(b===-0.3)
-    a=0.05;
-  pieza.piernader.rotation.x+=a;
-  pieza.piernaizq.rotation.x+=-a;
-  c=pieza.brazoder.rotation.z*Math.pow(10, 1);
-  c=Math.round(c);
-  c= c/Math.pow(10,1);
-  if(c===0.3)
-    d=-0.05;
-  else if(c===-0.3)
-    d=0.05;
-  pieza.brazoder.rotation.z+=d;
-  pieza.brazoizq.rotation.z+=d;
 };
 
 Agent.prototype.operations.goDiagonal=function(pieza,distance)
@@ -217,26 +179,8 @@ Agent.prototype.operations.goDiagonal=function(pieza,distance)
     else if(Y===y)
       distance=0;
     else
-      distance=-0.5;
-    b=pieza.piernader.rotation.x*Math.pow(10, 1);
-    b=Math.round(b);
-    b= b/Math.pow(10,1);
-    if(b===0.3)
-      a=-0.05;
-    else if(b===-0.3)
-      a=0.05;
-    pieza.piernader.rotation.x+=a;
-    pieza.piernaizq.rotation.x+=-a;
-    c=pieza.brazoder.rotation.z*Math.pow(10, 1);
-    c=Math.round(c);
-    c= c/Math.pow(10,1);
-    if(c===0.3)
-      d=-0.05;
-    else if(c===-0.3)
-      d=0.05;
-    pieza.brazoder.rotation.z+=d;
-    pieza.brazoizq.rotation.z+=d;
-  } 
+      distance=-0.5;  
+ } 
 };
 
 Agent.prototype.operations.stop=function(pieza,distance)
@@ -399,26 +343,14 @@ function Caballo(sTP,x,y)
     textura=cargador.load('maderaN.jpg');
   else
     textura=cargador.load('maderaB.jpg');
-  this.position.set(x,y,3.6);
+  this.position.set(x,y,0);
   this.cnt=false;
   this.sensor=new Sensor();
   this.actuator=new THREE.Mesh(new CaballoGeometry(),new THREE.MeshLambertMaterial({map:textura}));
-  this.piernaizq=new THREE.Mesh(new THREE.BoxGeometry(1,1,10),new THREE.MeshLambertMaterial({map:textura}));
-  this.piernader=new THREE.Mesh(new THREE.BoxGeometry(1,1,10),new THREE.MeshLambertMaterial({map:textura}));
-  this.brazoizq=new THREE.Mesh(new THREE.BoxGeometry(1,6,1),new THREE.MeshLambertMaterial({map:textura}));
-  this.brazoder=new THREE.Mesh(new THREE.BoxGeometry(1,6,1),new THREE.MeshLambertMaterial({map:textura}));
-  this.piernaizq.position.set(-1.8,0,-0.4)
-  this.piernader.position.set(1.8,0,-0.4);
-  this.brazoder.position.set(0.4,1.4,4);
-  this.brazoizq.position.set(0.4,-1.4,4);
-  this.add(this.brazoizq,this.brazoder,this.piernaizq,this.piernader,this.actuator);
+  this.add(this.actuator);
   this.actuator.scale.set(9.5,9.5,9.5);
   this.actuator.rotateX(Math.PI/2);
   this.actuator.castShadow=true;
-  this.piernader.castShadow=true;
-  this.piernaizq.castShadow=true;
-  this.brazoder.castShadow=true;
-  this.brazoizq.castShadow=true;
 }
 Caballo.prototype=new Agent();
 
@@ -461,25 +393,13 @@ function Alfil(sTP,x,y)
     textura=cargador.load('maderaN.jpg');
   else
     textura=cargador.load('maderaB.jpg');
-  this.position.set=(x,y,4);
+  this.position.set=(x,y,0);
   this.sensor=new Sensor();
   this.actuator=new THREE.Mesh(new AlfilGeometry(),new THREE.MeshLambertMaterial({map:textura}));
-  this.piernaizq=new THREE.Mesh(new THREE.BoxGeometry(1,1,8),new THREE.MeshLambertMaterial({map:textura}));
-  this.piernader=new THREE.Mesh(new THREE.BoxGeometry(1,1,8),new THREE.MeshLambertMaterial({map:textura}));
-  this.brazoizq=new THREE.Mesh(new THREE.BoxGeometry(5,1,1),new THREE.MeshLambertMaterial({map:textura}));
-  this.brazoder=new THREE.Mesh(new THREE.BoxGeometry(5,1,1),new THREE.MeshLambertMaterial({map:textura}));
-  this.piernaizq.position.set(-1.8,0,-1.7)
-  this.piernader.position.set(1.8,0,-1.7);
-  this.brazoder.position.set(2.5,0,4);
-  this.brazoizq.position.set(-2.5,0,4);
-  this.add(this.brazoizq,this.brazoder,this.piernaizq,this.piernader,this.actuator);
+  this.add(this.actuator);
   this.actuator.scale.set(9.5,9.5,9.5);
   this.actuator.rotateX(Math.PI/2);
   this.actuator.castShadow=true;
-  this.piernader.castShadow=true;
-  this.piernaizq.castShadow=true;
-  this.brazoder.castShadow=true;
-  this.brazoizq.castShadow=true;
 }
 Alfil.prototype=new Agent();
 
@@ -536,25 +456,12 @@ function Reina(sTP,x,y)
     textura=cargador.load('maderaN.jpg');
   else
     textura=cargador.load('maderaB.jpg');
-  this.position.set(x,y,3.6);
+  this.position.set(x,y,0);
   this.sensor=new Sensor();
   this.actuator=new THREE.Mesh(new ReinaGeometry(),new THREE.MeshLambertMaterial({map:textura}));
-  this.piernaizq=new THREE.Mesh(new THREE.BoxGeometry(1,1,10),new THREE.MeshLambertMaterial({map:textura}));
-  this.piernader=new THREE.Mesh(new THREE.BoxGeometry(1,1,10),new THREE.MeshLambertMaterial({map:textura}));
-  this.brazoizq=new THREE.Mesh(new THREE.BoxGeometry(6,1,1),new THREE.MeshLambertMaterial({map:textura}));
-  this.brazoder=new THREE.Mesh(new THREE.BoxGeometry(6,1,1),new THREE.MeshLambertMaterial({map:textura}));
-  this.piernaizq.position.set(-1.8,0,-0.4)
-  this.piernader.position.set(1.8,0,-0.4);
-  this.brazoder.position.set(1.8,0,4);
-  this.brazoizq.position.set(-1.8,0,4);
-  this.add(this.brazoizq,this.brazoder,this.piernaizq,this.piernader,this.actuator);
+  this.add(this.actuator);
   this.actuator.scale.set(9.5,9.5,9.5);
   this.actuator.rotateX(Math.PI/2);
-  this.actuator.castShadow=true;
-  this.piernader.castShadow=true;
-  this.piernaizq.castShadow=true;
-  this.brazoder.castShadow=true;
-  this.brazoizq.castShadow=true;
 }
 Reina.prototype=new Agent();
 
@@ -635,25 +542,13 @@ function Rey(sTP,x,y)
     textura=cargador.load('maderaN.jpg');
   else
     textura=cargador.load('maderaB.jpg'); 
-  this.position.set(x,y,3.6);
+  this.position.set(x,y,0);
   this.sensor=new Sensor();
   this.actuator=new THREE.Mesh(new ReyGeometry(),new THREE.MeshLambertMaterial({map:textura}));
-  this.piernaizq=new THREE.Mesh(new THREE.BoxGeometry(1,1,10),new THREE.MeshLambertMaterial({map:textura}));
-  this.piernader=new THREE.Mesh(new THREE.BoxGeometry(1,1,10),new THREE.MeshLambertMaterial({map:textura}));
-  this.brazoizq=new THREE.Mesh(new THREE.BoxGeometry(6,1,1),new THREE.MeshLambertMaterial({map:textura}));
-  this.brazoder=new THREE.Mesh(new THREE.BoxGeometry(6,1,1),new THREE.MeshLambertMaterial({map:textura}));
-  this.piernaizq.position.set(-1.8,0,-0.4)
-  this.piernader.position.set(1.8,0,-0.4);
-  this.brazoder.position.set(1.8,0,4);
-  this.brazoizq.position.set(-1.8,0,4);
-  this.add(this.brazoizq,this.brazoder,this.piernaizq,this.piernader,this.actuator);
+  this.add(this.actuator);
   this.actuator.scale.set(9.5,9.5,9.5);
   this.actuator.rotateX(Math.PI/2);
   this.actuator.castShadow=true;
-  this.piernader.castShadow=true;
-  this.piernaizq.castShadow=true;
-  this.brazoder.castShadow=true;
-  this.brazoizq.castShadow=true;
 }
 Rey.prototype=new Agent();
 
@@ -736,25 +631,13 @@ function Torre(sTP,x,y)
     textura=cargador.load('maderaN.jpg');
   else
     textura=cargador.load('maderaB.jpg');
-  this.position.set(x,y,3.6);
+  this.position.set(x,y,0);
   this.sensor=new Sensor();
   this.actuator=new THREE.Mesh(new TorreGeometry(),new THREE.MeshLambertMaterial({map:textura}));
-  this.piernaizq=new THREE.Mesh(new THREE.BoxGeometry(1,1,10),new THREE.MeshLambertMaterial({map:textura}));
-  this.piernader=new THREE.Mesh(new THREE.BoxGeometry(1,1,10),new THREE.MeshLambertMaterial({map:textura}));
-  this.brazoizq=new THREE.Mesh(new THREE.BoxGeometry(6,1,1),new THREE.MeshLambertMaterial({map:textura}));
-  this.brazoder=new THREE.Mesh(new THREE.BoxGeometry(6,1,1),new THREE.MeshLambertMaterial({map:textura}));
-  this.piernaizq.position.set(-1.8,0,-0.4)
-  this.piernader.position.set(1.8,0,-0.4);
-  this.brazoder.position.set(1.8,0,4);
-  this.brazoizq.position.set(-1.8,0,4);
-  this.add(this.brazoizq,this.brazoder,this.piernaizq,this.piernader,this.actuator);
+  this.add(this.actuator);
   this.actuator.scale.set(9.5,9.5,9.5);
   this.actuator.rotateX(Math.PI/2);
   this.actuator.castShadow=true;
-  this.piernader.castShadow=true;
-  this.piernaizq.castShadow=true;
-  this.brazoder.castShadow=true;
-  this.brazoizq.castShadow=true;
 }
 Torre.prototype=new Agent();
 
@@ -815,25 +698,13 @@ function Peon(sTP,x,y)
     textura=cargador.load('maderaN.jpg');
   else
     textura=cargador.load('maderaB.jpg');
-  this.position.set(x,y,3.6);
+  this.position.set(x,y,0);
   this.sensor=new Sensor();
   this.actuator=new THREE.Mesh(new PeonGeometry(),new THREE.MeshLambertMaterial({map:textura}));
-  this.piernaizq=new THREE.Mesh(new THREE.BoxGeometry(1,1,10),new THREE.MeshLambertMaterial({map:textura}));
-  this.piernader=new THREE.Mesh(new THREE.BoxGeometry(1,1,10),new THREE.MeshLambertMaterial({map:textura}));
-  this.brazoizq=new THREE.Mesh(new THREE.BoxGeometry(6,1,1),new THREE.MeshLambertMaterial({map:textura}));
-  this.brazoder=new THREE.Mesh(new THREE.BoxGeometry(6,1,1),new THREE.MeshLambertMaterial({map:textura}));
-  this.piernaizq.position.set(-1.8,0,-0.4)
-  this.piernader.position.set(1.8,0,-0.4);
-  this.brazoder.position.set(1.8,0,4);
-  this.brazoizq.position.set(-1.8,0,4);
-  this.add(this.brazoizq,this.brazoder,this.piernaizq,this.piernader,this.actuator);
+  this.add(this.actuator);
   this.actuator.scale.set(9.5,9.5,9.5);
   this.actuator.rotateX(Math.PI/2);
   this.actuator.castShadow=true;
-  this.piernader.castShadow=true;
-  this.piernaizq.castShadow=true;
-  this.brazoder.castShadow=true;
-  this.brazoizq.castShadow=true;
 }
 Peon.prototype=new Agent();
 
@@ -1262,7 +1133,7 @@ function loop()
   renderizador.render(environment,camara);
 }
 
-var a=d=0.01,b,c,turno=false,sTC,id,environment,camara,renderizador,luzpuntual,avance,seleccion,x,X,Y,Z,z,y,activar=false,seleccionO=true,seleccionF2=false,seleccionF1=false,xf,yf;
+var turno=false,sTC,id,environment,camara,renderizador,luzpuntual,avance,seleccion,x,X,Y,Z,z,y,activar=false,seleccionO=true,seleccionF2=false,seleccionF1=false,xf,yf;
 
 setup();
 loop();
