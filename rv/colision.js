@@ -698,7 +698,9 @@ function Peon(sTP,x,y)
     textura=cargador.load('maderaN.jpg');
   else
     textura=cargador.load('maderaB.jpg');
-  this.position.set(x,y,0);
+  this.position.x=x;
+  this.position.y=y;
+  this.position.z=0;
   this.sensor=new Sensor();
   this.actuator=new THREE.Mesh(new PeonGeometry(),new THREE.MeshLambertMaterial({map:textura}));
   this.add(this.actuator);
