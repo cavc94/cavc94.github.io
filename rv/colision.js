@@ -425,7 +425,7 @@ Alfil.prototype.sense=function(environment){
     }
   }
   var obstaculo=this.sensor.intersectObjects(environment.children,true);
-  if( obstaculo.length>0 && obstaculo[0].distance<=Math.sqrt(Math.pow(X-x,2)+Math.pow(Y-y,2)) ){
+  if( obstaculo.length>0 && obstaculo[0].distance<Math.sqrt(Math.pow(X-x,2)+Math.pow(Y-y,2)) ){
     this.sensor.colision=true;
     obstaculo[0].object.material.color.setHex(0xff00ff);}
   else
@@ -507,7 +507,7 @@ Reina.prototype.sense=function(environment){
     }
   }
   var obstaculo=this.sensor.intersectObjects(environment.children,true);
-  if( obstaculo.length>0 && obstaculo[0].distance<=Math.sqrt(Math.pow(X-x,2)+Math.pow(Y-y,2)) ){
+  if( obstaculo.length>0 && obstaculo[0].distance<Math.sqrt(Math.pow(X-x,2)+Math.pow(Y-y,2)) ){
     this.sensor.colision=true;
     obstaculo[0].object.material.color.setHex(0xff00ff);}
   else
@@ -594,7 +594,7 @@ Rey.prototype.sense=function(environment){
     }
   }
   var obstaculo=this.sensor.intersectObjects(environment.children,true);
-  if( obstaculo.length>0 && obstaculo[0].distance<=Math.sqrt(Math.pow(X-x,2)+Math.pow(Y-y,2)) ){
+  if( obstaculo.length>0 && obstaculo[0].distance<Math.sqrt(Math.pow(X-x,2)+Math.pow(Y-y,2)) ){
     this.sensor.colision=true;
     obstaculo[0].object.material.color.setHex(0xff00ff);}
   else
@@ -604,7 +604,7 @@ Rey.prototype.sense=function(environment){
 Rey.prototype.plan=function(environment)
 {
   this.actuator.commands=[];
-  if (this.sensor.colision == false){
+  if (this.sensor.colision === false){
     if( Math.abs(x-X)<=10 && Math.abs(y-Y)<=10 ){ 
       if (x!==X && y!==Y && Math.abs(y-Y)===Math.abs(x-X))
         this.actuator.commands.push('goDiagonal');
@@ -665,7 +665,7 @@ Torre.prototype.sense=function(environment){
     } 
   }
   var obstaculo=this.sensor.intersectObjects(environment.children,true);
-  if( obstaculo.length>0 && obstaculo[0].distance<=Math.sqrt(Math.pow(X-x,2)+Math.pow(Y-y,2)) ){
+  if( obstaculo.length>0 && obstaculo[0].distance<Math.sqrt(Math.pow(X-x,2)+Math.pow(Y-y,2)) ){
     this.sensor.colision=true;
     obstaculo[0].object.material.color.setHex(0xff00ff);}
   else
@@ -715,7 +715,7 @@ Peon.prototype.sense=function(environment){
   else
     this.sensor.set(this.position, new THREE.Vector3(0, -1, 0));
   var obstaculo=this.sensor.intersectObjects(environment.children,true);
-  if( obstaculo.length>0 && obstaculo[0].distance<=Math.sqrt(Math.pow(X-x,2)+Math.pow(Y-y,2)) ){
+  if( obstaculo.length>0 && obstaculo[0].distance<Math.sqrt(Math.pow(X-x,2)+Math.pow(Y-y,2)) ){
     this.sensor.colision=true;
     obstaculo[0].object.material.color.setHex(0xff00ff);}
   else
