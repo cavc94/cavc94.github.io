@@ -375,7 +375,7 @@ Caballo.prototype.plan=function(environment)
     else if (X===X&&Y!==y&&this.cnt!==false)
       this.actuator.commands.push('goStraightY');
   }
-  else if(X===x&&Y===y)
+  else if(X===x&&Y===y&&this.cnt!==true)
     {
       this.actuator.commands.push('stop');
       this.cnt = false;
@@ -435,7 +435,7 @@ Alfil.prototype.sense=function(environment){
 Alfil.prototype.plan=function(environment)
 {
   this.actuator.commands=[];
-  if (this.sensor.colision == false){
+  if (this.sensor.colision === false){
     if(X!==x&&Y!==y&&Math.abs(y-Y)===Math.abs(x-X))
       this.actuator.commands.push('goDiagonal');
     else if(X===x&&Y===y)
@@ -517,7 +517,7 @@ Reina.prototype.sense=function(environment){
 Reina.prototype.plan=function(environment)
 {
   this.actuator.commands=[]; 
-  if (this.sensor.colision == false){  
+  if (this.sensor.colision === false){  
     if(X!==x&&Y===y)
       this.actuator.commands.push('goStraightX');
     else if(Y!==y&&X===x) 
@@ -675,7 +675,7 @@ Torre.prototype.sense=function(environment){
 Torre.prototype.plan=function(environment)
 {
   this.actuator.commands=[];
-  if (this.sensor.colision == false){
+  if (this.sensor.colision === false){
     if(X!==x&&Y===y)
       this.actuator.commands.push('goStraightX');
      else if(Y!==y&&X===x) 
