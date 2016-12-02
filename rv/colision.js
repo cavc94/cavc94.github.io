@@ -427,7 +427,22 @@ Alfil.prototype.sense=function(environment){
     }
   }
   var obstaculo=this.sensor.intersectObjects(environment.children,true);
-  if( obstaculo.length>0 && obstaculo[0].object.sTP !== this.sTP ){
+  /*100-115 BLANCO, 116-131 NEGRO*/
+  var r = false;
+  if ( this.sTP === false){
+    for ( var i=100; i<=115; i++){
+      if( obstaculo.length>0 && obstaculo[0].object === environment.children[i])
+        r = true;
+    }
+  }//obstaculo[0].object.sTP !== this.sTP 
+  else{
+    for ( var i=116; i<=131; i++){
+      if( obstaculo.length>0 && obstaculo[0].object === environment.children[i])
+        r = true;
+    }
+  }
+    
+  if( obstaculo.length>0 && r===false){
     /*if( obstaculo[0].distance<=10*Math.sqrt(2) )
       this.sensor.colision=false;*/
     if ( obstaculo[0].distance>10*Math.sqrt(2) && obstaculo[0].distance<Math.sqrt(Math.pow(X-x,2)+Math.pow(Y-y,2)) )//{
@@ -438,7 +453,7 @@ Alfil.prototype.sense=function(environment){
         obstaculo[0].object.position.set(60,-50,0);
     }*/   
   }
-  else if ( obstaculo.length>0 && obstaculo[0].object.sTP === this.sTP ){
+  else if ( obstaculo.length>0 && r===true ){
     if( obstaculo[0].distance<Math.sqrt(Math.pow(X-x,2)+Math.pow(Y-y,2)) )
       this.sensor.colision=true;  
   }
