@@ -433,7 +433,7 @@ Alfil.prototype.sense=function(environment){
   }
   else{
     this.sensor.colision=false;
-    if (obstaculo[0].object.sTP !== this.sTP && obstaculo[0].distance===Math.sqrt(Math.pow(X-x,2)+Math.pow(Y-y,2)) )
+    if (obstaculo.length>0 && obstaculo[0].object.sTP !== this.sTP && obstaculo[0].distance===Math.sqrt(Math.pow(X-x,2)+Math.pow(Y-y,2)) )
       obstaculo[0].object.position.set(60,-50,0); 
   }
 };
