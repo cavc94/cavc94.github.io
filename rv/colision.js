@@ -418,20 +418,18 @@ Alfil.prototype.sense=function(environment){
   }
   var obstaculo=this.sensor.intersectObjects(environment.children,true);    
   if( obstaculo.length>0 && obstaculo[0].object.parent.sTP !== this.sTP ){
-    /*if( obstaculo[0].distance<=10*Math.sqrt(2) )
-      this.sensor.colision=false;*/
-    if ( obstaculo[0].distance<10*Math.sqrt(2) )
+    /*if ( obstaculo[0].distance<10*Math.sqrt(2) )
       this.sensor.colision=false;
     else
-      this.sensor.colision=true;
-    /*if ( obstaculo[0].distance>10*Math.sqrt(2) && obstaculo[0].distance<Math.sqrt(Math.pow(X-x,2)+Math.pow(Y-y,2)) )
+      this.sensor.colision=true;*/
+    if ( obstaculo[0].distance>10*Math.sqrt(2) && obstaculo[0].distance<Math.sqrt(Math.pow(X-x,2)+Math.pow(Y-y,2)) )
         this.sensor.colision=true;
       else
         this.sensor.colision=false;
-      if (X===obstaculo[0].position.x&&Y===obstaculo[0].position.y)
+      /*if (X===obstaculo[0].position.x&&Y===obstaculo[0].position.y)
         obstaculo[0].object.position.set(60,-50,0);
-    }*/   
-  }
+    }   
+  }*/
   else if ( obstaculo.length>0 && obstaculo[0].object.parent.sTP === this.sTP  ){
     if( obstaculo[0].distance<Math.sqrt(Math.pow(X-x,2)+Math.pow(Y-y,2)) )
       this.sensor.colision=true;  
