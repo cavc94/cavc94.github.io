@@ -427,15 +427,15 @@ Alfil.prototype.sense=function(environment){
     }
   }
   var obstaculo=this.sensor.intersectObjects(environment.children,true);
-  if ( obstaculo.length>0 && obstaculo[0].object.sTP !== this.sTP ){
-      if( obstaculo.length>0 && obstaculo[0].distance<Math.sqrt(Math.pow(X-x,2)+Math.pow(Y-y,2))){
-        this.sensor.colision=true;
-        obstaculo[0].object.material.color.setHex(0xff00ff);}
-      else
-        this.sensor.colision=false;
+  if( obstaculo.length>0 && obstaculo[0].distance<Math.sqrt(Math.pow(X-x,2)+Math.pow(Y-y,2)) ){
+    this.sensor.colision=true;
+    obstaculo[0].object.material.color.setHex(0xff00ff);
   }
-  else if ( obstaculo.length>0 && obstaculo[0].object.sTP === this.sTP ){
-    obstaculo[0].object.position.set(60,-50,0);  
+  else{
+    this.sensor.colision=false;
+    if (obstaculo[0].object.sTP !== this.sTP && obstaculo[0].distance===Math.sqrt(Math.pow(X-x,2)+Math.pow(Y-y,2)) )
+      obstaculo[0].object.position.set(60,-50,0); 
+  }
 };
 
 Alfil.prototype.plan=function(environment)
