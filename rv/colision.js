@@ -411,19 +411,19 @@ Alfil.prototype.sense=function(environment){
   if(Y!==y&&X!==x&&Math.abs(y-Y)===Math.abs(x-X)){
     if (X<x&&Y<y){
       this.sensor.set(this.position, new THREE.Vector3(Math.cos(Math.PI/4), Math.sin(Math.PI/4), 0));
-      var obstaculo=this.sensor.intersectObjects(environment.children,true);
+      /*var obsta*/culo=this.sensor.intersectObjects(environment.children,true);
     }
     else if (X<x&&Y>y){
       this.sensor.set(this.position, new THREE.Vector3(Math.cos(Math.PI/4), -Math.sin(Math.PI/4), 0));
-      var obstaculo=this.sensor.intersectObjects(environment.children,true);
+      /*var obsta*/culo=this.sensor.intersectObjects(environment.children,true);
     }
     else if (X>x&&Y<y){
       this.sensor.set(this.position, new THREE.Vector3(-Math.cos(Math.PI/4), Math.sin(Math.PI/4), 0));
-      var obstaculo=this.sensor.intersectObjects(environment.children,true);
+      /*var obsta*/culo=this.sensor.intersectObjects(environment.children,true);
     }
     else if (X>x&&Y>y){
       this.sensor.set(this.position, new THREE.Vector3(-Math.cos(Math.PI/4), -Math.sin(Math.PI/4), 0));
-      var obstaculo=this.sensor.intersectObjects(environment.children,true);
+      /*var obsta*/culo=this.sensor.intersectObjects(environment.children,true);
     }
   }
   var obstaculo=this.sensor.intersectObjects(environment.children,true);
@@ -431,13 +431,13 @@ Alfil.prototype.sense=function(environment){
   var r = false;
   if ( this.sTP === false){
     for ( var i=100; i<=115; i++){
-      if( obstaculo.length>0 && obstaculo[0].object === environment.children[i])
+      if( /*obsta*/culo.length>0 && /*obsta*/culo[0].object === environment.children[i])
         r = true;
     }
   }//obstaculo[0].object.sTP !== this.sTP 
   else{
     for ( var i=116; i<=131; i++){
-      if( obstaculo.length>0 && obstaculo[0].object === environment.children[i])
+      if( /*obsta*/culo.length>0 && /*obsta*/culo[0].object === environment.children[i])
         r = true;
     }
   }
@@ -1162,7 +1162,7 @@ function loop()
   renderizador.render(environment,camara);
 }
 
-var turno=false,sTC,id,environment,camara,renderizador,luzpuntual,avance,seleccion,x,X,Y,Z,z,y,activar=false,seleccionO=true,seleccionF2=false,seleccionF1=false,xf,yf;
+var culo,turno=false,sTC,id,environment,camara,renderizador,luzpuntual,avance,seleccion,x,X,Y,Z,z,y,activar=false,seleccionO=true,seleccionF2=false,seleccionF1=false,xf,yf;
 
 setup();
 loop();
