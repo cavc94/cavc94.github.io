@@ -420,7 +420,7 @@ Alfil.prototype.sense=function(environment){
   if( obstaculo.length>0 && obstaculo[0].object.parent.sTP !== this.sTP ){
     /*if( obstaculo[0].distance<=10*Math.sqrt(2) )
       this.sensor.colision=false;*/
-    if ( obstaculo[0].distance<=10*Math.sqrt(2) )
+    if ( obstaculo[0].distance<10*Math.sqrt(2) )
       this.sensor.colision=false;
     else
       this.sensor.colision=true;
