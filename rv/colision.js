@@ -426,27 +426,14 @@ Alfil.prototype.sense=function(environment){
       /*var obsta*/culo=this.sensor.intersectObjects(environment.children,true);
     }
   }
-  var obstaculo=this.sensor.intersectObjects(environment.children,true);
-  /*100-115 BLANCO, 116-131 NEGRO*/
-  /*var r = false;
-  if ( this.sTP === false){
-    for ( var i=100; i<=115; i++){
-      if( obstaculo.length>0 && obstaculo[0].object === environment.children[i])
-        r = true;
-    }
-  }
-  else{
-    for ( var i=116; i<=131; i++){
-      if( obstaculo.length>0 && obstaculo[0].object === environment.children[i])
-        r = true;
-    }
-  }*/
-    
+  var obstaculo=this.sensor.intersectObjects(environment.children,true);    
   if( obstaculo.length>0 && obstaculo[0].object.parent.sTP !== this.sTP ){
     /*if( obstaculo[0].distance<=10*Math.sqrt(2) )
       this.sensor.colision=false;*/
-    if ( obstaculo[0].distance>10*Math.sqrt(2) && obstaculo[0].distance<Math.sqrt(Math.pow(X-x,2)+Math.pow(Y-y,2)) )//{
+    if ( obstaculo[0].distance>10*Math.sqrt(2) && obstaculo[0].distance<Math.sqrt(Math.pow(X-x,2)+Math.pow(Y-y,2)) ){
       this.sensor.colision=true;
+      console.log(obstaculo[0].distance);
+      console.log(Math.sqrt(Math.pow(X-x,2)+Math.pow(Y-y,2)));
     else
       this.sensor.colision=false;
       /*if (X===obstaculo[0].position.x&&Y===obstaculo[0].position.y)
