@@ -427,11 +427,15 @@ Alfil.prototype.sense=function(environment){
     }
   }
   var obstaculo=this.sensor.intersectObjects(environment.children,true);
-  if( obstaculo.length>0 && obstaculo[0].distance<Math.sqrt(Math.pow(X-x,2)+Math.pow(Y-y,2)) ){
-    this.sensor.colision=true;
-    obstaculo[0].object.material.color.setHex(0xff00ff);}
-  else
-    this.sensor.colision=false;
+  if ( obstaculo.length>0 && obstaculo[0].object.sTP !== this.sTP ){
+      if( obstaculo.length>0 && obstaculo[0].distance<Math.sqrt(Math.pow(X-x,2)+Math.pow(Y-y,2))){
+        this.sensor.colision=true;
+        obstaculo[0].object.material.color.setHex(0xff00ff);}
+      else
+        this.sensor.colision=false;
+  }
+  else if ( obstaculo.length>0 && obstaculo[0].object.sTP === this.sTP ){
+    obstaculo[0].object.position.set(60,-50,0);  
 };
 
 Alfil.prototype.plan=function(environment)
@@ -700,9 +704,7 @@ function Peon(sTP,x,y)
     textura=cargador.load('maderaN.jpg');
   else
     textura=cargador.load('maderaB.jpg');
-  this.position.x=x;
-  this.position.y=y;
-  this.position.z=0;
+  this.position.set(x,y,0);
   this.sensor=new Sensor();
   this.actuator=new THREE.Mesh(new PeonGeometry(),new THREE.MeshLambertMaterial({map:textura}));
   this.add(this.actuator);
