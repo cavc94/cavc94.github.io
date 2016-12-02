@@ -374,10 +374,10 @@ Caballo.prototype.plan=function(environment)
     if(X!==x&&Y!==y){
       this.actuator.commands.push('goStraightX');
       this.cnt = true;}
-    else if (X===X&&Y!==y&&this.cnt!==false)
+    else if (X===X&&Y!==y&&this.cnt===true)
       this.actuator.commands.push('goStraightY');
   }
-  else if(X===x&&Y===y&&this.cnt!==true)
+  else if(X===x&&Y===y&&this.cnt===true)
     {
       this.actuator.commands.push('stop');
       this.cnt = false;
@@ -418,14 +418,14 @@ Alfil.prototype.sense=function(environment){
   }
   var obstaculo=this.sensor.intersectObjects(environment.children,true);    
   if( obstaculo.length>0 && obstaculo[0].object.parent.sTP !== this.sTP ){
-    if ( obstaculo[0].distance<10*Math.sqrt(2) )
+    if ( obstaculo[0].distance<10 )
       this.sensor.colision=false;
     /*else
       this.sensor.colision=true;*/
     else if ( obstaculo[0].distance<=Math.sqrt(Math.pow(X-x,2)+Math.pow(Y-y,2)) )
-      this.sensor.colision=true;
-    else
       this.sensor.colision=false;
+    else
+      this.sensor.colision=true;
       /*if (X===obstaculo[0].position.x&&Y===obstaculo[0].position.y)
         obstaculo[0].object.position.set(60,-50,0);
     }*/   
