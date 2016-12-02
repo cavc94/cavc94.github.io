@@ -428,8 +428,8 @@ Alfil.prototype.sense=function(environment){
         this.sensor.colision=false;
       /*if (X===obstaculo[0].position.x&&Y===obstaculo[0].position.y)
         obstaculo[0].object.position.set(60,-50,0);
-    }   
-  }*/
+    }*/   
+  }
   else if ( obstaculo.length>0 && obstaculo[0].object.parent.sTP === this.sTP  ){
     if( obstaculo[0].distance<Math.sqrt(Math.pow(X-x,2)+Math.pow(Y-y,2)) )
       this.sensor.colision=true;  
@@ -475,42 +475,26 @@ Reina.prototype.sense=function(environment){
   /*var mod = Math.sqrt(Math.pow(x,2)+Math.pow(y,2));
   this.sensor.set(this.position, new THREE.Vector3(x/mod, y/mod, 0));*/
   if(X!==x&&Y===y){
-    if (X<x){
+    if (X<x)
       this.sensor.set(this.position, new THREE.Vector3(1, 0, 0));
-      var obstaculo=this.sensor.intersectObjects(environment.children,true);
-    }
-    else{
+    else
       this.sensor.set(this.position, new THREE.Vector3(-1, 0, 0));
-      var obstaculo=this.sensor.intersectObjects(environment.children,true);
-    }
   }
   else if(Y!==y&&X===x){
-    if (Y<y){
+    if (Y<y)
       this.sensor.set(this.position, new THREE.Vector3(0, 1, 0));
-      var obstaculo=this.sensor.intersectObjects(environment.children,true);
-    }
-    else{
+    else
       this.sensor.set(this.position, new THREE.Vector3(0, -1, 0));
-      var obstaculo=this.sensor.intersectObjects(environment.children,true);
-    }
   }
   else if(Y!==y&&X!==x&&Math.abs(y-Y)===Math.abs(x-X)){
-    if (X<x&&Y<y){
+    if (X<x&&Y<y)
       this.sensor.set(this.position, new THREE.Vector3(Math.cos(Math.PI/4), Math.sin(Math.PI/4), 0));
-      var obstaculo=this.sensor.intersectObjects(environment.children,true);
-    }
-    else if (X<x&&Y>y){
+    else if (X<x&&Y>y)
       this.sensor.set(this.position, new THREE.Vector3(Math.cos(Math.PI/4), -Math.sin(Math.PI/4), 0));
-      var obstaculo=this.sensor.intersectObjects(environment.children,true);
-    }
-    else if (X>x&&Y<y){
+    else if (X>x&&Y<y)
       this.sensor.set(this.position, new THREE.Vector3(-Math.cos(Math.PI/4), Math.sin(Math.PI/4), 0));
-      var obstaculo=this.sensor.intersectObjects(environment.children,true);
-    }
-    else if (X>x&&Y>y){
+    else if (X>x&&Y>y)
       this.sensor.set(this.position, new THREE.Vector3(-Math.cos(Math.PI/4), -Math.sin(Math.PI/4), 0));
-      var obstaculo=this.sensor.intersectObjects(environment.children,true);
-    }
   }
   var obstaculo=this.sensor.intersectObjects(environment.children,true);
   if( obstaculo.length>0 && obstaculo[0].distance<Math.sqrt(Math.pow(X-x,2)+Math.pow(Y-y,2)) ){
@@ -562,42 +546,26 @@ Rey.prototype.sense=function(environment){
   /*var mod = Math.sqrt(Math.pow(x,2)+Math.pow(y,2));
   this.sensor.set(this.position, new THREE.Vector3(x/mod, y/mod, 0));*/
   if(X!==x&&Y===y){
-    if (X<x){
+    if (X<x)
       this.sensor.set(this.position, new THREE.Vector3(1, 0, 0));
-      var obstaculo=this.sensor.intersectObjects(environment.children,true);
-    }
-    else{
+    else
       this.sensor.set(this.position, new THREE.Vector3(-1, 0, 0));
-      var obstaculo=this.sensor.intersectObjects(environment.children,true);
-    }
   }
   else if(Y!==y&&X===x){
-    if (Y<y){
+    if (Y<y)
       this.sensor.set(this.position, new THREE.Vector3(0, 1, 0));
-      var obstaculo=this.sensor.intersectObjects(environment.children,true);
-    }
-    else{
+    else
       this.sensor.set(this.position, new THREE.Vector3(0, -1, 0));
-      var obstaculo=this.sensor.intersectObjects(environment.children,true);
-    }
   }
   else if(Y!==y&&X!==x&&Math.abs(y-Y)===Math.abs(x-X)){
-    if (X<x&&Y<y){
+    if (X<x&&Y<y)
       this.sensor.set(this.position, new THREE.Vector3(Math.cos(Math.PI/4), Math.sin(Math.PI/4), 0));
-      var obstaculo=this.sensor.intersectObjects(environment.children,true);
-    }
-    else if (X<x&&Y>y){
+    else if (X<x&&Y>y)
       this.sensor.set(this.position, new THREE.Vector3(Math.cos(Math.PI/4), -Math.sin(Math.PI/4), 0));
-      var obstaculo=this.sensor.intersectObjects(environment.children,true);
-    }
-    else if (X>x&&Y<y){
+    else if (X>x&&Y<y)
       this.sensor.set(this.position, new THREE.Vector3(-Math.cos(Math.PI/4), Math.sin(Math.PI/4), 0));
-      var obstaculo=this.sensor.intersectObjects(environment.children,true);
-    }
-    else if (X>x&&Y>y){
+    else if (X>x&&Y>y)
       this.sensor.set(this.position, new THREE.Vector3(-Math.cos(Math.PI/4), -Math.sin(Math.PI/4), 0));
-      var obstaculo=this.sensor.intersectObjects(environment.children,true);
-    }
   }
   var obstaculo=this.sensor.intersectObjects(environment.children,true);
   if( obstaculo.length>0 && obstaculo[0].distance<Math.sqrt(Math.pow(X-x,2)+Math.pow(Y-y,2)) ){
@@ -651,24 +619,16 @@ Torre.prototype.sense=function(environment){
   /*var mod = Math.sqrt(Math.pow(x,2)+Math.pow(y,2));
   this.sensor.set(this.position, new THREE.Vector3(x/mod, y/mod, 0));*/
   if(X!==x&&Y===y){
-    if (X<x){
+    if (X<x)
       this.sensor.set(this.position, new THREE.Vector3(1, 0, 0));
-      var obstaculo=this.sensor.intersectObjects(environment.children,true);
-    }
-    else{
+    else
       this.sensor.set(this.position, new THREE.Vector3(-1, 0, 0));
-      var obstaculo=this.sensor.intersectObjects(environment.children,true);
-    }
   }
   else if(Y!==y&&X===x){
-    if (Y<y){
+    if (Y<y)
       this.sensor.set(this.position, new THREE.Vector3(0, 1, 0));
-      var obstaculo=this.sensor.intersectObjects(environment.children,true);
-    }
-    else{
+    else
       this.sensor.set(this.position, new THREE.Vector3(0, -1, 0));
-      var obstaculo=this.sensor.intersectObjects(environment.children,true);
-    } 
   }
   var obstaculo=this.sensor.intersectObjects(environment.children,true);
   if( obstaculo.length>0 && obstaculo[0].distance<Math.sqrt(Math.pow(X-x,2)+Math.pow(Y-y,2)) ){
