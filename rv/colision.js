@@ -406,37 +406,29 @@ function Alfil(sTP,x,y)
 Alfil.prototype=new Agent();
 
 Alfil.prototype.sense=function(environment){
-  /*var mod = Math.sqrt(Math.pow(x,2)+Math.pow(y,2));
-  this.sensor.set(this.position, new THREE.Vector3(x/mod, y/mod, 0));*/
   if(Y!==y&&X!==x&&Math.abs(y-Y)===Math.abs(x-X)){
-    if (X<x&&Y<y){
+    if (X<x&&Y<y)
       this.sensor.set(this.position, new THREE.Vector3(Math.cos(Math.PI/4), Math.sin(Math.PI/4), 0));
-      /*var obsta*/culo=this.sensor.intersectObjects(environment.children,true);
-    }
-    else if (X<x&&Y>y){
+    else if (X<x&&Y>y)
       this.sensor.set(this.position, new THREE.Vector3(Math.cos(Math.PI/4), -Math.sin(Math.PI/4), 0));
-      /*var obsta*/culo=this.sensor.intersectObjects(environment.children,true);
-    }
-    else if (X>x&&Y<y){
+    else if (X>x&&Y<y)
       this.sensor.set(this.position, new THREE.Vector3(-Math.cos(Math.PI/4), Math.sin(Math.PI/4), 0));
-      /*var obsta*/culo=this.sensor.intersectObjects(environment.children,true);
-    }
-    else if (X>x&&Y>y){
+    else if (X>x&&Y>y)
       this.sensor.set(this.position, new THREE.Vector3(-Math.cos(Math.PI/4), -Math.sin(Math.PI/4), 0));
-      /*var obsta*/culo=this.sensor.intersectObjects(environment.children,true);
-    }
   }
   var obstaculo=this.sensor.intersectObjects(environment.children,true);    
   if( obstaculo.length>0 && obstaculo[0].object.parent.sTP !== this.sTP ){
     /*if( obstaculo[0].distance<=10*Math.sqrt(2) )
       this.sensor.colision=false;*/
-    if ( obstaculo[0].distance>10*Math.sqrt(2) && obstaculo[0].distance<Math.sqrt(Math.pow(X-x,2)+Math.pow(Y-y,2)) ){
-      this.sensor.colision=true;
-      console.log(obstaculo[0].distance);
-      console.log(Math.sqrt(Math.pow(X-x,2)+Math.pow(Y-y,2)));}
-    else
+    if ( obstaculo[0].distance<=10*Math.sqrt(2) )
       this.sensor.colision=false;
-      /*if (X===obstaculo[0].position.x&&Y===obstaculo[0].position.y)
+    else
+      this.sensor.colision=true;
+    /*if ( obstaculo[0].distance>10*Math.sqrt(2) && obstaculo[0].distance<Math.sqrt(Math.pow(X-x,2)+Math.pow(Y-y,2)) )
+        this.sensor.colision=true;
+      else
+        this.sensor.colision=false;
+      if (X===obstaculo[0].position.x&&Y===obstaculo[0].position.y)
         obstaculo[0].object.position.set(60,-50,0);
     }*/   
   }
