@@ -418,13 +418,7 @@ Alfil.prototype.sense=function(environment){
   }
   var obstaculo=this.sensor.intersectObjects(environment.children,true);    
   if( obstaculo.length>0 && obstaculo[0].object.parent.sTP !== this.sTP ){
-    /*if ( obstaculo[0].distance<10 )
-      this.sensor.colision=false;
-    else
-      this.sensor.colision=true;
-    if ( Math.sqrt(Math.pow(X-x,2)+Math.pow(Y-y,2))===obstaculo[0].distance )
-      this.sensor.colision=false;
-    else*/ if ( Math.sqrt(Math.pow(X-x,2)+Math.pow(Y-y,2))<=(obstaculo[0].distance+10*Math.sqrt(2)) )
+    if ( Math.sqrt(Math.pow(X-x,2)+Math.pow(Y-y,2))<=(obstaculo[0].distance+10*Math.sqrt(2)) )
       this.sensor.colision=false;
     else
       this.sensor.colision=true;
