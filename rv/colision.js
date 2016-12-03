@@ -420,7 +420,9 @@ Alfil.prototype.sense=function(environment){
   if( obstaculo.length>0 && obstaculo[0].object.parent.sTP !== this.sTP ){
     if ( Math.sqrt(Math.pow(X-x,2)+Math.pow(Y-y,2))<=(obstaculo[0].distance+10*Math.sqrt(2)) ){
       this.sensor.colision=false;
-      obstaculo[0].object.position.set(55,-50,0);}
+      if (Math.sqrt(Math.pow(X-x,2)+Math.pow(Y-y,2))===0)
+        obstaculo[0].object.position.set(55,-50,0);
+    }
     else
       this.sensor.colision=true;
     /*if (Math.sqrt(Math.pow(X-x,2)+Math.pow(Y-y,2))===0)
