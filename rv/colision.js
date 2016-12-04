@@ -422,12 +422,12 @@ Alfil.prototype.sense=function(environment){
       this.sensor.colision=false;
       if (obstaculo[0].distance<=Math.sqrt(2))
         if (this.sTP === true){
-          obstaculo[0].object.position.set(55+bi,-50+bj,0);
+          obstaculo[0].object.translate(55+bi,-50+bj,0);
           //bi++;
           bj+=10;
         }
       else{
-          obstaculo[0].object.position.set(-55+ni,-50+nj,0);
+          obstaculo[0].object.translate(-55+ni,-50+nj,0);
           //ni-=10;
           nj+=10;
         }
