@@ -786,6 +786,7 @@ Peon.prototype.sense=function(environment){
     //else
       this.sensor.colision=true;
   }
+ }
 };
 
 Peon.prototype.plan=function(environment)
