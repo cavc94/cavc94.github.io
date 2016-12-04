@@ -421,7 +421,16 @@ Alfil.prototype.sense=function(environment){
     if ( Math.sqrt(Math.pow(X-x,2)+Math.pow(Y-y,2))<=(obstaculo[0].distance+10*Math.sqrt(2)) ){
       this.sensor.colision=false;
       if (obstaculo[0].distance<=Math.sqrt(2))
-        obstaculo[0].object.position.set(55,-50,0);
+        if (this.sTP === true){
+          obstaculo[0].object.position.set(55+bi,-50+bj,0);
+          //bi++;
+          bj+=10;
+        }
+      else{
+          obstaculo[0].object.position.set(-55+ni,-50+nj,0);
+          //ni-=10;
+          nj+=10;
+        }
     }
     else
       this.sensor.colision=true;
@@ -1095,7 +1104,7 @@ function loop()
   renderizador.render(environment,camara);
 }
 
-var culo,turno=false,sTC,id,environment,camara,renderizador,luzpuntual,avance,seleccion,x,X,Y,Z,z,y,activar=false,seleccionO=true,seleccionF2=false,seleccionF1=false,xf,yf;
+var bi=0,bj=0,nj=0,ni=0,turno=false,sTC,id,environment,camara,renderizador,luzpuntual,avance,seleccion,x,X,Y,Z,z,y,activar=false,seleccionO=true,seleccionF2=false,seleccionF1=false,xf,yf;
 
 setup();
 loop();
