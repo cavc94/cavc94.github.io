@@ -733,10 +733,11 @@ function Peon(sTP,x,y)
 Peon.prototype=new Agent();
 
 Peon.prototype.sense=function(environment){
-  if (this.sTP == true){
+  if (this.sTP === true){
     if (y===Y&&x!==X){
       this.sensor.set(this.position, new THREE.Vector3(0, 1, 0));
-      this.diagonal=false;}
+      this.diagonal=false;
+    }
     else if (Y!==y&&X!==x&&Math.abs(y-Y)===Math.abs(x-X)){
       this.diagonal=true;
       if (X<x&&Y<y)
@@ -748,9 +749,10 @@ Peon.prototype.sense=function(environment){
   else{
     if (y===Y&&x!==X){
       this.sensor.set(this.position, new THREE.Vector3(0, -1, 0));
-      this.diagonal=false;}
-    else if (Y!==y&&X!==x&&Math.abs(y-Y)===Math.abs(x-X)){
       this.diagonal=false;
+    }
+    else if (Y!==y&&X!==x&&Math.abs(y-Y)===Math.abs(x-X)){
+      this.diagonal=true;
       if (X<x&&Y>y)
         this.sensor.set(this.position, new THREE.Vector3(Math.cos(Math.PI/4), -Math.sin(Math.PI/4), 0));
       else if (X>x&&Y>y)
@@ -818,7 +820,7 @@ Peon.prototype.plan=function(environment)
       seleccionF1=false;
     }
   }
-  else{
+  else if (this.sensor.colision===false && this.diagonal===true){
     if ( this.sTP===true){
       if( X!==x&&Y>y&&Math.abs(y-Y)===Math.abs(x-X)&&Math.sqrt(Math.pow(X-x,2)+Math.pow(Y-y,2))<=10*Math.sqrt(2) )
         this.actuator.commands.push('goDiagonal');
@@ -826,8 +828,15 @@ Peon.prototype.plan=function(environment)
     else{
       if( X!==x&&Y<y&&Math.abs(y-Y)===Math.abs(x-X)&&Math.sqrt(Math.pow(X-x,2)+Math.pow(Y-y,2))<=10*Math.sqrt(2) )
         this.actuator.commands.push('goDiagonal');
-    }
-  }  
+    } 
+    if(X===x&&Y===y)
+      {
+        this.actuator.commands.push('stop');
+        seleccionF2=false;
+        seleccionF1=false;
+        this.diagonal===false;
+      }
+    }  
 };
 ///////////////SELECCION DE POSICIONES///////////////
 function SeleccionD(event)
