@@ -769,7 +769,7 @@ Peon.prototype.sense=function(environment){
     if( obstaculo.length>0 && obstaculo[0].object.parent.sTP !== this.sTP ){
       /*if ( Math.sqrt(Math.pow(X-x,2)+Math.pow(Y-y,2))<=(obstaculo[0].distance+10*Math.sqrt(2)) ){
         this.sensor.colision=false;*/
-        if (obstaculo[0].distance<=10*Math.sqrt(2)){
+        if (obstaculo[0].distance<=1){
           if (this.sTP === true){
             obstaculo[0].object.translate(50+bi,-50+bj,0);
             //bi++;
