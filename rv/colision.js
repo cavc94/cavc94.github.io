@@ -777,7 +777,6 @@ Peon.prototype.sense=function(environment){
             //bi++;
             bj+=10;
           }
-        }
         else{
           obstaculo[0].object.translate(-50+ni,-50+nj,0);
           //ni-=10;
