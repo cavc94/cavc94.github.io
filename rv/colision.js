@@ -193,8 +193,60 @@ Agent.prototype.operations.stop=function(pieza,distance)
   pieza.position.y+=distance*Math.cos(pieza.rotation.z);
 };
 
-Agent.prototype.sense=function(environment){};
-
+Agent.prototype.sense=function(environment){
+  if(X!==x&&Y===y){
+    if (X<x)
+      this.sensor.set(this.position, new THREE.Vector3(1, 0, 0));
+    else
+      this.sensor.set(this.position, new THREE.Vector3(-1, 0, 0));
+  }
+  else if(Y!==y&&X===x){
+    if (Y<y)
+      this.sensor.set(this.position, new THREE.Vector3(0, 1, 0));
+    else
+      this.sensor.set(this.position, new THREE.Vector3(0, -1, 0));
+  }
+  else if(Y!==y&&X!==x&&Math.abs(y-Y)===Math.abs(x-X)){
+    if (X<x&&Y<y)
+      this.sensor.set(this.position, new THREE.Vector3(Math.cos(Math.PI/4), Math.sin(Math.PI/4), 0));
+    else if (X<x&&Y>y)
+      this.sensor.set(this.position, new THREE.Vector3(Math.cos(Math.PI/4), -Math.sin(Math.PI/4), 0));
+    else if (X>x&&Y<y)
+      this.sensor.set(this.position, new THREE.Vector3(-Math.cos(Math.PI/4), Math.sin(Math.PI/4), 0));
+    else if (X>x&&Y>y)
+      this.sensor.set(this.position, new THREE.Vector3(-Math.cos(Math.PI/4), -Math.sin(Math.PI/4), 0));
+  }
+  var obstaculo=this.sensor.intersectObjects(environment.children,true);
+  if( obstaculo.length>0 && obstaculo[0].distance<Math.sqrt(Math.pow(X-x,2)+Math.pow(Y-y,2)) ){
+    this.sensor.colision=true;
+    obstaculo[0].object.material.color.setHex(0xff00ff);}
+  else
+    this.sensor.colision=false;
+  if( obstaculo.length>0 && obstaculo[0].object.parent.sTP !== this.sTP ){
+    if ( Math.sqrt(Math.pow(X-x,2)+Math.pow(Y-y,2))<=(obstaculo[0].distance+10*Math.sqrt(2)) ){
+      this.sensor.colision=false;
+      if (obstaculo[0].distance<=Math.sqrt(2))
+        if (this.sTP === true){
+          obstaculo[0].object.translate(50+bi,-50+bj,0);
+          //bi++;
+          bj+=10;
+        }
+      else{
+          obstaculo[0].object.translate(-50+ni,-50+nj,0);
+          //ni-=10;
+          nj+=10;
+        }
+    }
+    else
+      this.sensor.colision=true;
+  }
+  else if ( obstaculo.length>0 && obstaculo[0].object.parent.sTP === this.sTP  ){
+    if( obstaculo[0].distance<Math.sqrt(Math.pow(X-x,2)+Math.pow(Y-y,2)) )
+      this.sensor.colision=true;  
+  }
+  else
+    this.sensor.colision=false;
+};
 function Environment()
 {
   THREE.Scene.call(this);
@@ -356,16 +408,7 @@ function Caballo(sTP,x,y)
 }
 Caballo.prototype=new Agent();
 
-Caballo.prototype.sense=function(environment){
-  /*var mod = Math.sqrt(Math.pow(x,2)+Math.pow(y,2));
-  this.sensor.set(this.position, new THREE.Vector3(x/mod, y/mod, 0));
-  var obstaculo=this.sensor.intersectObjects(environment.children,true);
-  if( obstaculo.length>0 && obstaculo[0].distance==Math.sqrt(Math.pow(X-x,2)+Math.pow(Y-y,2)) ){
-    this.sensor.colision=true;
-    obstaculo[0].object.material.color.setHex(0xff00ff);}
-  else
-    this.sensor.colision=false;*/
-};
+/*Caballo.prototype.sense=function(environment){};*/
 
 Caballo.prototype.plan=function(environment)
 {
@@ -405,7 +448,7 @@ function Alfil(sTP,x,y)
 }
 Alfil.prototype=new Agent();
 
-Alfil.prototype.sense=function(environment){
+/*Alfil.prototype.sense=function(environment){
   if(Y!==y&&X!==x&&Math.abs(y-Y)===Math.abs(x-X)){
     if (X<x&&Y<y)
       this.sensor.set(this.position, new THREE.Vector3(Math.cos(Math.PI/4), Math.sin(Math.PI/4), 0));
@@ -441,7 +484,7 @@ Alfil.prototype.sense=function(environment){
   }
   else
     this.sensor.colision=false;
-};
+};*/
 
 Alfil.prototype.plan=function(environment)
 {
@@ -476,9 +519,7 @@ function Reina(sTP,x,y)
 }
 Reina.prototype=new Agent();
 
-Reina.prototype.sense=function(environment){
-  /*var mod = Math.sqrt(Math.pow(x,2)+Math.pow(y,2));
-  this.sensor.set(this.position, new THREE.Vector3(x/mod, y/mod, 0));*/
+/*Reina.prototype.sense=function(environment){
   if(X!==x&&Y===y){
     if (X<x)
       this.sensor.set(this.position, new THREE.Vector3(1, 0, 0));
@@ -526,7 +567,7 @@ Reina.prototype.sense=function(environment){
   }
   else
     this.sensor.colision=false;
-};
+};*/
 
 Reina.prototype.plan=function(environment)
 {
@@ -565,39 +606,6 @@ function Rey(sTP,x,y)
   this.actuator.castShadow=true;
 }
 Rey.prototype=new Agent();
-
-Rey.prototype.sense=function(environment){
-  /*var mod = Math.sqrt(Math.pow(x,2)+Math.pow(y,2));
-  this.sensor.set(this.position, new THREE.Vector3(x/mod, y/mod, 0));*/
-  if(X!==x&&Y===y){
-    if (X<x)
-      this.sensor.set(this.position, new THREE.Vector3(1, 0, 0));
-    else
-      this.sensor.set(this.position, new THREE.Vector3(-1, 0, 0));
-  }
-  else if(Y!==y&&X===x){
-    if (Y<y)
-      this.sensor.set(this.position, new THREE.Vector3(0, 1, 0));
-    else
-      this.sensor.set(this.position, new THREE.Vector3(0, -1, 0));
-  }
-  else if(Y!==y&&X!==x&&Math.abs(y-Y)===Math.abs(x-X)){
-    if (X<x&&Y<y)
-      this.sensor.set(this.position, new THREE.Vector3(Math.cos(Math.PI/4), Math.sin(Math.PI/4), 0));
-    else if (X<x&&Y>y)
-      this.sensor.set(this.position, new THREE.Vector3(Math.cos(Math.PI/4), -Math.sin(Math.PI/4), 0));
-    else if (X>x&&Y<y)
-      this.sensor.set(this.position, new THREE.Vector3(-Math.cos(Math.PI/4), Math.sin(Math.PI/4), 0));
-    else if (X>x&&Y>y)
-      this.sensor.set(this.position, new THREE.Vector3(-Math.cos(Math.PI/4), -Math.sin(Math.PI/4), 0));
-  }
-  var obstaculo=this.sensor.intersectObjects(environment.children,true);
-  if( obstaculo.length>0 && obstaculo[0].distance<Math.sqrt(Math.pow(X-x,2)+Math.pow(Y-y,2)) ){
-    this.sensor.colision=true;
-    obstaculo[0].object.material.color.setHex(0xff00ff);}
-  else
-    this.sensor.colision=false;
-};
   
 Rey.prototype.plan=function(environment)
 {
@@ -639,9 +647,7 @@ function Torre(sTP,x,y)
 }
 Torre.prototype=new Agent();
 
-Torre.prototype.sense=function(environment){
-  /*var mod = Math.sqrt(Math.pow(x,2)+Math.pow(y,2));
-  this.sensor.set(this.position, new THREE.Vector3(x/mod, y/mod, 0));*/
+/*Torre.prototype.sense=function(environment){
   if(X!==x&&Y===y){
     if (X<x)
       this.sensor.set(this.position, new THREE.Vector3(1, 0, 0));
@@ -660,7 +666,7 @@ Torre.prototype.sense=function(environment){
     obstaculo[0].object.material.color.setHex(0xff00ff);}
   else
     this.sensor.colision=false;
-};
+};*/
 
 Torre.prototype.plan=function(environment)
 {
@@ -698,8 +704,7 @@ function Peon(sTP,x,y)
 }
 Peon.prototype=new Agent();
 
-Peon.prototype.sense=function(environment){
-  //var mod = Math.sqrt(Math.pow(x,2)+Math.pow(y,2));
+/*Peon.prototype.sense=function(environment){
   if (this.sTP == true)
     this.sensor.set(this.position, new THREE.Vector3(0, 1, 0));
   else
@@ -710,7 +715,7 @@ Peon.prototype.sense=function(environment){
     obstaculo[0].object.material.color.setHex(0xff00ff);}
   else
     this.sensor.colision=false;
-};
+};*/
 
 Peon.prototype.plan=function(environment)
 {
