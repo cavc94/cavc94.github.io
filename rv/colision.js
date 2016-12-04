@@ -696,6 +696,7 @@ function Peon(sTP,x,y)
     textura=cargador.load('maderaB.jpg');
   this.position.set(x,y,0);
   this.sensor=new Sensor();
+  this.diagonal=false;
   this.actuator=new THREE.Mesh(new PeonGeometry(),new THREE.MeshLambertMaterial({map:textura}));
   this.add(this.actuator);
   this.actuator.scale.set(9.5,9.5,9.5);
@@ -704,18 +705,60 @@ function Peon(sTP,x,y)
 }
 Peon.prototype=new Agent();
 
-/*Peon.prototype.sense=function(environment){
-  if (this.sTP == true)
-    this.sensor.set(this.position, new THREE.Vector3(0, 1, 0));
-  else
-    this.sensor.set(this.position, new THREE.Vector3(0, -1, 0));
+Peon.prototype.sense=function(environment){
+  if (this.sTP == true){
+    if (y===Y&&x!==X){
+      this.sensor.set(this.position, new THREE.Vector3(0, 1, 0));
+      this.diagonal=false;}
+    else if (Y!==y&&X!==x&&Math.abs(y-Y)===Math.abs(x-X)){
+      this.diagonal=true;
+      if (X<x&&Y<y)
+        this.sensor.set(this.position, new THREE.Vector3(Math.cos(Math.PI/4), Math.sin(Math.PI/4), 0));
+      else if (X>x&&Y<y)
+        this.sensor.set(this.position, new THREE.Vector3(-Math.cos(Math.PI/4), Math.sin(Math.PI/4), 0));
+      }
+  }
+  else{
+    if (y===Y&&x!==X){
+      this.sensor.set(this.position, new THREE.Vector3(0, -1, 0));
+      this.diagonal=false;}
+    else if (Y!==y&&X!==x&&Math.abs(y-Y)===Math.abs(x-X)){
+      this.diagonal=false;
+      if (X<x&&Y>y)
+        this.sensor.set(this.position, new THREE.Vector3(Math.cos(Math.PI/4), -Math.sin(Math.PI/4), 0));
+      else if (X>x&&Y>y)
+        this.sensor.set(this.position, new THREE.Vector3(-Math.cos(Math.PI/4), -Math.sin(Math.PI/4), 0));
+    }
+  }  
   var obstaculo=this.sensor.intersectObjects(environment.children,true);
-  if( obstaculo.length>0 && obstaculo[0].distance<Math.sqrt(Math.pow(X-x,2)+Math.pow(Y-y,2)) ){
-    this.sensor.colision=true;
-    obstaculo[0].object.material.color.setHex(0xff00ff);}
-  else
-    this.sensor.colision=false;
-};*/
+  if (this.diagonal === false){
+    if( obstaculo.length>0 && obstaculo[0].distance<Math.sqrt(Math.pow(X-x,2)+Math.pow(Y-y,2)) ){
+      this.sensor.colision=true;
+      obstaculo[0].object.material.color.setHex(0xff00ff);}
+    else
+      this.sensor.colision=false;
+  }
+  else{ 
+    if( obstaculo.length>0 && obstaculo[0].object.parent.sTP !== this.sTP ){
+      /*if ( Math.sqrt(Math.pow(X-x,2)+Math.pow(Y-y,2))<=(obstaculo[0].distance+10*Math.sqrt(2)) ){
+        this.sensor.colision=false;*/
+        if (obstaculo[0].distance<=10*Math.sqrt(2)){
+          if (this.sTP === true){
+            obstaculo[0].object.translate(50+bi,-50+bj,0);
+            //bi++;
+            bj+=10;
+          }
+        }
+        else{
+          obstaculo[0].object.translate(-50+ni,-50+nj,0);
+          //ni-=10;
+          nj+=10;
+        }
+      }
+    //else
+      this.sensor.colision=true;
+  }
+};
 
 Peon.prototype.plan=function(environment)
 {
@@ -748,6 +791,16 @@ Peon.prototype.plan=function(environment)
       seleccionF1=false;
     }
   }
+  else{
+    if ( this.sTP===true){
+      if( X!==x&&Y>y&&Math.abs(y-Y)===Math.abs(x-X)&&Math.sqrt(Math.pow(X-x,2)+Math.pow(Y-y,2))<=10*sqrt(2) )
+        this.actuator.commands.push('goDiagonal');
+    }
+    else{
+      if( X!==x&&Y<y&&Math.abs(y-Y)===Math.abs(x-X)&&Math.sqrt(Math.pow(X-x,2)+Math.pow(Y-y,2))<=10*sqrt(2) )
+        this.actuator.commands.push('goDiagonal');
+    }
+  }  
 };
 ///////////////SELECCION DE POSICIONES///////////////
 function SeleccionD(event)
