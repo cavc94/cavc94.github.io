@@ -822,11 +822,11 @@ Peon.prototype.plan=function(environment)
   }
   else if (this.sensor.colision===true && this.diagonal===true){
     if ( this.sTP===true){
-      if( X!==x&&Y>y&&Math.abs(y-Y)===Math.abs(x-X)&&Math.sqrt(Math.pow(X-x,2)+Math.pow(Y-y,2))<=10*Math.sqrt(2) )
+      if( X!==x&&Y<y&&Math.abs(y-Y)===Math.abs(x-X)&&Math.sqrt(Math.pow(X-x,2)+Math.pow(Y-y,2))<=10*Math.sqrt(2) )
         this.actuator.commands.push('goDiagonal');
     }
     else{
-      if( X!==x&&Y<y&&Math.abs(y-Y)===Math.abs(x-X)&&Math.sqrt(Math.pow(X-x,2)+Math.pow(Y-y,2))<=10*Math.sqrt(2) )
+      if( X!==x&&Y>y&&Math.abs(y-Y)===Math.abs(x-X)&&Math.sqrt(Math.pow(X-x,2)+Math.pow(Y-y,2))<=10*Math.sqrt(2) )
         this.actuator.commands.push('goDiagonal');
     } 
     if(X===x&&Y===y)
