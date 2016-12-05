@@ -807,11 +807,11 @@ Peon.prototype.plan=function(environment)
         this.actuator.commands.push('goStraightY');
     }
     else{
-      else if( Y-y<=10 && Y-y>0 && Math.abs(x-X)<=10 ){
+      if( Y-y<=10 && Y-y>0 && Math.abs(x-X)<=10 ){
         if(this.diagonal === true)
           this.actuator.commands.push('goDiagonal');
       }
-      if(Y<=25 && Y>15) {
+      else if(Y<=25 && Y>15) {
         if( Y-y<=20 && Y-y>0 && x===X ) 
           this.actuator.commands.push('goStraightY');
       }
