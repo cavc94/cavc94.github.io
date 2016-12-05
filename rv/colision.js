@@ -771,7 +771,7 @@ Peon.prototype.sense=function(environment){
     if( obstaculo.length>0 && obstaculo[0].object.parent.sTP !== this.sTP ){
       /*if ( Math.sqrt(Math.pow(X-x,2)+Math.pow(Y-y,2))<=(obstaculo[0].distance+10*Math.sqrt(2)) ){
         this.sensor.colision=false;*/
-        if (obstaculo[0].distance<=10*Math.sqrt(2)){
+        if (obstaculo[0].distance<10*Math.sqrt(2)){
           if (this.sTP === true){
             obstaculo[0].object.translate(50+bi,-50+bj,0);
             //bi++;
@@ -783,7 +783,6 @@ Peon.prototype.sense=function(environment){
           nj+=10;
         }
       }
-    //else
       this.sensor.colision=true;
   }
  }
@@ -794,31 +793,31 @@ Peon.prototype.plan=function(environment)
   this.actuator.commands=[];
   if (this.sensor.colision === false){
     if (this.sTP===true){
-    if(Y>=-25 && Y<-15) {
-      if( y-Y<=20 && y-Y>0 && x===X ) 
-        this.actuator.commands.push('goStraightY');
+      if(Y>=-25 && Y<-15) {
+        if( y-Y<=20 && y-Y>0 && x===X ) 
+          this.actuator.commands.push('goStraightY');
+      }
+      else{ 
+        if(y-Y<=10 && y-Y>0 && x===X)
+          this.actuator.commands.push('goStraightY');
+      }
     }
-    else{ 
-      if(y-Y<=10 && y-Y>0 && x===X)
-        this.actuator.commands.push('goStraightY');
+    else{
+      if(Y<=25 && Y>15) {
+        if( Y-y<=20 && Y-y>0 && x===X ) 
+          this.actuator.commands.push('goStraightY');
+      }
+      else{ 
+        if(Y-y<=10 && Y-y>0 && x===X)
+          this.actuator.commands.push('goStraightY');
+      }
     }
-  }
-  else{
-    if(Y<=25 && Y>15) {
-      if( Y-y<=20 && Y-y>0 && x===X ) 
-        this.actuator.commands.push('goStraightY');
-    }
-    else{ 
-      if(Y-y<=10 && Y-y>0 && x===X)
-        this.actuator.commands.push('goStraightY');
-    }
-  }
-  if(X===x&&Y===y)
-    {
-      this.actuator.commands.push('stop');
-      seleccionF2=false;
-      seleccionF1=false;
-    }
+    if(X===x&&Y===y)
+      {
+        this.actuator.commands.push('stop');
+        seleccionF2=false;
+        seleccionF1=false;
+      }
   }
   else if (this.sensor.colision===true && this.diagonal===true){
     if ( this.sTP===true){
@@ -836,7 +835,9 @@ Peon.prototype.plan=function(environment)
         seleccionF1=false;
         this.diagonal===false;
       }
-    }  
+    }
+  else
+    this.diagonal===false;
 };
 ///////////////SELECCION DE POSICIONES///////////////
 function SeleccionD(event)
