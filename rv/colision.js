@@ -770,7 +770,7 @@ Peon.prototype.sense=function(environment){
   }
   else{ 
     if( obstaculo.length>0 && obstaculo[0].object.parent.sTP !== this.sTP ){
-      if (obstaculo[0].distance<10*Math.sqrt(2)){
+      if (obstaculo[0].distance<Math.sqrt(2)){
         this.diagonal=true;
         this.sensor.colision=false;
         if (this.sTP === true){
