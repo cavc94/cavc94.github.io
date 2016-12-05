@@ -736,10 +736,10 @@ Peon.prototype.sense=function(environment){
   if (this.sTP === true){
     if (y===Y&&x!==X){
       this.sensor.set(this.position, new THREE.Vector3(0, 1, 0));
-      this.diagonal=false;
+      var diagon=false;
     }
     else if (Y!==y&&X!==x&&Math.abs(y-Y)===Math.abs(x-X)){
-      this.diagonal=true;
+      var diagon=true;
       if (X<x&&Y<y)
         this.sensor.set(this.position, new THREE.Vector3(Math.cos(Math.PI/4), Math.sin(Math.PI/4), 0));
       else if (X>x&&Y<y)
@@ -749,10 +749,10 @@ Peon.prototype.sense=function(environment){
   else{
     if (y===Y&&x!==X){
       this.sensor.set(this.position, new THREE.Vector3(0, -1, 0));
-      this.diagonal=false;
+      var diagon=false;
     }
     else if (Y!==y&&X!==x&&Math.abs(y-Y)===Math.abs(x-X)){
-      this.diagonal=true;
+      var diagon=true;
       if (X<x&&Y>y)
         this.sensor.set(this.position, new THREE.Vector3(Math.cos(Math.PI/4), -Math.sin(Math.PI/4), 0));
       else if (X>x&&Y>y)
@@ -760,7 +760,8 @@ Peon.prototype.sense=function(environment){
     }
   }  
   var obstaculo=this.sensor.intersectObjects(environment.children,true);
-  if (this.diagonal === false){
+  if (diagon === false){
+    this.diagonal=false;
     if( obstaculo.length>0 && obstaculo[0].distance<Math.sqrt(Math.pow(X-x,2)+Math.pow(Y-y,2)) ){
       this.sensor.colision=true;
       obstaculo[0].object.material.color.setHex(0xff00ff);}
@@ -769,23 +770,24 @@ Peon.prototype.sense=function(environment){
   }
   else{ 
     if( obstaculo.length>0 && obstaculo[0].object.parent.sTP !== this.sTP ){
-      /*if ( Math.sqrt(Math.pow(X-x,2)+Math.pow(Y-y,2))<=(obstaculo[0].distance+10*Math.sqrt(2)) ){
-        this.sensor.colision=false;*/
-        if (obstaculo[0].distance<10*Math.sqrt(2)){
-          if (this.sTP === true){
-            obstaculo[0].object.translate(50+bi,-50+bj,0);
-            //bi++;
-            bj+=10;
-          }
+      if (obstaculo[0].distance<10*Math.sqrt(2)){
+        this.diagonal=true;
+        this.sensor.colision=false;
+        if (this.sTP === true){
+          obstaculo[0].object.translate(50+bi,-50+bj,0);
+          //bi++;
+          bj+=10;
+        }
         else{
           obstaculo[0].object.translate(-50+ni,-50+nj,0);
           //ni-=10;
           nj+=10;
         }
       }
-      this.sensor.colision=true;
+    }
+    else
+      this.sensor.colision=false;
   }
- }
 };
 
 Peon.prototype.plan=function(environment)
@@ -797,9 +799,11 @@ Peon.prototype.plan=function(environment)
         if( y-Y<=20 && y-Y>0 && x===X ) 
           this.actuator.commands.push('goStraightY');
       }
-      else{ 
-        if(y-Y<=10 && y-Y>0 && x===X)
-          this.actuator.commands.push('goStraightY');
+      else if(y-Y<=10 && y-Y>0 && x===X)
+        this.actuator.commands.push('goStraightY');
+      else if( y-Y<=10 && y-Y>0 && Math.abs(x-X)<=10 ){
+        if(this.diagonal === true)
+          this.actuator.commands.push('goDiagonal');
       }
     }
     else{
@@ -807,9 +811,11 @@ Peon.prototype.plan=function(environment)
         if( Y-y<=20 && Y-y>0 && x===X ) 
           this.actuator.commands.push('goStraightY');
       }
-      else{ 
-        if(Y-y<=10 && Y-y>0 && x===X)
-          this.actuator.commands.push('goStraightY');
+      else if(Y-y<=10 && Y-y>0 && x===X)
+        this.actuator.commands.push('goStraightY');
+     else if( Y-y<=10 && Y-y>0 && Math.abs(x-X)<=10 ){
+        if(this.diagonal === true)
+          this.actuator.commands.push('goDiagonal');
       }
     }
     if(X===x&&Y===y)
@@ -818,26 +824,7 @@ Peon.prototype.plan=function(environment)
         seleccionF2=false;
         seleccionF1=false;
       }
-  }
-  else if (this.sensor.colision===true && this.diagonal===true){
-    if ( this.sTP===true){
-      if( X!==x&&Y<y&&Math.abs(y-Y)===Math.abs(x-X)&&Math.sqrt(Math.pow(X-x,2)+Math.pow(Y-y,2))<=10*Math.sqrt(2) )
-        this.actuator.commands.push('goDiagonal');
-    }
-    else{
-      if( X!==x&&Y>y&&Math.abs(y-Y)===Math.abs(x-X)&&Math.sqrt(Math.pow(X-x,2)+Math.pow(Y-y,2))<=10*Math.sqrt(2) )
-        this.actuator.commands.push('goDiagonal');
-    } 
-    if(X===x&&Y===y)
-      {
-        this.actuator.commands.push('stop');
-        seleccionF2=false;
-        seleccionF1=false;
-        this.diagonal===false;
-      }
-    }
-  else
-    this.diagonal===false;
+  }  
 };
 ///////////////SELECCION DE POSICIONES///////////////
 function SeleccionD(event)
