@@ -400,7 +400,7 @@ Caballo.prototype.sense=function(environment){
         }
       }
     break;
-    case default:
+    default:
       this.sensor.colision=true;
     break;
          }
