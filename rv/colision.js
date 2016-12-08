@@ -384,7 +384,7 @@ Caballo.prototype.sense=function(environment){
       this.ind=2;  
   }  
   
-  switch case(this.ind){
+  switch (this.ind){
     case 1:
       this.sensor.colision=false;
       if (obstaculo[0].distance<=Math.sqrt(2)){
