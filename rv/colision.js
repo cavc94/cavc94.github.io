@@ -403,20 +403,23 @@ Caballo.prototype.sense=function(environment){
 Caballo.prototype.plan=function(environment)
 {
   this.actuator.commands=[];
-  if( ((Math.abs(x-X)<=20 && Math.abs(y-Y)<=10) || (Math.abs(x-X)<=10 && Math.abs(y-Y)<=20)) && Math.abs(x-X)!==Math.abs(y-Y) ){
-    if(X!==x&&Y!==y){
-      this.actuator.commands.push('goStraightX');
-      this.cnt = true;}
-    else if (X===X&&Y!==y&&this.cnt===true)
-      this.actuator.commands.push('goStraightY');
-  }
-  else if(X===x&&Y===y&&this.cnt===true)
-    {
-      this.actuator.commands.push('stop');
-      this.cnt = false;
-      seleccionF2=false;
-      seleccionF1=false;
+  if(this.sensor.colision === false){
+    if( ((Math.abs(x-X)<=20 && Math.abs(y-Y)<=10) || (Math.abs(x-X)<=10 && Math.abs(y-Y)<=20)) && Math.abs(x-X)!==Math.abs(y-Y) ){
+      if(X!==x&&Y!==y){
+        this.actuator.commands.push('goStraightX');
+        this.cnt = true;
+      }
+      else if (X===X&&Y!==y&&this.cnt===true)
+        this.actuator.commands.push('goStraightY');
     }
+    else if(X===x&&Y===y&&this.cnt===true)
+      {
+        this.actuator.commands.push('stop');
+        this.cnt = false;
+        seleccionF2=false;
+        seleccionF1=false;
+      }
+  }
 };
 ///////////////ALFIL///////////////
 function Alfil(sTP,x,y)
