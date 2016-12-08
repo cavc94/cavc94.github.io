@@ -375,7 +375,7 @@ Caballo.prototype.sense=function(environment){
     this.sensor.set(this.position, new THREE.Vector3-(Math.cos(Math.atan(2)), -Math.sin(Math.atan(2)), 0));
   var obstaculo=this.sensor.intersectObjects(environment.children,true);    
   if( obstaculo.length>0 && obstaculo[0].object.parent.sTP !== this.sTP ){
-    if ( obstaculo.distance<=10*Math.sqrt(5); ){
+    if ( obstaculo.distance<=10*Math.sqrt(5) ){
       this.sensor.colision=false;
       if (obstaculo[0].distance<=Math.sqrt(2))
         if (this.sTP === true){
