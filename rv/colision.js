@@ -385,7 +385,7 @@ Caballo.prototype.sense=function(environment){
     }
     else if( obstaculo.length>0 && obstaculo[0].object.parent.sTP === this.sTP ){
       obstaculo[0].object.material.color.setHex(0xff00ff);
-      if( obstaculo[0].distance<=10 )
+      if( obstaculo[0].distance>=10 )
         this.sensor.colision=true;
       else
         this.sensor.colision=false;
@@ -408,7 +408,7 @@ Caballo.prototype.sense=function(environment){
       }
     }
     else if( obstaculo.length>0 && obstaculo[0].object.parent.sTP === this.sTP ){
-      if( obstaculo[0].distance<=20 )
+      if( obstaculo[0].distance>=20 )
         this.sensor.colision=true;
       else
         this.sensor.colision=false;
