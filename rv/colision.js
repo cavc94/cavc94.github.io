@@ -361,9 +361,9 @@ Caballo.prototype.sense=function(environment){
   var dx = x-X;
   var dy = y-Y;
   if (dy<=0)
-    this.sensor.set( (this.position.x+dx,this.position.y,0), new THREE.Vector3(0, -1, 0) ); 
+    this.sensor.set( (this.position.x+dx,this.position.y,0), new THREE.Vector3(0, 1, 0) ); 
   else if (dy>=0)
-    this.sensor.set( (this.position.x+dx,this.position.y,0), new THREE.Vector3(0, 1, 0) );
+    this.sensor.set( (this.position.x+dx,this.position.y,0), new THREE.Vector3(0, -1, 0) );
   this.sensor.set(this.position, new THREE.Vector3(Math.cos(Math.atan((y-Y)/(x-X))), Math.sin(Math.atan((y-Y)/(x-X))), 0));  
   var obstaculo=this.sensor.intersectObjects(environment.children,true);
   if (Math.abs(dx)<=20 && Math.abs(dy)<=10){
