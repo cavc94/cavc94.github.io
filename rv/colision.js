@@ -819,6 +819,8 @@ Peon.prototype.sense=function(environment){
       obstaculo[0].object.material.color.setHex(0xff00ff);}
     else
       this.sensor.colision=false;
+    console.log(this.sensor.colision);
+    console.log(obstaculo.length);
   }
   else{ 
     if( obstaculo.length>0 && obstaculo[0].object.parent.sTP !== this.sTP ){
