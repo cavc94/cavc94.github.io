@@ -358,21 +358,21 @@ function Caballo(sTP,x,y)
 Caballo.prototype=new Agent();
 
 Caballo.prototype.sense=function(environment){
-  if( x-X===-20 && y-Y===-10 )
-     this.sensor.set(this.position, new THREE.Vector3(Math.cos(Math.atan(1/2)), Math.sin(Math.atan(1/2)), 0));
-  else if( x-X===-20 && y-Y===10 )
+  if( x-X>=-20 && x-X<=0 && y-Y>=-10 && y-Y<=0 )
+    this.sensor.set(this.position, new THREE.Vector3(Math.cos(Math.atan(1/2)), Math.sin(Math.atan(1/2)), 0));
+  else if( x-X>=-20 && x-X<=0 && y-Y<=10 && y-Y>=0 )
     this.sensor.set(this.position, new THREE.Vector3(Math.cos(Math.atan(1/2)), -Math.sin(Math.atan(1/2)), 0));
-  else if( x-X===20 && y-Y===-10 )
+  else if( x-X<=20 && x-X>=0 && y-Y>=-10 && y-Y<=0 )
     this.sensor.set(this.position, new THREE.Vector3(-Math.cos(Math.atan(1/2)), Math.sin(Math.atan(1/2)), 0));
-  else if( x-X===20 && y-Y===10 )
+  else if( x-X<=20 && x-X>=0 && y-Y<=10 && y-Y>=0 )
     this.sensor.set(this.position, new THREE.Vector3(-Math.cos(Math.atan(1/2)), -Math.sin(Math.atan(1/2)), 0));
-  else if( x-X===-10 && y-Y===-20 )
+  else if( x-X>=-10 && x-X<=0 && y-Y>=-20 && y-Y<=0 )
     this.sensor.set(this.position, new THREE.Vector3(Math.cos(Math.atan(2)), Math.sin(Math.atan(2)), 0));
-  else if( x-X===-10 && y-Y===20 )
+  else if( x-X>=-10 && x-X<=0 && y-Y<=20 && y-Y>=0 )
     this.sensor.set(this.position, new THREE.Vector3(Math.cos(Math.atan(2)), -Math.sin(Math.atan(2)), 0));
-  else if( x-X===10 && y-Y===-20 )
+  else if( x-X<=10 && x-X>=0 && y-Y>=-20 && y-Y<=0 )
     this.sensor.set(this.position, new THREE.Vector3(-Math.cos(Math.atan(2)), Math.sin(Math.atan(2)), 0));
-  else if( x-X===10 && y-Y===20 )
+  else if( x-X<=10 && x-X>=0 && y-Y<=20 && y-Y>=0 )
     this.sensor.set(this.position, new THREE.Vector3-(Math.cos(Math.atan(2)), -Math.sin(Math.atan(2)), 0));
   var obstaculo=this.sensor.intersectObjects(environment.children,true);    
   if( obstaculo.length>0 && obstaculo[0].object.parent.sTP !== this.sTP ){
