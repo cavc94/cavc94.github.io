@@ -358,7 +358,7 @@ function Caballo(sTP,x,y)
 Caballo.prototype=new Agent();
 
 Caballo.prototype.sense=function(environment){
-  var dx = x-X;
+  /*var dx = x-X;
   var dy = y-Y;
   if (dy<=0)
     this.sensor.set( (this.position.x+dx,this.position.y,0), new THREE.Vector3(0, 1, 0) ); 
@@ -413,7 +413,7 @@ Caballo.prototype.sense=function(environment){
       else
         this.sensor.colision=false;
     }
-  }
+  }*/
 };
 
 Caballo.prototype.plan=function(environment)
