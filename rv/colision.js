@@ -786,8 +786,8 @@ Peon.prototype=new Agent();
 
 Peon.prototype.sense=function(environment){
   if (this.sTP === true){
-    if (y===Y&&x!==X){
-      this.sensor.set(this.position, new THREE.Vector3(1, 0, 0));
+    if (y!==Y&&x===X){
+      this.sensor.set(this.position, new THREE.Vector3(0, 1, 0));
       var diagon=false;
     }
     else if (Y!==y&&X!==x&&Math.abs(y-Y)===Math.abs(x-X)){
@@ -799,8 +799,8 @@ Peon.prototype.sense=function(environment){
       }
   }
   else{
-    if (y===Y&&x!==X){
-      this.sensor.set(this.position, new THREE.Vector3(-1, 0, 0));
+    if (y!==Y&&x===X){
+      this.sensor.set(this.position, new THREE.Vector3(0, -1, 0));
       var diagon=false;
     }
     else if (Y!==y&&X!==x&&Math.abs(y-Y)===Math.abs(x-X)){
