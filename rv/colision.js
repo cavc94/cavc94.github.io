@@ -358,47 +358,21 @@ function Caballo(sTP,x,y)
 Caballo.prototype=new Agent();
 
 Caballo.prototype.sense=function(environment){  
-  if( x-X===-20 && y-Y===-10 )
-     this.sensor.set(this.position, new THREE.Vector3(Math.cos(Math.atan(1/2)), Math.sin(Math.atan(1/2)), 0));
-  else if( x-X===-20 && y-Y===10 )
-    this.sensor.set(this.position, new THREE.Vector3(Math.cos(Math.atan(1/2)), -Math.sin(Math.atan(1/2)), 0));
-  else if( x-X===20 && y-Y===-10 )
-    this.sensor.set(this.position, new THREE.Vector3(-Math.cos(Math.atan(1/2)), Math.sin(Math.atan(1/2)), 0));
-  else if( x-X===20 && y-Y===10 )
-    this.sensor.set(this.position, new THREE.Vector3(-Math.cos(Math.atan(1/2)), -Math.sin(Math.atan(1/2)), 0));
-  else if( x-X===-10 && y-Y===-20 )
-    this.sensor.set(this.position, new THREE.Vector3(Math.cos(Math.atan(2)), Math.sin(Math.atan(2)), 0));
-  else if( x-X===-10 && y-Y===20 )
-    this.sensor.set(this.position, new THREE.Vector3(Math.cos(Math.atan(2)), -Math.sin(Math.atan(2)), 0));
-  else if( x-X===10 && y-Y===-20 )
-    this.sensor.set(this.position, new THREE.Vector3(-Math.cos(Math.atan(2)), Math.sin(Math.atan(2)), 0));
-  else if( x-X===10 && y-Y===20 )
-    this.sensor.set(this.position, new THREE.Vector3-(Math.cos(Math.atan(2)), -Math.sin(Math.atan(2)), 0));
+  this.sensor.set(this.position, new THREE.Vector3(Math.cos(Math.atan((y-Y)/(x-X))), Math.sin(Math.atan((y-Y)/(x-X))), 0));
   var obstaculo=this.sensor.intersectObjects(environment.children,true);    
   if( obstaculo.length>0 && obstaculo[0].object.parent.sTP !== this.sTP ){
-    if ( obstaculo.distance===10*Math.sqrt(5) )
-      this.ind=1;
+    if ( obstaculo.distance===10*Math.sqrt(5) ){
+      this.sensor.colision=false;
+      obstaculo[0].object.translate(50+bi,-50+bj,0);
+      bj+=10;
+    }
   }
   else if ( obstaculo.length>0 && obstaculo[0].object.parent.sTP === this.sTP  ){
     if( obstaculo[0].distance===10*Math.sqrt(5) )
-      this.ind=2;  
-  }  
-  console.log(ind);
-  switch (this.ind){
-    case 1:
+      this.sensor.colision=true;
+    else
       this.sensor.colision=false;
-      //if (obstaculo[0].distance<=Math.sqrt(2)){
-          obstaculo[0].object.translate(50+bi,-50+bj,0);
-          bj+=10;
-      //}
-    break;
-    case 2:
-      this.sensor.colision=true;
-    break;
-    default:
-      this.sensor.colision=true;
-    break;
-         }
+  }
 };
 
 Caballo.prototype.plan=function(environment)
