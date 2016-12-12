@@ -881,7 +881,8 @@ Peon.prototype.plan=function(environment)
       this.actuator.commands.push('stop');
       seleccionF2=false;
       seleccionF1=false;
-    } 
+    }
+  }
 };
 ///////////////SELECCION DE POSICIONES///////////////
 function SeleccionD(event)
