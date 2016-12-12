@@ -896,11 +896,11 @@ function SeleccionD(event)
   seleccion=raycaster.intersectObjects(environment.children,true);
   if(seleccion.length>0)
   { 
-    console.log(turno);
+    //console.log(turno);
     
     if(seleccionF1==false)
       id=seleccion[0].object.id;
-    console.log(id);
+    //console.log(id);
     
     if(seleccionF1==true)
     {
@@ -951,8 +951,8 @@ function SeleccionD(event)
       y=25;
     else if(30<y&&y<40)
       y=35;
-    console.log(x);
-    console.log(y);
+    //console.log(x);
+    //console.log(y);
   }
 }
 
