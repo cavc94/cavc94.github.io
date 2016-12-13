@@ -165,7 +165,8 @@ Agent.prototype.operations.goStraightZ=function(pieza,distance)
     else
       distance=-0.5; 
   }
-  pieza.position.z+=distance*Math.cos(pieza.rotation.x);
+  if ( pieza.position.z <= 9.5*1.3 )
+    pieza.position.z+=distance*Math.cos(pieza.rotation.x);
 };
 
 Agent.prototype.operations.goDiagonal=function(pieza,distance)
@@ -435,7 +436,7 @@ Caballo.prototype.plan=function(environment)
   this.actuator.commands=[];
   if(this.sensor.colision === false){
     if( ((Math.abs(x-X)<=20 && Math.abs(y-Y)<=10) || (Math.abs(x-X)<=10 && Math.abs(y-Y)<=20)) && Math.abs(x-X)!==Math.abs(y-Y) ){
-      this.position.z = 9.5*1.3;
+      this.actuator.commands.push('goStraightZ');
       if(X!==x&&Y!==y){
         this.actuator.commands.push('goStraightX');
         this.cnt = true;
