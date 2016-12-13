@@ -421,7 +421,7 @@ Caballo.prototype.plan=function(environment)
   this.actuator.commands=[];
   if(this.sensor.colision === false){
     if( ((Math.abs(x-X)<=20 && Math.abs(y-Y)<=10) || (Math.abs(x-X)<=10 && Math.abs(y-Y)<=20)) && Math.abs(x-X)!==Math.abs(y-Y) ){
-      if(this.position.x=X&&this.position.y=Y)
+      if(this.position.x===X&&this.position.y===Y)
         this.position.z = 9.5*1.3;
       if(X!==x&&Y!==y){
         this.actuator.commands.push('goStraightX');
