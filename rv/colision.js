@@ -885,7 +885,7 @@ function SeleccionD(event)
     
     if(seleccionF1==false)
       id=seleccion[0].object.id;
-    //console.log(id);
+    console.log(id);
     
     if(seleccionF1==true)
     {
