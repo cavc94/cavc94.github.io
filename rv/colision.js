@@ -363,50 +363,50 @@ Caballo.prototype.sense=function(environment){
   var dx = x-X;
   var dy = y-Y;
   if (dy<=0)
-    this.sensor.set( (this.position.x+dx,this.position.y,0), new THREE.Vector3(0, 1, 0) ); 
+    this.sensor.set( (this.position.x-dx,this.position.y,0), new THREE.Vector3(0, 1, 0) ); 
   else if (dy>=0)
     this.sensor.set( (this.position.x+dx,this.position.y,0), new THREE.Vector3(0, -1, 0) );
   this.sensor.set(this.position, new THREE.Vector3(Math.cos(Math.atan((y-Y)/(x-X))), Math.sin(Math.atan((y-Y)/(x-X))), 0));  
-  /*var obsta*/culo=this.sensor.intersectObjects(environment.children,true);
+  var obstaculo=this.sensor.intersectObjects(environment.children,true);
   if (Math.abs(dx)<=20 && Math.abs(dy)<=10){
-    if( /*obsta*/culo.length>0 && /*obsta*/culo[0].object.parent.sTP !== this.sTP ){
+    if( obstaculo.length>0 && obstaculo[0].object.parent.sTP !== this.sTP ){
       this.sensor.colision=false;
-      /*obsta*/culo[0].object.material.color.setHex(0xff00ff);
-      if( /*obsta*/culo[0].distance<=Math.sqrt(2) ){ 
+      obstaculo[0].object.material.color.setHex(0xff00ff);
+      if( obstaculo[0].distance<=Math.sqrt(2) ){ 
         if (this.sTP === true){
-          /*obsta*/culo[0].object.translate(50+bi,-50+bj,0);
+          obstaculo[0].object.translate(50+bi,-50+bj,0);
           bj+=10;
         }
         else{
-          /*obsta*/culo[0].object.translate(-50+ni,-50+nj,0);
+          obstaculo[0].object.translate(-50+ni,-50+nj,0);
           nj+=10;
         }
       }
     }
-    else if( /*obsta*/culo.length>0 && /*obsta*/culo[0].object.parent.sTP === this.sTP ){
-      /*obsta*/culo[0].object.material.color.setHex(0xff00ff);
-      if( /*obsta*/culo[0].distance>=10 )
+    else if( obstaculo.length>0 && obstaculo[0].object.parent.sTP === this.sTP ){
+      obstaculo[0].object.material.color.setHex(0xff00ff);
+      if( obstaculo[0].distance>=10 )
         this.sensor.colision=true;
       else
         this.sensor.colision=false;
     }
   }
   if (Math.abs(dx)<=10 && Math.abs(dy)<=20){
-    if( /*obsta*/culo.length>0 && /*obsta*/culo[0].object.parent.sTP !== this.sTP ){
+    if( obstaculo.length>0 && obstaculo[0].object.parent.sTP !== this.sTP ){
       this.sensor.colision=false;
-      if( /*obsta*/culo[0].distance<=Math.sqrt(2) && /*obsta*/culo[0].position.x<=x+0.1 && /*obsta*/culo[0].position.y<=y+0.1 ){ 
+      if( obstaculo[0].distance<=Math.sqrt(2) && obstaculo[0].position.x<=x+0.1 && obstaculo[0].position.y<=y+0.1 ){ 
         if (this.sTP === true){
-          /*obsta*/culo[0].object.translate(50+bi,-50+bj,0);
+          obstaculo[0].object.translate(50+bi,-50+bj,0);
           bj+=10;
         }
         else{
-          /*obsta*/culo[0].object.translate(-50+ni,-50+nj,0);
+          obstaculo[0].object.translate(-50+ni,-50+nj,0);
           nj+=10;
         }
       }
     }
-    else if( /*obsta*/culo.length>0 && /*obsta*/culo[0].object.parent.sTP === this.sTP ){
-      if( /*obsta*/culo[0].distance>=20 )
+    else if( obstaculo.length>0 && obstaculo[0].object.parent.sTP === this.sTP ){
+      if( obstaculo[0].distance>=20 )
         this.sensor.colision=true;
       else
         this.sensor.colision=false;
