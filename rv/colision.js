@@ -358,7 +358,9 @@ function Caballo(sTP,x,y)
 Caballo.prototype=new Agent();
 
 Caballo.prototype.sense=function(environment){
-  /*var dx = x-X;
+  /*if( obstaculo.length>0 && obstaculo[0].object.parent.sTP !== this.sTP ){
+    if( obstaculo[0].distance===10*Math.sqrt(5)- .7.2){ */
+  var dx = x-X;
   var dy = y-Y;
   if (dy<=0)
     this.sensor.set( (this.position.x+dx,this.position.y,0), new THREE.Vector3(0, 1, 0) ); 
@@ -394,7 +396,7 @@ Caballo.prototype.sense=function(environment){
   if (Math.abs(dx)<=10 && Math.abs(dy)<=20){
     if( obstaculo.length>0 && obstaculo[0].object.parent.sTP !== this.sTP ){
       this.sensor.colision=false;
-      if( obstaculo[0].distance<=Math.sqrt(2) ){ 
+      if( obstaculo[0].distance<=Math.sqrt(2) && obstaculo[0].parent.position.x<=x+0.1 && obstaculo[0].parent.position.y<=y+0.1 ){ 
         if (this.sTP === true){
           obstaculo[0].object.translate(50+bi,-50+bj,0);
           //bi++;
@@ -413,7 +415,7 @@ Caballo.prototype.sense=function(environment){
       else
         this.sensor.colision=false;
     }
-  }*/
+  }
 };
 
 Caballo.prototype.plan=function(environment)
@@ -421,8 +423,8 @@ Caballo.prototype.plan=function(environment)
   this.actuator.commands=[];
   if(this.sensor.colision === false){
     if( ((Math.abs(x-X)<=20 && Math.abs(y-Y)<=10) || (Math.abs(x-X)<=10 && Math.abs(y-Y)<=20)) && Math.abs(x-X)!==Math.abs(y-Y) ){
-      if(this.position.x===X&&this.position.y===Y)
-        this.position.z = 9.5*1.3;
+      /*if(this.position.x===X&&this.position.y===Y)
+        this.position.z = 9.5*1.3;*/
       if(X!==x&&Y!==y){
         this.actuator.commands.push('goStraightX');
         this.cnt = true;
