@@ -367,50 +367,46 @@ Caballo.prototype.sense=function(environment){
   else if (dy>=0)
     this.sensor.set( (this.position.x+dx,this.position.y,0), new THREE.Vector3(0, -1, 0) );
   this.sensor.set(this.position, new THREE.Vector3(Math.cos(Math.atan((y-Y)/(x-X))), Math.sin(Math.atan((y-Y)/(x-X))), 0));  
-  var obstaculo=this.sensor.intersectObjects(environment.children,true);
+  /*var obsta*/culo=this.sensor.intersectObjects(environment.children,true);
   if (Math.abs(dx)<=20 && Math.abs(dy)<=10){
-    if( obstaculo.length>0 && obstaculo[0].object.parent.sTP !== this.sTP ){
+    if( /*obsta*/culo.length>0 && /*obsta*/culo[0].object.parent.sTP !== this.sTP ){
       this.sensor.colision=false;
-      obstaculo[0].object.material.color.setHex(0xff00ff);
-      if( obstaculo[0].distance<=Math.sqrt(2) ){ 
+      /*obsta*/culo[0].object.material.color.setHex(0xff00ff);
+      if( /*obsta*/culo[0].distance<=Math.sqrt(2) ){ 
         if (this.sTP === true){
-          obstaculo[0].object.translate(50+bi,-50+bj,0);
-          //bi++;
+          /*obsta*/culo[0].object.translate(50+bi,-50+bj,0);
           bj+=10;
         }
         else{
-          obstaculo[0].object.translate(-50+ni,-50+nj,0);
-          //ni-=10;
+          /*obsta*/culo[0].object.translate(-50+ni,-50+nj,0);
           nj+=10;
         }
       }
     }
-    else if( obstaculo.length>0 && obstaculo[0].object.parent.sTP === this.sTP ){
-      obstaculo[0].object.material.color.setHex(0xff00ff);
-      if( obstaculo[0].distance>=10 )
+    else if( /*obsta*/culo.length>0 && /*obsta*/culo[0].object.parent.sTP === this.sTP ){
+      /*obsta*/culo[0].object.material.color.setHex(0xff00ff);
+      if( /*obsta*/culo[0].distance>=10 )
         this.sensor.colision=true;
       else
         this.sensor.colision=false;
     }
   }
   if (Math.abs(dx)<=10 && Math.abs(dy)<=20){
-    if( obstaculo.length>0 && obstaculo[0].object.parent.sTP !== this.sTP ){
+    if( /*obsta*/culo.length>0 && /*obsta*/culo[0].object.parent.sTP !== this.sTP ){
       this.sensor.colision=false;
-      if( obstaculo[0].distance<=Math.sqrt(2) && obstaculo[0].position.x<=x+0.1 && obstaculo[0].position.y<=y+0.1 ){ 
+      if( /*obsta*/culo[0].distance<=Math.sqrt(2) && /*obsta*/culo[0].position.x<=x+0.1 && /*obsta*/culo[0].position.y<=y+0.1 ){ 
         if (this.sTP === true){
-          obstaculo[0].object.translate(50+bi,-50+bj,0);
-          //bi++;
+          /*obsta*/culo[0].object.translate(50+bi,-50+bj,0);
           bj+=10;
         }
         else{
-          obstaculo[0].object.translate(-50+ni,-50+nj,0);
-          //ni-=10;
+          /*obsta*/culo[0].object.translate(-50+ni,-50+nj,0);
           nj+=10;
         }
       }
     }
-    else if( obstaculo.length>0 && obstaculo[0].object.parent.sTP === this.sTP ){
-      if( obstaculo[0].distance>=20 )
+    else if( /*obsta*/culo.length>0 && /*obsta*/culo[0].object.parent.sTP === this.sTP ){
+      if( /*obsta*/culo[0].distance>=20 )
         this.sensor.colision=true;
       else
         this.sensor.colision=false;
@@ -1277,7 +1273,7 @@ function loop()
   renderizador.render(environment,camara);
 }
 
-var bi=0,bj=0,nj=0,ni=0,turno=false,sTC,id,environment,camara,renderizador,luzpuntual,avance,seleccion,x,X,Y,Z,z,y,activar=false,seleccionO=true,seleccionF2=false,seleccionF1=false,xf,yf;
+var culo,bi=0,bj=0,nj=0,ni=0,turno=false,sTC,id,environment,camara,renderizador,luzpuntual,avance,seleccion,x,X,Y,Z,z,y,activar=false,seleccionO=true,seleccionF2=false,seleccionF1=false,xf,yf;
 
 setup();
 loop();
