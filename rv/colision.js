@@ -157,15 +157,8 @@ Agent.prototype.operations.goStraightY=function(pieza,distance)
 Agent.prototype.operations.goStraightZ=function(pieza,distance)
 {
   if(distance===undefined)
-   {
-    if(Z<z)
-      distance=0.5;
-    else if(Z===z)
-      distance=0;
-    else
-      distance=-0.5; 
-  }
-  if ( pieza.position.z <= 9.5*1.3 )
+    distance=0.5;
+  if ( pieza.position.z < 9.5*1.3 )
     pieza.position.z+=distance*Math.cos(pieza.rotation.x);
 };
 
