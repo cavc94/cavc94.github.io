@@ -371,7 +371,7 @@ Caballo.prototype.sense=function(environment){
   if( obstaculo.length>0 && obstaculo[0].object.parent.sTP !== this.sTP ){
     this.sensor.colision=false;
     obstaculo[0].object.material.color.setHex(0xff00ff);
-    if( obstaculo[0].distance<=Math.sqrt(2) && obstaculo[0].position.x<=x+0.1 && obstaculo[0].position.y<=y+0.1 ){ 
+    if( obstaculo[0].distance<=Math.sqrt(2) ){ 
       if (this.sTP === true){
         obstaculo[0].object.translate(50+bi,-50+bj,0);
         bj+=10;
