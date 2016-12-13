@@ -163,7 +163,7 @@ Agent.prototype.operations.goStraightZ=function(pieza,distance)
     else
       distance=0; 
   }
-  pieza.position.z+=distance*Math.cos(pieza.rotation.x);
+  pieza.position.z+=distance;
 };
 
 Agent.prototype.operations.goDiagonal=function(pieza,distance)
