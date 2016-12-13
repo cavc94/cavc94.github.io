@@ -363,8 +363,9 @@ Caballo.prototype.sense=function(environment){
     this.position.x-dx,this.position.y,0*/
   var dx = x-X;
   var dy = y-Y;
+  var pdp = [x, Y, 0];
   if (dy<=0)
-    this.sensor.set( (x,Y,0), new THREE.Vector3(0, -1, 0) ); 
+    this.sensor.set( pdp, new THREE.Vector3(0, -1, 0) ); 
   else if (dy>=0)
     this.sensor.set( (x,Y,0), new THREE.Vector3(0, 1, 0) );
   var obstaculo=this.sensor.intersectObjects(environment.children,true);
